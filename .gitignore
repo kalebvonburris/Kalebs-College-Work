@@ -21,3 +21,4 @@
 **/*.run.xml
 **/*.code-workspace
 **/test.*
+/**/template.*
