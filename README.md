@@ -4,4 +4,4 @@ A complitation of the LaTeX files that make up both note taking and homework ass
 
 ### File Structure
 
-Files should be structured under CATEGORY/CLASS/*.*, and have no extra files (*.toc, *.exe, etc.), these should .tex, .pdf. or source code.
+Files should be structured under CATEGORY/CLASS/HOMEWORK OR NOTES/FILE, and have no extra files (*.toc, *.exe, etc.), these should .tex, .pdf. or source code.
