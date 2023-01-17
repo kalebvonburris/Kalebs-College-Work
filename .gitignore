@@ -1,7 +1,7 @@
 **/*.aux
 **/*.bbl
 **/*.fls
-**/*.sybctex.gz
+**/*.synctex.gz
 **/*.fdb_latexmk
 **/*.idx
 **/*.ind
@@ -19,3 +19,5 @@
 **/*.nav
 **/*.snm
 **/*.run.xml
+**/*.code-workspace
+**/test.*
