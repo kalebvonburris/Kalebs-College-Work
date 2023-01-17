@@ -1,4 +1,4 @@
-# Kalebs-College-Work
+# Kaleb's College Work
 
 A complitation of the LaTeX files that make up both note taking and homework assignments for various classes. 
 
