@@ -1,0 +1,40 @@
+\providecommand\pointsize{12pt}
+
+\documentclass[\pointsize, letterpaper]{article}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{mathptmx}
+\usepackage{anyfontsize}
+\usepackage{t1enc}
+\usepackage{tabto}
+\usepackage{listings}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2.5cm}
+
+\newcommand{\name}{Kaleb Burris}
+\newcommand{\classname}{STAT F300 Statistics, Dr. Short}
+\newcommand{\assignment}{FILL IN THE ASSIGNMENT}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    \name 
+    \newline
+    \classname
+    \newline
+    \assignment
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+\setlength{\headheight}{42pt}
+\setlength{\headsep}{0.25in}
+\setlength{\columnsep}{0.35cm}
+\setlength{\columnseprule}{1pt}

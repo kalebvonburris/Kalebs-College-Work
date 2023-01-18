@@ -1,0 +1,228 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\usepackage[]{mdframed}
+
+
+% Put class number, class name, and professor 
+% name.
+\renewcommand\classname{STAT F300 Statistics, Dr. Short}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework 1, Due Friday, January 20, 23:59}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \renewcommand{\pointsize}{12pt}
+
+    \paragraph{1.} Name (print): \underline{Kaleb Burris}
+    
+    \paragraph{ } Signature: \underline{\emph{Kaleb Burris}}
+        
+    \paragraph{ } Student ID: \underline{31196184}
+        
+    \paragraph{ }    What is your primary field or area of study?
+        \\ \text{\boxed{\emph{Computer Science.}}}
+        
+    \paragraph{ }    What interests you?
+        \\ \text{\boxed{\emph{New ideas; things that make other things better.}}}
+    
+
+    \paragraph{2.} Do you have any special needs or concerns regarding this class that I should know about? If so, please describe briefly.
+    \begin{mdframed}
+        \emph{No.}
+    \end{mdframed}
+    
+    \paragraph{3.} When was the most recent calculus course you've taken (semester/year)? Have you
+    had Calc II? Calc III? (These aren't required for the course; I'm just trying to get an
+    idea of how much Calc I refresher I'll need to include.)
+    \begin{mdframed}
+        \emph{I took Calculus I last semester and I'm taking Calculus II this semester.}
+    \end{mdframed}
+
+    \paragraph{} Please describe your computing experience, e.g. software packages you've worked with, languages you've written in, etc. Please include an estimate of how much time you've
+    spent at each, for example, 1 hour, 10 hours, 100 hours, 1000 hours, etc.
+    \begin{mdframed}
+        \emph{I've used a lot of different packages and done a lot of programming, probably totaling over 2000+ hours. I've spent a decent amount of that time on recreational math problems and projects. My coding experience spans Java, C, C++, Python, Javascript, Rust, MathLab, and a little R. I'm currently writing this using} \LaTeX, \emph{which I picked up over this last winter break.}
+    \end{mdframed}
+
+    \paragraph{} Do you have a laptop you can bring to class for working problems that require more than a calculator?
+    \begin{mdframed}
+        \emph{Yes.}
+    \end{mdframed}
+
+    \paragraph{} Do you have a desktop or laptop computer you can use for (some) homework problems?
+    \begin{mdframed}
+        \emph{Yes.}
+    \end{mdframed}
+
+    \clearpage
+
+    \paragraph{4.} Evaluate the following. Be sure to sure your work. In particular, if you apply a formula, you need to state the formula, then plug numbers into the formula, then state the final result.
+
+    $\Rightarrow$ indicates the beginning of work. 
+    \\
+    You can use \verb+\sum\limits_{min}_^{max}+ to get limits for functions on inline text: $\sum\limits_{i=1}^{15}$
+    
+    \footnotesize{
+    \begin{multicols}{2}
+        \paragraph{(a)}
+        \begin{equation*}
+            \begin{gathered}
+                \int 4x^3 \mathrm{d}x
+                \\
+                \Rightarrow \frac{4x^4}{4} + C = \boxed{x^4 + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph{(b)}
+        \begin{equation*}
+            \begin{gathered}
+                \int_{1}^{2} 4x^3 \mathrm{d}x
+                \\
+                \Rightarrow x^4 \Big|_{1}^{2} = 2^4 - 1^4 
+                \\
+                = 16 - 1 = \boxed{15} 
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph{(c)}
+        \begin{equation*}
+            \begin{gathered}
+                \int \exp(-2x) \mathrm{d}x = \int e^{-2x} \mathrm{d}x
+                \\
+                \Rightarrow \boxed {-\frac{1}{2}e^{-2x} + C} \quad or \quad \boxed{-\frac{1}{2}\exp(-2x) + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph{(d)}
+        \begin{equation*}
+            \begin{gathered}
+                \int_{0}^{2\pi}(1 + \sin(x))\mathrm{d}x
+                \\
+                \Rightarrow (x - \cos(x))\big|_{0}^{2\pi}
+                \\
+                = (2\pi - \cos(2\pi)) - (0 - \cos(0)) 
+                \\
+                = (2\pi - 1) - (-1) = \boxed{2\pi}
+            \end{gathered}
+        \end{equation*}
+
+        \horizontal
+
+        \paragraph{(e)}
+        \begin{equation*}
+            \begin{gathered}
+                \sum_{i=1}^{50}(0.3i + 1)
+                \\
+                \text{Using} \quad \sum_{i=1}^{n}i = \frac{n(n+1)}{2}
+                \\
+                \Rightarrow \sum_{i=1}^{50}(0.3i + 1) = \sum_{i=1}^{50} 1 + 0.3\sum_{i=1}^{50}i
+                \\
+                = 50 + 0.3\left(\frac{50(50 + 1)}{2}\right) = 50 + 382.5
+                \\
+                = \boxed{432.5}
+            \end{gathered}
+        \end{equation*}
+
+        \paragraph{(f)}
+        \begin{equation*}
+            \begin{gathered}
+                \sum_{i=7}^{50}(0.3i + 1)
+                \\
+                \text{Using} \quad \sum_{i=1}^{n}i = \frac{n(n+1)}{2}
+                \\
+                \Rightarrow \sum_{i=1}^{50}(0.3i + 1) - \sum_{i=1}^{6}(0.3i + 1) = \sum_{i=7}^{50}(0.3i + 1)
+                \\
+                = \resizebox{0.95\hsize}{!}{$432.5 - \left(\sum\limits_{i=1}^{6}(0.3i + 1) = 432.5 - \sum\limits_{i=1}^{6} 1 + 0.3\sum\limits_{i=1}^{6}i\right)$}
+                \\
+                = 432.5 - \left(6 + 0.3\left(\frac{6(6 + 1)}{2}\right)\right) = 432.5 - 12.3
+                \\
+                = \boxed{420.2}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph{(g)}
+        \begin{equation*}
+            \begin{gathered}
+                \sum_{i=1}^{15}(-0.2i^2 + 1)
+                \\
+                \text{Using} \quad \sum_{i=1}^{n}i^2 = \frac{1}{6}n(n+1)(2n+1)
+                \\
+                \Rightarrow \sum_{i=1}^{15} 1 - 0.2\sum_{i}^{15}i^2 = 15 - \frac{1}{6}15(15+1)(2(15)+1)
+                \\
+                = 15 - 248 = \boxed{-233}
+            \end{gathered}
+        \end{equation*}
+
+        \horizontal
+
+        \paragraph{(h)}
+        \begin{equation*}
+            \begin{gathered}
+                \sum_{i=6}^{15}(0.5)^i
+                \\
+                \text{Using} \quad \sum_{i=0}^{n-1} ar^i = \frac{a-ar^n}{1-r}, r \neq 1
+                \\
+                \Rightarrow \sum_{i=6}^{15}(0.5)^i = \sum_{i=0}^{15}(0.5)^i - \sum_{i=0}^{5}(0.5)^i
+                \\
+                n + 1 \text{ used because of } n-1 \text{ in formula.}
+                \\
+                = \frac{1-1(0.5)^{16}}{1-0.5} - \frac{1-1(0.5)^6}{1-0.5} 
+                \\
+                \approx \boxed{0.061}
+            \end{gathered}
+        \end{equation*}
+
+        \paragraph{(i)}
+        \begin{equation*}
+            \begin{gathered}
+                \sum_{i=3}^{\infty}(0.8)^i
+                \\
+                \text{Using} \sum_{i=0}^{\infty}ar^i = \frac{a}{1-r}, -1 < r < 1
+                \\
+                \text{and} \sum_{i=0}^{n}ar^i = \frac{a - ar^n}{1 - r}, r \neq 1
+                \\
+                \Rightarrow \sum_{i=3}^{\infty}(0.8)^i = \sum_{i=0}^{\infty}(0.8)^i - \sum_{i=0}^{2}(0.8)^i
+                \\
+                = \frac{1}{1 - 0.8} - \frac{1 - 1(0.8)^2}{1 - 0.8} = 5 - 3.2 = \boxed{1.8}
+            \end{gathered}
+        \end{equation*}
+
+    \end{multicols}
+    }
+    
+\end{document}
