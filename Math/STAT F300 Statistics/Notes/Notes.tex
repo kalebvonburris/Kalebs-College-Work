@@ -1,0 +1,54 @@
+\documentclass[12pt, letterpaper]{book}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage[parfill]{parskip}
+\usepackage{subfiles}
+\usepackage[makeroom]{cancel}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{MnSymbol}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2.5cm}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    Kaleb Burris
+    \newline
+    PHYS F211X
+}
+
+\setlength{\headheight}{42pt}
+\setlength{\headsep}{0.25in}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+%\setlength{\headheight}{42pt}
+%\setlength{\headsep}{0.25in}
+%\setlength{\columnsep}{0.35cm}
+%\setlength{\columnseprule}{1pt}
+
+\begin{document}
+    \begin{titlepage}
+        \Huge \textbf{STAT F300}
+
+        \huge \textbf{Statistics}
+
+        \vfill
+
+        \Large Kaleb Burris
+    \end{titlepage}
+
+    \section*{Lecture 1}
+    
+    \subfile{subfiles/lecture1.tex}
+
+
+\end{document}

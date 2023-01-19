@@ -1,0 +1,44 @@
+\documentclass[../Notes.tex]{subfiles}
+
+\begin{document}
+    (\S 1.2) Descriptive statistics; (\S 1.3) Measures of location
+
+    Common naming conventions:
+    \begin{itemize}
+        \item Population size: $N$
+        \item Sample size: $n$
+        \item Sample from two different populations: $n, m,$ or $n_1, n_2$
+        \item Data: $x_1, x_2, x_3, \dots x_n$
+    \end{itemize}
+
+    Stem-and-leaf displays using R:
+
+\begin{lstlisting}[language=R]
+> x sample(1:50, size=20, replace=TRUE)
+> sort(x)
+    [1]: 2 2 2 3 9 14 18 19 20 21 21 22 22 29 30 32 32
+    [18]: 33 44 47
+> stem(x)
+\end{lstlisting}
+
+    The sample function generates numbers in the range provided as the first argument, with a size equal to the second argument. sort(x) sorts the values stored in x, and stem(x) does the following:
+
+    Each ``stem'' refers to the highest digits and each ``leaf'' is the latter digits. This is the stem-and-leaf display for the dataset stored in x:
+
+    \begin{center}
+        \resizebox{0.35\hsize}{!}{
+            \begin{tabular}{r | l}
+                Stem & Leaves       \\
+                \hline              
+                0 & 2 2 2 3 9       \\
+                1 & 4 8 9           \\
+                2 & 0 1 1 2 2 9     \\
+                3 & 0 2 2 3         \\
+                4 & 4 7
+            \end{tabular}
+        }
+    \end{center}
+
+    Endpoint: 8:44.
+
+\end{document}
