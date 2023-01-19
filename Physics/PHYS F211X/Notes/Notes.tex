@@ -1,0 +1,50 @@
+\documentclass[12pt, letterpaper]{book}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage[parfill]{parskip}
+\usepackage{subfiles}
+\usepackage[makeroom]{cancel}
+\usepackage{mathtools}
+\usepackage{MnSymbol}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2.5cm}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    Kaleb Burris
+    \newline
+    PHYS F211X
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+%\setlength{\headheight}{42pt}
+%\setlength{\headsep}{0.25in}
+%\setlength{\columnsep}{0.35cm}
+%\setlength{\columnseprule}{1pt}
+
+\begin{document}
+    \begin{titlepage}
+        \Huge \textbf{PHYS 211X}
+
+        \huge \textbf{General Physics I}
+
+        \vfill
+
+        \Large Kaleb Burris
+    \end{titlepage}
+
+    \section*{Day 1 - 1/18/2023}
+
+    \subfile{subfiles/day1.tex}
+
+
+\end{document}
