@@ -1,5 +1,7 @@
 \documentclass[../Notes.tex]{subfiles}
 
+\usepackage{amsmath}
+
 \begin{document}
 
     \NewDocumentCommand{\codeword}{v}{
@@ -163,8 +165,38 @@
     > hist(my_data, probability=TRUE, main="Plot 4")
 \end{lstlisting}
 
-Here, \codeword{r} refers to random and \codeword{unif} refers to uniform in \codeword{runif}, it does not refer to \codeword{run} \codeword{if}.
+    Here, \codeword{r} refers to random and \codeword{unif} refers to uniform in \codeword{runif}, it does not refer to \codeword{run} \codeword{if}.
 
-Endpoint: 41:32.
+    \subsection*{(\S 1.3) Measures of Location}
+
+    There are several ways to measure where the center of a data set s. Different measures are used in different scenarios because people use what they're accustomed to using. Here are the most frequently used ones:
+
+    \begin{enumerate}
+        \item Sample Mean: $\overline{x} = x_1 + x_2 + \dots + x_n = \frac{1}{n}\sum\limits_{i=1}^{n}x_i$
+        \item Sample Median: Sort values in increasing order, then:
+    \end{enumerate}
+
+    \begin{equation*}
+        \tilde{x} = 
+        \left\{
+            \begin{array}{lr}
+                \text{Middle value} & \text{If n is odd} \\
+                \text{Average of two middle values} & \text{If n is even}
+            \end{array}
+        \right.
+    \end{equation*}
+
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item Population mean: $\mu = \frac{1}{N}\sum\limits_{i=1}^{N}x_i$
+        \item Population median: $\tilde{\mu} = \text{median of} \{x_1, x_2, \dots, x_n\}$
+    \end{enumerate}
+
+    The median generally gives a good idea of the center of a sample of a population, whether the sample is symmetric or asymmetric, whether skewed or not. We use the mean because (A) people are used to it, and (B), the sample mean has very nice mathematical properties.
+
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item Trimmed mean: omit the largest and smallest value, then calculate the mean of the remaining values. This reduces the influence of the most extreme value on either end.
+    \end{enumerate}
 
 \end{document}
