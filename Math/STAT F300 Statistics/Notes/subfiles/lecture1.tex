@@ -1,7 +1,13 @@
 \documentclass[../Notes.tex]{subfiles}
 
 \begin{document}
-    (\S 1.2) Descriptive statistics; (\S 1.3) Measures of location
+
+    \NewDocumentCommand{\codeword}{v}{
+        \texttt{\textcolor{blue}{#1}}
+    }
+    
+
+    \subsection*{(\S 1.2) Descriptive statistics; (\S 1.3) Measures of location}
 
     Common naming conventions:
     \begin{itemize}
@@ -11,14 +17,14 @@
         \item Data: $x_1, x_2, x_3, \dots x_n$
     \end{itemize}
 
-    Stem-and-leaf displays using R:
+    \subsubsection{Stem-and-leaf displays}
 
 \begin{lstlisting}[language=R]
-> x sample(1:50, size=20, replace=TRUE)
-> sort(x)
-    [1]: 2 2 2 3 9 14 18 19 20 21 21 22 22 29 30 32 32
-    [18]: 33 44 47
-> stem(x)
+    > x sample(1:50, size=20, replace=TRUE)
+    > sort(x)
+    [1] 2 2 2 3 9 14 18 19 20 21 21 22 22 29 30 32 32
+    [18] 33 44 47
+    > stem(x)
 \end{lstlisting}
 
     The sample function generates numbers in the range provided as the first argument, with a size equal to the second argument. sort(x) sorts the values stored in x, and stem(x) does the following:
@@ -39,6 +45,126 @@
         }
     \end{center}
 
-    Endpoint: 8:44.
+    \subsubsection{Dot plots}
+\begin{lstlisting}[language=R]
+    > x <- sample(1:10, size=15, replace=TRUE)
+    > x
+    [1] 7 8 1 3 4 10 1 2 2 1 1 4 4 9 6
+    > stripchart(x, method="stack", offset=0.5, at=0.15, pch=20)
+\end{lstlisting}
+
+    \codeword{stripchart()} constructs the dot plot. The \codeword{offset} and \codeword{at} values affect the appearance. \codeword{pch} means \codeword{p}rinting \codeword{ch}aracter. Having it set to 20 makes the dot solid.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Dot Plot},
+                xmin=0, xmax=10,
+                ymin=0, ymax=10,
+                yticklabels={},
+                width=0.8\textwidth,
+                height=4cm
+            ]
+            
+            \addplot[only marks, scatter src=explicit symbolic
+                ]
+                table[row sep=\\] {
+                    x y \\
+                    1 1 \\
+                    1 2 \\
+                    1 3 \\
+                    1 4 \\
+                    2 1 \\
+                    2 2 \\
+                    3 1 \\
+                    4 1 \\
+                    4 2 \\
+                    6 1 \\
+                    7 1 \\
+                    8 1 \\
+                    9 1 \\
+                    10 1\\
+                };
+                
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
+    \subsubsection{Histograms}
+
+    \begin{itemize}
+        \item For quantitative data.
+        \item May differ depending on whether a variable is discrete or continuous.
+    \end{itemize}
+
+    \textbf{Discrete} data is either infinite or countably infinite: orderable, typically integers. Includes ration numbers.
+
+    \begin{itemize}
+        \item $x_1$ = \# of tuberculosis cases in the 50 largest U.S. cities in 2013. $\leftarrow$ Might be 0, 1, 2, \dots but $\neq \infty$.
+        \item $x_i$ \# of ``successes'' when 100 patients treated. $\leftarrow$ Count data in which we know a hard upper limit (in this case 100).
+        \item $x_i$ \# of rooms in a rental unit. $\leftarrow$ 1, 2, \dots, 100. At least 1 guaranteed as a hard minimum limit.
+    \end{itemize}
+
+    Histograms, when data is discrete, use vertical bars with height proportional to the number of times each value occurs.
+
+    \begin{center}
+        Frequency Histogram vs Relative Frequency Histogram
+
+        For the data: $\{1, 1, 2, 2, 2, 3\}$
+    
+        \begin{figure*}[h]
+            \centering
+            \begin{minipage}[h]{.45\linewidth}
+                \begin{tikzpicture}
+                    \begin{axis}[title={Frequency Histogram}, ymax=4, area style, height=6cm]
+                        \addplot[ybar interval, mark=no] coordinates { (0.5, 2) (1.5, 2) (1.5, 3) (2.5, 3) (3.5, 1) (4.5, 1) };
+                    \end{axis}
+                \end{tikzpicture}
+            \end{minipage}
+            \begin{minipage}[h]{.45\linewidth}
+                \begin{tikzpicture}
+                    \begin{axis}[title={Relative Frequency Histogram}, ymax=1, area style, height=6cm]
+                        \addplot[ybar interval, mark=no] coordinates { (0.5, 1/3) (1.5, 1/3) (1.5, 1/2) (2.5, 1/2) (3.5, 1/6) (4.5, 1/6) };
+                    \end{axis}
+                \end{tikzpicture}
+            \end{minipage}
+        \end{figure*}
+    \end{center}
+
+    Relative Frequency Histograms have a total height of 1.
+
+    \pagebreak
+
+    \subsubsection{R Code for Histograms}
+
+\begin{lstlisting}[language=R]
+    > # Use R to simulate 100 values from {1, 2, 3, ..., 10}
+    > my_data <- sample(1:10, size=100, replace=TRUE)
+    > # Here are the first 20 values:
+    > my_data[1:20]
+    [1] 4 3 5 6 5 4 10 2 6 2 5 8 7 10 4 10 7 6
+    [19] 5 7
+    > # Create a frequency histogram:
+    > hist(my_data. main="Plot 1 - discrete data")
+    > # Create a relative frequency histogram:
+    > hist(my_data, probability=TRUE, main="Plot 2")
+\end{lstlisting}
+
+\emph{Note: R uses \# for comments. You're a CS major, you know what these functions and their arguments do.}
+
+\subsubsection{R Code of a Histogram Using Continuous Data}
+
+\begin{lstlisting}[language=R]
+    > # Generate 100 rational values from 1:10.
+    > my_data <- runif(100, min=1, max=10)
+    > # Create a histogram using the same code for discrete data:
+    > hist(my_data, main="Plot 3 - Continuous Data")
+    > # And a relative frequency histogram:
+    > hist(my_data, probability=TRUE, main="Plot 4")
+\end{lstlisting}
+
+Here, \codeword{r} refers to random and \codeword{unif} refers to uniform in \codeword{runif}, it does not refer to \codeword{run} \codeword{if}.
+
+Endpoint: 41:32.
 
 \end{document}
