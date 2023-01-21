@@ -1,0 +1,66 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\usepackage[]{mdframed}
+
+
+% Put class number, class name, and professor 
+% name.
+\renewcommand\classname{STAT F300 Statistics, Dr. Short}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 1, due Friday January 20, 4:15pm}
+
+\begin{document}
+
+    \paragraph*{1.} 
+    Create a stem-and-leaf plot (by hand) for the following data. Does the data appear to be unimodal, multimodal, or none of these?
+
+    \begin{mdframed}
+    \begin{center}
+        (Pretend this is made with graphite)
+        \resizebox{0.35\hsize}{!}{
+            \begin{tabular}{r | l}
+                Stem & Leaves       \\
+                \hline              
+                6 & 6 6 \\
+                7 & 4 4 5 5 6 6 6 6 8 9 \\
+                8 & 1 1 2 3 3 4 6 7 7 \\
+                9 & 2 8
+            \end{tabular}
+        }
+    \end{center}
+    
+    This data looks unimodal as there's only one noticable ``hump'' in the data.
+    \end{mdframed}
+
+    \paragraph*{2.}
+
+    An observational experiment was conducted to help understand how the speed of a runner varies over the course of a marathon (42.195 km). For each of 1000 runners, the time to run the first 5 km was recorded, the time to run between the 35th and 40th km was recorded, and then the former time (0-5km) was subtracted from the latter time (35-40km). Times are in seconds.
+
+    \paragraph*{(a)} 
+    What are some interesting features of this histogram?
+
+    \begin{mdframed}
+        It's very right-skewed, value to the right end tail out to 0 very quickly after ~150 seconds.
+    \end{mdframed}
+
+    \paragraph*{(b)}
+    What is a typical difference value? What does it represent in terms of runners' times?
+
+    \begin{mdframed}
+        Approximately 80-100 seconds is the typical difference value. It represents the line longer it takes to run the last 5km compared to the first 5km.
+    \end{mdframed}
+
+    \paragraph*{(c)}
+    Roughly what proportion of the runners ran the late distance more quickly than the early distance? Roughly how many of the 1000 runners ran the late distance faster than the early distance?
+
+    \begin{mdframed}
+        Approximately 2\% of the runners ran it faster. $0.02 * 1000 = 20$, so approximately 20 runners ran the last 5km faster than the first.  
+    \end{mdframed}
+
+\end{document}
