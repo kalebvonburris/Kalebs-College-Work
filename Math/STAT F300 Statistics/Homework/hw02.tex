@@ -3,9 +3,6 @@
 % depth of the file.
 \input{preamble.tex}
 
-\usepackage{graphicx}
-\usepackage[]{mdframed}
-
 \graphicspath{ {./images/} }
 
 % Put class number, class name, and professor 
@@ -55,6 +52,7 @@
     \{66, 66, 69, 74, 74, 75, 75, 76, 76, 76, 76, 78, 79, 79, 81, 81, 82, 83, 83, 84, 86, 87, 87, 92, 98\}
 
     \begin{mdframed}
+        R code:
         \begin{lstlisting}[language=R]
 > x <- c(66, 66, 69, 74, 74, 75, 75, 76, 76, 76, 76, 
 78, 79, 79, 81, 81, 82, 83, 83, 84, 86, 87, 87, 92, 98)
@@ -80,16 +78,92 @@
     Construct a dot plot of this data set: \{2,3,3,0,12, 0,1,4,6,2, 0,6,5,9,8, 1,1,1,2,3, 10,4,5,5,1\}
 
     \begin{mdframed}
-        \begin{multicols*}{2}
+        \begin{multicols}{2}
+            R code:
         \begin{lstlisting}[language=R]
 > x <- c(2,3,3,0,12, 0,1,4,6,2, 
 0,6,5,9,8,1,1,1,2,3,10,4,5,5,1)
-> stripchart(x, method="stack", 
-offset=0.5, at=0.15, pch=20)
+> stripchart(x, method="stack",
+ offset=0.5, at=0.15, pch=20)
         \end{lstlisting}
-
-        \resizebox{}{\textwidth}{\includegraphics{Rplot_1}}
-    \end{multicols*}
+        \columnbreak
+        Output:
+        \centering\resizebox{0.9\hsize}{!}{\includegraphics[trim={0 0 0 8cm}, clip]{Rplot_1}}
+    \end{multicols}
     \end{mdframed}
 
+    \paragraph*{4.}
+    This is a modified version of Devore (8th ed) \S1.4: \# 45 (p.44) The article “Oxygen Consumption During Fire Suppression: Error of Heart Rate Estimation” (Ergonomics, 1991: 1469-1474) reported the following data on oxygen consumption (mL/kg/min) for a sample of ten firefighters performing a fire-suppression simulation:
+
+    29.5, 49.3, 30.6, 28.2, 28.0, 26.3, 33.9, 29.4, 23.5, 31.6
+
+    \paragraph*{(a)}
+    Find the sample range
+
+    \begin{mdframed}
+        The sample range is $49.3 - 23.5 = \boxed{25.8}$
+    \end{mdframed}
+
+    \paragraph*{(b)}
+    Find the sample variance $s^2$ from the definition (i.e., by first computing deviations, then squaring them, etc.)
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                s^2 = \sum_{i=1}^{n}(x_{i}-\overline{x})^2 \\
+                \overline{x} = \frac{1}{n}\sum_{i=1}^{n}x_i = 31.03 \\
+                s^2 = \sum_{i=1}^{n}(x_{i}-31.03)^2 = ((23.5 - 31.03)^2 + \dots + (49.3 - 31.03)^2) \\
+                \approx \boxed{49.31}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(c)}
+    Find the sample standard deviation
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \sigma = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\overline{x})^2}{N-1}} \\
+                \sum_{i=1}^{n}(x_i-\overline{x})^2 = 49.31 = s^2; \quad N = 10 \\
+                \sigma = \sqrt{\frac{s^2}{N-1}} = \sqrt{\frac{49.31}{10-1}} = \boxed{5.48}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(d)}
+    Find $s^2$ using the shortcut method. (Your answer should match part (b).)
+    
+    \begin{mdframed}
+        Yeah okay
+    \end{mdframed}
+
+    \paragraph*{(e)}
+    By how much could the observation 23.5 be increased without affecting the value of the sample median? Explain.
+    
+    \begin{mdframed}
+        Yeah okay
+    \end{mdframed}
+
+    \paragraph*{(f)}
+    Create a box plot for these data.
+
+    \begin{mdframed}
+        Yeah okay
+    \end{mdframed}
+
+    \paragraph*{5.}
+    Devore \S1.4 \# 50, modified. In 1997 a woman sued a computer keyboard manufacturer, charging that her repetitive stress injuries were caused by the keyboard (Genessy v. Digital Equipment Corp.). The injury awarded about \$3.5 million for pain and suffering, but the court then set aside that award as being unreasonable compensation. In making this determination, the court identified a “normative” group of 27 similar cases and specified a reasonable award as one within two standard deviations of the mean of the awards in the 27 cases. The 27 awards were (in \$1000s) 
+    
+    37, 60, 75, 115, 135, 140, 149, 150, 238, 290, 340, 410, 600, 750, 750, 750, 1050, 1100, 1139, 1150, 1200, 1200, 1250, 1576, 1700, 1825, 2000
+
+    Here is summary information:
+
+    $\sum x_i = 20,179$ and $\sum x_{i}^{2} = 24,657,511$
+
+    What is the maximum possible amount that could be awarded under the two-standard deviation rule?
+
+    \begin{mdframed}
+        Yeah okay
+    \end{mdframed}
 \end{document}
