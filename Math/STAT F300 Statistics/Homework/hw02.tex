@@ -110,10 +110,10 @@
     \begin{mdframed}
         \begin{equation*}
             \begin{gathered}
-                s^2 = \sum_{i=1}^{n}(x_{i}-\overline{x})^2 \\
+                S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\overline{x})^2 \\
                 \overline{x} = \frac{1}{n}\sum_{i=1}^{n}x_i = 31.03 \\
-                s^2 = \sum_{i=1}^{n}(x_{i}-31.03)^2 = ((23.5 - 31.03)^2 + \dots + (49.3 - 31.03)^2) \\
-                \approx \boxed{49.31}
+                S^2 = \frac{1}{10-1}\sum_{i=1}^{n}(x_{i}-31.03)^2 = \frac{1}{9}((23.5 - 31.03)^2 + \dots + (49.3 - 31.03)^2) \\
+                \approx \boxed{5.479}
             \end{gathered}
         \end{equation*}
     \end{mdframed}
@@ -124,7 +124,7 @@
     \begin{mdframed}
         \begin{equation*}
             \begin{gathered}
-                \sigma = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\overline{x})^2}{N-1}} \\
+                \sigma = \sqrt{\frac{\sum\limits_{i=1}^{n}(x_i-\overline{x})^2}{N-1}} \\
                 \sum_{i=1}^{n}(x_i-\overline{x})^2 = 49.31 = s^2; \quad N = 10 \\
                 \sigma = \sqrt{\frac{s^2}{N-1}} = \sqrt{\frac{49.31}{10-1}} = \boxed{5.48}
             \end{gathered}
