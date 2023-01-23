@@ -1,0 +1,258 @@
+\documentclass[../Notes.tex]{subfiles}
+
+\begin{document}
+
+    \subsection*{(\S1.4) Measures of Variability or Spread}
+
+    Why do we care how spread out a data set is? Isn't it enough to just know something about a (typical) middle value?
+
+    \underline{Example:} Suppose you hear that three different instructors assign an average grade of ``B'' (3.0) in a course you're considering. How might you decide which instructor's class to sign up for?
+
+    The three instructors give out grades thusly:
+    \begin{itemize}
+        \item All B's
+        \item C $\rightarrow$ A evenly spread out
+        \item Half the class gets C's, half get A's
+    \end{itemize}
+
+    There are several measures of variability:
+
+    \paragraph*{1.} Range = max - min.
+    Easy to calculate, but isn't very good as a measure of spread, for example:
+    $1, 5, 5, 5, 9: (9 - 1) = 8$. Even though there are three 5s, the range is higher than all but one member of the sample.
+
+    \paragraph*{2.} Population Variance = $\sigma^2 = $ average of the squared deviations from the population mean.
+
+    \underline{Example:} Amounts that all 5 of your friends owe you (You only have 5 friends): 
+    
+    \begin{equation*}
+        \begin{gathered}
+            \{ 20, 30, -10, 20, 90 \}                   \\
+            N = 5 = \text{population or sample size}    \\
+        \end{gathered}
+    \end{equation*}
+
+    \horizontal
+
+    \begin{multicols}{3}
+        \begin{equation*}
+            \begin{gathered}
+                \resizebox{0.9\hsize}{!}{\boxed{
+                \begin{array}{r | r | r}
+                    x_i & x_i - \mu & (x_i - \mu)^2\\
+                    \hline      
+                    20  & -10 & 100     \\
+                    30  & 0   & 0       \\
+                    -10 & -40 & 1600    \\
+                    20  & -10 & 100     \\
+                    90  & 60  & 3600    \\
+                    \hline      
+                    150 & 0 & 5400       
+                \end{array}}}
+            \end{gathered}
+        \end{equation*}
+
+        \columnbreak
+
+        \begin{align*}
+            \mu & = \frac{1}{N}\sum\limits_{i=1}^{N}x_i       \\
+                & = \frac{1}{5}(150) = 30                     \\  
+                \\
+            \hline
+            \\
+            \sigma^2 & = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu)^2 \\
+                    & = \frac{1}{5}(5400) = 1080
+        \end{align*}
+
+        \columnbreak
+
+        Population standard deviation:
+        \hfill
+        \begin{equation*}
+            \begin{gathered}
+                \sigma = \sqrt{\sigma^2} + \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i-\mu)^2}  \\
+                \sigma = \sqrt{\sigma^2} = \sqrt{1080} \approx 32.86
+            \end{gathered}
+        \end{equation*}
+
+    \end{multicols}
+
+    \pagebreak
+
+    \paragraph*{2'.} Sample Variance: $S^2$
+    
+    \begin{equation*}
+        \begin{gathered}
+            S^2 = \frac{1}{n-1}\sum\limits_{i=1}^{n}(x_i-\overline{x})^2    \\
+            \overline{x}=\frac{1}{n}\sum\limits_{i=1}^{n}x_i
+        \end{gathered}
+    \end{equation*}        
+
+    $S^2$ = average of the squared deviations from the sample mean, $(x_i-\overline{x})$
+
+    \underline{Example:} Amounts that five of your 528 Facebook friends owe you: 
+    
+    \begin{equation*}
+        \begin{gathered}
+            \{ 20, 30, -10, 20, 90 \}                   \\
+            N = 5 = \text{population or sample size}    \\
+        \end{gathered}
+    \end{equation*}
+
+    \horizontal
+
+    \begin{multicols}{3}
+        \begin{equation*}
+            \begin{gathered}
+                \resizebox{0.9\hsize}{!}{\boxed{
+                \begin{array}{r | r | r}
+                    x_i & x_i - \overline{x} & (x_i - \overline{x})^2   \\
+                    \hline      
+                    20  & -10 & 100     \\
+                    30  & 0   & 0       \\
+                    -10 & -40 & 1600    \\
+                    20  & -10 & 100     \\
+                    90  & 60  & 3600    \\
+                    \hline      
+                    150 & 0 & 5400       
+                \end{array}}}
+            \end{gathered}
+        \end{equation*}
+
+        \columnbreak
+
+        \begin{align*}
+            \overline{x} & = \frac{1}{n}\sum\limits_{i=1}^{n}x_i       \\
+                & = \frac{1}{5}(150) = 30                     \\  
+                \\
+            \hline
+            \\
+            S^2 & = \frac{1}{n - 1}\sum_{i=1}^{N}(x_i-\mu)^2 \\
+                    & = \frac{1}{4}(5400) = 1350
+        \end{align*}
+
+        \columnbreak
+
+        Note: Sample variance gives a bigger value than what the population variance formula gave:
+        
+        \begin{equation*}
+            S^2 > \sigma \Rightarrow 1350 > 1080
+        \end{equation*}
+    \end{multicols}
+
+    An alternative formula for $S^2$, which is easier to compute by hand:
+
+    \begin{align*}
+        S^2 = \frac{1}{n-1}\left[\left(\sum_{i=1}^{n}x^{2}_{i}\right)-n\overline{x}^2\right]
+    \end{align*}
+
+    This formula gives the same result, it's simply that the algebra has been reformatted for human computational ease. It's sometimes referred to as the ``computational formula''.
+
+    We sometimes prefer to use $\sigma$ rather than $\sigma^2$, and $S$ rather than $S^2$ because:
+
+    \begin{itemize}
+        \item Units for $S^2$ square the units of observation such as square gallons, square people, etc. $S$ takes $\sqrt{S^2}$, thus we end up with the same units we started with.
+    \end{itemize}
+
+    \subsubsection*{R code for sample variance $\sigma$}
+
+    \begin{lstlisting}[language=R]
+> xx <- c(20, 30, -10, 20, 90)
+> var(xx)
+[1] 1350
+> sd(xx)
+[1] 36.74235
+    \end{lstlisting}
+
+    Some properties of the sample variance formula:
+
+    How is the variance affected if I add a constant $c$ to all numbers in the data set?
+
+    \underline{Example:} $c = 3$
+    \begin{align*}
+        \{1,3,5,11\} & \Rightarrow S^{2}_{1} = 18.\overline{666}  \\
+        \{1,3,5,11\} + 3 = \{4,7,8,14\} &\Rightarrow S^{2}_{2} = 18.\overline{666}
+    \end{align*}
+
+    Adding a number to all values doesn't change the variance.
+
+    How is the variance affected if I multiply all the numbers in the data set by some constant $k$?
+
+    \underline{Example:}
+    \begin{align*}
+        \{1,3,5,11\} & \Rightarrow S^{2}_{1} = 18.\overline{666}  \\
+        \text{for} \quad k = 2: \{1,3,5,11\} * 2 = \{2,6,10,22\} &\Rightarrow S^{2}_{2} = 74.\overline{666} = 4(S^{2}_{1})  \\
+        \text{for} \quad k = -3: \{1,3,5,11\} * -3 = \{-3,-9,-15,-33\} &\Rightarrow S^{2}_{4} = 168 = 9(S^{2}_{1})  \\
+    \end{align*}
+
+    Multiplying the dataset changes the variance by $k^2$.
+
+    If we're asked to calculate the variance of some list of numbers, when should we use the formula for $\sigma^2$ and when should we use $S^2$?
+
+    \underline{You can only tell by looking at the context.} Look for keywords:
+
+    \begin{itemize}
+        \item 5 of my Facebook friends $\implies \text{sample} \implies S^2$
+        \item My 5 Facebook friends $\implies \text{population} \implies \sigma^2$
+    \end{itemize}
+
+    \underline{Box Plots:} Another way to plot a data set. Box plots indicate the center, spread, symmetry, and outliers in the data set.
+
+    Definitions:
+
+    \begin{itemize}
+        \item $Q_1$ = First Quartile = median of smallest half of values
+        \item $Q_3$ = Second Quartile = median of largest half of values
+        \item $IQR$ = $f_s$ = Fourth Spread = $Q_3-Q_1$
+    \end{itemize}
+
+    If $n$ is odd, the middle value is used when calculating both $Q_1$ and $Q_3$.
+
+    \underline{Example:} $\{-1,1,4,7,\Big|12,13,20,22\} \quad n = 8: \quad \text{even}$
+
+    \begin{align*}
+        Q_1 & = \frac{1+4}{2} = 2.5   \\
+        Q_3 & = \frac{13+12}{2} = 16.5\\
+        IQR & = Q_3 - Q_1 = 16.5 - 2.5 = 14\\
+    \end{align*}
+
+    \underline{Example:} $\{9,4,6,11,21,23,55\} \quad n = 7: \quad \text{odd}$
+
+    \begin{align*}
+        Q_1 & = \frac{4+6}{2} = 5   \\
+        Q_3 & = \frac{21+23}{2} = 22\\
+        IQR & = Q_3 - Q_1 = 22 - 5 = 17\\
+    \end{align*}
+
+    \begin{multicols}{2}
+        Here's the recipe for constructing a boxplot (``cat and whisker plot''):
+
+        \begin{enumerate}
+            \item Draw a horizontal line that extends from the smallest to largest values in your data set.
+            \item Draw a rectangle with vertical lines at $Q_1$, $Q_2$, and $Q_3$. ($Q_2$ = median)
+            \item If $x_i Q_1 - 1.5 * IQR \quad or \quad x_i > Q_3 + 1.5 * IQR$, then $x_i$ is considered an outlier. Put a dot at the locations of outliers.
+            \item Draw whiskers that extend from the rectangle to the most extreme non-outlying observation.
+        \end{enumerate}
+
+        \columnbreak
+
+        \underline{Example:} $\{1,5,7,18,20,22,50\}$
+
+        \begin{tikzpicture}
+            \begin{axis}
+            [
+            ]
+            \addplot[
+            boxplot prepared={
+                median=19,
+                upper quartile=20,
+                lower quartile=6,
+                upper whisker=22,
+                lower whisker=1
+            },
+            ] coordinates {};
+            \end{axis}
+        \end{tikzpicture}
+    \end{multicols}
+
+\end{document}
