@@ -1,0 +1,133 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Practice Set 2; Not Due: $\S 1.6 \quad \# 320, 324, 328, 330, 332, 338, 348, 350, 355, 360, 372$}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{multicols*}{2}
+        \paragraph*{320)}
+        \begin{equation*}
+            \begin{gathered}
+                \int e^{2x}\mathrm{d}x  \\
+                \text{let} \quad u = 2x \quad \frac{\mathrm{d}u}{2} = \mathrm{d}x   \\
+                \Rightarrow\frac{1}{2}\int e^u \mathrm{d}u = \frac{e^u}{2} + C = \boxed{\frac{e^{2x}}{2} + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph*{324)}
+        \begin{equation*}
+            \begin{gathered}
+                \int \frac{1}{2x}\mathrm{d}x = \frac{1}{2}\int \frac{1}{x}\mathrm{d}x \\
+                \Rightarrow \frac{1}{2}\int \frac{1}{x}\mathrm{d}x = \boxed{\frac{\ln|x|}{2} + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph*{328)}
+        \begin{equation*}
+            \begin{gathered}
+                \int \frac{\ln(x)}{x}\mathrm{d}x    \\
+                \text{let} \quad u = \ln(x) \quad \mathrm{d}u = \frac{1}{x}\mathrm{d}x  \\
+                \Rightarrow \int u \mathrm{d}u = \frac{u^2}{2} + C = \boxed{\frac{\ln^2(x)}{2} + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph*{330)}
+        \begin{equation*}
+            \begin{gathered}
+                \int \frac{\mathrm{d}x}{x\ln(x)}    \\
+                \text{let} \quad u = \ln(x) \quad \mathrm{d}u = \frac{1}{x}\mathrm{d}x  \\
+                \Rightarrow \int \frac{1}{u} \mathrm{d}u = \ln|u| + C = \boxed{\ln|\ln(x)| + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph*{332)}
+        \begin{equation*}
+            \begin{gathered}
+                \int\tan\theta\mathrm{d}\theta = \int\frac{\sin\theta}{\cos\theta}\mathrm{d}\theta \\
+                \text{let} \quad u = \cos\theta \quad -\mathrm{d}u = \sin\theta \\
+                \Rightarrow -\int \frac{1}{u}\mathrm{d}u = -\ln|u| + C = \boxed{-\ln|\cos\theta| + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph*{338)}
+        \begin{equation*}
+            \begin{gathered}
+                \int e^{\sin x}\cos x\mathrm{d}x    \\
+                \text{let} \quad u = \sin x \quad \mathrm{d}u = \cos x\mathrm{d}x  \\
+                \Rightarrow \int e^u\mathrm{d}u = e^u + C = \boxed{e^{\sin x} + C}
+            \end{gathered}
+        \end{equation*}
+        \columnbreak
+
+        \paragraph*{348)}
+        \begin{equation*}
+            \begin{gathered}
+                \int\tan(2x)\mathrm{d}x = \int\frac{\sin(2x)}{\cos(2x)}\mathrm{d}x  \\
+                \text{let} \quad u = \cos(2x) \quad -\frac{1}{2}\mathrm{d}u = \sin(2x)\mathrm{d}x  \\
+                \Rightarrow -\frac{1}{2}\int\frac{1}{u}\mathrm{d}u = -\frac{\ln|u|}{2} + C = \boxed{-\frac{\ln|\cos(2x)|}{2} + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph*{350)}
+        \begin{equation*}
+            \begin{gathered}
+                \int\frac{x\sin(x^2)}{\cos(x^2)}\mathrm{d}x \\
+                \text{let} \quad u = \cos(x^2) \quad -\frac{1}{2x}\mathrm{d}u = \sin(x^2)\mathrm{d}x    \\
+                \Rightarrow -\frac{1}{2}\int\frac{1}{u}\mathrm{d}u = -\frac{\ln|u|}{2} + C = \boxed{-\frac{\ln|\cos(x^2)|}{2} + C}
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+        \paragraph*{355)}
+        \begin{equation*}
+            \begin{gathered}
+                \int_{1}^{2}\frac{1+2x+x^2}{3x+3x^2+x^3}\mathrm{d}x = \int_{1}^{2}\frac{(x+1)^2}{x(3+3x+x^2)}\mathrm{d}x
+            \end{gathered}
+        \end{equation*}
+        \horizontal
+
+    \end{multicols*}
+\end{document}
