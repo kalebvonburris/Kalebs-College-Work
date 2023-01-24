@@ -1,0 +1,62 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 2, due Monday January 23, 4:15pm}
+
+\begin{document}
+    
+    \paragraph*{1.}
+    The difference between countably infinite and uncountable infinite sets. For each of the following sets, state whether it is countably infinite or uncountably infinite. (All are infinite.) 
+
+    \begin{enumerate}[label=(\alph*)]
+        \item $[0, 1] \cup [3, 5]: \boxed{\text{Uncountably infinite}}$
+        \item $\dots,-3, -2, -1, 0, 1, 2, 3,\dots: \boxed{\text{Countably infinite}}$
+        \item $0, 0.1, 0.2, 0.3, 0.4, \dots: \boxed{\text{Countably infinite}}$
+        \item $[0, 1] \cap [0.5, 1.5]: \boxed{\text{Uncountably infinite}}$
+        \item $1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{1}{16}, \dots: \boxed{\text{Countably infinite}}$
+        \item The rational numbers, i.e. all numbers that can be written as $\frac{n}{m}$, where $n$ and $m$ are integers and $m \neq 0: \boxed{\text{Countably infinite}}$
+    \end{enumerate}
+
+    \paragraph*{2.}
+    Without doing any computations, which of the following data sets has the smallest standard deviation (sd), and which has the largest sd? Explain; your answer should include terms such as “center” and “spread”, and how far are many or most observations from the mean of the data. Note that each data set has 10 observations. It might help to draw a dot plot for each and use it to help explain how you know your answer is correct (without ever finding the value of the sd's)
+
+    \begin{center}
+        A: \{2, 2, 2, 2, 2, 20, 20, 20, 20, 20\}
+
+        B: \{2, 11, 11, 11, 11, 11, 11, 11, 11, 20\}
+
+        C: \{2, 4, 6, 8, 10, 12, 14, 16, 18, 20\}
+    \end{center}
+
+    \begin{mdframed}
+        Standard deviation is the root of the sum of the square (those cancel out) of each value minus the ``average value''. Practically, it's how far the data set is spread out from a central mean, the larger the difference between each value in the data set, the larger the standard deviation. Because of this, data set B would have the smallest standard deviation as it's made up of almost all 11s and 2 relatively in-between outliers, so the sum part of sd would be relatively small. Data set A would have the largest standard of deviation as it's made up of two halves of numbers that are relatively far apart. The range of numbers used for the data sets is [2,20], and A is made up entirely half-and-half of the extreme values that would accumulate a sum larger than data set A or C.
+    \end{mdframed}
+
+    \paragraph*{3.}
+    Give an example of a concrete population. Give an example of a probability question and an inferential statistics question for this population.
+
+    \begin{mdframed}
+        A concrete population: The number of chew toys my dog as destroyed.
+
+        Probability: If I buy my dog a bulk box of 120 dog toys at the beginning of the year with a probability that my dog destroys a toy at 2.3\% daily, how many toys is my dog destroying a month? Will I have any toys left at the end of the year?
+
+        Inferential: If I observe that the 10th toy is destroyed after 40 days, what is the chance a toy is destroyed daily? How many would I then expect to be destroyed in total by the end of the year?
+    \end{mdframed}
+
+    \paragraph*{4.}
+    Give an example of a hypothetical population. Give an example of a probability question and an inferential statistics question for this population.
+
+    \begin{mdframed}
+        Hypothetical Population: All toys my dog will destroy in her lifetime.
+
+        Probability Question: What is the daily chance any toy exposed to my dog will be destroyed over her lifetime if I bought her 3000 toys and only 40 remain after 11 years?
+
+        Inferential Question: If the average weight of a toy is 2.5lbs, and she removes a standard deviation of 1.2lbs, what can be said about the average weight of each toy after she's done with it?
+    \end{mdframed}
+
+\end{document}
