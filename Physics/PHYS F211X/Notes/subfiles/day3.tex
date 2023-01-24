@@ -1,0 +1,37 @@
+\documentclass[../Notes.tex]{subfiles}
+
+\begin{document}
+
+    \subsection*{Velocity}
+
+        A vector from $A$ to $B$; a speed with direction. The first derivative of position: 
+        \begin{equation*}
+            \begin{gathered}
+                v = \dot{s} = \frac{\mathrm{d}s}{\mathrm{d}t} = \frac{\Delta s}{\Delta t} = \frac{s_2-s_1}{t_2-t_1}  
+            \end{gathered}
+        \end{equation*}
+
+    \subsection*{Acceleration}
+
+        The first derivative of velocity, second derivative of position: 
+        \begin{equation*}
+            \begin{gathered}
+                a = \ddot{s} = \frac{\mathrm{d}^2s}{\mathrm{d}t^2} = \frac{\Delta v}{\Delta t} = \frac{v_2-v_1}{t_2-t_1}         
+            \end{gathered}
+        \end{equation*}
+
+    \subsection*{Examples}
+
+        A ball is thrown up with $v = \SI{40}{\meter/\second}$. The velocity is recorded in 1 second increments as: 
+
+        \{40, 30, 20, 10, 0\}. What is the acceleration? 
+        \begin{equation*}
+            \begin{gathered}
+                \text{We set } v_2 = 0 \text{ as it's the last velocity and } v_1 = 40 \text{ as it's the first velocity.}  \\
+                N = 5, \Delta t = 1: \quad v_1 = 0, \quad t_2 = \sum_{i=1}^{N-1}\Delta t = 4  \\
+                \frac{v_2-v_1}{t_2-t_1} \implies \frac{0-40}{4-0} = -10 \\
+                \text{Therefore, the acceleration is:} \quad \boxed{a = \SI{-10}{\meter/\second^2}}
+            \end{gathered}
+        \end{equation*}
+
+\end{document}
