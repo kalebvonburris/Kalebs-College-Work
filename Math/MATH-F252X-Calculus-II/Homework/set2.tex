@@ -1,0 +1,85 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework Set II, Due Thursday, January 24th, 2023; \S 1.7 \# 392, 400, 424}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{392.}
+    $\int\limits_{-\frac{1}{2}}^{\frac{1}{2}} \frac{\mathrm{d}x}{\sqrt{1-x^2}}$
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \text{Using} \quad a^2 - u^2: \quad u = a\sin(\theta) \quad \text{where} \quad -\frac{\pi}{2} < \theta < \frac{\pi}{2}  \\
+                \Rightarrow x = \sin\theta \quad \mathrm{d}x = \cos\theta\mathrm{d}\theta \quad \theta = \sin^{-1}x \\
+                x_{lower} = \sin\left(-\frac{1}{2}\right) \quad x_{upper} = \sin\left(\frac{1}{2}\right)  \\
+                \int_{\sin\left(-\frac{1}{2}\right)}^{\sin\left(\frac{1}{2}\right)}\frac{\cos\theta\mathrm{d}\theta}{\sqrt{1-\sin^2\theta}} = \int_{\sin\left(-\frac{1}{2}\right)}^{\sin\left(\frac{1}{2}\right)}\frac{\cos\theta\mathrm{d}\theta}{\sqrt{\cos^2\theta}}   \\
+                = \int_{\sin\left(-\frac{1}{2}\right)}^{\sin\left(\frac{1}{2}\right)}\frac{\cos\theta\mathrm{d}\theta}{\sqrt{1-\sin^2\theta}} = \int_{\sin\left(-\frac{1}{2}\right)}^{\sin\left(\frac{1}{2}\right)}\frac{\cos\theta\mathrm{d}\theta}{\cos\theta}    \\
+                = \int_{\sin\left(-\frac{1}{2}\right)}^{\sin\left(\frac{1}{2}\right)}\mathrm{d}\theta = \theta\Big|_{\sin\left(-\frac{1}{2}\right)}^{\sin\left(\frac{1}{2}\right)} = \sin^{-1}x\Big|_{-\frac{1}{2}}^{\frac{1}{2}} = \sin^{-1}\left(\frac{1}{2}\right) - \sin^{-1}\left(-\frac{1}{2}\right)  \\
+                = \frac{\pi}{6} - (-\frac{\pi}{6}) = \boxed{\frac{\pi}{3}}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{400.}
+    $\int\frac{\mathrm{d}x}{25+16x^2}$
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \text{Using} \quad a^2 + u^2: \quad u=a\tan\theta \quad \text{where} -\frac{\pi}{2} < \theta < \frac{\pi}{2} \\
+                \Rightarrow 4x = 5\tan\theta \quad \mathrm{d}x = \frac{5}{4}\sec^2\theta\mathrm{d}\theta \quad \theta = \tan^{-1}\left(\frac{4x}{5}\right) \\
+                \int \frac{5\sec^2\theta\mathrm{d}\theta}{4(25+25\tan^2\theta)} = \int \frac{5\sec^2\theta\mathrm{d}\theta}{100(1+\tan^2\theta)}    \\
+                = \frac{1}{20}\int\frac{\sec^2\theta\mathrm{d}\theta}{\sec^2\theta} = \frac{1}{20}\int\mathrm{d}\theta = \frac{\theta}{20} + C = \boxed{\frac{\tan^{-1}\left(\frac{4x}{5}\right)}{20}}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{424.}
+    $\int\frac{e^t}{1+e^t}\mathrm{d}t$
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                2
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+\end{document}
