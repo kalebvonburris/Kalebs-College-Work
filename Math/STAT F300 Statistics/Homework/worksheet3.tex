@@ -39,9 +39,8 @@
         \begin{mdframed}
 
             \resizebox{\hsize}{!}{\begin{tikzpicture}
-                \begin{scope}
-                    \clip \firstcircle;
-                    \clip \thirdcircle;
+                \begin{scope}[even odd rule]
+                    \clip \firstcircle (-4,-4) rectangle (4,4);
                     \fill[cyan] \secondcircle;
                 \end{scope}
                 \draw \firstcircle node[text=black,above] {$A$};
@@ -158,11 +157,11 @@
     \end{mdframed}
 
     \paragraph*{(c)}
-    $A \cup C = \{\quad\}$? What about the cardinality?
+    $A \cup B = \{\quad\}$? What about the cardinality?
 
     \begin{mdframed}
         \begin{equation}
-            A \cup C =
+            A \cup B =
             \left\{
                 \begin{array}{l}
                     \{1, \quad 3\}, \\
@@ -171,31 +170,35 @@
                     \{1, \quad 1\}, \\
                     \{1, \quad 2\}, \\
                     \{2, \quad 1\}, \\
+                    \{2, \quad 2\}, \\
                     \{2, \quad 3\}, \\
-                    \{3, \quad 2\}, \\
+                    \{2, \quad 4\}, \\
                     \{2, \quad 5\}, \\
+                    \{2, \quad 6\}, \\
+                    \{3, \quad 2\}, \\
                     \{5, \quad 2\}, \\
                     \{6, \quad 5\}, \\
                     \{5, \quad 6\}
                 \end{array}
             \right\}
-            \text{Cardinality} = 13
+            \text{Cardinality} = 15
         \end{equation}
     \end{mdframed}
 
     \paragraph*{(d)}
-    $A \cap C = \{\quad\}$? What about the cardinality?
+    $B \cap C = \{\quad\}$? What about the cardinality?
     
     \begin{mdframed}
         \begin{equation}
-            A \cap C =
-            \left\{
-                \begin{array}{l}
-
-                \end{array}
-            \right\}
-            \text{Cardinality} = 13
+            B \cap C =\{1, 1\} \quad \text{Cardinality} = 1
         \end{equation}
+    \end{mdframed}
+
+    \paragraph*{(e)}
+    Explain how you know that events $A$ and $C$ are mutually exclusive, just by considering how they are defined (i.e. without parsing the lists of outcomes they contain).
+    
+    \begin{mdframed}
+        $C$ has to be made up of results that multiply to be odd. $A$ must contain at least one 2. No product of any integer $N$ and 2 will ever be odd, thus no element in set $A$ can be in set $C$.
     \end{mdframed}
 
 \end{document}
