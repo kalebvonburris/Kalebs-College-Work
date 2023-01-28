@@ -148,14 +148,24 @@
     By how much could the observation 23.5 be increased without affecting the value of the sample median? Explain.
     
     \begin{mdframed}
-        Yeah okay
+        The observation 23.5 could be increased to a value of 29.4 or by a value of $(29.4 - 23.5) = 5.9$ as the median values are 29.4 and 29.5. Making another 29.4 element will not change the median calculation. Anything higher results in a higher median calculation as the new observation overtakes the lower of the two median values.
     \end{mdframed}
+
+    \pagebreak
 
     \paragraph*{(f)}
     Create a box plot for these data.
 
     \begin{mdframed}
-        Yeah okay
+        R code:
+
+        \begin{adjustbox}{width=0.9\textwidth, keepaspectratio}
+            \begin{lstlisting}[language=R]
+> a <- c(29.5, 49.3, 30.6, 28.2, 28.0, 26.3, 33.9, 29.4, 23.5, 31.6)
+> boxplot(a, horizontal = TRUE)
+            \end{lstlisting}
+        \end{adjustbox}
+        \centering\resizebox{0.9\hsize}{!}{\includegraphics{Rplot_2}}
     \end{mdframed}
 
     \paragraph*{5.}
@@ -170,6 +180,15 @@
     What is the maximum possible amount that could be awarded under the two-standard deviation rule?
 
     \begin{mdframed}
-        Yeah okay
+        R code:
+
+        \begin{lstlisting}[language=R]
+> a <- c(37, 60, 75, 115, 135, 140, 149, 150, 238, 290, 340, 
+410, 600, 750, 750, 750, 1050, 1100, 1139, 1150, 1200, 1200, 
+1250, 1576, 1700, 1825, 2000)
+> (sd(a) * 2) + mean(a)
+[1] 1961.158
+        \end{lstlisting}
+        Using the R code output, the maximum award would be $\boxed{\text{1961.158}}$
     \end{mdframed}
 \end{document}
