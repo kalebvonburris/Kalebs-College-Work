@@ -1,0 +1,122 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 4, due Friday January 27, 4:15pm}
+
+\def\firstcircle{(0:1.75cm) circle (2.5cm)}
+\def\secondcircle{(180:1.75cm) circle (2.5cm)}
+
+\begin{document}
+
+    \paragraph*{1.}
+    If A and B are events such that $P (A) = 0.10$, $P (B) = 0.60$, and $P(A \cup B) = 0.64$, then:
+
+    \paragraph*{(a)}
+    Sketch and label a Venn diagram appropriately. (That is, your diagram should have the overlapping events, with 4 probabilities written in the correct places and these 4 numbers must sum to 1.) Please ask me if you are unsure what I'm asking for.
+
+    \begin{mdframed}
+        \resizebox{\hsize}{!}{\begin{tikzpicture}
+            \draw \firstcircle node[text=black,scale=0.5] {$P(A) = 0.1$};
+            \draw \secondcircle node [text=black, scale=0.5] {$P(B) = 0.6$};
+            \path (0,0) node[scale=0.5] {$P(A \cap B) = 0.06$}
+                  (0,-3) node[scale=0.5]{$P(A^c \cup B^c) = 0.36$};
+        \end{tikzpicture}}
+
+        \begin{align*}
+            P(A^c \cap B^c) & = 1 - (P(A \cup B)) = 1 - 0.64 = 0.36 \\
+            P(A \cap B) & = (P(A) + P(B)) - P(A \cup B) = (0.1 + 0.6) - 0.64 = 0.06
+        \end{align*}
+    \end{mdframed}
+
+    \paragraph*{(b)}
+    Find $P(A \cap B)$.
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                P(A) = 0.1, P(B) = 0.6, P(A \cup B) = 0.64    \\
+                P(A \cap B) = (P(A) + P(B)) - P(A \cup B) = (0.1 + 0.6) - 0.64 = \boxed{0.06}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(c)}
+    Find $P(B \cap A^c)$.
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                P(B \cap A^c) = P(B) - P(A \cap B)  \\
+                P(B \cap A^c) = 0.1 - 0.06 = \boxed{0.04}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \pagebreak
+
+    \paragraph*{2.}
+    Consider an experiment in which we roll two 4-sided dice, one red, one green. Let $A$ be the event that the red die is 2; let $B$ be the event that the sum is at most 4, and let $C$ be the event that the product is odd.
+
+    \paragraph*{(a)}
+    Find $P(A \cup B)$. Be sure to show your work; for example, $A \cup B = \{ \}$, all the outcomes are equally likely, therefore $P (A \cup B) = \dots$
+
+    \begin{mdframed}
+        \begin{equation*}
+            P = \left\{
+                \begin{aligned}
+                    &\{1,1\}, \{1,2\}, \{1,3\}, \{1,4\}, \\
+                    &\{2,1\}, \{2,2\}, \{2,3\}, \{2,4\}, \\
+                    &\{3,1\}, \{3,2\}, \{3,3\}, \{3,4\}, \\ 
+                    &\{4,1\}, \{4,2\}, \{4,3\}, \{4,4\}
+                \end{aligned}
+                \right\} \quad \# P = 16
+        \end{equation*}
+        \begin{equation*}
+            A = \left\{\{2,1\}, \{2,2\}, \{2,3\}, \{2,4\}\right\} \quad \#A = 4 \quad P(A) = 0.25
+        \end{equation*}
+
+        \begin{equation*}
+            B = \left\{
+                \begin{aligned}
+                    &\{1,1\}, \{1,2\}, \{1,3\}, \{2,1\},    \\
+                    &\{2,2\}, \{3,1\}
+                \end{aligned}
+            \right\} \quad \#B = 6 \quad P(B) = 0.375
+        \end{equation*}
+
+        \begin{equation*}
+            P(A \cup B) = \left\{
+                \begin{aligned}
+                    &\{1,1\}, \{1,2\}, \{1,3\}, \{2,1\},    \\
+                    &\{2,2\}, \{2,3\}, \{2,4\}, \{3,1\}
+                \end{aligned}
+            \right\} \quad \#(A \cup B) = 8 \quad \boxed{P(A \cup B) = 0.5}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(b)}
+    Find $P(B \cap A^c)$
+
+    \begin{mdframed}
+        \begin{equation*}
+            P(B \cup A^c) = \frac{\#\left\{\{1,1\}, \{1,2\}, \{1,3\}, \{3,1\}\right\}}{16} = \frac{4}{16} = \boxed{0.25}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{3.}
+
+    \paragraph*{(a)}
+    $\boxed{\text{True}}$ / False: If $A = \emptyset$ then $P (A) = 0$.
+
+    \paragraph*{(b)}
+    True / $\boxed{\text{False}}$: If $P (A) = 0$ then $A = \emptyset$; if true, state why; if false, give an example that shows the statement is false. (Hint: The answer is False.)
+
+    \begin{mdframed}
+        If $A$ contains elements of an uncountably infinite set, then any single element $n$ will have $P(n) = 0$.
+    \end{mdframed}
+
+\end{document}
