@@ -49,8 +49,62 @@
         Write a short description of the motion of a real object for which FIGURE EX.1.19 would be a realistic position-versus-time graph.
 
         \begin{mdframed}
-            What
+            An elevator brings its occupants up 100 meters before stopping to let them off. It then shoots up another 200 meters to the top story of the building.
         \end{mdframed}
-    \end{multicols*}
 
+        \paragraph*{28.}
+        Compute the following numbers, applying the significant figure rules adopted in this textbook.
+
+        \begin{mdframed}
+            a. $33.3 \times 25.4 = \boxed{846}$
+
+            b. $33.3 - 25.4 = \boxed{28.9}$
+
+            c. $\sqrt(33.3) = \boxed{5.77}$
+
+            d. $333.3 \div 25.4 = \boxed{13.1}$
+        \end{mdframed}
+
+        \paragraph*{35.}
+        A jetplane is cruising at 300 m/s when suddenly the pilot turns the engines up to full throttle. After traveling 4.0 km, the jet is moving with a speed of 400 m/s. What is the jet's acceleration as it speeds up?
+
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{a} = \frac{\Delta v}{\Delta t} = \frac{100}{\Delta t}  \\
+                    \Delta t = \frac{\Delta s}{\vec{\overline{v}}} = \frac{4000}{350} = 11.4    \\
+                    \vec{a} = \frac{100}{11.4} = \boxed{8.77 \text{m/s}^2}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \paragraph*{40.}
+        A motorist is traveling at 20 m/s. He is 60 m from a stoplight when he sees it turn yellow. His reaction time, before stepping on the brake, is 0.50 s. What steady deceleration while braking will bring him to a stop right at the light?
+
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    d_{sl} = 60 - 20(0.5) = 50 m \quad \vec{v}_0 = 20 \text{m/s}    \\
+                    \vec{a} = \frac{\Delta v}{\Delta t} = \frac{-20}{\Delta t}      \\
+                    \Delta t = \frac{d_{sl}}{\overline{\vec{s}}} = \frac{50}{10} = 5 \\
+                    \vec{a} = -\frac{20}{4} = boxed{-4\text{m/s}^2}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \paragraph*{43.}
+
+        \begin{mdframed}
+            \begin{tikzpicture}
+                \begin{axis}[    axis lines=middle,    xmin=-5,xmax=5,    ymin=-5,ymax=5,    xtick={-5,...,5},    ytick={-5,...,5},    xlabel=$x$,    ylabel=$y$,    clip=false,    ]
+                    \addplot[fill=blue!20,draw=blue!50!black] coordinates {(-4,-4) (-4,4) (4,4) (4,-4)};
+                    \addplot[fill=green!20,draw=green!50!black] coordinates {(-3,-3) (-3,3) (3,3) (3,-3)};
+                    \addplot[fill=red!20,draw=red!50!black] coordinates {(-2,-2) (-2,2) (2,2) (2,-2)};
+                    \addplot[fill=yellow!20,draw=yellow!50!black] coordinates {(-1,-1) (-1,1) (1,1) (1,-1)};
+                \end{axis}
+                \end{tikzpicture}
+        \end{mdframed}
+        
+
+    \end{multicols*}
 \end{document}
