@@ -1,0 +1,98 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 5, due Monday January 30, 4:15pm}
+
+\def\firstcircle{(0:1.75cm) circle (2.5cm)}
+\def\secondcircle{(180:1.75cm) circle (2.5cm)}
+
+\begin{document}
+
+    \paragraph*{1.}
+    If $A$ and $B$ are events with probabilities $P (A) = 0.7$ and $P (B) = 0.9$, is it possible for $A$ and $B$ to be mutually exclusive? Why or why not?
+    
+    \begin{mdframed}
+        No. $P(A) + P(B) = 1.6$, since probabilities are portions of 1.0, any sum of probabilities $> 1.0$ are either impossible or have to contain some elements of each other.
+
+        If they were mutually exclusive, then $P(A \cap B) = \emptyset = P(\emptyset) = 0.0$.
+
+        \begin{equation*}
+            \begin{gathered}
+                \text{The probability of} \quad P(A \cup B) = (P(A) + P(B)) - P(A \cap B) \quad \leq 1 \quad    \\
+                (0.7 + 0.9) - 0 = 1.6 \quad \cancel{\leq} \quad 1
+            \end{gathered}
+        \end{equation*}
+        
+        
+    \end{mdframed}
+
+    \paragraph*{2.}
+    In a standard 52 card deck of cards,
+
+    \paragraph*{(a)}
+    How many possible 5-card hands are there?
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                T1 = \text{pick 5 cards} = n_1  = C(52,5)  \\
+                n = (n_1) = \left(\frac{52!}{5!(52-5)!}\right) = \left(\frac{52!}{5!(47)!}\right) = \left(\frac{(52)(51)(50)(49)(48)}{120}\right) = \boxed{2,598,960}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(b)}
+    How many hands are there that have 3 of a kind (3 with the same numerical value) and 2 singletons?
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                T1 = \text{pick a \# for the three of a kind}     = n_1  = 13    \\
+                T2 = \text{pick the three of a kind}  = n_2  = C(4,3)     \\
+                T3 = \text{pick two \#s for singletons}  = n_3  = C(11, 2)   \\
+                T4 = \text{pick higher singleton} = n_4 = C(4,1)    \\
+                T5 = \text{pick lower singleton} = n_5 = C(4,1) \\
+                n = (n_1)(n_2)(n_3)(n_4)(n_5) = (13)(\frac{4!}{3!(1!)})(\frac{11!}{2!(9!)})(4)(4)   \\
+                = 13(4)(\frac{(11)(10)}{2})(4)(4) = \boxed{45,760}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(c)}
+    What is the probability of getting a hand with 3 of a kind and 2 singletons?
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \text{\# of possible hands}: \quad 2,598,960    \\
+                \text{\# of special hands}: \quad 45,760        \\
+                \text{Probability of special hands}: \quad \frac{45,760}{2,598,960} \approx \boxed{0.0176}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \pagebreak
+
+    \paragraph*{3.}
+    Calculate each of the following.
+
+    \paragraph*{(a)}
+    Number of “words” consisting of 4 of the letter `F' and 11 of the letter `S'. For example, FSSSF SFSFS SSSSS is one such “word”. (Ignore the spaces; they're just there to make it easier to count the number of letters.)
+
+    \begin{mdframed}
+        We need every permutation of the set $A = \{F,F,F,F\} \cup \{S,S,S,S,S,S,S,S,S,S,S\}$.
+        
+        \begin{equation*}
+            \begin{gathered}
+                T1 = \text{Fill 4 positions with `F's} = n_1 = C(15,4)    \\
+                T2 = \text{Fill the remaining with `S's} = n_2 = C(11, 11)
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+\end{document}
