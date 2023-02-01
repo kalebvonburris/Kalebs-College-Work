@@ -1,0 +1,48 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 5, Wednesday due 1 February, 4:15pm}
+\begin{document}
+
+    \section*{1.}
+    Words with 3 distinct letters.
+
+    \subsection*{(a)}
+    How many 12 letters words can be formed using 3 R's, 5 G's, and 4 B's? (Be sure to state the three tasks required to form these words.)
+
+    \begin{mdframed}
+        \begin{align*}
+            \text{Task 1: Assign the 3 R's} & = & n_1 & = {12 \choose 3} & = \frac{12!}{3!(12-3)!} & = \frac{12!}{3!(9!)} & = \frac{(12)(11)(10)}{3!} & = \frac{1,320}{6} & = 220 \\
+            \text{Task 2: Assign the 5 G's} & = & n_2 & = {9 \choose 5} & = \frac{9!}{5!(9-5)!} & = \frac{9!}{5!(4!)} & = \frac{(9)(8)(7)(6)}{4!} & = \frac{3,024}{24} & = 126 \\
+            \text{Task 3: Assign the 4 B's} & = & n_3 & = {4 \choose 4} & = 1 & 
+    \end{align*}
+
+    \begin{equation*}
+        n = (n_1)(n_2)(n_3) = (220)(126)(1) = \boxed{27,720}
+    \end{equation*}
+
+    \end{mdframed}
+
+    \subsection*{(b)}
+    How many of these words start with an R and end with a B?
+
+    \begin{mdframed}
+        \begin{align*}
+            \text{Task 1: Assign the first character as R} & = & n_1 & = {12 \choose 1} & = 12 &    \\
+            \text{Task 2: Assign the last character as B} & = & n_2 & = {11 \choose 1} & = 11 &     \\
+            \text{Task 3: Assign the remaining R's} & = & n_3 & = {10 \choose 2} & = \frac{10!}{2!(10-2)!} & = \frac{10!}{2!(8!)} & = \frac{(10)(9)}{2!} & = \frac{90}{2} & = 45    \\
+            \text{Task 4: Assign the 5 G's} & = & n_4 & = {8 \choose 5} & = \frac{8!}{5!(8-5)!} & = \frac{8!}{5!(3!)} & = \frac{(8)(7)(6)}{3!} & = \frac{336}{6} & = 56 \\
+            \text{Task 5: Assign the remaining B's} & = & n_5 & = {3 \choose 3} & = 1
+        \end{align*}
+
+        \begin{equation*}
+            n = (n_1)(n_2)(n_3)(n_4)(n_5) = (12)(11)(45)(56)(1) = 
+        \end{equation*}
+    \end{mdframed}
+
+\end{document}
