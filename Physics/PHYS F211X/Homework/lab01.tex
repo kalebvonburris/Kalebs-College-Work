@@ -1,0 +1,260 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\usepackage{graphicx}
+\graphicspath{ {./lab0images/} }
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Lab 1: Distance, Velocity, Acceleration, 1/31/2023, Partner: }
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \section*{Lab 1: Distance, Velocity, Acceleration}
+
+    \subsection*{Apparatus}
+
+    \begin{itemize}
+        \item Motion detector
+        \item Vernier LabQuest
+        \item Logger Pro software
+        \item Cart
+        \item Basketball
+        \item Foam Board
+        \item Meter stick
+        \item Colored pencils
+    \end{itemize}
+
+    \subsection*{Objective}
+
+    \begin{itemize}
+        \item Examine the relationship between distance, velocity and acceleration
+        \item Attempt to duplicate given graphs with your own body's motion, or by moving a cart back and forth, quantitatively
+        \item Consider what positive and negative values mean when applied to distance, velocity, and acceleration measurements
+        
+    \end{itemize}
+
+    \subsection*{Part I: Distance vs Time}
+
+    \subsection*{1.}
+    Predict a distance vs time plot for slow, steady constant motion away from the detector.
+
+    \begin{mdframed}
+        \centering\begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                domain=0:9,
+                range=10:0
+            ]
+            \addplot{x};
+                
+            \end{axis}
+        \end{tikzpicture}
+    \end{mdframed}
+
+    \subsection*{.}
+    Now test your prediction: Collect data for slow, steady motion away from the detector. When you click the “Collect” button (Logger Pro) it will collect and plot data for 10 seconds. Either walk back and forth with the foam board or move the cart back and forth in front of the motion detector.
+
+    \begin{mdframed}
+        Get Plot
+    \end{mdframed}
+
+    \subsection*{3.}
+    Predict a distance vs time plot for slow, steady constant motion toward the detector.
+
+    \begin{mdframed}
+        \centering\begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                domain=0:9,
+                range=10:0
+            ]
+            \addplot{9-x};
+                
+            \end{axis}
+        \end{tikzpicture}
+    \end{mdframed}
+
+    \subsection*{4.}
+    Test your prediction: Collect data for slow, steady motion toward the detector. 
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+    \pagebreak
+
+    \subsection*{5.}
+    Predict a distance vs. time plot for fast steady motion away from the detector (not speeding up, but faster than last time).
+
+    \begin{mdframed}
+        \centering\begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                domain=0:9,
+                range=10:0
+            ]
+            \addplot{3*x};
+                
+            \end{axis}
+        \end{tikzpicture}
+    \end{mdframed}
+
+    \subsection*{6.}
+    Test your prediction: Collect data for fast, steady motion away the detector. 
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+    \pagebreak
+
+    \subsection*{7,8.}
+    Predict, then collect data for fast steady motion toward the detector.
+
+    \begin{mdframed}
+        \centering Prediction:
+
+        \begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                domain=0:9,
+                range=10:0
+            ]
+            \addplot{9-3*x};
+                
+            \end{axis}
+        \end{tikzpicture}
+
+        Results:
+
+        Get Plot
+    \end{mdframed}
+
+    \subsection*{9.}
+    Summarize the results of your observations using words such as: moving towards, moving away, fast, slow, positive slope, negative slope, steep, less steep.
+
+    \begin{mdframed}
+        
+    \end{mdframed}
+
+    \section*{Part II}
+
+    \subsection*{10.}
+    Predict a velocity vs time plot for slow, steady constant motion away from the detector. 
+
+    \begin{mdframed}
+        
+    \end{mdframed}
+
+    \subsection*{11.}
+    Now test your prediction: Collect data for slow, steady motion away from the detector.
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+    \subsection*{12.}
+    Predict a velocity vs time plot for slow, steady constant motion toward from the detector. 
+
+    \begin{mdframed}
+        
+    \end{mdframed}
+
+    \subsection*{13.}
+    Now test your prediction: Collect data for slow, steady motion toward from the detector.
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+
+    \subsection*{14.}
+    Predict a velocity vs time plot for fast, steady constant motion away from the detector. 
+
+    \begin{mdframed}
+        
+    \end{mdframed}
+
+    \subsection*{15.}
+    Now test your prediction: Collect data for fast, steady motion away from the detector.
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+    \subsection*{16.}
+    Predict a velocity vs time plot for fast, steady constant motion away from the detector. 
+
+    \begin{mdframed}
+        
+    \end{mdframed}
+
+    \subsection*{17.}
+    Now test your prediction: Collect data for fast, steady motion away from the detector.
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+    \subsection*{18.}
+    Summarize the results of your observations using words such as: moving towards, moving away, fast, slow, positive value, negative value, far from the time axis, close to the time axis.
+
+    \section*{Part III}
+
+    \subsection*{19.}
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+    \subsection*{20.}
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+    
+    \subsection*{21.}
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+    \subsection*{22.}
+
+    \begin{mdframed}
+        Get plot.
+    \end{mdframed}
+
+
+\end{document}
