@@ -4,7 +4,7 @@
 \input{preamble.tex}
 
 \usepackage{graphicx}
-\graphicspath{ {./lab0images/} }
+\graphicspath{ {./lab01images/} }
 
 % Put class number, class name, and professor 
 % name.
@@ -15,7 +15,7 @@
 % Put the assignment name with \S if 
 % necessary for the section and the question 
 % numbers.
-\renewcommand\assignment{Lab 1: Distance, Velocity, Acceleration, 1/31/2023, Partner: }
+\renewcommand\assignment{Lab 1: Distance, Velocity, Acceleration, 1/31/2023, Partners: Maite Valentin-Lugo, Seth Waln}
 
 \begin{document}
 
@@ -74,22 +74,26 @@
     Predict a distance vs time plot for slow, steady constant motion away from the detector.
 
     \begin{mdframed}
-        \centering\begin{tikzpicture}[scale=1.5]
+        \centering\begin{tikzpicture}[scale=1.25]
             \begin{axis}[
-                domain=0:9,
-                range=10:0
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={position (m)},
+                axis equal
             ]
-            \addplot{x};
-                
+            \addplot[red, samples=100, domain=0:5]{x};
             \end{axis}
         \end{tikzpicture}
     \end{mdframed}
 
-    \subsection*{.}
+    \subsection*{2.}
     Now test your prediction: Collect data for slow, steady motion away from the detector. When you click the “Collect” button (Logger Pro) it will collect and plot data for 10 seconds. Either walk back and forth with the foam board or move the cart back and forth in front of the motion detector.
 
     \begin{mdframed}
-        Get Plot
+        \centering\includegraphics[width=0.5\textwidth]{image23.png}
     \end{mdframed}
 
     \subsection*{3.}
@@ -98,23 +102,29 @@
     \begin{mdframed}
         \centering\begin{tikzpicture}[scale=1.5]
             \begin{axis}[
-                domain=0:9,
-                range=10:0
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={position (m)},
+                axis equal,
+                ymin=0,ymax=2,
+                xmin=0,xmax=5
             ]
-            \addplot{9-x};
-                
+            \addplot[red, samples=100]{2-(2/5)*x};
             \end{axis}
         \end{tikzpicture}
     \end{mdframed}
+
+    \pagebreak
 
     \subsection*{4.}
     Test your prediction: Collect data for slow, steady motion toward the detector. 
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image11.png}
     \end{mdframed}
-
-    \pagebreak
 
     \subsection*{5.}
     Predict a distance vs. time plot for fast steady motion away from the detector (not speeding up, but faster than last time).
@@ -122,23 +132,29 @@
     \begin{mdframed}
         \centering\begin{tikzpicture}[scale=1.5]
             \begin{axis}[
-                domain=0:9,
-                range=10:0
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={position (m)},
+                axis equal,
+                ymin=0,ymax=5,
+                xmin=0,xmax=2
             ]
-            \addplot{3*x};
-                
+            \addplot[red, samples=100]{3*x};
             \end{axis}
         \end{tikzpicture}
     \end{mdframed}
 
+    \pagebreak
+
     \subsection*{6.}
-    Test your prediction: Collect data for fast, steady motion away the detector. 
+    Test your prediction: Collect data for fast, steady motion away from the detector. 
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image4.png}
     \end{mdframed}
-
-    \pagebreak
 
     \subsection*{7,8.}
     Predict, then collect data for fast steady motion toward the detector.
@@ -148,17 +164,24 @@
 
         \begin{tikzpicture}[scale=1.5]
             \begin{axis}[
-                domain=0:9,
-                range=10:0
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={position (m)},
+                axis equal,
+                ymin=0,ymax=2,
+                xmin=0,xmax=4
             ]
-            \addplot{9-3*x};
+            \addplot[red, samples=100]{2-(1/2)*x};
                 
             \end{axis}
         \end{tikzpicture}
 
         Results:
 
-        Get Plot
+        \centering\includegraphics[width=0.8\textwidth]{image20.png}
     \end{mdframed}
 
     \subsection*{9.}
@@ -181,7 +204,7 @@
     Now test your prediction: Collect data for slow, steady motion away from the detector.
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image5.png}
     \end{mdframed}
 
     \subsection*{12.}
@@ -195,7 +218,7 @@
     Now test your prediction: Collect data for slow, steady motion toward from the detector.
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image6.png}
     \end{mdframed}
 
 
@@ -210,7 +233,7 @@
     Now test your prediction: Collect data for fast, steady motion away from the detector.
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image12.png}
     \end{mdframed}
 
     \subsection*{16.}
@@ -224,7 +247,7 @@
     Now test your prediction: Collect data for fast, steady motion away from the detector.
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image21.png}
     \end{mdframed}
 
     \subsection*{18.}
@@ -235,26 +258,51 @@
     \subsection*{19.}
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image7.png}
     \end{mdframed}
 
     \subsection*{20.}
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image28.png}
     \end{mdframed}
     
     \subsection*{21.}
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image27.png}
     \end{mdframed}
 
     \subsection*{22.}
 
     \begin{mdframed}
-        Get plot.
+        \centering\includegraphics[width=0.8\textwidth]{image19.png}
     \end{mdframed}
 
+    \subsection*{23.}
+
+    \begin{mdframed}
+        \centering\includegraphics[width=0.8\textwidth]{image16.png}
+    \end{mdframed}
+
+    \pagebreak
+    
+    \subsection*{34.} 
+    What information can and can’t be determined from a different plot? Please draw lines to match appropriately. To be thorough, you should write a few words on each line describing how one would obtain such information from that plot. For example, the initial position can be found from a position/time plot from something described as the “y-value”, “vertical value”, “height” or “value”:
+
+    * There is a graph per plot.
+
+    \begin{mdframed}
+        \centering
+        \includegraphics[width=0.8\textwidth]{image13.png}
+
+        \horizontal
+
+        \includegraphics[width=0.8\textwidth]{image14.png}
+
+        \horizontal
+
+        \includegraphics[width=0.8\textwidth]{image24.png}
+    \end{mdframed}
 
 \end{document}

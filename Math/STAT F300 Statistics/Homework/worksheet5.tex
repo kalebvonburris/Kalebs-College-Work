@@ -32,7 +32,7 @@
     \end{mdframed}
 
     \paragraph*{2.}
-    In a standard 52 card deck of cards,
+    In a standard 52-card deck of cards,
 
     \paragraph*{(a)}
     How many possible 5-card hands are there?
@@ -85,12 +85,54 @@
     Number of “words” consisting of 4 of the letter `F' and 11 of the letter `S'. For example, FSSSF SFSFS SSSSS is one such “word”. (Ignore the spaces; they're just there to make it easier to count the number of letters.)
 
     \begin{mdframed}
-        We need every permutation of the set $A = \{F,F,F,F\} \cup \{S,S,S,S,S,S,S,S,S,S,S\}$.
+        We need every permutation of the set $A = \{F,F,F,F\} \cup \{S,S,S,S,S,S,S,S,S,S,S\}$. 
         
         \begin{equation*}
             \begin{gathered}
-                T1 = \text{Fill 4 positions with `F's} = n_1 = C(15,4)    \\
-                T2 = \text{Fill the remaining with `S's} = n_2 = C(11, 11)
+                T1 = \text{Fill 4 positions with `F's} = n_1 = C(15, 4) = {15 \choose 4}      \\
+                T2 = \text{Fill the remaining with `S's} = n_2 = C(11, 11) = {11 \choose 11} = 1   \\
+                n = (n_1)(n_2) = \left(\frac{15!}{4!(15-4)!}\right)(1) = \frac{15!}{4!(11)!} = \frac{(15)(14)(13)(12)}{4!}  \\
+                = \frac{32,760}{24} = \boxed{1,365}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(b)}
+    Number of 4-digit PINs with no repeated digits.
+
+    \begin{mdframed}
+        Every combination of 4 numbers from the set $\{0,1,2,3\dots,9\}$.
+
+        \begin{equation*}
+            \begin{gathered}
+                \text{Choose 4 \#s out of 10} = P(10,4) = \frac{10!}{(10-4)!}    \\
+                = \frac{10!}{6!} = (10)(9)(8)(7) = \boxed{5040}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(c)}
+    Number of ways to seat the 5 VIPs in the 5 seats of the front row at the opera.
+
+    \begin{mdframed}
+        Every permutation for 5 to fit into 5.
+
+        \begin{equation*}
+            \begin{gathered}
+                \text{Permute 5 into 5} = P(5) = \frac{5!}{(5-5)!} = \frac{5!}{0!} = 5! = \boxed{120}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{(d)}
+    Number of ways to seat the 5 VIPs in the 12 seats of the front row at the opera.
+
+    \begin{mdframed}
+        Every permutation for 5 to fit into 12.
+
+        \begin{equation*}
+            \begin{gathered}
+                \text{Permute 5 into 12} = P(5) = \frac{12!}{(12-5)!} = \frac{12!}{7!} = (12)(11)(10)(9)(8) = \boxed{95,040}
             \end{gathered}
         \end{equation*}
     \end{mdframed}
