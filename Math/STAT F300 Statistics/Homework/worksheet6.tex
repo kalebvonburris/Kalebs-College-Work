@@ -6,7 +6,7 @@
 % Put the assignment name with \S if 
 % necessary for the section and the question 
 % numbers.
-\renewcommand\assignment{Worksheet 5, Wednesday due 1 February, 4:15pm}
+\renewcommand\assignment{Worksheet 6, due Wednesday 1 February, 4:15pm}
 \begin{document}
 
     \section*{1.}
@@ -17,9 +17,9 @@
 
     \begin{mdframed}
         \begin{align*}
-            \text{Task 1: Assign the 3 R's} & = & n_1 & = {12 \choose 3} & = \frac{12!}{3!(12-3)!} & = \frac{12!}{3!(9!)} & = \frac{(12)(11)(10)}{3!} & = \frac{1,320}{6} & = 220 \\
-            \text{Task 2: Assign the 5 G's} & = & n_2 & = {9 \choose 5} & = \frac{9!}{5!(9-5)!} & = \frac{9!}{5!(4!)} & = \frac{(9)(8)(7)(6)}{4!} & = \frac{3,024}{24} & = 126 \\
-            \text{Task 3: Assign the 4 B's} & = & n_3 & = {4 \choose 4} & = 1 & 
+            \text{Task 1: Assign the 3 R's} & = n_1 = {12 \choose 3} = \frac{12!}{3!(12-3)!} = \frac{12!}{3!(9!)} = \frac{(12)(11)(10)}{3!} = \frac{1,320}{6} = 220 \\
+            \text{Task 2: Assign the 5 G's} & = n_2 = {9 \choose 5} = \frac{9!}{5!(9-5)!} = \frac{9!}{5!(4!)} = \frac{(9)(8)(7)(6)}{4!} = \frac{3,024}{24} = 126 \\
+            \text{Task 3: Assign the 4 B's} & = n_3 = {4 \choose 4} = 1 
     \end{align*}
 
     \begin{equation*}
@@ -32,20 +32,31 @@
     How many of these words start with an R and end with a B?
 
     \begin{mdframed}
-        \begin{align*}
-            \text{Task 1: Assign the first character as R} & = & n_1 & = {12 \choose 1} & = 12 &    \\
-            \text{Task 2: Assign the last character as B} & = & n_2 & = {11 \choose 1} & = 11 &     \\
-            \text{Task 3: Assign the remaining R's} & = & n_3 & = {10 \choose 2} & = \frac{10!}{2!(10-2)!} & = \frac{10!}{2!(8!)} & = \frac{(10)(9)}{2!} & = \frac{90}{2} & = 45    \\
-            \text{Task 4: Assign the 5 G's} & = & n_4 & = {8 \choose 5} & = \frac{8!}{5!(8-5)!} & = \frac{8!}{5!(3!)} & = \frac{(8)(7)(6)}{3!} & = \frac{336}{6} & = 56 \\
-            \text{Task 5: Assign the remaining B's} & = & n_5 & = {3 \choose 3} & = 1
-        \end{align*}
+        In this case, we remove 1 letter from the R group and B group and do as we did in a. This will generate how many 10 letter words with 2 R's, 5 G's, and 3 B's there are, which can all be inserted into the word R\dots B.
 
+        \begin{align*}
+            \text{Task 1: Assign the positions of the 2 R's} & = n_1 = {10 \choose 2} = \frac{10!}{2! (10-2)!} = \frac{10!}{2! (8)!} = \frac{(10)(9)}{2} = \frac{90}{2} = 45   \\
+            \text{Task 2: Assign the positions of the 5 G's} & = n_2 = {8 \choose 5} = \frac{8!}{5!(8-5)!} = \frac{(8)(7)(6)}{3!} = 56   \\
+            \text{Task 2: Assign the positions of the 3 G's} & = n_3 = {3 \choose 3} = 1 \\
+        \end{align*}
         \begin{equation*}
-            n = (n_1)(n_2)(n_3)(n_4)(n_5) = (12)(11)(45)(56)(1) = 
+            n = (n_1)(n_2)(n_3) = (45)(56)(1) = \boxed{2,520}
         \end{equation*}
     \end{mdframed}
 
     \pagebreak
+
+    \subsection*{(c)}
+    If all the words in part (a) are equally likely, what is the probability that a randomly chosen word begins with an R and ends with a B?
+
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                A = \text{Words that start with R and end with B} = 2,520; \quad B = \text{\# of possible words} = 27,720 \\
+                P(A) = \frac{A}{B} = \frac{2,520}{27,720} = \boxed{0.\overline{09}}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
 
     \section*{2.}
     Bicycle routes. If the streets in your area are built on a rectangular grid that is 5 blocks from west to east, and 9 blocks from south to north; and if you can only travel east or north, how many possible paths are there that go from the southwest corner to the northeast corner? (Thus each path is 14 blocks long.) Explain your reasoning.
@@ -54,9 +65,9 @@
         We can refactor the question: we have 14 moves to make of either north or east, but 9 must be a north action and 5 must be an east action. Representing this as a word, we have a 14 letter word made up of 9 $N$ letters and 5 $E$ letters. 
 
         \begin{align*}
-            \text{Task 1: Choose the positions of the N's} & = & n_1 & = {14 \choose 9} & = \frac{14!}{9!(14-9)!} & = \frac{14!}{9!(5)!}    \\ 
-            & & & = \frac{(14)(13)(12)(11)(10)}{5!} & = \frac{240240}{120} & = 2002 \\
-            \text{Task 2: Choose the positions of the E's} & = & n_2 & = {5 \choose 5} & = 1
+            \text{Task 1: Choose the positions of the N's} & = n_1 = {14 \choose 9} = \frac{14!}{9!(14-9)!} = \frac{14!}{9!(5)!}    \\ 
+            & = \frac{(14)(13)(12)(11)(10)}{5!} = \frac{240240}{120} = 2002 \\
+            \text{Task 2: Choose the positions of the E's} & = n_2 = {5 \choose 5} = 1
         \end{align*}
 
         \begin{equation*}
