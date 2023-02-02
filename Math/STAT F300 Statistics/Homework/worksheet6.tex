@@ -45,4 +45,24 @@
         \end{equation*}
     \end{mdframed}
 
+    \pagebreak
+
+    \section*{2.}
+    Bicycle routes. If the streets in your area are built on a rectangular grid that is 5 blocks from west to east, and 9 blocks from south to north; and if you can only travel east or north, how many possible paths are there that go from the southwest corner to the northeast corner? (Thus each path is 14 blocks long.) Explain your reasoning.
+
+    \begin{mdframed}
+        We can refactor the question: we have 14 moves to make of either north or east, but 9 must be a north action and 5 must be an east action. Representing this as a word, we have a 14 letter word made up of 9 $N$ letters and 5 $E$ letters. 
+
+        \begin{align*}
+            \text{Task 1: Choose the positions of the N's} & = & n_1 & = {14 \choose 9} & = \frac{14!}{9!(14-9)!} & = \frac{14!}{9!(5)!}    \\ 
+            & & & = \frac{(14)(13)(12)(11)(10)}{5!} & = \frac{240240}{120} & = 2002 \\
+            \text{Task 2: Choose the positions of the E's} & = & n_2 & = {5 \choose 5} & = 1
+        \end{align*}
+
+        \begin{equation*}
+            n = (n_1)(n_2) = (2002)(1) = \boxed{2002}
+        \end{equation*}
+        
+    \end{mdframed}
+
 \end{document}
