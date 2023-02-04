@@ -1,0 +1,65 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 6, due Friday 3 February, 4:15pm}
+
+\def\firstcircle{(0:1.75cm) circle (2.5cm)}
+\def\secondcircle{(180:1.75cm) circle (2.5cm)}
+
+\begin{document}
+
+    \subsection*{1.}
+    Let $A$ and $B$ be events which satisfy: $P (B \cap A^C) = 0.21, P (A \cup B) = 0.71$, and $P (B^C) = 0.46$.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Sketch and label an appropriate Venn diagram, along with associated probabilities. (Your diagram should have 4 non-negative numbers that sum to 1.)
+        
+        \begin{mdframed}
+            \centering
+            $P(A^C \cup B^C) = 1 - P(A \cup B) = 1 - 0.71 = 0.29$
+            \resizebox{0.75\hsize}{!}{\begin{tikzpicture}
+                \draw \firstcircle node[text=black] {$B \quad 0.21$};
+                \draw \secondcircle node [text=black] {$A \quad 0.17$};
+                \draw node at (0,0){0.33};
+                \draw node at (0,2.75){0.29};
+            \end{tikzpicture}}
+
+            \begin{equation*}
+                \begin{gathered}
+                    P(B) = 1 - P(B^C) = 1 - 0.46 = 0.54 \\
+                    P(A) = P(A \cup B) - P(B^C) = 0.71 - 0.54 = 0.17         \\
+                    P(A \cap B) = P(A \cup B) - (P(A) + P(B)) = 0.71 - 0.38 = 0.33  \\
+                \end{gathered}
+            \end{equation*}
+
+        \end{mdframed}
+
+        \item Find $P(A|B)$
+
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        P(A|B) = \frac{P(A)}{P(B)} P(A \cap B) = \frac{0.17}{0.54}(0.33) = \approx \boxed{0.103\overline{88}}
+                    \end{gathered}
+                  \end{equation*}    
+            \end{mdframed}
+              
+        \item Find $P(B|A)$
+        
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        P(B|A) = \frac{P(B)}{P(A)} P(B \cap A) = \frac{0.54}{0.17}(0.33) = \approx \boxed{0.103\overline{88}}
+                    \end{gathered}
+                \end{equation*}    
+            \end{mdframed}
+
+        \item Find $P(B|A^C)$
+    \end{enumerate}
+
+\end{document}
