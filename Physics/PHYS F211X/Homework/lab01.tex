@@ -3,6 +3,7 @@
 % depth of the file.
 \input{preamble.tex}
 
+\usepackage{enumitem}
 \usepackage{graphicx}
 \graphicspath{ {./lab01images/} }
 
@@ -172,9 +173,9 @@
                 ylabel={position (m)},
                 axis equal,
                 ymin=0,ymax=2,
-                xmin=0,xmax=4
+                xmin=0,xmax=5
             ]
-            \addplot[red, samples=100]{2-(1/2)*x};
+            \addplot[-, red, samples=100]{2-(2/5)*x};
                 
             \end{axis}
         \end{tikzpicture}
@@ -188,7 +189,7 @@
     Summarize the results of your observations using words such as: moving towards, moving away, fast, slow, positive slope, negative slope, steep, less steep.
 
     \begin{mdframed}
-        When approaching quickly, the 
+        When moving towards the sensor, the slope is negative. When moving away from the sensor, the slope is positive. When moving quickly, the slope is steep, and when moving slow, the slope is shallow.
     \end{mdframed}
 
     \section*{Part II}
@@ -197,7 +198,23 @@
     Predict a velocity vs time plot for slow, steady constant motion away from the detector. 
 
     \begin{mdframed}
-        
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={velocity (m/s)},
+                axis equal,
+                ymin=0,ymax=2,
+                xmin=0,xmax=5
+            ]
+            \addplot[-, red, samples=100]{0.5};
+                
+            \end{axis}
+        \end{tikzpicture}
     \end{mdframed}
 
     \subsection*{11.}
@@ -211,7 +228,23 @@
     Predict a velocity vs time plot for slow, steady constant motion toward from the detector. 
 
     \begin{mdframed}
-        
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={velocity (m/s)},
+                axis equal,
+                ymin=0,ymax=2,
+                xmin=0,xmax=5
+            ]
+            \addplot[red, samples=100]{-0.5};
+                
+            \end{axis}
+        \end{tikzpicture}
     \end{mdframed}
 
     \subsection*{13.}
@@ -226,7 +259,23 @@
     Predict a velocity vs time plot for fast, steady constant motion away from the detector. 
 
     \begin{mdframed}
-        
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={velocity (m/s)},
+                axis equal,
+                ymin=0,ymax=2,
+                xmin=0,xmax=5
+            ]
+            \addplot[red, samples=100]{1};
+                
+            \end{axis}
+        \end{tikzpicture}
     \end{mdframed}
 
     \subsection*{15.}
@@ -240,7 +289,23 @@
     Predict a velocity vs time plot for fast, steady constant motion away from the detector. 
 
     \begin{mdframed}
-        
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            \begin{axis}[
+                axis lines=middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+                xlabel={time (s)},
+                ylabel={velocity (m/s)},
+                axis equal,
+                ymin=0,ymax=2,
+                xmin=0,xmax=5
+            ]
+            \addplot[red, samples=100]{-1};
+                
+            \end{axis}
+        \end{tikzpicture}
     \end{mdframed}
 
     \subsection*{17.}
@@ -252,6 +317,10 @@
 
     \subsection*{18.}
     Summarize the results of your observations using words such as: moving towards, moving away, fast, slow, positive value, negative value, far from the time axis, close to the time axis.
+
+    \begin{mdframed}
+        When moving towards the sensor, the value is a near constant negative value. When moving away from the sensor, value is positive. When moving quickly, the magniture of the value is large, and when moving slow, the magnitude is small.
+    \end{mdframed}
 
     \section*{Part III}
 
@@ -273,6 +342,8 @@
         \centering\includegraphics[width=0.8\textwidth]{image27.png}
     \end{mdframed}
 
+    \pagebreak
+
     \subsection*{22.}
 
     \begin{mdframed}
@@ -282,13 +353,86 @@
     \subsection*{23.}
 
     \begin{mdframed}
-        \centering\includegraphics[width=0.8\textwidth]{image16.png}
+        \centering\includegraphics[width=0.8\textwidth]{image8.png}
     \end{mdframed}
 
     \pagebreak
+
+    \subsection*{24.}
+    Take a close look at your velocity/time plot. Are the values for velocity positive or negative? Increasing or decreasing?
+
+    \begin{mdframed}
+        The velocity is positive and has a relatively small positive slope. When the ball hit the ground, the velocity shoots down and the slope turns into a sharper negative value.
+    \end{mdframed}
+
+    \subsection*{25.}
+    Now do the same for acceleration. What value for the acceleration of the basketball is your plot displaying? Is this close to what you would expect?
+
+    \begin{mdframed}
+        The graph says the basketball experiences $~9.5-10.5 \text{m/sec}^2$ acceleration. Since the gravity on Earth provides $~9.8 \text{m/sec}^2$ acceleration, this is close to what you would expect. The acceleration then sharply curves into the negatives and dips down to $-35 \text{m/sec}^2$ acceleration, which makes sense since the ball has just struck the ground and is speeding back up toward the sensor.
+    \end{mdframed}
+
+    \subsection*{26.}
+    How can you tell from a d vs. t graph if you are speeding up, slowing down or going at a constant speed?
+
+    \begin{mdframed}
+        With a distance vs time graph, you can tell how your velocity is changing by looking at the curve of the line. If the line has no curve, the object is not speeding up or slowing down. If it's curved up, the object is speeding up. If it's curved down, the object is slowing down/speeding up backwards once the slope passes 0 into the negatives.
+    \end{mdframed}
+
+    \subsection*{27.}
+    What does a value of 0m/s mean in terms of your motion and the detector? 
+
+    \begin{mdframed}
+        0m/s means that both the motion and the detector are relatively still, unmoving compared to one another.
+    \end{mdframed}
+
+    \subsection*{28.}
+    What does a positive velocity mean in terms of your motion and the detector? 
+
+    \begin{mdframed}
+        A positive velocity means the object and the detector are moving apart from one another.
+    \end{mdframed}
+
+    \subsection*{29.}
+    What does a negative velocity mean in terms of your motion and the detector? 
+
+    \begin{mdframed}
+        A positive velocity means the object and the detector are moving toward each other.
+    \end{mdframed}
+
+    \subsection*{30.}
+    How can you tell from a v vs. t graph if you are speeding up or slowing down?
+
+    \begin{mdframed}
+        If the slope of a velocity vs time graph is positive, the object is speeding up. If it's negative, the object is speeding down.
+    \end{mdframed}
+
+    \subsection*{31.}
+    How can you tell the difference on a plot of v vs t between fast motion and slow motion?
+
+    \begin{mdframed}
+        Fast motion means the object's velocity is very high, thus the velocity vs time graph should be at high values. Slow motion means the inverse; the graph should be at low values.
+    \end{mdframed}
+
+    \subsection*{32.}
+    What does a value of $0\text{m/s}2$ mean in terms of your motion and the detector?
+
+    \begin{mdframed}
+        $0\text{m/s}^2$ indicates that the object and detector are moving at a constant speed to one another; neither is speeding up or slowing down.
+    \end{mdframed}
+
+    \subsection*{33.}
+    For each of the four plots A, B, C and D (below), describe the motion:
+
+    \begin{enumerate}[label=\alph*.]
+        \item $\boxed{\text{Slowing down}}$
+        \item $\boxed{\text{Toward the detector}}$
+        \item $\boxed{\text{Negative velocity}}$
+        \item $\boxed{\text{Negative velocity}}$
+    \end{enumerate}
     
     \subsection*{34.} 
-    What information can and can’t be determined from a different plot? Please draw lines to match appropriately. To be thorough, you should write a few words on each line describing how one would obtain such information from that plot. For example, the initial position can be found from a position/time plot from something described as the “y-value”, “vertical value”, “height” or “value”:
+    What information can and can't be determined from a different plot? Please draw lines to match appropriately. To be thorough, you should write a few words on each line describing how one would obtain such information from that plot. For example, the initial position can be found from a position/time plot from something described as the “y-value”, “vertical value”, “height” or “value”:
 
     * There is a graph per plot.
 
