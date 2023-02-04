@@ -29,13 +29,12 @@
                 \draw node at (0,2.75){0.29};
             \end{tikzpicture}}
 
-            \begin{equation*}
-                \begin{gathered}
-                    P(B) = 1 - P(B^C) = 1 - 0.46 = 0.54 \\
-                    P(A) = P(A \cup B) - P(B^C) = 0.71 - 0.54 = 0.17         \\
-                    P(A \cap B) = P(A \cup B) - (P(A) + P(B)) = 0.71 - 0.38 = 0.33  \\
-                \end{gathered}
-            \end{equation*}
+                \begin{align*}
+                    P(B) & = 1 - P(B^C) = 1 - 0.46 = 0.54 \\
+                    P(A) & = P(A \cup B) - P(B^C) = 0.71 - 0.54 = 0.17  \\
+                    P(A \cap B) & = P(A \cup B) - (P(A) + P(B)) = 0.71 - 0.38 = 0.33  \\
+                    P(B \cap A^C) & = P(B) - P(A \cap B) = 0.54- 0.33 = 0.21 \\
+                \end{align*}
 
         \end{mdframed}
 
@@ -44,7 +43,7 @@
             \begin{mdframed}
                 \begin{equation*}
                     \begin{gathered}
-                        P(A|B) = \frac{P(A)}{P(B)} P(A \cap B) = \frac{0.17}{0.54}(0.33) = \approx \boxed{0.103\overline{88}}
+                        P(A|B) = P(A \cap B) =  \boxed{0.33}
                     \end{gathered}
                   \end{equation*}    
             \end{mdframed}
@@ -54,12 +53,49 @@
             \begin{mdframed}
                 \begin{equation*}
                     \begin{gathered}
-                        P(B|A) = \frac{P(B)}{P(A)} P(B \cap A) = \frac{0.54}{0.17}(0.33) = \approx \boxed{0.103\overline{88}}
+                        P(A|B) = P(B \cap A) =  \boxed{0.33}
                     \end{gathered}
                 \end{equation*}    
             \end{mdframed}
 
         \item Find $P(B|A^C)$
+            
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        P(B|A^C) = P(B \cap A^C) = \boxed{0.21}
+                    \end{gathered}
+                \end{equation*}    
+            \end{mdframed}
     \end{enumerate}
+
+    \pagebreak
+
+    \subparagraph*{2.}
+    Consider an experiment in which we roll two fair 6-sided dice, one Red, one White.
+    
+    Let
+
+    \begin{align*}
+        A & = \{\text{Red is at most 2}\}                   \\
+        B & = \{\text{The sum is exactly 7}\}               \\
+        C & = \{\text{The difference is either +1 or -1}\}
+    \end{align*}
+
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Find $P(A|C)$.
+        
+        \begin{mdframed}
+            \begin{align*}
+                P(\text{Red $\leq$ 2}|\text{Red - White} = +/-1) & = 
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $P(C|A)$.
+        \item Find $P(B|A)$.
+        \item Find $P(C|B)$.
+    \end{enumerate}
+
 
 \end{document}
