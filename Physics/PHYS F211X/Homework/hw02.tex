@@ -1,0 +1,196 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{HW 2, Due Friday, 2/3/2023 23:59; \S2 Q: \# 6, 12 P: \#12, 44, 48, 53, 56, 67, 72, 80}
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{multicols*}{2}
+        \subsection*{Questions}
+
+        \paragraph*{6.}
+        Figure Q2.6 shows the velocity-versus-time graphs for two objects A and B. Students Zach and Victoria are asked to tell stories that correspond to the motion of the objects. Zach says, “The graph could represent two cars traveling in opposite directions that pass each other.” Victoria says, “No, I think they could be two rocks thrown vertically from a bridge; rock A is thrown upward and rock B is thrown downward.” which student, if either, is correct? Explain.
+
+        \begin{mdframed}
+            Both are wrong. For Zach to be right, both cars must maintain velocities on the opposite side of the x-axis, but they both swap between positive and negative values. For Victoria to be right, object B must move forwards, slow down, and then start coming back, and object A must move backward and then start moving forwards, which is not typical rock activity.
+        \end{mdframed}
+
+        \paragraph*{12.}
+        Figure Q2.12 shows the position-versus-time graphs for two objects, A and B, that are moving along the same axis.
+
+        \begin{enumerate}[label={\Alph*.}]
+            \item At the instant t = 1 s, is the speed of A greater than, less than, or equal to the speed of B? Explain.
+            
+                \begin{mdframed}
+                    The speed of A is greater than the speed of B because the slope of line A is greater than the slope of line B.
+                \end{mdframed}
+
+            \item Do objects A and B ever have the same speed? If so, at what time or times? Explain.
+            
+            \begin{mdframed}
+                Yes, because both are continuous functions and object B starts slower than object A and ends faster than object A, according to the intermediate value theorem, it must have had the same speed in between the high/low values.
+            \end{mdframed}
+        \end{enumerate} 
+        
+        \subsection*{Problems}
+
+        \paragraph*{12.}
+        Richard is driving home to visit his parents. 125 mi of the trip are on the interstate highway where the speed limit is 65 mph. Normally Richard drives at the speed limit, but today he is running late and decides to take his chances by driving at 70 mph. How many minutes does he save?
+
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \frac{125}{65} = 1.9 \text{ hours}, \quad \frac{125}{70} = 1.8 \text{ hours}  \\
+                    1.9 - 1.8 = 0.1 \rightarrow 0.1(60) \approx \boxed{10 \text{ minutes}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \paragraph*{44.}
+        Scientists have investigated how quickly hoverflies start beating their wings when dropped both in complete darkness and in a lighted environment. Starting from rest, the insects were dropped from the top of a 40-cm-tall box. In the light, those flies that began flying 200 ms after being dropped avoided hitting the bottom of the box 80\% of the time, while those in the dark avoided hitting only 22\% of the time.
+
+        \begin{enumerate}[label=\alph*.]
+            \item How far would a fly have fallen in the 200 ms before it began to beat its wings?
+            
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                    \vec{a} = 9.8, \quad \Delta t = 0.200, \quad v_0 = 0   \\
+                    \Delta y = v_0(t) + \frac{1}{2}\vec{a}t^2 = \frac{1}{2}(9.8)(0.200)^2  \\
+                    = \frac{1}{2}(9.8)(0.04) = \boxed{0.2\mathrm{ m}}
+                    \end{gathered}
+                \end{equation*}
+            \end{mdframed}
+
+            \item How long would it take for a fly to hit the bottom if it never
+            began to fly?
+
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        \vec{a} = 9.8, \quad \Delta x = 0.40, \quad v_0 = 0   \\
+                        v_f^2 = v_0^2 + 2\vec{a}\Delta x = \sqrt{2(9.8)(0.40)}\\
+                        = \sqrt{7.84} = 2.8\mathrm{ m/s} \\
+                        t = \frac{v_f - v_0}{\vec{a}} = \frac{2.8}{9.8} = \boxed{0.29\mathrm{ sec}}
+                    \end{gathered}
+                \end{equation*}
+            \end{mdframed}
+        \end{enumerate}
+
+        \paragraph*{48.}
+        Steelhead trout migrate upriver to spawn. Occasionally they need to leap up small waterfalls to continue their journey. Fortunately, steelhead are remarkable jumpers, capable of leaving the water at a speed of 8.0 m/s.
+
+        \begin{enumerate}[label=\alph*.]
+            \item What is the maximum height that a steelhead can jump?
+            
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        v_0 = 8.0, \quad v_f = 0, \quad \vec{a} = -9.8 \\
+                        v_f^2 = v_0^2 + 2\vec{a}\Delta x    \\
+                        0 = 64.0 + 2(-9.8)\Delta x \\
+                        -64 = -19.6\Delta x \\
+                        \Delta x \approx \boxed{3.2 \text{ meters}} 
+                    \end{gathered}
+                \end{equation*}
+            \end{mdframed}
+
+            \item Leaving the water vertically at 8.0 m/s, a steelhead lands on
+            the top of a waterfall 1.8 m high. How long is it in the air?
+
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        v_0 = 8.0, y_0 = 0, y_f = 1.8, \vec{a} = -9.8 \\
+                        y_{f} = y_{0} + v_{0}(\Delta t) + \frac{1}{2}a(\Delta t^{2})    \\
+                        1.8 = 9 + 8.0(\Delta t) + \frac{1}{2}(-9.8)(\Delta t^2) \\
+                        -4.9\Delta t^2 + 8.0\Delta t + 7.2    \\
+                        \Delta t = \boxed{2.3 \text{ seconds}}
+                    \end{gathered}
+                \end{equation*}
+            \end{mdframed}
+        \end{enumerate}
+
+        \paragraph*{53.}
+        In an action movie, the villain is rescued from the ocean by grabbing onto the ladder hanging from a helicopter. He is so intent on gripping the ladder that he lets go of his briefcase of counterfeit money when he is 130 m above the water. If the briefcase hits the water 6.0 s later, what was the speed at which the helicopter was ascending?
+
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    v_0 = 0, \quad \Delta t = 6, \quad \vec{a} = 9.8    \\
+                    v_f = v_0 = \vec{a}\Delta t = 9.8(6) = \boxed{58.8 \text{ m/s}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \paragraph*{56.}
+        Actual velocity data for a lion pursuing prey are shown in Figure P2.56. Estimate:
+
+        \begin{enumerate}[label=\alph*.]
+            \item The initial acceleration of the lion. 
+            
+            $\boxed{a_0 \approx 20 \text{ m/s}^2}$
+
+            \item The acceleration of the lion at 2 s and at 4 s.
+            
+            $\boxed{a_2 \approx 0.5 \text{ m/s}^2 \quad a_4 \approx 0 \text{ m/s}^2}$
+
+            \item The distance traveled by the lion between 0 s and 8 s.
+            
+            $\boxed{\Delta x \approx 80 \text { meters}}$
+        \end{enumerate}
+
+        \paragraph*{67}
+        When jumping, a flea reaches a takeoff speed of 1.0 m/s over a distance of 0.50 mm.
+
+        \begin{enumerate}[label=\alph*.]
+            \item What is the flea's acceleration during the jump phase?
+            
+            \begin{mdframed}
+                \begin{equation*}
+                    \vec{a} = \frac{\Delta v}{\Delta t}
+                \end{equation*}
+            \end{mdframed}
+        \end{enumerate}
+
+    \end{multicols*}
+
+\end{document}
