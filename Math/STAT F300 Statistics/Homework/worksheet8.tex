@@ -1,0 +1,121 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 7, due Monday 6 February, 4:15pm}
+
+\def\firstcircle{(0:1.75cm) circle (2.5cm)}
+\def\secondcircle{(180:1.75cm) circle (2.5cm)}
+
+\begin{document}
+
+    \paragraph*{1.}
+    Consider an experiment in which two fair 6-sided dice are tossed, one red, the other white.
+
+    \begin{align*}
+        A & = \text{ the the sum is at least 6} \\
+        B & = \text{ the product is even} \\
+        C & = \text{ red + 2 $\times$ white = 8} \\
+        D & = \text{ red is odd} \\
+    \end{align*}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Are events A and B independent? Be sure to show your work.
+        
+        \begin{mdframed}
+            Is $P(A \cup B) = P(A)P(B)$?
+
+            \begin{align*}
+                \#P & = 6^2 = 36 \\
+                A & = \{15,51,24,42,33\}    \\
+                B & = \{12,21,22,14,41,16,61,23,32,44,46,64,66\}    \\
+                A \cup B & = \{24,42\}                              \\
+                P(A) & = \frac{\#A}{\#P} = \frac{5}{36} = 0.13\overline{8}    \\
+                P(B) & = \frac{\#B}{\#P} = \frac{13}{36} = 0.36\overline{1}   \\
+                P(A \cap B) & = \frac{\#(A \cap B)}{\#P} = \frac{2}{36} = 0.0\overline{5}   \\
+                0.0\overline{5} & \stackrel{?}{=} \frac{0.13\overline{8}}{0.36\overline{1}} \\
+                0.0\overline{5} & \cancel{\approx} 0.385  \\
+                \cancel{=}, & \boxed{\therefore \text{ $A$ and $B$ are dependant.}}
+            \end{align*}
+        \end{mdframed}
+
+        \item  Find a pair of mutually exclusive events. Why are they mutually exclusive?
+        
+        \begin{mdframed}
+            $C$ and $D$ are mutually exclusive because the conditions of $C$ require that the red die rolled must be either 2, 4, or 6.
+        
+            The first die being red:
+            \begin{align*}
+                C & = \{22, 61\}  \\
+                D & = \{1*,3*,5*\} \leftarrow \text{ Using star (*) to represent any digit from 1-6}    \\
+                C \cap D & = \emptyset \quad \boxed{\therefore \text{ C and D are mutually exclusive.}}
+            \end{align*}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item Are events $B^C$ and $C$ independent? Explain (i.e. show calculations and explain)
+        
+        \begin{mdframed}
+            \begin{align*}
+                B^C & = \{11,13,31,15,51,33,35,53,55\}  \\
+                P(B^C) & = \frac{\#B^C}{\#P} = \frac{9}{36} = 0.25  \\
+                B^C \cap C & = \emptyset   \\
+                P(B^C \cap C) & \stackrel{?}{=} P(B^C)P(C)    \\
+                \emptyset & \cancel{=} (0.25)(0.08\overline{3}), \boxed{\therefore \text{ $B^C$ and $C$ dependant.}}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $P(D|C)$ and $P(D)$. Are $C$ and $D$ independent? Use just the values of
+        $P(D|C)$ and $P(D)$ to answer this question. Explain briefly.
+
+        \begin{mdframed}
+            \begin{align*}                            \\
+                D & = \{11,12\dots,16,31,32,\dots,36,51,52,\dots,56\}, \#D = 18     \\
+                P(D) & = \frac{\#D}{\#P} = \frac{18}{36} = \boxed{0.5}              \\
+                P(D|C) = D \cup C & = \boxed{\emptyset \therefore \text{ because of the solution to 1. (b), they are also independent.}}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+    \paragraph*{2.}
+    The dogs of the world can be divided into 4 types, according to whether they prefer chasing frisbees or digging in the dirt, and according to whether they do / don't enjoy long car rides. The table below summaries the probabilities that a randomly chosen dog has each combination of characteristics.
+
+    Let $F = { prefers chasing frisbees }$ and $R = { likes road trips }$
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Are $F$ and $R$ independent? Be sure to show your calculations.
+        
+        \begin{mdframed}
+            \begin{align*}
+                P(F) & = 0.37   \\
+                P(R) & = 0.58   \\
+                P(F \cap R) = 0.20  \\
+                P(F \cap R) & \stackrel{?}{=} P(F)P(R)  \\
+                0.2 & \stackrel{?}{=} (0.37)(0.58) \\
+                0.2 & \cancel{=} 0.2146, \boxed{\therefore \text{ $F$ and $R$ are dependant.}}
+            \end{align*}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item Are $F^C$ and $R^C$ independent? Be sure to sure your calculations.
+        
+        \begin{mdframed}
+            \begin{align*}
+                P(F^C) & = 1 - P(F) = 1 - 0.37 = 0.63           \\
+                P(R^C) & = 1 - P(R) = 1 - 0.58 = 0.42           \\
+                P(F^C \cap R^C) = 0.25                          \\
+                P(F^C \cap R^C) & \stackrel{?}{=} P(F^C)P(R^C)  \\
+                0.25 & \stackrel{?}{=} (0.63)(0.42)             \\
+                0.25 & \cancel{=} 0.2646, \boxed{\therefore \text{$F^C$ and $R^C$ are dependant.}}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+
+\end{document}
