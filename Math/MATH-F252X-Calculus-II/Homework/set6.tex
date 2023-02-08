@@ -1,0 +1,72 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework Set V, Due Monday 6, 2023: \S 2.4 \# 172, 174, 178}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \begin{tikzpicture}
+        \begin{axis}[
+            clip=false,
+            jump mark left,
+            ymin=0,ymax=3.5,
+            xmin=14,xmax=35,
+            xlabel={$x$},
+            ylabel={Cumulative Distribution},
+            every axis plot/.style={very thick},
+            discontinuous,
+            table/create on use/cumulative distribution/.style={
+                create col/expr={\pgfmathaccuma + \thisrow{f(x)}}   
+            }
+            ]
+            \addplot [red] table [y=cumulative distribution]{
+                P(x) f(x)
+                14 0
+                15 1/5
+                18 2/5
+                25 3/5
+                31 4/5
+                33 1
+                35 0
+            };
+        \end{axis}
+    \end{tikzpicture}
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    
+\end{document}
+
