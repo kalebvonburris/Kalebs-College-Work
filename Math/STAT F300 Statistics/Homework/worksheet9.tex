@@ -1,0 +1,123 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 9, Due Wednesday, February 8, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    Consider an experiment in which we toss a pair of fair 4-sided dice, one red, one white. Let $X = |(\text{\# spots on Red}) - (\text{\# spots on White}) |$; that is, $X$ is the absolute value of the difference between the number of spots on the Red and White dice.
+    
+    \paragraph*{1.} Find the probability mass function (pmf) of $X$.
+    Your final answer should be a table that has one column for the 5 possible values of $X$
+    (i.e. 5 rows) and another column for the probability of obtaining each of these values.
+
+    \begin{mdframed}
+            \begin{equation*}
+                X = \left\{
+                    \begin{array}{r l}
+                        X = 0 & = \{11, 22, 33, 44, 55, 66\}; \# = 6  \\
+                        X = 1 & = \{12, 21, 32, 23, 34, 43, 54, 45, 65, 56\}; \# = 10  \\
+                        X = 2 & = \{13, 31, 24, 42, 35, 53, 46, 64\}; \# = 8  \\
+                        X = 3 & = \{14, 41, 25, 52, 36, 63\}; \# = 6  \\
+                        X = 4 & = \{15, 51, 62, 26\}; \# = 4  \\
+                        X = 5 & = \{16, 61\}; \# = 2  \\
+                    \end{array}
+                \right.
+            \end{equation*}
+
+            $\#X = X_0 + X_1 \dots X_5 = 36$
+
+            \centering
+            \begin{tabular}{c | c }
+                $X$ & $p(x) = P(X = x)$    \\
+                \hline
+                0 & $\frac{6}{36}$  \\
+                \hline
+                1 & $\frac{10}{36}$ \\
+                \hline
+                2 & $\frac{8}{36}$  \\
+                \hline
+                3 & $\frac{6}{36} $ \\
+                \hline
+                4 & $\frac{4}{36}$  \\
+                \hline
+                5 & $\frac{2}{36}$  \\
+            \end{tabular}
+    \end{mdframed}
+
+    \paragraph*{2.}
+    Find the cumulative distribution function (cdf) of $X$ and sketch its graph.
+
+    \begin{mdframed}
+        \begin{multicols*}{2}
+            \begin{equation*}
+                F(x) = \left\{
+                    \def\arraystretch{1.5}
+                    \begin{array}{r l}
+                        X = 0 & \text{ if}(\frac{6}{36} < x)    \\
+                        X = 1 & \text{ if}(\frac{6}{36} \leq x < \frac{16}{36})  \\
+                        X = 2 & \text{ if}(\frac{16}{36} \leq x < \frac{24}{36})  \\
+                        X = 3 & \text{ if}(\frac{24}{36} \leq x < \frac{30}{36})  \\
+                        X = 4 & \text{ if}(\frac{30}{36} \leq x < \frac{34}{36})  \\
+                        X = 5 & \text{ if}(\frac{34}{36} \leq x \leq 1)  \\
+                    \end{array}
+                \right.
+            \end{equation*}
+
+            \columnbreak
+
+            \begin{tikzpicture}[scale=0.9]
+                \begin{axis}[
+                    xmin=0, xmax=5.5,
+                    ymin=0, ymax=1.1,
+                    xlabel={$X$},
+                    ylabel={$F(x)$}
+                ]
+
+                \draw (0,6/36) -- (1,6/36); \node[inner sep=0,circle,draw,fill=white,minimum size=5pt] at (1,6/36){};
+                \draw (1,16/36) -- (2,16/36); \node[inner sep=0,circle,draw,fill=black, minimum size=5] at (1,16/36){};\node[inner sep=0,circle,draw,fill=white,minimum size=5pt] at (2,16/36){};
+                \draw (2,24/36) -- (3,24/36); \node[inner sep=0,circle,draw,fill=black, minimum size=5pt] at (2,24/36){};\node[inner sep=0,circle,draw,fill=white,minimum size=5pt] at (3,24/36){};
+                \draw (3,30/36) -- (4,30/36); \node[inner sep=0,circle,draw,fill=black, minimum size=5pt] at (3,30/36){};\node[inner sep=0,circle,draw,fill=white,minimum size=5pt] at (4,30/36){};           
+                \draw (4,1) -- (5,1); \node[inner sep=0,circle,draw,fill=black, minimum size=5pt] at (4,1){};\node[inner sep=0,circle,draw,fill=black,minimum size=5pt] at (5,1){}; 
+                    
+                \end{axis}
+            \end{tikzpicture}
+        \end{multicols*}
+    \end{mdframed}
+\end{document}
+
