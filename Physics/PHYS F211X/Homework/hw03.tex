@@ -53,8 +53,7 @@
         \begin{mdframed}
             \begin{center}
                 \begin{tikzpicture}
-                    \draw[->] (0,0) coordinate(A) -- (-2,0) coordinate(B) -- ++(140:2) coordinate(C)
-                    pic [draw,->,red,thick,angle radius=1cm] {angle = C--B--A};
+                    \draw[->] (0,0) coordinate(A) -- (-2,0) coordinate(B) -- ++(140:2) coordinate(C);
                     \draw node at (-1,0)[anchor=south]{4 km};
                     \draw node at (-3,1)[anchor=west]{4 km};
                     \draw[|-|] (-3.5,-0.25) -- (0,-0.25);
@@ -64,15 +63,146 @@
             
             \begin{equation*}
                 \begin{gathered}
-                    \Delta x = 4 + 4 \cos(40)
+                    \Delta x = 4 + 4 \cos(40^{\circ}) = 4 + 2 = \boxed{6 km}
                 \end{gathered}
             \end{equation*}
+        \end{mdframed}
+
+        \paragraph*{24.}
+        \begin{mdframed}
+            a.
+            
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[o-stealth] node[anchor=east]{$\vec{v}$} (0,0) -- (0.5,0) -- (1,0) -- (1.25,0) -- ++(20:0.25) -- ++(30:0.25) -- ++(40:0.25) -- ++(50:0.25) -- ++(60:0.25) -- ++(70:0.25) -- ++(90:0.25) -- ++(90:0.5);
+                \end{tikzpicture}
+            \end{center}                
+            
+            b.
+            
+            A car is approaching a left turn-bend in a road at 30 km/hr and breaks for the first half of the turn at an acceleration of -2 m/sec which takes 4 seconds. They then accelerate for the last half of the turn at +4 m/sec. How fast are they going when they complete the turn?
+        \end{mdframed}
+        
+        \paragraph*{28.}
+        A ball with a horizontal speed of 1.25 m/s rolls off a bench 1.00 m above the floor.
+
+        \begin{enumerate}[label=\alph*.]
+            \item How long will it take the ball to hit the floor?
+            
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        \Delta x = v_0 + \frac{1}{2}\vec{a}t^2  \\
+                        -1 = 0 + \frac{1}{2}(-9.8)t^2   \\
+                        -1 = -4.9t^2    \\
+                        \boxed{\sqrt{0.2} \text{ sec} = t}
+                    \end{gathered}
+                \end{equation*}
+            \end{mdframed}
+
+            \item How far from a point on the floor directly below the edge of
+            the bench will the ball land?\
+
+            \begin{mdframed}
+                \begin{equation*}
+                    \begin{gathered}
+                        \Delta x = \vec{v}\Delta t  \\
+                        \Delta x = 1.25(\sqrt{0.2}) = \boxed{0.56 \text{ meters}}
+                    \end{gathered}
+                \end{equation*}
+            \end{mdframed}
+        \end{enumerate}
+
+        \paragraph*{35.}
+        Emily throws a soccer ball out of her dorm window to Allison, who is waiting below to catch it. If Emily throws the ball at an angle of 30° below horizontal with a speed of 12 m/s, how far from the base of the dorm should Allison stand to catch the ball? Assume the vertical distance between where Emily releases the ball and Allison catches it is 6.0 m.
+
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    v_h = 12\cos(30^{\circ}) = 10.4 \text{ m/s} \\
+                    v_v = 12\sin(-30^{\circ}) = -6 \text{ m/s}  \\
+                    v_{fv}^2 = -6^2 + 2(-9.8)(6)                \\
+                    v_{fv}^2 = 153.6 \rightarrow v_{fv} = \sqrt{153.6} = -12.4 \text{ m/s}   \\
+                    -12.4 = -6 + (-9.8)t    \\
+                    -6.4 = -9.8t = 0.65 \text{ seconds} \\
+                    \Delta x = 10.4(0.65) = \boxed{6.76 \text{ meters}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \paragraph*{41}
+        A particle rotates in a circle with centripetal acceleration $a = 8.0$ m/s$^2$. What is $a$ if
+
+        \begin{enumerate}[label=\alph*.]
+            \item The radius is doubled without changing the particle's speed?
+            
+            \begin{mdframed}
+                If the radius is doubled without changing the particle's speed, the centripetal acceleration will be halved to 4.0 m/s$^2$.
+            \end{mdframed}
+
+            \item The speed is doubled without changing the circle's radius?
+            
+            \begin{mdframed}
+                If the speed is doubled without changing the circle's radius, the centripetal acceleration will be increased by the factor of the speed squared; to 32 m/s$^2$.
+            \end{mdframed}
+        \end{enumerate}
+
+        \paragraph*{42.}
+        Entrance and exit ramps for freeways are often circular stretches of road. As you go around one at a constant speed, you will experience a constant acceleration. Suppose you drive through an entrance ramp at a modest speed and your acceleration is 3.0 m/s$^2$. What will be the acceleration if you double your speed?
+
+        \begin{mdframed}
+            If you double your speed, your acceleration will increase to 12.0 m/s$^2$.
         \end{mdframed}
 
         \section*{Chapter 4}
         \subsection*{Questions}
 
+        \paragraph*{10.}
+        Jonathan accelerates away from a stop sign. His eight-year-old daughter sits in the passenger seat. On whom does the back of the seat exert a greater force?
+
+        \begin{mdframed}
+            The back of the seat (this is very oddly worded) exerts more force on Jonathan, given that he has a larger mass than his daughter.
+        \end{mdframed}
+
+        \paragraph*{11.}
+        Suppose you are an astronaut on a spacewalk, far from any source of gravity. You find yourself floating alongside your spacecraft but 10 m away, with no propulsion system to get back to it. In your tool belt, you have a hammer, a wrench, and a roll of duct tape. How can you get back to your spacecraft?
+
+        \begin{mdframed}
+            Throw objects away from you in the opposite direction of the space craft so that you accelerate towards the craft.
+        \end{mdframed}
+
         \subsection*{Problems}
 
+        \paragraph*{7.}
+        A girl is swinging on a rope. Identify the forces acting on the girl at the very top of her swing.
+
+        \begin{mdframed}
+            At the very top of her swing, she is only encountering the force of gravity straight down.
+        \end{mdframed}
+
+        \paragraph*{11.}
+        A skier is sliding down a 15° slope. Friction is not negligible.
+        Identify the forces on the skier.
+
+        \begin{mdframed}
+            \begin{enumerate}
+                \item The force of gravity.
+                \item The normal force pushing against the skier perpendicular to the slope.
+                \item The force of friction tangent to the slope.
+            \end{enumerate}
+        \end{mdframed}
+
+        \paragraph*{20.}
+        Scallops eject water from their shells to provide a thrust force. The graph shows a smoothed graph of actual data for the initial motion of a 25 g scallop speeding up to escape a predator. What is the magnitude of the net force needed to achieve this motion? How does this force compare to the 0.25 N weight of the scallop?
+
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{a} = \frac{\Delta v}{\Delta t} = \frac{2.5}{0.25} = 10 \text{ m/s}^2   \\
+                    F = m\vec{a} = 0.025(10) = \boxed{0.25\mathrm{N}}  
+                \end{gathered}
+            \end{equation*}
+            The magnitude is equal to the weight of the scallop.
+        \end{mdframed}
     \end{multicols*}
 \end{document}
