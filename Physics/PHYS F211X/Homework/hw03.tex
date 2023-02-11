@@ -1,0 +1,78 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{HW 3, Due Friday, 2/10/2023 23:59; \S3 P: \#13, 24, 28, 35, 41, 42 \S4 Q: \# 10, 11 P: \#7, 11, 20}
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{multicols*}{2}
+        \section*{Chapter 3}
+        \subsection*{Problems}
+
+        \paragraph*{13.}
+        A wildlife researcher is tracking a flock of geese. The geese fly 4.0 km due west, then turn toward the north by 40$^{\circ}$ and fly another 4.0 km. How far west are they of their initial position? What is the magnitude of their displacement?
+
+        \begin{mdframed}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[->] (0,0) coordinate(A) -- (-2,0) coordinate(B) -- ++(140:2) coordinate(C)
+                    pic [draw,->,red,thick,angle radius=1cm] {angle = C--B--A};
+                    \draw node at (-1,0)[anchor=south]{4 km};
+                    \draw node at (-3,1)[anchor=west]{4 km};
+                    \draw[|-|] (-3.5,-0.25) -- (0,-0.25);
+                    \draw node at (-1.75,-0.25)[anchor=north]{$\Delta x$};
+                \end{tikzpicture}
+            \end{center}
+            
+            \begin{equation*}
+                \begin{gathered}
+                    \Delta x = 4 + 4 \cos(40)
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \section*{Chapter 4}
+        \subsection*{Questions}
+
+        \subsection*{Problems}
+
+    \end{multicols*}
+\end{document}
