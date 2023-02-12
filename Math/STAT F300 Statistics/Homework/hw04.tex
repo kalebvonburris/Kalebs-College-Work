@@ -1,0 +1,103 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\graphicspath{ {./images/} }
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework 4, Due Friday, February 10, 23:59}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{1.}
+    \begin{mdframed}
+        Given 300,000,000 people where 1000 are future terrorists, one is predicted to be a terrorist at a 99\% success rate. A person can be correctly identified as not a future terrorist at a 99.9\% success rate. What is the probability they are?
+
+        \begin{align*}
+            \#P & = 300,000,000  \\
+            T & = \{\text{Future Terrorist}\}; \quad \#T = 1000; \quad P(T) = \frac{1000}{300,000,000} = \frac{1}{3,000,000} \approx 0.0000003 \\
+            F & = \{\text{Flagged as Potential Future Terrorist}\}; \quad \#F = ?; \quad P(F) = \frac{\#F}{300,000,000}  \\
+            \#F & = \#T(0.99) + \#P(0.001) = 990 + 300,000 = 300,990 \\
+            P(F) & = \frac{\#F}{\#P} = \frac{300,990}{300,000,000} = 0.0010033  \\
+            P(F|T) & = \frac{\#T(0.99)}{\#T} = \frac{990}{1000} = 0.99 \\
+            P(T|F) & = \frac{P(T)}{P(F)}P(F|T) = \frac{0.0000003}{0.001033}(0.99) = (0.00323)(0.99) = 0.0032 = 0.32\%
+        \end{align*}
+
+        \boxed{\text{Among those flagged as future terrorists, 0.32\% actually are future terrorists.}}
+
+        This does make me very uneasy; a system that generates a certainty of marking someone in a way that could ruin a person's life. Out of the population, 300,000 were marked as future terrorists which is extreme.
+    \end{mdframed}
+
+    \paragraph*{2.}
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                P(A \cap B) = P(A)P(B)    \\
+                P(A^c \cap B) = (1-P(A))P(B) = P(B) - P(A)P(B)  \\
+                = P(B) - P(A \cap B) \rightarrow P(A^c \cap B) + P(A \cap B) = P(B)\\
+                \therefore P(A^c) \text{ and} P(B) \text{ are independent.}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \pagebreak
+
+    \paragraph*{3.}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Given a failure for each seam of 0.2, and each seam has at least 1 of 25 rivets failing, what is the probability of a rivet being defective?
+
+        \begin{mdframed}
+            \begin{align*}
+                P(R) & = (1 - P(x))^{25}    \\
+                P(S) & = 0.2 = (1 - P(R))   \\
+                     & = 0.2 = 1 - (1 - P(x))^{25}\\
+                     & = -0.8^{\frac{1}{25}} = 1-P(x)    \\
+                     & = -0.991 = 1-P(x) = \boxed{0.0089} \\
+            \end{align*}
+        \end{mdframed}
+
+        \item How small should the probability of a defective rivet be to ensure that only 10\% of all seams need reworking?
+        
+        \begin{mdframed}
+            \begin{align*}
+                P(R) & = (1 - P(x))^{25}    \\
+                P(S) & = 0.1 = (1 - P(R))   \\
+                     & = 0.1 = 1 - (1 - P(x))^{25}\\
+                     & = -0.9^{\frac{1}{25}} = 1-P(x)    \\
+                     & = -0.996 = 1-P(x) = \boxed{0.0042} 
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+    \paragraph*{4.}
+
+\end{document}
