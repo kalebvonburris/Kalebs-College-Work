@@ -1,0 +1,123 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 10, Due Friday, February 10, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    Let $Y$ denote the number of moving violations that a randomly selected customer of We Gotcha Insurance Company was cited for in the last three years. The pmf of $Y$ is given by
+
+    \begin{center}
+        \begin{tabular}{c | c c c c}
+            $y$ & 0 & 1 & 2 & 3 \\
+            \hline
+            $p(y)$ & 0.65 & 0.23 & 0.09 & 0.03 
+        \end{tabular}
+    \end{center}
+
+    \paragraph*{1.}
+    Calculate and interpret the expected value of $Y$.
+
+    \begin{mdframed}
+        \begin{align*}
+            \mathbb{E}(Y)   & = \sum_{y=0}^{3} y \cdot p(y)   \\
+                            & = 0 + 0.23 + 0.18 + 0.09        \\
+                            & = \boxed{0.50}                          \\
+        \end{align*}
+
+        The expected value of $Y$ is 0.5, meaning that on average a randomly selected customer was cited for 0.5 moving violations in the last three years.
+    \end{mdframed}
+
+    \paragraph*{2.}
+    Find $\mathbb{E}(Y^2)$, var($Y$) and sd($Y$); interpret sd($Y$).
+
+    \begin{mdframed}
+        $\mathbb{E}(Y^2)$:
+
+        \begin{align*}
+            \mathbb{E}(Y^2) & = \sum_{y=0}^{3} y^2 \cdot p(y)   \\
+                            & = 0 + 0.23 + 0.36 + 0.27          \\
+                            & = \boxed{0.86}
+        \end{align*}
+
+        var$(Y) = \sigma^2_Y = \mathbb{E}(Y)^2 -(\mu_y)^2   \quad   \text{where} \quad  \mu_y = \mathbb{E}(Y)$
+
+        \begin{align*}
+            \mathbb{E}(Y^2) -(\mu_y)^2  & = 0.86 - (0.5)^2  \\
+                                        & = 0.86 - 0.25     \\
+                                        & \approx \boxed{0.61}
+        \end{align*}
+
+        sd($Y$):
+        
+        \begin{align*}
+            \text{sd}(Y)    & = \sqrt{\text{var}(Y)}    \\
+                            & = \sqrt{0.61}             \\
+                            & = \boxed{0.78}
+        \end{align*}
+    
+        The expected number of moving violations is 0.5 with a typical variation of about 0.78 tickets above or below the mean of 0.5.
+    \end{mdframed}
+
+    \paragraph*{3.}
+    We Gotcha imposes a surcharge of $100Y^2$ dollars on customers with $Y$ many moving violations. Calculate the expected amount of the surcharge. Interpret your answer.
+
+    \begin{mdframed}
+        \begin{align*}
+            \mathbb{E}(100Y^2)  & = 100 \cdot \mathbb{E}(Y^2)   \\
+                                & = 100 \cdot 0.86              \\
+                                & = \boxed{86}
+        \end{align*}
+
+        The expected surcharge is \$86. This means that on average, a random customer for the company pays \$86 in moving violations.
+    \end{mdframed}
+    
+    \paragraph*{4.}
+    Find the standard deviation of the surcharge.
+
+    \begin{mdframed}
+        Because the tickets and surcharge are related (Every ticket has a surcharge), we can use the standard deviation of $Y$.
+
+        \begin{align*}
+            \text{sd}(100Y^2)   & = 100 \cdot \text{sd}(Y)  \\
+                                & = 100(0.78)               \\
+                                & = \boxed{78}
+        \end{align*}
+    \end{mdframed}
+
+\end{document}
