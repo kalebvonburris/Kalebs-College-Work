@@ -1,0 +1,110 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 11, Due Monday, February 13, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{1.}
+    Every day you practice juggling in your too-small cabin for 30 minutes. You don't get better or worse over time, and you've discovered after many years that the probability you'll smash something valuable (an antique Flintstones mug) during a juggling session is 0.12. We consider 30 days worth of juggling sessions. (The sessions are independent.)
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Find the expected number of Flintstones mugs that will be broken in 30 days of
+        juggling sessions. Interpret this number.
+        \\
+        \begin{mdframed}
+            $A = $ a mug being broken, n = 30
+            \begin{align*}
+                \mathbb{E}(A)           & = 30(0.12)    \\
+                                        & = \boxed{3.6}
+            \end{align*}
+
+            Over the course of 30 days of juggling, it's expected that you will drop and break and average of 3.6 mugs.
+        \end{mdframed}
+
+        \item Find the variance and standard deviation of the number of broken mugs.
+        \\
+        \begin{mdframed}
+            var($A$):
+            \begin{align*}
+                \text{var}(A)   & = np(1 - p)               \\
+                                & = 30 \cdot 0.12(1-0.12)   \\
+                                & = 30 \cdot 0.12(0.88)     \\
+                                & = \boxed{3.168}
+            \end{align*}
+
+            sd($A$):
+            \begin{align*}
+                \text{sd}(A)    & = \sqrt{\text{var}(A)}    \\
+                                & = \sqrt{2.808}            \\
+                                & = \boxed{1.6756}
+            \end{align*}
+        \end{mdframed}
+
+        \item What is the probability that at least 3 mugs will end up broken?
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                P(3 \leq A)     & = \frac{3.6 - 3}{3.6}     \\
+                                & = \boxed{0.1\overline{6}}
+            \end{align*}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item If it costs \$30 to replace a Flintstones mug, and you must replace the ones you've broken (to maintain peace in the household), and it costs \$1 to polish the unbroken mugs, what is the expected cost of 30 days of juggling sessions? What is the
+        standard deviation?
+        \\
+        \begin{mdframed}
+            Expected Cost (C): 
+            \begin{align*}
+                C   & = 30(30 \cdot \mathbb{E}(A) + 1 \cdot (1 - \mathbb{E}(A)))    \\
+                    & = 30(30(0.12) + 0.88) \\
+                    & = 30(4.48)            \\
+                    & = \boxed{\$134.40}
+            \end{align*}
+
+            sd(C):
+            \begin{align*}
+                \text{sd}(C)    & = \sqrt{\text{var}(C)}    \\
+                \text{var}(C)   & = 
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+\end{document}
