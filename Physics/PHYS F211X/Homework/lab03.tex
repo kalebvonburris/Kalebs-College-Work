@@ -1,0 +1,292 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{ {./lab02images/} }
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Lab 3: Uncertainty and Error, 2/14/2023, Partners: Maite Valentin-Lugo, Seth Waln}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \section*{Part 1}
+
+    \paragraph*{1.}
+    1-inch: $(2.37 \pm 0.005)$cm
+
+    2-inch: $(4.96 \pm 0.005)$cm
+
+    3-inch: $(7.43 \pm 0.005)$cm
+
+    \paragraph*{2.}
+    1-inch: $(0.93 \pm 0.002)$in, expected 1 in.
+
+    1-inch: $(1.95 \pm 0.002)$in, expected 2 in.
+
+    1-inch: $(2.93 \pm 0.002)$in, expected 3 in.
+
+    These values seem to be ~0.05-0.07 in off of the expected value, which exceeds the $\pm$ 0.002 in uncertainty. They have decieved us.
+
+    \begin{center}
+        \begin{tabular}{| c | c | c | c | c | c | c |}
+            \hline
+            & MLE & $\delta$ MLE & MRE & $\delta$ MRE & W & $\delta$ W  \\
+            \hline
+            Trial 1 & 26.0 cm & $\pm$ 0.05 cm & 45.1 cm & $\pm$ 0.05 cm & 19.1 cm & $\pm$ 0.071 cm  \\
+            \hline
+            Trial 2 & 44.9 cm & $\pm$ 0.05 cm & 54.1 cm & $\pm$ 0.05 cm & 19.2 cm & $\pm$ 0.071 cm  \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    \paragraph*{3.}
+
+    \begin{align*}
+        \text{W}                        & = \text{MRE} - \text{MLE}     \\
+        \frac{\delta W}{\delta MLE}     & = 1                           \\
+        \frac{\delta W}{\delta MRE}     & = 1                           
+    \end{align*}
+
+    \paragraph*{4.}
+    \begin{align*}
+        \delta W    & = \sqrt{\left(\frac{\delta W}{\delta MLE}\delta MLE\right)^2 + \left(\frac{\delta W}{\delta MLE}\delta MLE\right)^2} \\
+                    & = \sqrt{\left(1(0.05)\right)^2 + \left(1(0.05)\right)^2} \\
+                    & = \sqrt{0.0025 + 0.0025}      \\
+                    & = \sqrt{0.005} = boxed{0.071} \\
+    \end{align*}
+
+    \section*{Part 3}
+
+    \begin{center}
+        \begin{tabular}{| c | c | c | c | c | c | c | c |}
+            \hline
+            Trial & Circumference & $\delta$ circ & Diameter & $\delta$ diam & $\pi$ & $\delta \pi$ & Is $ \pi $ ? \\
+            \hline
+            1 & 43.7 cm & $\pm$ 0.05 cm & 14.1 cm & $\pm$ 0.05 cm & 3.09 & $\pm$ 0.071 cm & No \\
+            \hline
+            2 & 18.2 cm & $\pm$ 0.05 cm & 14.1 cm & $\pm$ 0.05 cm & 3.19 & $\pm$ 0.029 cm & No \\ 
+            \hline
+            3 & 36.2 cm & $\pm$ 0.05 cm & 11.6 cm & $\pm$ 0.05 cm & 3.12 & $\pm$ 0.014 cm & No \\ 
+            \hline
+            4 & 8.6 cm & $\pm$ 0.05 cm & 2.6 cm & $\pm$ 0.05 cm & 3.31 & $\pm$ 0.066 cm & No \\ 
+            \hline
+            5 & 16.8 cm & $\pm$ 0.05 cm & 4.9 cm & $\pm$ 0.05 cm & 3.43 & $\pm$ 0.036 cm & No \\ 
+            \hline
+        \end{tabular}
+    \end{center}
+
+    \paragraph*{11.}
+
+    \begin{align*}
+        C       & = 2\pi r  \\
+        C       & = \pi D   \\
+        \pi     & = C / D
+    \end{align*}
+
+    \paragraph*{12.}
+    \begin{align*}
+        \pi                         & = C / D               \\
+        \frac{\delta \pi}{\delta C} & = \frac{1}{D}         \\
+        \frac{\delta \pi}{\delta D} & = -\frac{C}{D^2}      \\
+        \delta \pi                  & = \sqrt{\left(\frac{1}{D}(0.05)\right)^2 + \left(-\frac{C}{D^2}(0.05)\right)^2}   \\
+                                    & = \sqrt{0.005 + 0.00012} = \sqrt{0.0051} = \boxed{0.071}
+    \end{align*}
+
+    \paragraph*{14.}
+    \begin{equation*}
+        \pi_avg = 3.228
+    \end{equation*}
+
+    \section*{4}
+
+    \begin{center}
+        Person 1:
+        \begin{tabular}{| c | c | c |}
+            \hline
+            Trial & $\delta$ TF(s) & Time to fall(s)        \\
+            \hline
+            1 & 0.1 & 0.53                                  \\
+            \hline
+            1 & 0.1 & 0.50                                  \\
+            \hline
+            1 & 0.1 & 0.56                                  \\
+            \hline
+            1 & 0.1 & 0.41                                  \\
+            \hline
+            1 & 0.1 & 0.47                                  \\
+            \hline
+        \end{tabular}
+
+        Person 2:
+        \begin{tabular}{| c | c | c |}
+            \hline
+            Trial & $\delta$ TF(s) & Time to fall(s)        \\
+            \hline
+            1 & 0.1 & 0.47                                  \\
+            \hline
+            1 & 0.1 & 0.53                                  \\
+            \hline
+            1 & 0.1 & 0.41                                  \\
+            \hline
+            1 & 0.1 & 0.47                                  \\
+            \hline
+            1 & 0.1 & 0.47                                  \\
+            \hline
+        \end{tabular}
+
+        Person 3:
+        \begin{tabular}{| c | c | c |}
+            \hline
+            Trial & $\delta$ TF(s) & Time to fall(s)        \\
+            \hline
+            1 & 0.1 & 0.50                                  \\
+            \hline
+            1 & 0.1 & 0.41                                  \\
+            \hline
+            1 & 0.1 & 0.47                                  \\
+            \hline
+            1 & 0.1 & 0.56                                  \\
+            \hline
+            1 & 0.1 & 0.38                                  \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    \paragraph*{16.}
+    \begin{equation*}
+        \text{MTF} = \frac{\sum_{i=1}^{n}TF_n}{n}
+    \end{equation*}
+
+    \paragraph*{17.}
+    \begin{equation*}
+        \frac{0.052 + 0.50 + \dots + 0.56 + 0.38}{n} = \boxed{0.48 \text{ seconds}}
+    \end{equation*}
+
+    \paragraph*{18.}
+    \begin{align*}
+        \delta \text{MTF}   & = \frac{\delta TF}{n} \\
+                            & = \frac{0.1}{15}      \\
+                            & = \boxed{0.0067}
+    \end{align*}
+
+    \paragraph*{19.}
+    \begin{equation*}
+        \text{MTF} = \boxed{(0.48 \pm 0.0067) \text{ seconds}}
+    \end{equation*}
+
+    \paragraph*{20.}
+    A lot of the values are similar, which brings down the deviation from the average value.
+
+    \paragraph*{21.}
+    \begin{equation*}
+        \delta TF = \boxed{0.054}
+    \end{equation*}
+
+    \paragraph*{22.}
+    \begin{equation*}
+        \text{MTF} = \boxed{(0.48 \pm 0.014) \text{ seconds}}
+    \end{equation*}
+
+    \paragraph*{23.}
+    The value given in smaller than my calculated mean time to fall and out of bounds of my uncertainty. It's almost certain that this is because we aren't accounting for human error in the $\delta$ TF value as well as forces such as air resistence.
+
+    \paragraph*{24.} 
+    
+    (a)
+
+    \begin{align*}
+        RU_c         & = \frac{0.05}{43.7}  = 0.0011    \\
+        RU_{\pi}     & = \frac{0.071}{3.09} = 0.0023
+    \end{align*}
+
+    It looks like the relative uncertainty for the $\pi$ being calculated here is almost exactly twice the relative uncertainty of its circumferece.
+
+    (b)
+
+    \begin{align*}
+        RU_{TF}     & = \frac{0.054}{0.53}  = 0.010    \\
+        RU_{MTF}     & = \frac{0.0067}{0.48} = 0.0014
+    \end{align*}
+
+    The relative uncertainty for each time is several times larger than the relative uncertainty of the mean time.
+
+    \paragraph*{25.}
+    The relative uncertainty for the circle trials is larger for $\pi$'s relative uncertainty than the relative uncertainty for the mean time to fall. This is almost certainly because the ball dropping trails have much more availability for outside variables the influence the outcome, like air resistence, human error, and earthquakes.
+
+    \pagebreak
+
+    \section*{Part 5}
+
+    \paragraph*{26.}
+
+    \begin{equation*}
+        \delta \vec{F_{net}} = \sqrt{\left(\frac{\delta \vec{F_{net}}}{\delta m}\delta m \cdot \vec{a}\right)^2 + \left(\frac{\delta \vec{F_{net}}}{\delta \vec{a}}\delta \vec{a} \cdot m \right)^2}
+    \end{equation*}
+
+    \paragraph*{27.}
+    
+    \begin{equation*}
+        \delta \vec{F_{G}} = \sqrt{\left(\frac{\delta \vec{F_{g}}}{\delta m}\delta m \cdot \vec{g}\right)^2 + \left(\frac{\delta \vec{F_{g}}}{\delta \vec{g}}\delta \vec{g} \cdot m \right)^2}
+    \end{equation*}
+
+    \paragraph*{28.}
+
+    \begin{equation*}
+        \delta \vec{p} = \sqrt{\left(\frac{\delta \vec{p}}{\delta m}\delta m \cdot \vec{v}\right)^2 + \left(\frac{\delta \vec{p}}{\delta \vec{v}}\delta \vec{v} \cdot m \right)^2}
+    \end{equation*}
+
+    \paragraph*{29.}
+
+    \begin{equation*}
+        \delta \vec{p_{total}} = \sqrt{\left(\frac{\delta \vec{p_{total}}}{\delta \vec{p_1}}\delta \vec{p_1}\right)^2 + \left(\frac{\delta \vec{p_{total}}}{\delta \vec{p_2}}\delta \vec{p_2} \right)^2}
+    \end{equation*}
+
+    \paragraph*{30.}
+
+    \begin{equation*}
+        \delta U = \sqrt{\left(\frac{\delta U}{\delta k}\delta k \cdot \frac{x^2}{2}\right)^2 + \left(\frac{\delta U}{\delta x}\delta x \cdot k \right)^2}
+    \end{equation*}
+
+    \paragraph*{30.}
+
+    \begin{equation*}
+        \delta K = \sqrt{\left(\frac{\delta K}{\delta m_{total}}\delta m_{total} \cdot \frac{v^2}{2}\right)^2 + \left(\frac{\delta K}{\delta v}\delta v \cdot m_{total} \right)^2}
+    \end{equation*}
+
+\end{document}
