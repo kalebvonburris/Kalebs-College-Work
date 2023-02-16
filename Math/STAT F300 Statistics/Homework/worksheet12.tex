@@ -58,7 +58,7 @@
                     & = k \cdot \left.\frac{-e^{(-x/500)}}{500}\right|_{0}^{1000}   \\
                     & = 500k \cdot (-e^{-2} + e^{0})                                \\
                     & = 500k \cdot (-\frac{1}{e^2} + 1)                             \\
-                    & = 500k \cdot 0.865
+                    & = 500k \cdot 0.865                                            \\
             k       & = \frac{1}{432.5} = \boxed{0.00231}
         \end{align*}
     \end{mdframed}
@@ -71,7 +71,7 @@
 
         \begin{align*}
             P(800<x\leq1000)& = 0.00231 \cdot \int_{800}^{1000}e^{(-x/500)}\mathrm{d}x  \\
-                            & = 0.00231 \cdot 500(-e^{(-x/500)\Big|_{800}^{1000})       \\
+                            & = 0.00231 \cdot 500(-e^{(-x/500)}\Big|_{800}^{1000})      \\
                             & = 0.00231 \cdot 500(-e^{(-2)} - (- e^{(-\sfrac{8}{5})}))  \\
                             & = 0.00231 \cdot 500(0.202 - 0.135)                        \\
                             & = 0.00231 \cdot 500(0.067) = \boxed{0.0774}
@@ -85,8 +85,30 @@
     \\
     \begin{mdframed}
         \begin{align*}
-            P(a \leq X \leq b)  & = 
+            P(a \leq X \leq b)  & = k \cdot \int_{a}^{b}e^{-x/500}\mathrm{d}x   \\
+                                & = k \cdot 500(-e^{-x/500})\big|_{a}^{b}       \\
+                                & = k \cdot 500(e^{-a/500} - e^{-b/500})        \\
+                                & = \boxed{1.155\cdot (e^{-a/500} - e^{-b/500})}
         \end{align*}
+    \end{mdframed}
+
+    \paragraph*{4.}
+    Find $P(10 \leq X \leq 100)$ and $P(10 < X < 100)$. Why are the answers the same?
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            P(10 \leq X \leq 100)   & = 1.155 \cdot (e^{-10/500} - e^{-100/500})    \\
+                                    & = 1.155 \cdot (0.98 - 0.819)                  \\
+                                    & = 1.155 \cdot 0.161 = 0.1862
+        \end{align*}
+
+        \begin{align*}
+            P(10 < X < 100)   & = 1.155 \cdot (e^{-10/500} - e^{-100/500})          \\
+                                    & = 1.155 \cdot (0.98 - 0.819)                  \\
+                                    & = 1.155 \cdot 0.161 = 0.1862
+        \end{align*}
+
+        They're the same because the inclusion/exclusion of any discrete number on a contininuous graph will result in no net change for the area underneath that graph. The integral for $\int_{0}^{0}f(x)$ will always be the same no matter what $f(x)$ is: 0.
     \end{mdframed}
 
 \end{document}
