@@ -1,0 +1,70 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework Set VI, Due Friday, February 17, 2023: \S 3.2 \# 76, 86 \S 3.3 \# 134, 138, 146}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{76.} 
+    $\int\sin^7(2x)\cos(2x)dx$
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \int\sin^7(2x)\cos(2x)dx                        \\
+                u = \sin(2x) \quad \frac{du}{2} = \cos(2x)dx    \\
+                \Rightarrow \frac{1}{2} \int u^7du              
+                = \frac{1}{2}\left(\frac{u^8}{8}\right) + C     
+                = \boxed{\frac{\sin^8(2x)}{16} + C}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{86.}
+    $\int \sqrt{\sin x}\cos^3 x dx$
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \int \sqrt{\sin x}\cos^3 x dx                 
+                = \int \sqrt{\sin x} (1 - \sin^2 x) \cos x dx
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+\end{document}
