@@ -46,8 +46,7 @@
     \begin{mdframed}
         \begin{equation*}
             \begin{gathered}
-                \int\sin^7(2x)\cos(2x)dx                        \\
-                u = \sin(2x) \quad \frac{du}{2} = \cos(2x)dx    \\
+                \text{Let} \quad u = \sin(2x) \quad \frac{du}{2} = \cos(2x)dx    \\
                 \Rightarrow \frac{1}{2} \int u^7du              
                 = \frac{1}{2}\left(\frac{u^8}{8}\right) + C     
                 = \boxed{\frac{\sin^8(2x)}{16} + C}
@@ -60,11 +59,78 @@
     \\
     \begin{mdframed}
         \begin{equation*}
-            \begin{gathered}
-                \int \sqrt{\sin x}\cos^3 x dx                 
-                = \int \sqrt{\sin x} (1 - \sin^2 x) \cos x dx
+            \begin{gathered}      
+                \int \sqrt{\sin x}(1-\sin^2 x )\cos x dx
+                = \int (\sqrt{\sin x} - \sin^{5/2})\cos x dx                        \\
+                \text{Let} \quad u = \sin x \quad du = \cos x dx                    \\
+                \Rightarrow \int \left(\sqrt{u} - u^{5/2}\right)du
+                = \frac{2u^{3/2}}{3} - \frac{2u^{7/2}}{7} + C
+                = \boxed{\frac{2(\sin x)^{3/2}}{3} - \frac{2(\sin x)^{7/2}}{7} + C}
             \end{gathered}
         \end{equation*}
     \end{mdframed}
 
+    \paragraph*{134.}
+    $\int \frac{dx}{\sqrt{4-x^2}}$
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \text{Using} \quad a^2 - u^2 \Rightarrow  
+                u = a\sin\theta; \quad x = 2\sin\theta 
+                \quad dx = 2\cos\theta d\theta                                      \\
+                \Rightarrow\int \frac{2\cos\theta d \theta}{\sqrt{4-4\sin^2\theta}}    
+                \int \frac{2\cos\theta d \theta}{\sqrt{4(1-\sin^2\theta)}}
+                = \int \frac{\cos\theta d \theta}{\sqrt{1-\sin^2\theta}}    
+                = \int \frac{\cos\theta d \theta}{\sqrt{\cos^2\theta}}      
+                = \int \frac{\cos\theta d \theta}{\cos\theta} = \int d\theta        \\
+                = \theta + C = \boxed{\sin^{-1}\left(\frac{x}{2}\right) + C} 
+            \end{gathered}
+        \end{equation*}    
+    \end{mdframed}
+
+    \paragraph*{138.}
+    $\int \frac{x^{2}dx}{\sqrt{1-x^2}}$
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \text{Using} \quad a^2 - u^2 \Rightarrow    
+                u = a\sin\theta; \quad x = \sin\theta 
+                \quad dx = \cos\theta d \theta                  \\
+                \int \frac{\sin^2\theta\cos\theta d \theta}
+                {\sqrt{1 - \sin^2\theta}}
+                = \int \frac{\sin^2\theta\cos\theta d \theta}
+                {\sqrt{\cos^2\theta}} 
+                = \int \frac{\sin^2\theta\cos\theta d \theta}
+                {\cos\theta}
+                = \int \sin^2\theta d \theta \Rightarrow
+                \int \frac{1-\cos 2\theta}{2}d\theta            \\
+                = \frac{2\theta - \sin 2\theta}{4} + C 
+                = \boxed{\frac{\sin^{-1}(x) - \sin(2\sin^{-1}(x))}{4} + C}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{146.}
+    $\frac{dx}{(1+x^2)^{3/2}}$
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \text{Using} \quad a^2 + u^2 \Rightarrow
+                u = a\tan\theta; \quad x = \tan\theta \quad dx 
+                = \sec^2\theta d \theta                     \\
+                \int \frac{\sec^2\theta d \theta}
+                {(1+\tan^2\theta)^{3/2}}
+                = \int \frac{\sec^2\theta d \theta} 
+                {(\sec^2\theta)^{3/2}}
+                = \int \frac{\sec^2\theta d \theta}
+                {\sec^3\theta}
+                = \int \sec^{-1}\theta d \theta
+                = \int \cos\theta d \theta                   \\
+                = \sin\theta + C = \boxed{\sin(\tan^{-1}(x)) + C}      
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
 \end{document}
