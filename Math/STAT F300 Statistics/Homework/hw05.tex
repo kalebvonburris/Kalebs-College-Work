@@ -1,0 +1,203 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\graphicspath{ {./images/} }
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework 5, Due Friday, February 17, 23:59}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{1.}
+    Let $X$ be a discrete random variable having the cdf, $F(X)$, as defined below.
+    \begin{equation*}
+        F(X) = \left\{
+            {\def\arraystretch{1.2}
+            \begin{array}{rll}
+            0   & \quad & \text{if } x \leq 0       \\
+            0.2 & \quad & \text{if } 0 \leq x < 2   \\
+            0.5 & \quad & \text{if } 2 \leq x < 4   \\
+            0.9 & \quad & \text{if } 4 \leq x < 7   \\
+            1   & \quad & \text{if } 7 \leq x  
+        \end{array}}
+        \right.
+    \end{equation*}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Find the pmf of $X$.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                p(X) = \left\{
+                    {\def\arraystretch{1.2}
+                    \begin{array}{rll}
+                    0.2 & \quad & \text{if } x = 0  \\
+                    0.3 & \quad & \text{if } x = 2  \\
+                    0.4 & \quad & \text{if } x = 4  \\
+                    0.1 & \quad & \text{if } x = 7  \\
+                    0   &       & \text{otherwise}
+                \end{array}}
+                \right.
+            \end{equation*}
+        \end{mdframed}
+
+        \item Find $P(X < 3)$ and $P(X \leq 3)$
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                p(X < 3) = P(X \leq 3)  & = F(3)        \\
+                                        & = \boxed{0.5}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $P(X < 4)$ and $P(X \leq 4)$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                p(X < 4)    & = \lim_{X\rightarrow 4}F(X)       \\
+                            & = \boxed{0.5}                     \\
+                p(X \leq 4) & = F(4)                            \\
+                            & = \boxed{0.9}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $P(2 \leq X < 7)$
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                p(2 \leq X < 7) & = \lim_{X\rightarrow 7}F(X) - F(2)    \\
+                                & = 0.9 - 0.5 = \boxed{0.4}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+    \pagebreak
+
+    \paragraph*{2.}
+    We say that X is a discrete uniform random variable from 1 to N if its pmf is:
+    \begin{equation*}
+        p(x) = 1/N, \quad x = 1,2,3,\dots,N
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Show that $\mathbb{E}(X) = (N+1)/2$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \mathbb{E}(X)   & = \sum_{x=1}^{N} xp(x) \text{ where } p(x) = \frac{1}{N}  \\
+                                & = \frac{1}{N} \sum_{x=1}{N} x                             \\
+                                & = \frac{1}{N} (1 + 2 + 3 + \cdots + N)                    \\
+                                & = \frac{1}{N}\frac{N(N+1)}{2} = \frac{N+1}{2}             \\
+                \therefore \quad& \mathbb{E}(X) = (N+1)/2
+            \end{align*}
+        \end{mdframed}
+
+        \item Show that $\mathrm{var}(X) = (N+1)(N-1)/12$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                var(x)          & = \mathbb{E}(X^2) - (\mathbb{E}(X))^2                         \\
+                \mathbb{E}(X^2) & = \sum_{x=1}^{N} x^2p(x) \text{ where } p(x) = \frac{1}{N}    \\
+                & = \frac{1}{N} \sum_{x=1}{N} x^2                                               \\
+                & = \frac{1}{N} (1^2 + 2^2 + 3^2 + \cdots + N^2)                                \\
+                & = \frac{1}{N}\frac{N(N+1)(2N+1)}{6} = \frac{(N+1)(2N+1)}{6}                   \\
+\therefore \quad& \mathbb{E}(X^2) = (N+1)/2                                                     \\
+                var(x)          & = \frac{(N+1)(2N+1)}{6} - \left(\frac{N+1}{2}\right)^2        \\
+                                & = \frac{(N+1)(2N+1)}{6} - \frac{(N+1)^2}{4}                   \\
+                                & = \frac{2(N+1)(2N+1)-3(N+1)^2}{12}                            \\
+                                & = \frac{(4N^2+6N+2)-(3N^2+6N+3)}{12}                          \\
+                                & = \frac{N^2-1}{12} = \frac{(N+1)(N-1)}{12}  
+                \therefore \quad& var(x) = \frac{(N+1)(N-1)}{12}
+            \end{align*}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item Let $Y = X+3$. Find the pmf of $Y$. Find $\mathbb{E}(Y)$ and $var(Y)$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                Y               & = X + 3                                                   \\
+                p(Y = y)        & = p(X + 3 = y)                                            \\
+                p(Y = y - 3)    & = 1/N, \quad \text{for} \quad y = 4, 5, \cdots, N+3       \\
+                \mathbb{E}(Y)   & = \mathbb{E}(X + 3) = \mathbb{E}(X) + \mathbb{E}(3)       \\
+                                & = \frac{N+1}{2} + 3 = \frac{N+7}{2}                       \\
+                var(Y)          & = var(X + 3) = var(X) \text{ since constants don't affect variance}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+    \paragraph*{3.}
+    The number of male mates that the females of a certain type of wasp have has a Poisson distribution with $\lambda$ = 3.1.
+    \begin{enumerate}[label=(\alph*)]
+        \item Find the probability that a female will have at most 4 mates.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                Pr(X = 0) & = e^{(-3.1)} * (3.1^0) / 0! = 0.044  \\
+                Pr(X = 1) & = e^{(-3.1)} * (3.1^1) / 1! = 0.136  \\
+                Pr(X = 2) & = e^{(-3.1)} * (3.1^2) / 2! = 0.211  \\
+                Pr(X = 3) & = e^{(-3.1)} * (3.1^3) / 3! = 0.206  \\
+                Pr(X = 4) & = e^{(-3.1)} * (3.1^4) / 4! = 0.160  \\
+                Pr(X \leq 4) & = 0.044 + 0.136 + 0.211 + 0.206 + 0.160 = \boxed{0.757}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find the probability that a female will have at least 2 mates.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                Pr(X \leq 2) = 1 - Pr(2 \leq X) & = 
+                1 - (0.044 + 0.136) = 1 - 0.180 \\
+                & = \boxed{0.820}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find the probability that a female will have no mates.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                Pr(X=0) & = \boxed{0.045} \leftarrow \text{ Precomputed in part (a)}
+            \end{align*}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item Find the probability that the number of mates a female has lies with 2 standard deviations of the mean.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \text{Mean} & = \lambda = 3.1                       \\
+                \text{sd}   & = \sqrt{\lambda} = \sqrt{3.1} = 1.7607
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+\end{document}
