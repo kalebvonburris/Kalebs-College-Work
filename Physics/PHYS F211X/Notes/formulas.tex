@@ -1,0 +1,102 @@
+\documentclass[12pt, letterpaper]{book}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage[parfill]{parskip}
+\usepackage{subfiles}
+\usepackage[makeroom]{cancel}
+\usepackage{mathtools}
+\usepackage{MnSymbol}
+\usepackage{amsmath}
+\usepackage{tkz-euclide}
+\usepackage{siunitx}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2.5cm}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    Kaleb Burris
+    \newline
+    PHYS F211X
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+%\setlength{\headheight}{42pt}
+%\setlength{\headsep}{0.25in}
+%\setlength{\columnsep}{0.35cm}
+%\setlength{\columnseprule}{1pt}
+
+\begin{document}
+
+    \begin{titlepage}
+        \Huge \textbf{PHYS 211X}
+
+        \huge \textbf{General Physics I}
+
+        \vfill
+
+        \Large Kaleb Burris
+    \end{titlepage}
+
+    \section*{Formulas}
+    \subsection*{Motion}
+
+    Position:
+    \begin{equation}
+        s \text{ or } p = \vec{v}\Delta t
+    \end{equation}
+
+    Velocity:
+    \begin{equation}
+        \vec{v} = \vec{a}\Delta t
+    \end{equation}
+
+    Projectile Motion:
+    \begin{equation}
+        \label{eqn::yfinal}
+        y_{f} = y_{0} + v_{0}(\Delta t) + \frac{1}{2}a(\Delta t^{2})
+    \end{equation}
+
+    \subsection*{Force}
+    Force:
+    \begin{equation}
+        \vec{F} = m\vec{a}
+    \end{equation}
+
+    Friction:
+    \begin{equation}
+        f = \mu N
+    \end{equation}
+
+    Drag: 
+    \begin{equation}
+        \vec{F_D}\text{ or }D = \frac{1}{2}\rho C_{D}Av^{2}
+    \end{equation}
+
+    \subsection*{Key}
+
+    \begin{align*}
+        v       & = \text{velocity, meters/second}                                  \\
+        y       & = \text{height, meters}                                           \\
+        x       & = \text{distance, meters}                                         \\
+        t       & = \text{time, seconds}                                            \\
+        m       & = \text{mass, kilograms}                                          \\
+        a       & = \text{acceleration, } \text{meters/second}^{2}                  \\
+        g       & = \text{gravity: } 9.8 \text{meters/second}^{2}                   \\
+        F       & = \text{force, Newtons, kilogram} \cdot \text{meters/second}^{2}  \\
+        \mu     & = \text{coefficient of friction}                                  \\
+        N       & = \text{normal force, Newtons}                                    \\
+        A       & = \text{area, meters}^{2}                                         \\
+        \rho    & = \text{volumetric mass density, kilograms/meters}^{3}            \\
+        C_{D}   & = \text{drag coefficient (geometry dependant)}
+    \end{align*}
+
+\end{document}
