@@ -1,0 +1,145 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 14, Due February 20, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    Let $X$ be a random variable whose value is the fraction of each can of diced tomatoes that is filled when it leaves the canning factory. The cdf for X is given by:
+    
+    \begin{equation*}
+        F(x) = 
+        \left\{
+            \begin{array}{lll}
+                0       & \quad  & \text{if } x < 0             \\
+                x^{100} & \quad  & \text{if } 0 \leq x  < 1     \\
+                1       & \quad  & \text{if } 1 \leq  x         \\
+            \end{array}
+        \right.
+    \end{equation*}
+
+    \paragraph*{1.}
+    How do I know that $F(x)$ is a bona fide cdf? What do I need to check? Also, find the pdf of $X$.
+    \\
+    \begin{mdframed}
+        You know $F(x)$ is a cdf if the slope of $F(x)$ is never negative as a cdf is the sum of the probabilitie before it. Since those probabilities cannot be zero, the cdf must either be staying the same or increasing. It also much approach 1 as $x \rightarrow \infty$ and it must approach 0 as $x \rightarrow -\infty$.
+
+        For the pdf:
+
+        \begin{align*}
+            f(x)    & = F'(x)                   \\
+                    & = \frac{d}{dx}\left[x^{100}\right]  \leftarrow \text{Skipping other domains as $\frac{d}{dx}$ of a constant is 0}  \\
+                    & = 
+                    \left\{
+                        \begin{array}[pos]{lll}
+                            \boxed{100x^{99}}   & \quad & \text{if } 0 < x < 1      \\
+                            0                   & \quad & \text{otherwise} 
+                        \end{array}
+                    \right.
+        \end{align*}
+    \end{mdframed}
+
+    \pagebreak
+
+    \paragraph*{2.}
+    Find $\mathbb{E}(X)$, var($X$) and sd($X$). State, but do not evaluate, the integral whose value is $\mathbb{E}(\log(X))$.
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            \mathbb{E}(X)   & = \int_{0}^{1} xf(x)dx            \\
+                            & = \int_{0}^{1} x \cdot 100x^{99}  \\
+                            & = \int_{0}^{1} 100x^{100}         \\
+                            & = \left.\left(\frac{100x^{100}}{101}\right)\right|_{0}^{1}
+                              = \frac{100\cdot(1)^{100}}{101} - \frac{100\cdot(0)^{100}}{101}
+                              = \frac{100}{101} \approx \boxed{0.99}
+        \end{align*}
+
+        \begin{align*}
+            var(X) = \sigma^2_X & = \int_{0}^{1}\left[(x - \mu_X)^2\right]f(x)dx    \\
+                                & = \int_{0}^{1}(x^2 - \mu_X + \mu_X^2)(100x^{99})dx\\
+                                & = \int_{0}^{1}(x^2 - 0.0099)(100x^{99})dx         \\
+                                & = \int_{0}^{1}(100x^{101} - 0.99x^{99})dx         \\
+                                & = \left.\left(\frac{100x^{102}}{102} - \frac{0.99x^{100}}{100}\right)\right|_{0}^{1}
+                                  = \frac{100\cdot(1)^{102}}{102} - \frac{0.99\cdot(1)^{100}}{100}   \\
+                                & = \frac{100}{102} - \frac{99}{100} = 0.98039 - 0.0099 \approx \boxed{0.97049}
+        \end{align*}
+
+        \begin{align*}
+            sd(X)   & = \sqrt{var(X)}   \\
+                    & = \sqrt{0.97049}  \\
+                    & \approx \boxed{0.985}
+        \end{align*}
+        
+        For $\int_{a}^{b}f(x) = \mathbb{E}(\log(X))$:
+        \begin{align*}
+            \mathbb{E}(\log(X)) & = \int_{0}^{1}(\log(x)f(x))dx                         \\
+                                & = \boxed{\int_{0}^{1}\left[\log\left(x^{f(x)}\right)\right]dx}
+        \end{align*}
+    \end{mdframed}
+
+    \pagebreak
+
+    \paragraph*{3.}
+    There was a disaster. Find $P(X < 0.95)$
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            P(X < 0.95) & = F(0.95)                 \\
+                        & = 0.95^{100}              \\
+                        & \approx \boxed{0.0059}    \\
+            1000 \cdot 0.0059 = \boxed{5.9 \text{ cans}}
+        \end{align*}
+    \end{mdframed}
+
+    \paragraph*{4.}
+    What is the median of X? What is the 95th percentile of $X$?
+    \\
+    \begin{mdframed}
+        Median of $X$:
+        \begin{align*}
+            F(a)& = 0.5
+                & = a^{100} = 0.5 = \sqrt[100]{0.5} = \boxed{0.9931}
+        \end{align*}
+
+        95$^{\text{th}}$ percentile:
+        \begin{align*}
+            F(a)    & = 0.95                                  \\
+                    & = a^{100} = 0.95 = \sqrt[100]{0.95} \approx \boxed{0.9995}
+        \end{align*}
+    \end{mdframed}
+\end{document}
