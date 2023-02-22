@@ -1,0 +1,196 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{ {./lab02images/} }
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Lab 4: Uncertainty and Error, 2/21/2023, Partners: Maite Valentin-Lugo, Seth Waln}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \section*{Part 1}
+
+    \paragraph*{2.}
+    
+
+    \pagebreak
+
+    \section*{Part 2}
+
+    Weight of the mass being lifted: \underbar{4.9 N}
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+            & $D_{m}$ & $D_{fp}$ & $\vec{F}$    \\
+        \hline
+        Long Lever      & 0.05 m & 0.270 m & 0.31 N    \\
+        \hline
+        Medium Lever    & 0.05 m & 0.145 m & 1.10 N    \\
+        \hline
+        Short Lever     & 0.05 m & 0.050 m & 3.90 N    \\
+        \hline
+    \end{tabular}
+
+    Table 1: Lever Data
+    \end{center}
+
+    \paragraph*{8.}
+
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+                & W (J)    \\
+            \hline
+            Long Lever      & 0.084 J   \\
+            \hline
+            Medium Lever    & 0.16 J    \\
+            \hline
+            Short Lever     & 0.20 J    \\
+            \hline
+        \end{tabular}
+
+        Table 2: Lever Analysis
+        \end{center}
+
+    \paragraph*{9.}
+    Mechanical advantage: $MA = \frac{F_{i}}{F_{o}}$
+
+    The theoretical $MA$ for the long lever is $\dfrac{D_{fp}}{D_{m}} = \dfrac{0.270}{0.05} = \boxed{5.4}$
+
+    Long Lever:
+    \begin{align*}
+        F_{i}   & = 0.018 N                     \\
+        F_{o}   & = 4.9 N                       \\
+        MA      & = \frac{4.9}{0.31}                \\
+                & = \boxed{15.8}
+    \end{align*}
+
+    \paragraph*{10.}
+    The longer the lever, the less force is needed to move the mass.
+
+    \paragraph*{11.}
+    From our observations, the longer the lever, the less work is needed. This is probably false and due to our incosistencies in measuring the force.
+
+    \paragraph*{12.}
+    Work done by the mass $= 4.9 N \cdot 0.05 m = 0.245 J$.
+
+    \paragraph*{13.}
+    Technically I did, but more likely (and why people use them) is that my measurements and use of force became more efficient as it was able to be done with less strain difficulty at longer lengths of the lever.
+
+    \pagebreak
+
+    \section*{Part 3.}
+
+    Weight of the cart: \underline{11.94 N}      Verticle Distance traveled: \underline{0.7 m}
+    
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+                & Lowest Steepness & Medium Steepness & Largest Steepness       \\
+            \hline
+            $y_{0}$ & 0.025 m & same m & same m                                 \\
+            \hline
+            $y_{f}$ & 0.095 m & same m & same m                                 \\
+            \hline
+            $\Delta y$ & 0.07 m &  same &  same                                  \\
+            \hline
+            $x_{0}$ & 0.75 m & 0.545 m & 0.325 m                                \\
+            \hline
+            $x_{f}$ & 2.22 m & 1.65 m & 1.22 m                                  \\
+            \hline
+            $\Delta x$ & 1.47 m & 1.105 m & 0.895 m                             \\
+            \hline
+            $\overline{\vec{F}}$ & 0.2237 N & 0.84 N & 1.135 N                  \\
+            \hline
+        \end{tabular}
+
+        Table 3: Inclined Plane Data
+    \end{center}
+
+    \paragraph*{14.}
+
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+                & $W_{fp}$ (J) & $W_{g}$ (J)    \\
+            \hline
+            Lowest Steepness & 0.33 J & 0.09 J  \\
+            \hline
+            Medium Steepness & 0.93 J & same    \\
+            \hline
+            Highest Steepness & 1.02 J & same   \\
+            \hline
+        \end{tabular}
+
+        Table 4: Inclined Plane Analysis
+    \end{center}
+
+    \paragraph*{15.}
+
+    Lowest:
+    \begin{align*}
+        MA  & = \frac{11.94}{0.2237}    \\
+            & = \boxed{53.4}
+    \end{align*}
+
+    Medium:
+    \begin{align*}
+        MA  & = \frac{11.94}{0.84}      \\
+            & = \boxed{14.21}
+    \end{align*}
+
+    Largest:
+    \begin{align*}
+        MA  & = \frac{11.94}{1.135}     \\
+            & = \boxed{10.52}
+    \end{align*}
+
+    \paragraph*{16.}
+    As the slope increases from being horizontal, the force needed to move the cart is increased and the mechanical advantage is decreased.
+
+    \paragraph*{17.}
+    The same as before; increasing the slope increases the work needed to be done, although this is probably due to errors in unaccounted for forces.
+
+    \paragraph*{18.}
+
+
+
+\end{document}
