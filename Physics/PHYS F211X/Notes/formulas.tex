@@ -29,10 +29,10 @@
 
 \newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
 
-%\setlength{\headheight}{42pt}
-%\setlength{\headsep}{0.25in}
-%\setlength{\columnsep}{0.35cm}
-%\setlength{\columnseprule}{1pt}
+\setlength{\headheight}{42pt}
+\setlength{\headsep}{0.25in}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{1pt}
 
 \begin{document}
 
@@ -47,39 +47,60 @@
     \end{titlepage}
 
     \section*{Formulas}
-    \subsection*{Motion}
+    \begin{multicols}{2}
+        Position:
+        \begin{align}
+            x, y, s, \text{ or } p  & = \vec{v}\Delta t = \int\vec{v}dt         \\
+                                 x  & = \frac{v_{0}+v{f}}{2}\Delta t            \\
+                                 x  & = v_{0}t + \frac{1}{2}\vec{a}t^{2}        \\ 
+        \end{align}
 
-    Position:
-    \begin{equation}
-        s \text{ or } p = \vec{v}\Delta t
-    \end{equation}
+        Velocity:
+        \begin{align}
+            \vec{v}         & = \vec{a}\Delta t = \frac{d}{dt}[p] = \int(\vec{a})dt     \\
+            \vec{v}         & = v_{0} + \vec{a}t                                        \\
+            \vec{v}^{2}_{f} & = v^{2}_{0} + 2\vec{a}\Delta x                            \\
+        \end{align}
 
-    Velocity:
-    \begin{equation}
-        \vec{v} = \vec{a}\Delta t
-    \end{equation}
+        Acceleration
+        \begin{equation}
+            \vec{a} = \frac{d}{dt}[\vec{v}]
+        \end{equation}
 
-    Projectile Motion:
-    \begin{equation}
-        \label{eqn::yfinal}
-        y_{f} = y_{0} + v_{0}(\Delta t) + \frac{1}{2}a(\Delta t^{2})
-    \end{equation}
+        Projectile Motion:
+        \begin{equation}
+            \label{eqn::yfinal}
+            y_{f} = y_{0} + v_{0}(\Delta t) + \frac{1}{2}a(\Delta t^{2})
+        \end{equation}
 
-    \subsection*{Force}
-    Force:
-    \begin{equation}
-        \vec{F} = m\vec{a}
-    \end{equation}
+        Force:
+        \begin{equation}
+            \vec{F} = m\vec{a}
+        \end{equation}
 
-    Friction:
-    \begin{equation}
-        f = \mu N
-    \end{equation}
+        Friction:
+        \begin{equation}
+            f = \mu N
+        \end{equation}
 
-    Drag: 
-    \begin{equation}
-        \vec{F_D}\text{ or }D = \frac{1}{2}\rho C_{D}Av^{2}
-    \end{equation}
+        Drag: 
+        \begin{equation}
+            \vec{F_D}\text{ or }D = \frac{1}{2}\rho C_{D}Av^{2}
+        \end{equation}
+
+        Circular Motion:
+        \begin{align}
+            \vec{v}     & = r                               \\
+            a_{cent}    & =\frac{\vec{v}^{2}}{r}            \\
+            f           & = \mu n                           \\
+            v_{cent}    & = \sqrt{gr}                       \\
+            N + mg      & = m\cdot \frac{v^2}{r}            \\
+            N           & = 3mg                             \\
+            \omega      & = \frac{\Delta \theta}{\Delta t}  \\
+        \end{align}
+    \end{multicols}
+
+    \pagebreak
 
     \subsection*{Key}
 
@@ -89,9 +110,11 @@
         x       & = \text{distance, meters}                                         \\
         t       & = \text{time, seconds}                                            \\
         m       & = \text{mass, kilograms}                                          \\
-        a       & = \text{acceleration, } \text{meters/second}^{2}                  \\
-        g       & = \text{gravity: } 9.8 \text{meters/second}^{2}                   \\
-        F       & = \text{force, Newtons, kilogram} \cdot \text{meters/second}^{2}  \\
+        a       & = \text{acceleration, meters/second}^{2}                          \\
+        \theta  & = \text{angle, degrees}                                           \\
+        g       & = \text{gravity: 9.8 meters/second}^{2}                           \\
+        \omega  & = \text{angular velocity, radians or degrees/second, counter-clockwise}\\
+        F       & = \text{force, Newtons, kilogram $\cdot$ meters/second}^{2}       \\
         \mu     & = \text{coefficient of friction}                                  \\
         N       & = \text{normal force, Newtons}                                    \\
         A       & = \text{area, meters}^{2}                                         \\
