@@ -1,0 +1,101 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 15, Due February 27, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    The weights of adult green sea urchin are normally distributed, with a mean of 52.0 grams and standard deviation of 17.2 grams.
+
+    \paragraph*{1.}
+    Find the percentage of such sea urchins with weights between 50 g and 60 g.
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            X               & \sim N(\mu=52, \sigma=17.2)           \\
+            P(50 < X < 60)  & =  P\left(Z \leq \frac{60-\mu}{\sigma}\right) - P\left(Z \geq \frac{50-\mu}{\sigma}\right)    \\
+                            & = \Phi\left(\frac{60-52}{17.2}\right) - \left( 1 - \Phi\left(\frac{50-52}{17.2}\right)\right)  \\
+                            & = \Phi(0.465) - (1 - \Phi(-0.116)) \leftarrow \text{ round to -0.12} \\
+                            & = \frac{0.6772+0.6808}{2} - (1 - 0.45224)                             \\
+                            & = 0.679 - 0.5477 = \boxed{0.1313}
+        \end{align*}
+    \end{mdframed}
+
+    \paragraph*{2.}
+    What percentage weight over 40 g?
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            P(X > 40)   & = P\left(Z \geq \frac{40-\mu}{\sigma}\right)                     \\
+                        & = 1 - \Phi\left(\frac{40-52}{17.2}\right)             \\
+                        & = 1 - \Phi(-0.6976) \leftarrow \text{ round to 0.7}   \\
+                        & = 1 - 0.24196 = \boxed{0.758}
+        \end{align*}
+    \end{mdframed}
+
+    \paragraph*{3.}
+    Find the 90$^{th}$ percentile for weights and interpret this value.
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            x   & = \mu + Z\sigma                   \\
+            x   & = 52 + 1.281(17.2)                \\
+                & = 52 + 22.033 = \boxed{54.033}
+        \end{align*}
+        The top 10\% in weight of adult green sea urchins are at least 54.033 g.
+    \end{mdframed}
+
+    \pagebreak
+
+    \paragraph*{4.}
+    Find the probability that in a sample of 16 adult green sea urchins, at least one will weigh over 75 grams.
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            P(X > 75)   & = P(Z > \frac{75-\mu}{\sigma})                        \\
+                        & = 1 - P(Z < \frac{75-52}{17.2})                       \\
+                        & = 1 - \Phi(1.337) \leftarrow \text{ round to 1.34}    \\
+                        & = 1 - 0.9099 = 0.0901                                 \\
+            P(\text{At least 1 in 16} > 75)
+                        & = 1 - (1-P(X > 75))^{16}                              \\
+                        & = 1 - (1-0.0901)^{16}                                 \\
+                        & = 1 - 0.7799 = \boxed{0.221}
+        \end{align*}
+    \end{mdframed}
+    
+\end{document}
