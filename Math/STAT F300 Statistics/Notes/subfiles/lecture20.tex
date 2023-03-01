@@ -1,0 +1,40 @@
+\documentclass[../Notes.tex]{subfiles}
+
+\begin{document}
+    \subsection*{\S 4.4 Exponential Distributions}
+
+    \paragraph*{The Exponential Distribution.} The random variable X has an exponential distribution with facts:
+
+    \begin{align}
+        X               & \sim \text{exp}(\lambda), \quad \lambda > 0                       \\
+        f(x, \lambda)   & =
+                                \begin{cases}
+                                    \lambda\cdot e^{-\lambda x} & \text{if } x > 0          \\
+                                    0   & \text{otherwise}
+                                \end{cases}                                                 \\
+        \mathbb{E}(X)   & = \frac{1}{\lambda}                                               \\
+        \text{var}(X)   & = \frac{1}{\lambda^{2}}                                           
+    \end{align}
+
+    \subsection*{\S 4.6 Normal Probability Plots}
+
+    ``Normal probability plots'' are used to check an assumption of normality.
+
+    A new type of notation: If $x_{1}, x_{2}, \cdots, x_{n}$ is a list of numbers, we define $x_{(1)}$ to be the smallest, $x_{(2)}$ to be the smallest, and so on. $x_{(n)}$ is the largest.
+
+    \underline{Example:} \{4, 1, 7, 12, 3, 9\} $\rightarrow x_{(1)} = 1, x_{(2)} = 3, \cdots x_{(6)} = 12$
+
+    Normal probability plots have one point per observation: for the $i^{th}$ point,
+    \begin{itemize}
+        \item the $x$-coordinate is $\mathbb{E}(Z_{(i)})$ where $Z \sim N(0,1)$, and
+        \item the $y$-coordinate is $x_{(i)}$, the $i^{th}$ smallest data value.
+    \end{itemize}
+
+    We'll use R to create the normal probability plots. Here's how we'll interpret the points:
+
+    If the points in the normal probability plot lie on the (approximately) straight line, then the data are consistent with an underlying normal population.
+
+    Otherwise, the data are inconsistent with an underlying normal population.
+
+    
+\end{document}
