@@ -36,5 +36,51 @@
 
     Otherwise, the data are inconsistent with an underlying normal population.
 
+    \pagebreak
+
+    \section*{\S 5.1 Joint Probabilities}
+
+    \paragraph*{Joint probability distributions}
+    Sometimes we consider 2(or more) rv at a time. Consider a situation where both rvs are discrete.
+
+    \underbar{Example:} Vehicle ownership in a large population.
+    
+    $X = \#$ motorcycles in a randomly selected household.
+
+    $Y = \#$ cars, trucks, etc. in the same household.
+
+    \begin{tabular}{l l | c c c | c}
+          & Y & 0 & 1 & 2 & Marginal Probabilities         \\
+        \hline
+        X & 0 & 0.05 & 0.75 & 0.10 & 0.90   \\
+          & 1 & 0.01 & 0.04 & 0.05 & 0.10   \\
+        \hline
+        Marginal Probabilities  
+          &   & 0.06 & 0.78 & 0.15 & 1.00   \\
+          &   &      &      &      &
+    \end{tabular}
+
+    The numbers in this table are the joint probabilities.
+
+    The table itself specifies the joint pmf:
+
+    \begin{align*}
+        P(0,1) & = P\left(\begin{array}{l l} 0 & \text{motorcycles} \\ 1 & \text{car} \end{array}\right) = 0.75  \\
+        P(1,2) & = P\left(\begin{array}{l l} 1 & \text{motorcycle} \\ 2 & \text{cars} \end{array}\right) = 0.05
+    \end{align*}
+
+    where
+    
+    \begin{align}
+        p(x,y) \geq 0              \\  
+        \sum_{x}\sum_{y}p(x,y) = 1  
+    \end{align}
+
+    The marginal probabilities are $p_{X}(x)$ and $p_{Y}(y)$.
+
+    \begin{align}
+        p_{X}(x) & = P(X = x)   \\
+        p_{Y}(y) & = P(Y = y)
+    \end{align}
     
 \end{document}
