@@ -1,0 +1,125 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework Set VII, Due Friday, March 3, 2023}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{1.}
+    Evaluate $\int_{-1}^{1}\frac{4}{x^2}dx$.
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \int_{-1}^{1}\frac{4}{x^2}dx = \int_{-1}^{0}\frac{4}{x^2}dx + \int_{0}^{1}\frac{4}{x^2}dx   \\
+                \int_{-1}^{0}\frac{4}{x^2}dx \Rightarrow \lim_{u \to 0^{-}}\int_{-1}^{u}\frac{4}{x^2}dx = \lim_{u \to 0^{-}}\left[-\frac{4}{x}\right]_{-1}^{u} = \lim_{u \to 0^{-}}-\left[\frac{4}{u} - \frac{4}{-1}\right] \\
+                = -\left[-\infty + 4\right] \quad \boxed{\text{Diverges}}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{2.}
+    Evaluate $\int \frac{dx}{\sqrt{-x^{2}-2x}}$.
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \int \frac{dx}{\sqrt{-x^{2}-2x}} = \int \frac{dx}{\sqrt{1-(x+1)^{2}}}   \\
+                \text{let } u = x+1 \quad du = dx                                       \\
+                \Rightarrow \int \frac{du}{\sqrt{1 - u^{2}}} = \arcsin(u) + C = \boxed{\arcsin(x+1)+C}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{3.}
+    Evaluate $\lim_{n \rightarrow \infty} \frac{10n^{6} + 100n}{2(4 + n^6)}$.
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \lim_{n \rightarrow \infty} \frac{10n^{6} + 100n}{2(4 + n^6)} = \frac{10}{2}\lim_{n \rightarrow \infty} \frac{n^{6} + 10n}{4 + n^6} \\
+                = \frac{10}{2}\lim_{n \rightarrow \infty} \frac{\frac{n^{6}}{n^{6}} + \frac{10n}{n^{6}}}{\frac{4}{n^{6}} + \frac{n^{6}}{n^{6}}} 
+                = \frac{10}{2}\lim_{n \rightarrow \infty} \frac{1 + \frac{10}{n^{5}}}{\frac{4}{n^{6}} + 1}
+                \rightarrow \frac{10}{2} \cdot \frac{1 + 0}{0 + 1} = \frac{10}{2} = \boxed{5}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{4.}
+    Evaluate $\lim_{n \to \infty}\frac{\ln(7+6n^{8})}{\ln(1000+n)}$.
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \lim_{n \to \infty}\frac{\ln(6n^{8})}{\ln(n)}   \leq
+                \lim_{n \to \infty}\frac{\ln(7+6n^{8})}{\ln(1000+n)} \leq
+                \lim_{n \to \infty}\frac{\ln(10n^{8})}{\ln(n)}   \\
+                = \lim_{n \to \infty}\frac{8\ln(n) + \ln(6)}{\ln(n)}   \leq
+                \lim_{n \to \infty}\frac{\ln(7+6n^{8})}{\ln(1000+n)} \leq
+                \lim_{n \to \infty}\frac{8\ln(n) + \ln(10)}{\ln(n)}   \\
+                = \lim_{n \to \infty}8 + \frac{\ln(6)}{\ln(n)}\leq
+                \lim_{n \to \infty}\frac{\ln(7+6n^{8})}{\ln(1000+n)} \leq
+                \lim_{n \to \infty}8 + \frac{\ln(10)}{\ln(n)}   \\
+                = 8 \leq
+                \lim_{n \to \infty}\frac{\ln(7+6n^{8})}{\ln(1000+n)} \leq
+                8 \quad \therefore \lim_{n \to \infty}\frac{\ln(7+6n^{8})}{\ln(1000+n)} = \boxed{8}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+    \paragraph*{5.}
+    Evaluate $\lim_{n \to \infty}\sqrt[n]{n^{100}+13}$.
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            \begin{gathered}
+                \lim_{n \to \infty}\sqrt[n]{n^{100}} \leq
+                \lim_{n \to \infty}\sqrt[n]{n^{100}+13} \leq
+                \lim_{n \to \infty}\sqrt[n]{2n^{100}}   \\
+                a=\lim_{n \to \infty}n^{100/n} \Rightarrow \ln(a)=\lim_{n \to \infty}\frac{100\cdot\ln(n)}{n}
+                \stackrel{(H)}{=}\lim_{n \to \infty}\frac{\frac{100}{n}}{1} = \frac{0}{1} = 0 \ln(a) = 0 \Rightarrow e^{\ln(a)} = e^{0} = 1 \\
+                b=\lim_{n \to \infty}2n^{100/n} \Rightarrow \ln(b)=\lim_{n \to \infty}\frac{100\cdot\ln(2n)}{n}
+                \stackrel{(H)}{=}\lim_{n \to \infty}\frac{\frac{100}{2n}}{1} = \frac{0}{1} = 0 \ln(b) = 0 \Rightarrow e^{\ln(a)} = e^{0} = 1 \\
+                1 \leq
+                \lim_{n \to \infty}\sqrt[n]{n^{100}+13} \leq
+                1 \quad \therefore \lim_{n \to \infty}\sqrt[n]{n^{100}+13} = \boxed{1}
+            \end{gathered}
+        \end{equation*}
+    \end{mdframed}
+
+\end{document}
