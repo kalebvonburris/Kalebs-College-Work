@@ -1,0 +1,439 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\graphicspath{ {./images/} }
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework 6, Due Friday, March 3, 23:59}
+
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+
+\makeatletter
+\tikzset{abs value/.code={%
+    \tikz@addmode{%
+      \pgfsyssoftpath@getcurrentpath\tikz@absvalue@tmppath%
+      \let\tikz@absvalue@tmppathA=\pgfutil@empty%
+      \expandafter\tikz@absycoord\tikz@absvalue@tmppath\pgf@stop
+      \pgfsyssoftpath@setcurrentpath\tikz@absvalue@tmppathA%
+    }%
+  }%
+}
+\def\tikz@absycoord#1#2#3#4{%
+  \pgfmathparse{abs(#3)}%
+  \expandafter\def\expandafter\tikz@absvalue@tmppathA\expandafter{\tikz@absvalue@tmppathA#1{#2}}%
+  \expandafter\expandafter\expandafter\def\expandafter\expandafter\expandafter\tikz@absvalue@tmppathA\expandafter\expandafter\expandafter{\expandafter\tikz@absvalue@tmppathA\expandafter{\pgfmathresult   pt}}%
+  \ifx#4\pgf@stop
+  \let\@next=\pgfutil@gobble
+  \else
+  \let\@next=\tikz@absycoord
+  \fi
+  \@next#4%
+}
+\makeatother
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{1.}Let Z be a standard normal random variable and calculate the following probabilities, drawing pictures for each (such as in the lecture notes).
+    \\
+    \begin{enumerate}[label=(\alph*)]
+        \item $P(0 \leq Z \leq 2.17)$
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{equation*}
+                    Z \sim N(\mu=0,\sigma=1)
+                \end{equation*}
+                \begin{align*}
+                    & P(0 \leq Z \leq 2.17)   \\
+                    & = P\left(Z \leq \frac{2.17-\mu}{\sigma}\right) - P\left(Z \leq \frac{0-\mu}{\sigma}\right)  \\
+                    & = \Phi\left(\frac{2.17}{1}\right) - \Phi\left(\frac{0}{1}\right) \\
+                    & = 0.985 - 0.50 = \boxed{0.485}
+                \end{align*}
+
+                \columnbreak
+    
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={0,2.17}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=0:2.17] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+        
+
+        \item $P(0 \leq Z \leq 1)$
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{align*}
+                    & P(0 \leq Z \leq 1)   \\
+                    & = P\left(Z \leq \frac{1-\mu}{\sigma}\right) - P\left(Z \leq \frac{0-\mu}{\sigma}\right)  \\
+                    & = \Phi\left(\frac{1}{1}\right) - \Phi\left(\frac{0}{1}\right) \\
+                    & = 0.841 - 0.50 = \boxed{0.341}
+                \end{align*}
+
+                \columnbreak
+    
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={0,1}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=0:1] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+
+        \item $P (-2.50 \leq Z \leq 0)$
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{align*}
+                    & P(-2.50 \leq Z \leq 0)   \\
+                    & = P\left(Z \leq \frac{0-\mu}{\sigma}\right) - P\left(Z \leq \frac{-2.50-\mu}{\sigma}\right)  \\
+                    & = \Phi\left(\frac{0}{1}\right) - \Phi\left(\frac{-2.50}{1}\right) \\
+                    & = 0.50 - 0.00621 = \boxed{0.49379}
+                \end{align*}
+
+                \columnbreak
+
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={-2.5,0}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=-2.5:0] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+
+        \item $P (-2.50 \leq Z \leq 2.50)$
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{align*}
+                    & P (-2.50 \leq Z \leq 2.50)   \\
+                    & = P\left(Z \leq \frac{2.50-\mu}{\sigma}\right) - P\left(Z \leq \frac{-2.50-\mu}{\sigma}\right)  \\
+                    & = \Phi\left(\frac{2.50}{1}\right) - \Phi\left(\frac{-2.50}{1}\right) \\
+                    & = 0.99379 - 0.00621 = \boxed{0.98758}
+                \end{align*}
+
+                \columnbreak
+
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={-2.5,0,2.5}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=-2.5:2.5] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+            
+        \end{mdframed}
+    \end{enumerate}
+
+    \pagebreak
+
+    \paragraph*{2.}
+    In each case, determine the value of the constant c that makes the probability statement correct. For each of these, sketch and label a $N(0,1)$ pdf to illustrate; these also makes it much much easier to get an idea of what c might be.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item $\Phi(c) = 0.9838$
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{equation*}
+                    \begin{gathered}
+                        \Phi(c) = 0.9838 \Rightarrow P(Z \leq c) = 0.9838       \\
+                        \text{Using a look-up table, } c \approx \boxed{2.945}
+                    \end{gathered}
+                \end{equation*}
+
+                \columnbreak
+
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      xmin=-5,xmax=5,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={0,2.945}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=-5:2.945] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+
+        \item $P (0 \leq Z \leq c) = 0.291$.
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{equation*}
+                    \begin{gathered}
+                        P (0 \leq Z \leq c) = 0.291 \Rightarrow \Phi(c) - 0.5 = 0.291   \\
+                        0.291 + 0.5 = \boxed{0.791} \\
+                        \Phi(0.791) = 0.81
+                    \end{gathered}
+                \end{equation*}
+
+                \columnbreak
+
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      xmin=-5,xmax=5,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={0,0.81}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [abs value, fill=cyan!20, draw=none, domain=0:0.81] {gauss(0,1)} \closedcycle;
+                      \addplot [abs value, very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+
+        \item $P (c \leq Z) = 0.121$.
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{equation*}
+                    \begin{gathered}
+                       P(c \leq Z) = 0.121 = 1 - \Phi(c) = 0.121    \\
+                       \Phi(c) = 0.879; \quad c = \boxed{1.17}
+                    \end{gathered}
+                \end{equation*}
+
+                \columnbreak
+
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      xmin=-5,xmax=5,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={0,1.17}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=1.17:5] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+
+        \item $P (-c \leq Z \leq c) = 0.668$.
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{equation*}
+                    \begin{gathered}
+                        P (-c \leq Z \leq c) = 0.668 \Rightarrow 2\Phi(c) = 0.668   \\
+                        \Phi(c) = 0.334, \quad c = \boxed{\pm 0.44}
+                    \end{gathered}
+                \end{equation*}
+
+                \columnbreak
+
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      xmin=-5,xmax=5,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={0.44}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=-0.44:0.44] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item $P (c \leq |Z|) = 0.016$.
+        \\ 
+        \begin{mdframed}
+            \begin{multicols}{2}
+                \begin{equation*}
+                    \begin{gathered}
+                       P(c \leq |Z|) = 0.016 = p(c \leq Z) + p(-c \geq Z)   \\
+                        \Rightarrow 2\Phi(c) = 0.016                        \\ 
+                        \Phi(c) = 0.008; \quad c = \boxed{\pm 2.405}
+                    \end{gathered}
+                \end{equation*}
+
+                \columnbreak
+
+                \centering\begin{tikzpicture}
+                    \begin{axis}[
+                      no markers, domain=-5:5, samples=20,
+                      xmin=-5,xmax=5,
+                      axis lines*=left, xlabel=$x$, ylabel=$y$,
+                      every axis y label/.style={at=(current axis.above origin),anchor=south},
+                      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+                      height=4cm, width=8cm,
+                      xtick={-2.405,0,2.405}, ytick=\empty,
+                      enlargelimits=false, clip=false, axis on top,
+                      grid = major
+                      ]
+                      \addplot [fill=cyan!20, draw=none, domain=2.405:5] {gauss(0,1)} \closedcycle;
+                      \addplot [fill=cyan!20, draw=none, domain=-5:-2.405] {gauss(0,1)} \closedcycle;
+                      \addplot [very thick,cyan!50!black] {gauss(0,1)};
+                    \end{axis}
+                    
+                    \end{tikzpicture}
+            \end{multicols}
+        \end{mdframed}
+    \end{enumerate}
+
+    \paragraph*{3.}
+    The maximum speed of a certain type of moped has a normal distribution with mean value 46.8 km/h and standard deviation 1.75 km/h.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item What is the probability that the maximum speed of a randomly chosen moped is at most 50 km/h?
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                X \sim N(\mu=46.8, \sigma 1.75)
+            \end{equation*}
+            \begin{align*}
+                P(Z \leq 50)    & = \Phi\left(\frac{50-46.8}{1.75}\right)       \\
+                                & = \Phi(1.83) = \boxed{0.96638}
+            \end{align*}
+        \end{mdframed}
+
+        \item What is the probability that maximum speed differs from the mean value by at most 1.5 standard deviations?
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                P(\mu - (\sigma \cdot 1.5) \leq Z \leq \mu + (\sigma \cdot 1.5))             
+                & = P\left(\frac{2.625}{1.75}\right) - P\left(\frac{-2.625}{1.75}\right) \\
+                & = P(1.5) - P(-1.5) = 0.93319 - 0.06681 = \boxed{0.86638}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+    \paragraph*{4.}
+    There are two machines available for cutting corks intended for use in wine bottles. The first produces corks with diameters that are normally distributed with mean 3.0 cm and standard deviation 0.1 cm. The second machine produces corks with diameters that have a normal distribution with mean 3.04 cm and standard deviation 0.02 cm. Acceptable corks have diameters between 2.9 cm and 3.1 cm. Which machine is more likely to produce an acceptable cork?
+    \\
+    \begin{mdframed}
+        \begin{align*}
+            P(2.9 \leq m_{1} \leq 3.1)  & = \Phi\left(\frac{3.1-3.0}{0.1}\right) - \Phi\left(\frac{2.9-3.0}{0.1}\right) \\
+                                        & = \Phi(1) - \Phi(-1) = 0.84134 - 0.15866 = 0.68268 \\
+            P(2.9 \leq m_{2} \leq 3.1)  & = \Phi\left(\frac{3.1-3.04}{0.02}\right) - \Phi\left(\frac{2.9-3.04}{0.02}\right) \\
+                                        & = \Phi(3) - \Phi(-7) = 0.99865 - (\sim 0) = 0.99865
+        \end{align*}
+        Machine 2 is more likely to produce acceptable corks, $\sim 99.87\%$ compared to Machine 1's $\sim 68.27\%$
+    \end{mdframed}
+
+    \pagebreak
+
+    \paragraph*{5.}
+    The weight distribution of parcels sent in a certain manner is normal with mean value 12 pounds and standard deviation 3.5 pounds. The parcel service wishes to establish a weight value c beyond which there will be a surcharge. What value of c is such that 99\% of all parcels are at least 1 pound under the surcharge weight?
+    \\
+    \begin{mdframed}
+        \begin{equation*}
+            X \sim N(\mu=12,\sigma=3.5)
+        \end{equation*}
+        \begin{align*}
+        P(c \leq Z)                                             & = 0.99        \\
+            \Rightarrow P\left(Z \geq \frac{c-12}{3.5}\right)   & = 0.99        \\
+            \Phi\left(\frac{c-12}{3.5}\right)                   & = 0.99        \\
+            \Phi(a) & = 0.99 \Rightarrow \Phi(2.305) \approx 0.99               \\
+            2.305   & = \frac{c-12}{3.5}    \\
+            c = 8.0675 = 12 = \boxed{20.0675 \text{ pounds}}
+        \end{align*}
+    \end{mdframed}
+
+\end{document}
