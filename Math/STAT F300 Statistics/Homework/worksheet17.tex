@@ -1,0 +1,144 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 16, Due March 3, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{1.}\hbox{}
+    \begin{enumerate}[label=(\alph*)]
+        \item Find$ p_{Y|X}(y|1)$, and show that this is a pmf.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \sum_x p_X(1) = 0.13 + 0.05 + 0.02 = 0.20   \\
+                    p_{Y|X}(y|1) =  \begin{array}{c | c}
+                        Y & p_{Y|X}(y|1)                        \\
+                        \hline
+                        0 & 0.13 / 0.20 = 0.65                  \\
+                        \hline
+                        1 & 0.05 / 0.20 = 0.25                  \\
+                        \hline
+                        2 & 0.02 / 0.20 = 0.10                  \\
+                        \hline
+                          & 0.65 + 0.25 + 0.10 = 1.00
+                    \end{array}                                 \\
+                    \sum_{Y}p_{Y|X}(y|1) = 1.00 \quad \therefore p_{Y|X}(y|1) \text { is a pmf}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item Find $\mathbb{E}(Y|1)$. Interpret this value.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \mathbb{E}(Y|1) = \mathbb{E}(Y|X=1) & = \sum_{Y}y \cdot p_{x|y}(y|1)        \\
+                                                    & = 0(0.65) + 1(0.25) + 2(0.10) = 0.25 + 0.2 = \boxed{0.45}
+            \end{align*}
+            Given that we went on a single hike with our dog on any given, the expected number of trips to Chicago that day is 0.45.
+        \end{mdframed}
+
+        \item Are $X$ and $Y$ independent? Explain.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \sum_{X} p_X(1) = 0.20; \quad \sum_{Y}(0) = 0.13 + 0.53 + 0.24 = 0.90
+            \end{equation*}
+            \begin{align*}
+                p(X=1, Y=0) & \stackrel{?}{=} \sum_{X} p_X(1) \cdot \sum_{Y}(0)     \\
+                0.13        & \stackrel{?}{=} 0.2 \cdot 0.90                        \\
+                0.13        & \cancel{=} 0.18 \quad \therefore \text{ X and Y are dependent}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+    \pagebreak
+
+    \paragraph*{2.}
+    \begin{enumerate}[label=(\alph*)]
+        \item Find $f_{X|Y}(x|y)$ when $y > 5$ or $y < 3$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                f_{X|Y}(x|y)    & = \frac{p(x,y)}{p(y)} (3 > y, y > 5) 
+                                  = \frac{\frac{1}{30}x^{2}}{0} \quad \boxed{\text{always undefined}}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $f_{X|Y}(x|y)$ when $3 < y < 5$. Show that this is a pdf.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                f_{X|Y}(x|y)    & = \frac{p(x,y)}{p(y)} (3 < y < 5)     \\
+                                & = \begin{cases}
+                                    \frac{\frac{1}{30}\left[3x^{2}+2\left(\frac{7}{15}+\frac{1}{15}y\right)\right]}{\frac{7}{15}+\frac{1}{15}y} & 1 < x < 2 \\
+                                    0 & \text{otherwise}
+                                \end{cases}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $\mathbb{E}(X|4)$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \mathbb{E}(X|4) = \mathbb{E}(X|Y=4) & = \int_{1}^{2}f(x,4)dx                                
+                                                    = \int_{1}^{2}\left[\frac{1}{30}(x^2+2(4))\right]dx     
+                                                    = \int_{1}^{2}\left[\frac{1}{30}(x^2+8)\right]dx        \\
+                                                    & = \frac{1}{30}\left[\frac{x^3}{3}+x\right]_{1}^{2}    
+                                                    = \frac{1}{30}\left[\left(\frac{2^3}{3}+2\right) - \left(\frac{1^3}{3}+1\right)\right]  \\
+                                                    & = \frac{1}{30}\left[\left(\frac{8}{3}+2\right) - \left(\frac{1}{3}+1\right)\right]
+                                                    = \frac{1}{30}\left[\frac{7}{3}+1\right]
+                                                    = \frac{1}{30}\left[\frac{9}{3}\right] = \frac{9}{90}   \\
+                                                    & = \boxed{\frac{1}{10} = 0.10}
+            \end{align*}
+        \end{mdframed}
+        
+        \item Are $X$ and $Y$ independent? Explain.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                f_{X|Y}(x|y)    & \stackrel{?}{=} f_{X}(x) \cdot f_{Y}(y)   \\
+                \frac{1}{30}(3x^{2}+2y) & \stackrel{?}{=} \left(\frac{1}{5}x^{2} + \frac{8}{15}\right)\left(\frac{7}{30} + \frac{1}{15}y\right) \\
+                \frac{1}{30}(3x^{2}+2y) & \cancel{=} \left(\frac{7}{150}x^{2}+\frac{1}{15}x^{2}y+\frac{8}{225}y+\frac{8}{225}\right)    \\
+                \cancel{=}      & \therefore \text{ $X$ and $Y$ are dependent}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+\end{document}
