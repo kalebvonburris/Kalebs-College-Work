@@ -1,0 +1,166 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 18, Due March 6, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph*{1.}
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item Find $\mathbb{E}(X)$, $\mathbb{E}(X^{2})$, and var($X$).
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \mathbb{E}(X)       & = \sum_{x}\sum_{x}xp(x,y)                 \\
+                                    & = 1(0.20) + 2(0.55) + 3(0.25)             \\
+                                    & = 0.20 + 1.10 + 0.75 = \boxed{2.05}       \\
+                \mathbb{E}(X^{2})   & = \sum_{y}\sum_{x}x^{2}p(x,y)             \\
+                                    & = 1^{2}(0.20) + 2^{2}(0.55) + 3^{2}(0.25) \\
+                                    & = 0.20 + 2.20 + 2.25 = \boxed{4.65}       \\
+                \text{var}(X)       & = \mathbb{E}(X^{2}) - \mathbb{E}(X)^{2}   \\
+                                    & = 4.65 - (2.05)^{2} = 4.65 - 4.2025 = \boxed{0.4475}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find var($Y$).
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \text{var}(X)       & = \mathbb{E}(Y^{2}) - \mathbb{E}(Y)^{2}   \\
+                                    & = \sum_{Y}y^{2}p_Y(2) - \left(\sum_{Y}yp_{Y}(Y)\right)^{2}   \\
+                                    & = 0.12 - (0.16)^{2} = 0.12 - 0.0256 = \boxed{0.0944}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $\mathbb{E}(XY)$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \mathbb{E}(XY)  & = \sum_{X}\sum_{Y}xyp(x,y)        \\
+                                & = (1)(1)(0.05) + (1)(2)(0.02) + (2)(1)(0.02) + (3)(1)(0.01)    \\
+                                & = 0.05 + 0.04 + 0.04 + 0.03 = \boxed{0.16}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find cov($X,Y$), cor($X,Y$).
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \text{cov}(X,Y) & = \mathbb{E}[(X-\mu_{X})(Y-\mu_{Y})]                      \\
+                                & \Rightarrow \mathbb{E}(XY)-\mu_{X}\mu_{Y}                 \\
+                                & = 0.16 - (2.05)(0.16) = \boxed{-0.168}                    \\
+                \rho_{XY}       & = \frac{\text{cov}(XY)}{\text{sd}(X)\text{sd}(Y)}         \\
+                                & = \frac{-0.168}{\sqrt{2.05}\sqrt{0.16}}           \\
+                                & = -\frac{0.168}{(1.4318)(0.40)} \approx \boxed{-0.2933}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+    \pagebreak
+
+    \paragraph*{2.}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Find $\mathbb{E}(X)$, $\mathbb{E}(X^{2})$, and var($X$).
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \mathbb{E}(X)       & = \int_{-\infty}^{\infty} xf_{X}(x)dx                 \\
+                                    & = \int_{1}^{2} x\left(\frac{1}{5}x^{2} + \frac{8}{15}\right)dx
+                                      = \left[\frac{x^{3}}{15} + \frac{8x^{2}}{30}\right]_{1}^{2}
+                                      = \left[
+                                        \left(\frac{2^{3}}{15} + \frac{8(2)^{2}}{30}\right) -
+                                        \left(\frac{1^{3}}{15} + \frac{8(1)^{2}}{30}\right)
+                                    \right]                                                 \\
+                                    & = \frac{7}{15} + \frac{24}{30} = \boxed{\frac{38}{30} = 1.2\overline{66}}\\
+                \mathbb{E}(X^{2})   & = \int_{-\infty}^{\infty} x^{2}f_{X}(x)dx             \\
+                                    & = \int_{1}^{2} x^{2}\left(\frac{1}{5}x^{2} + \frac{8}{15}\right)dx
+                                    = \left[\frac{x^{4}}{20} + \frac{8x^{3}}{45}\right]_{1}^{2}
+                                    \stackrel{\text{wolfram alpha}}{\approx} \boxed{2.4844} \\
+                \text{var}(X)       & = \mathbb{E}(X^{2}) - \mathbb{E}(X)^{2}               \\
+                                    & = 2.4844 - (1.2666)^{2} = 2.4844 - 1.6044 = \boxed{0.88}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find var($Y$).
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \text{var}(Y)   & = \mathbb{E}(Y^{2}) - (\mathbb{E}(Y))^{2}                 \\
+                                & = 16.689 - (4.0444)^{2} = 16.689 - 16.3572 = \boxed{0.3318}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find $\mathbb{E}(XY)$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \mathbb{E}(XY)  & = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+                                    xyf(x,y)dxdy                                            \\
+                                & = \int_{3}^{5}\int_{1}^{2}
+                                    xy\left(\frac{1}{30}(3x^{2}+2y)\right)dxdy              \\
+                                & = \frac{1}{30}\int_{3}^{5}
+                                    \left[x^{3}+2yx\right]_{1}^{2}dy =
+                                    \frac{1}{30}\int_{3}^{5}[7 + 3y]dy                            
+                                    = \frac{1}{30}\left[7y + \frac{3y^{2}}{2}\right]_{3}^{5}\\
+                                &  = \frac{1}{30}
+                                  \left[
+                                    \left(7(5) + \frac{3(5)^{2}}{2}\right) -
+                                    \left(7(3) + \frac{3(3)^{2}}{2}\right)
+                                  \right]                                                   
+                                  = \frac{1}{30}\left[21 + \frac{54}{2}\right]
+                                  = \boxed{\frac{48}{30} = 1.6}
+            \end{align*}
+        \end{mdframed}
+
+        \item Find cov($X,Y$), cor($X,Y$).
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \text{cov}(X,Y) & = \mathbb{E}[(X-\mu_{X})(Y-\mu_{Y})]                      \\
+                                & \Rightarrow \mathbb{E}(XY)-\mu_{X}\mu_{Y}                 
+                                  = 1.6 - (1.2667)(4.0444) \approx \boxed{-3.523}           \\
+                \rho_{XY}       & = \frac{\text{cov}(XY)}{\text{sd}(X)\text{sd}(Y)}         \\
+                                & = \frac{-3.523}{\sqrt{0.88}\sqrt{0.3318}}                 \\
+                                & = -\frac{3.523}{(0.9381)(0.5760)} \approx \boxed{-6.5197}
+            \end{align*}
+        \end{mdframed}
+    \end{enumerate}
+
+\end{document}
