@@ -1,0 +1,87 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\graphicspath{ {./images/} }
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework 7, Due Friday, March 10, 23:59}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{itemize}
+        \item [1.]
+        
+            \begin{itemize}
+                \item [(a)]
+                
+                    \begin{align*}
+                        1   & = \int_{20}^{30}\int_{20}^{30}K(x^{2}+y^{2})dxdy      \\
+                            & = K\int_{20}^{30}\int_{20}^{30}x^{2}dydx 
+                              + K\int_{20}^{30}\int_{20}^{30}y^{2}dxdy              \\
+                            & = 10K\left.\frac{x^{3}}{3}\right|_{20}^{30} 
+                              + 10K\left.\frac{y^{3}}{3}\right|_{20}^{30}           \\
+                            & = 20K\left(\frac{30^{3}}{3}-\frac{20^{3}}{3}\right)   \\
+                            & = 20K\frac{19,000}{3}                                 \\
+                        3   & = 380,000K                                            \\
+                        K   & = \boxed{\frac{3}{380,000}}
+                    \end{align*}
+                
+                \item [(b)]
+                
+                    \begin{align*}
+                        P(X < 26, Y < 26)   & = \int_{20}^{26}\int_{20}^{26}K(x^{2}+y^{2})  \\
+                                            & = 12K\left(\frac{26^{3}}{3}-\frac{20^{3}}{3}\right)\\
+                                            & = 12K\left(\frac{9576}{3}\right)              \\
+                                            & = \frac{36}{380,000}\cdot\frac{9756}{3} \approx \boxed{0.3081}
+                    \end{align*}
+                
+                \item [(c)]
+                
+                    
+                
+                \item [(d)]
+                
+                \item [(e)]
+                
+                \item [(f)]
+                
+                \item [(h)]
+                
+                \item [(j)]
+                
+                \item [(i)]
+
+            \end{itemize}
+
+    \end{itemize}
+
+\end{document}
