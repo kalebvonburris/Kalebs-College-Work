@@ -1,0 +1,123 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework Set VIII, Due Monday, March 20, 2023}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    Which of the following converge:
+
+    \begin{itemize}
+        \item [1.]
+        $\sum\frac{n^{2}-1}{5n^{5}}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \boxed{\text{Convergent, using P-Series:}}                      \\
+                      \lim_{x \to \infty}\frac{x^{2}-1}{5x^{5}}
+                    = \lim_{x \to \infty}\frac{x^{2}}{x^{5}} 
+                    = \lim_{x \to \infty}\frac{1}{x^{3}}, \quad 
+                    P > 1 \therefore \text{ Convergent}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+    
+        \item [2.]
+        $\sum\cos\left(\frac{1}{n}\right)$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \boxed{\text{Divergent, using divergence test:}}                \\
+                    \lim_{x \to \infty} \cos\left(\frac{1}{x}\right) = \cos(0) = 1;
+                    \quad \lim_{x \to \infty} \cancel{=} 0, \quad \therefore 
+                    \text{ Divergent}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [3.]
+        $\sum\sin\left(\frac{1}{n^{2}}\right)$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \boxed{\text{Convergent, comparison test:}}                       \\
+                    \sin\left(\frac{1}{x^{2}}\right) \leq \frac{1}{n^{2}},
+                    \quad \frac{1}{n^{2}} \text{ is convergent; } \therefore
+                    \text{ Converges}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [4.]
+        $\sum\frac{n^{2}+100}{20n^{5}}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \boxed{\text{Convergent, P-Series}}                                \\
+                      \lim_{x \to \infty}\frac{x^{2}+100}{20x^{5}}
+                    = \lim_{x \to \infty}\frac{x^{2}}{x^{5}}
+                    = \lim_{x \to \infty}\frac{1}{x^{3}}, \quad
+                    P > 1 \therefore \text{ Convergent}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+        
+        \item [5.]
+        $\sum\frac{\ln(n)}{n}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \boxed{\text{Divergent, integral test:}}                               \\
+                      \int_{1}^{\infty}\frac{\ln(x)}{x}dx \Rightarrow 
+                        \lim_{x \to \infty}\int_{0}^{n}ud(\ln(x))
+                      = \lim_{x \to \infty}\left.\left(\frac{u^{2}}{2}\right)\right|_{0}^{n}\\
+                      = \lim_{x \to \infty}\frac{n^{2}}{2}-\frac{0}{2}
+                      = \lim_{x \to \infty}\frac{\ln(x)^{2}}{2}
+                      = \frac{\ln(\infty)^{2}}{2} = \infty, \quad
+                      \therefore \text{ Divergent}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+    \end{itemize}
+
+\end{document}
