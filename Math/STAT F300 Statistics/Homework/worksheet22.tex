@@ -1,0 +1,102 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 22, Due March 22, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{itemize}
+        \item [1.]
+        Of $n$ randomly selected Star Wars fans, $X$ describe themselves as extroverts; whereas of $m$ randomly selected Star Trek fans, $Y$ are extroverts. Let $p_{1}$ and $p_{2}$ denote the probabilities that a randomly selected Star Wars fan and Star Trek fan, respectively, are extroverts.
+
+        \begin{itemize}
+            \item [(a)]
+            Show that $T = (X/n - Y /m)$ is an unbiased estimator for $p_{X} - p_{Y}$.
+            \begin{mdframed}
+                \begin{align*}
+                    p_{X}-p_{Y} & = T = (X/n - Y/m)                 \\
+                    p_{1}       & = X/n                             \\
+                    p_{2}       & = Y/n                             \\
+                    \therefore  & \quad  p_{X} - p_{Y} = X/n - Y/m  \\
+                    \therefore  & \quad \text{T is an unbiased estimator}
+                \end{align*}
+            \end{mdframed}
+
+            \item [(b)]
+            Find var($T$). Find the s.e. of the estimator in (a); i.e. find sd($T$).
+            \begin{mdframed}
+                \begin{align*}
+                    \text{var}(T)   & = \text{var}(X/n - Y/m)
+                                      = \text{var}(X/n) - \text{var}(Y/m)           \\
+                                    & = \boxed{np_{X}(1-p_{X}) - mp_{Y}(1-p_{Y})}   \\
+                    \text{s.e.}(T) = \text{sd}(T)& = \sqrt{\text{var}(T)}           \\
+                                    & = \boxed{\sqrt{np_{X}(1-p_{X}) - mp_{Y}(1-p_{Y})}}
+                \end{align*}
+            \end{mdframed}
+
+            \item [(c)]
+            How would you use the observed values $x$ and $y$ to estimate the standard error of $T$?
+            \begin{mdframed}
+                $x$ and $y$ are the cases of extroverts, and so I would use them to calculate $p_{X}$ and $p_{Y}$ as $p_{X} = x/n$ and $p_{Y} = y/n$.
+            \end{mdframed}
+
+            \item [(d)]
+            If n = m = 200, x = 127, and y = 176, use the estimator of (a) to obtain an estimate of $p_{X} - p_{Y}$.
+            \begin{mdframed}
+                \begin{align*}
+                    T   & = X/n - Y/m   \\
+                        & = 127/200 - 176/200 = 0.635 - 0.880 = \boxed{-0.245}
+                \end{align*}
+            \end{mdframed}
+
+            \item [(e)]
+            Use the result of part (c) and the data of part (d) to estimate the standard error of the estimator.
+            \begin{mdframed}
+                \begin{align*}
+                    p_{X}           & = X/n = 0.635                                         \\
+                    p_{y}           & = Y/m = 0.880                                         \\
+                    \text{s.e.}(T)  & = \sqrt{np_{X}(1-p_{X}) - mp_{Y}(1-p_{Y})}            \\
+                                    & = \sqrt{200(0.635)(1-0.635) - 200(0.880)(1-0.980)}    \\
+                                    & = \sqrt{46.355 - 21.12} = \sqrt{25.235} \approx \boxed{5.0235}
+                \end{align*}
+            \end{mdframed}
+
+        \end{itemize}
+    \end{itemize}
+
+\end{document}
