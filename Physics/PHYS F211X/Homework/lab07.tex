@@ -1,0 +1,123 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{ {./lab06images/} }
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Lab 6: Momentum, 3/7/2023, Partners: Maite Valentin-Lugo, Seth Waln}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{enumerate}
+        \item [1.]
+        \begin{align*}
+            p_{i}   & = m \cdot v_{ix}      \\
+            p_{f}   & = (M+m) \cdot v_{fx}  \\
+            v_{ix}  & = \frac{p_{f}}{m}     \\
+                    & = \boxed{\frac{(M+m) \cdot v_{fx}}{m}}
+        \end{align*}
+
+        \item [2.]
+        \begin{align*}
+            E_{i}   & = \frac{1}{2}(M+m)(v_{fx})^{2}    \\ 
+        \end{align*}
+
+        \item [3.]
+        \begin{align*}
+            E_{f}   & = \frac{1}{2}(M+m)(g)(\Delta h)   \\
+            E_{i}   & = E_{f}                           \\
+            V_{ix}  & = \sqrt{2g\Delta h}               \\
+            v_{ix}  & = \frac{(M+m) \cdot v_{fx}}{m}    
+                      = \boxed{\frac{(M+m)\sqrt{2g\Delta h}}{m}}
+        \end{align*}
+
+        \item [4.]
+        \begin{align*}
+            y - y_{0}   & = y_{1}                       \\
+            y_{l}       & = \frac{1}{2}gt^{2}           \\
+            t           & = \boxed{\sqrt{\frac{2y_{1}}{g}}}
+        \end{align*}
+
+        \item [5.]
+        \begin{align*}
+            \Delta x    & = v_{ix} \cdot t                  \\
+            \Delta x    & = \frac{(M+m)\sqrt{2g\Delta h}}{m} \cdot 
+                            \boxed{\sqrt{\frac{2y_{1}}{g}}} \\
+        \end{align*}
+
+        \item [6.]
+        \begin{align*}
+            m   & = 0.0661 \pm 0.00005 kg                   \\
+            M   & = 0.1648 \pm 0.00005 kg                   \\  
+        \end{align*}
+
+        \pagebreak
+
+        \item [7.]
+        
+
+
+        \item [8.]
+        
+
+
+        \item [9.]
+        
+
+
+        \item [10.]
+        
+        \begin{align*}
+            \Delta x    & \stackrel{\text{Excel}}{=} 1.9187 m
+        \end{align*}
+
+        \item [11.]
+        
+        \resizebox{\hsize}{!}{\begin{equation*}
+            \delta x    & = \sqrt{
+                \left(\frac{2}{0.0661}\sqrt{1.9187 \cdot 1.282}(0.00005)\right)^{2} +
+                \left(\frac{-2(0.1648)}{0.0661^{2}}\sqrt{1.9187 \cdot 1.282}(0.00005)\right)^{2} +
+                \left(\frac{2}{0.0661}\sqrt{1.9187 \cdot 1.282}(0.00005)\right)^{2} +
+            }
+        \end{equation*}}
+
+    \end{enumerate}
+
+\end{document}
