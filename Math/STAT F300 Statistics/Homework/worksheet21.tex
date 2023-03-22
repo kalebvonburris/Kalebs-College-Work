@@ -1,0 +1,128 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Worksheet 19, Due March 8, 4:15pm}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{itemize}
+        \item [1.]
+        Calculate $\Gamma(5)$, $\Gamma(2)$, $\Gamma(3/2)$ and $\Gamma(7/2)$.
+        \\
+        \begin{mdframed}
+            \begin{align*}
+                \Gamma(5)   & = (5-1)! = 4! = \boxed{24}                            \\
+                \Gamma(2)   & = (2-1)! = \boxed{1}                                  \\
+                \Gamma(3/2) & \Rightarrow \Gamma(1/2) = \sqrt{\pi}, \quad 
+                              \Gamma(\alpha) > 1 \text{ then } \Gamma(\alpha)
+                              = (\alpha - 1)\Gamma(\alpha - 1)                      \\
+                \Gamma(3/2) & = (3/2 - 1) \Gamma(3/2 - 1)                           \\
+                            & = \boxed{\frac{1}{2}\sqrt{\pi}}                       \\
+                \Gamma(7/2) & = (7/2-1)\Gamma(7/2-1) = (5/2)\Gamma(5/2)             \\
+                            & = (5/2)(5/2-1)\Gamma(5/2-1) = (5/2)(3/2)\Gamma(3/2)   \\
+                            & = (15/4)(1/2)\sqrt{\pi}                               \\
+                            & = \boxed{\frac{15}{8}\sqrt{\pi}}
+            \end{align*}
+        \end{mdframed}
+
+        \item[2.]
+        A sample of asking prices for 2BR/2BA houses in two large U.S. cities were collected. Let $\overline{X_{n}}$ and $\overline{Y_{m}}$ be the sample average asking prices for the two cities. All prices are assumed to be independent, within cities and between cities. Let $\mu_{X}$ = 268 and $\mu_{Y}$ = 260 be the average values for the individual houses in the two cities (units are thousands of dollars), and let $\sigma_{X}$ = 22 and $\sigma_{Y}$ = 20 be the standard deviations (also in thousands of dollars).
+
+        \begin{itemize}
+            \item [(a)]
+            Find the expected value and the variance of $\overline{X_{n}}$ - $\overline{Y_{m}}$. (Note that the sample sizes, n and m, need not be equal. (Your answer will have both n and m in it.)
+            \\
+            \begin{mdframed}
+                \begin{align*}
+                    \mathbb{E}(\overline{X}_{n} - \overline{Y}_{m})
+                        & = \mathbb{E}(\overline{X}_{n}) - \mathbb{E}(\overline{Y}_{m}) \\
+                        & = 268 - 260 = \boxed{8}                                       \\
+                    \text{var}(\overline{X}_{n} - \overline{Y}_{m})
+                        & = \text{var}(\overline{X}_{n})/n+(-1)^{2}\text{var}(\overline{Y}_{m})/m\\
+                        & = \boxed{\frac{22}{n} + \frac{20}{m}}
+                \end{align*}
+            \end{mdframed}
+
+            \item [(b)]
+            If asking prices are normally distributed and the samples are of sizes n = 10 and m = 12, is there enough information to calculate $P(-0.2 \leq \overline{X}_{n} - \overline{Y}_{m} - 7.0 \leq 0.2)$? Why or why not? If yes, estimate the value.
+            \\
+            \begin{mdframed}
+                \begin{align*}
+                    \overline{X}_{10} - \overline{Y}_{12} \sim N\left(8,\frac{22}{10} 
+                    + \frac{20}{12}\right) & \approx N(8, 0.1887)                       \\
+                    P(-0.2 \leq \overline{X}_{n} - \overline{Y}_{m} - 7.0 \leq 0.2)
+                        & = P()
+                \end{align*}
+            \end{mdframed}
+
+            \pagebreak
+
+            \item [(c)]
+            If the distribution of the asking prices is unknown, and the samples are of sizes n = 36 and m = 25, is there enough information to calculate $P(-0.2 \leq \overline{X}_{n} - \overline{Y}_{m} - 7.0 \leq 0.2)$? Why or why not? If yes, estimate the value.
+            \\
+            \begin{mdframed}
+                
+            \end{mdframed}
+            
+            \item [(d)]
+            If the distribution of the asking prices is unknown (not necessarily normal), and the samples are of sizes n = 36 and m = 49, is there enough information to calculate $P(-0.2 \leq \overline{X}_{n} - \overline{Y}_{m} - 7.0 \leq 0.2)$? Why or why not? If yes, estimate the value.
+            \\
+            \begin{mdframed}
+                
+            \end{mdframed}
+        \end{itemize}
+
+        \item[3.]
+        Let $X_{1}, \cdots, X_{n}$ be independent Exponential($\theta$) random variables.
+
+        \begin{itemize}
+            \item [(a)]
+            Show that $\overline{X}$ is biased for $\theta$. 
+            \begin{mdframed}
+                
+            \end{mdframed}
+
+            \item [(b)]
+            Show that $\overline{X}$ is unbiased for 1/$\theta$.
+            \begin{mdframed}
+                
+            \end{mdframed}
+        \end{itemize}
+    \end{itemize}
+
+\end{document}
