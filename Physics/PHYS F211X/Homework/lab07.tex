@@ -5,7 +5,7 @@
 
 \usepackage{enumitem}
 \usepackage{graphicx}
-\graphicspath{ {./lab06images/} }
+\graphicspath{ {./lab07images/} }
 
 % Put class number, class name, and professor 
 % name.
@@ -16,7 +16,7 @@
 % Put the assignment name with \S if 
 % necessary for the section and the question 
 % numbers.
-\renewcommand\assignment{Lab 6: Momentum, 3/7/2023, Partners: Maite Valentin-Lugo, Seth Waln}
+\renewcommand\assignment{Lab 7: The Ballistic Pendulum and Projectile Motion, 3/20/2023, Partners: Maite Valentin-Lugo, Seth Waln}
 
 \begin{document}
 
@@ -90,18 +90,10 @@
 
         \pagebreak
 
-        \item [7.]
+        \item [7., 8., 9.]
         
-
-
-        \item [8.]
+        \resizebox{\hsize}{!}{\includegraphics{image-01}}
         
-
-
-        \item [9.]
-        
-
-
         \item [10.]
         
         \begin{align*}
@@ -110,13 +102,47 @@
 
         \item [11.]
         
-        \resizebox{\hsize}{!}{\begin{equation*}
-            \delta x    & = \sqrt{
+        \begin{gather*}
+            \delta x = \sqrt{
                 \left(\frac{2}{0.0661}\sqrt{1.9187 \cdot 1.282}(0.00005)\right)^{2} +
                 \left(\frac{-2(0.1648)}{0.0661^{2}}\sqrt{1.9187 \cdot 1.282}(0.00005)\right)^{2} +
-                \left(\frac{2}{0.0661}\sqrt{1.9187 \cdot 1.282}(0.00005)\right)^{2} +
+                \left(\left(1+\frac{0.1648}{0.0661}\right)\sqrt{\frac{1.282}{0.5883}(0.00005)}\right)^{2} +
+                \left(\left(1+\frac{0.1648}{0.0661}\sqrt{\frac{1.282}{0.5883}}(0.00005)\right)\right)^{2}
             }
-        \end{equation*}}
+            = \boxed{\pm 0.1631 m}
+        \end{gather*}
+
+        \item [12.]
+        
+        The force of gravity only determines how far the projectile travels in the y-axis, not the x-axis, and so, although it determines long the projectile is in the air, it does not affect how far it's traveling.
+        
+        \item [13.]
+        
+        \begin{equation*}
+            1 - (0.73 / 0.53) \approx 0.3775
+        \end{equation*}
+
+        The percent difference between the largest and smallest $\Delta h$ was $\approx$ 37.75\%. This is acceptable because our largest value was an extreme outlier. All other data points were within $\pm 0.1$ m of each other.
+
+        \item [14.]
+        
+        The change in height uncertainty was the heighest, which makes sense given how our units of measurement were less precise and many more forces were acting against the accuracy of the height compared to the others.
+
+        \item [15.]
+        
+        Once we were able to establish the correct angle to fire at, we struck the target almost perfectly.
+
+        \item [16.]
+        
+        The theoretical and experimental values were extremely similar, with some loss in the experimental values.
+
+        \item [17.]
+        
+        If we overshot, our $\Delta h$ would have been too high, as having a larger starting height ($\Delta h$) results in more time for the projectile to move, and thus more distance for it to travel through.
+
+        \item [18.]
+        
+        We did not account for air resistance or friction between the ball and the gun, although because of the aerodynamic nature of the projectile and the fact that the measurements are done after the ball leaves the gun, those two forces, especially in a toy case such as this, are extremely negligible, as was shown when we tried the experiment. The main change I would make is to have an clearer instructions as we spent most of our time initially trying to figure out what exactly ``Attach a thread to the catcher and string it through the Velcro on the upper base of the launcher'' meant, along with an error later on related to $y_{l}$ and $\Delta y$.
 
     \end{enumerate}
 
