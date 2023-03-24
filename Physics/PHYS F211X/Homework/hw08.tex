@@ -1,0 +1,139 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{HW 8, Due Friday, 3/24/2023 23:59; \S10 Q: P: \#24, 41, 45, 47 \S11 Q: \#5, 9, 13 P: \#27, 28, 40, 47}
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \section*{Chapter 10}
+
+    \subsection*{Problems}
+
+    \begin{itemize}
+        \item [24.]
+        
+        \begin{itemize}
+            \item [a.]
+            The particle will move to the right.
+
+            \item [b.]
+            \begin{align*}
+                KE      & = 3.0 J \text{ at } x=4m  \\
+                \vec{v} & = \sqrt{2m(KE)}           \\
+                \vec{v} & = \sqrt{2(0.020)(3.0)}    \\
+                        & = \boxed{0.35m/s \text{ at } x=4 m}
+            \end{align*}
+
+            \item [c.]
+            There are turning points at $x=1m$ and $x=4m$.
+
+        \end{itemize}
+
+        \item [41.]
+        \begin{align*}
+            KE_{i} + U_{i}  & = KE_{f} + U_{f}                                      \\
+            KE              & = \frac{1}{2}mv^{2}                                   \\
+            U               & = mgy                                                 \\
+            \frac{1}{2}mv^{2}_{i} + mgy_{i} & = \frac{1}{2}mv^{2}_{f} + mgy_{f}     \\
+            v_{i}           & = \sqrt{v_{f}^{2}+2gy_{f}-2gy_{i}}                    \\
+                            & = \sqrt{3^{2} + 2(-9.8)(0.20) - 2(-9.8)(0)}           \\
+                            & = \sqrt{9 - 3.92} = \sqrt{5.08} = \boxed{2.25m/s}
+        \end{align*}
+
+        \item [45.]
+        \begin{align*}
+            K_{i}   & = 0               \\
+            U_{i}   & = mgh             \\
+            K_{f}   & = 1/2mgr          \\
+            U_{f}   & = 2mgr            \\
+            0 + mgh & = 1/2mgr + 2mgr   \\
+            mgh     & = 5/2mgr          \\
+            h       & = \boxed{\frac{5}{2}r}
+        \end{align*}
+
+        \item [47.]
+        
+        \begin{center}
+            \begin{tikzpicture}
+                \begin{axis}[
+                    xlabel = Compression (cm),
+                    ylabel = Height (cm),
+                    ymin=0
+                ]
+                    \addplot[blue] coordinates
+                    {(2,32) (3,65) (4,115) (5,189)};
+                \end{axis}
+            \end{tikzpicture}
+        \end{center}
+
+        \begin{align*}
+            K_{i} + U_{i}   & = K_{f} + U_{f}   \\
+            0 + 1/2kx^{2}   & = 0 + mgh         \\
+            m               & = \frac{1/2kx^{2}}
+                                     {gh}       \\
+                            & = \frac{1/2(950)x^{2}}
+                                     {-9.8h}
+        \end{align*}
+
+    \end{itemize}
+
+    \pagebreak
+
+    \section*{Chapter 11}
+
+    \subsection*{Questions}
+
+    \begin{itemize}
+        \item [5.]
+        \item [9.]
+        \item [13.]
+    \end{itemize}
+
+    \subsection*{Problems}
+
+    \begin{itemize}
+        \item [27.]
+        \item [28.]
+        \item [40.]
+        \item [47.]
+    \end{itemize}
+
+\end{document}
