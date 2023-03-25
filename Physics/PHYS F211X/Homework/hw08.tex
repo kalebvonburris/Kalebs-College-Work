@@ -89,28 +89,32 @@
             h       & = \boxed{\frac{5}{2}r}
         \end{align*}
 
-        \item [47.]
+        \pagebreak
+
+        \item [47.]\mbox{}\\
         
         \begin{center}
             \begin{tikzpicture}
                 \begin{axis}[
-                    xlabel = Compression (cm),
-                    ylabel = Height (cm),
+                    xlabel = Compression (m),
+                    ylabel = Height (m),
                     ymin=0
                 ]
                     \addplot[blue] coordinates
-                    {(2,32) (3,65) (4,115) (5,189)};
+                    {(0.02,0.32) (0.03,0.65) (0.04,1.15) (0.05,1.89)};
                 \end{axis}
             \end{tikzpicture}
         \end{center}
 
         \begin{align*}
-            K_{i} + U_{i}   & = K_{f} + U_{f}   \\
-            0 + 1/2kx^{2}   & = 0 + mgh         \\
-            m               & = \frac{1/2kx^{2}}
-                                     {gh}       \\
-                            & = \frac{1/2(950)x^{2}}
-                                     {-9.8h}
+            K_{i} + U_{i}   & = K_{f} + U_{f}                   \\
+            0 + 1/2kx^{2}   & = 0 + mgh                         \\
+            h               & = \frac{kx^{2}}{2mg}              \\
+            \frac{dh}{dx}   & = \frac{kx}{mg} = \text{Slope}    \\
+            \text{Slope}    & = \frac{0.05-0.02}{1.89-0.32}
+                              = \frac{0.03}{1.57} = 0.0191      \\
+            mg              & = 1.57; \quad m = \frac{1.57}{g}  \\
+            m               & = \frac{1.57}{9.8} = \boxed{0.16kg}
         \end{align*}
 
     \end{itemize}
@@ -123,14 +127,49 @@
 
     \begin{itemize}
         \item [5.]
+        
+        No, the lead cart will have greater momentum. This is because the lead cart will necessarily have to accelerate slower, and thus it will have more time to accumulate momentum before it reaches a 1m distance. It should have a factor of 10 larger momentum.
+
         \item [9.]
+        
+        The system is the golfer, golf ball, and the club. Usually, when golfing occurs, the golf ball is much lighter and incurs a very small energy cost to get moving. Therefore, if the ball is struck, the golf club should have more than enough momentum to continue moving, and so if it is seen to be moving after striking the ball, then the momentum is conserved is valid because a small amount of momentum will be transferred from the club to the ball, which is part of the system.
+
         \item [13.]
+        
+        I would use (c) both. The conservation of momentum is valid here and we can use it to find their velocity on impact. The conservation of mechanical energy is valid here and we can use it to find the angle the balls would reach.
+
     \end{itemize}
 
     \subsection*{Problems}
 
     \begin{itemize}
         \item [27.]
+        
+        \begin{itemize}
+            \item [a.]
+            
+            \begin{align*}
+                \rho_{pi} + \rho_{bi}   & = \rho_{pf} + \rho_{bf}       \\
+                \rho_{pi} + 0           & = \rho_{pf} + \rho_{bf}       \\
+                \text{where } \rho      & = mv                          \\
+                m_{pi}v_{pi}            & = m_{pf}v_{pf} + m_{bf}v_{bf} \\
+                (70.0)(2.00)            & = (70.0)v_{pf} + (0.450)(15.0)\\
+                v_{pf}                  & = -\frac{6.75-140}{70} = \boxed{1.92m/s}
+            \end{align*}
+
+            \item [b.]
+            
+            \begin{align*}
+                v_{pf}                  & = v_{bf} - 15                 \\
+                m_{pi}v_{pi}            & = m_{pf}v_{pf} 
+                                          + m_{bf}(v_{pf} + 15)         \\
+                m_{pi}v_{pi}            & = m_{pf}v_{pf} 
+                                          + m_{bf}v_{pf} + 15m_{bf}     \\
+                0                       & = 
+            \end{align*}
+
+        \end{itemize}
+
         \item [28.]
         \item [40.]
         \item [47.]
