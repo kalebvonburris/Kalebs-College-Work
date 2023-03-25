@@ -1,4 +1,4 @@
-\documentclass[12pt, letterpaper]{book}
+\documentclass[10pt, letterpaper]{book}
 
 % Imports
 \usepackage{fancyhdr}
@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{tkz-euclide}
 \usepackage{siunitx}
+\usepackage{calculator}
 \pgfplotsset{compat=1.18}
 
 \geometry{margin=2.5cm}
@@ -47,7 +48,20 @@
     \end{titlepage}
 
     \section*{Formulas}
+
+    $\MULTIPLY{1}{2}{\sol}\sol$
+
     \begin{multicols*}{2}
+        Dot Product:
+        \begin{align}
+            \vec{A}\cdot\vec{B} & = ||A|| ||B||\cos(\theta)
+        \end{align}
+
+        Cross Product:
+        \begin{align}
+            \vec{A}\cdot\vec{B} & = AB\sin(\theta)
+        \end{align}
+
         Position:
         \begin{align}
             x, y, s, \text{ or } p  & = \vec{v}\Delta t = \int\vec{v}dt                     \\
@@ -124,9 +138,17 @@
         \end{align} 
 
         Momentum:
-        \begin{align*}
-            \rho    & = mv
-        \end{align*}
+        \begin{align}
+            \rho            & = mv          \\
+            \rho_{\theta}   & =
+        \end{align}
+
+        Torque:
+        \begin{align}
+            \tau & = r \times F     \\
+            \tau & = rF\sin(\theta) \\
+            \solver{10+2} = \answer
+        \end{align}
     \end{multicols*}
 
     \pagebreak
@@ -142,7 +164,7 @@
             a       & = \text{acceleration, meters/second}^{2}                          \\
             \theta  & = \text{angle, degrees}                                           \\
             g       & = \text{gravity: 9.8 meters/second}^{2}                           \\
-            \omega  & = \text{angular velocity, radians or degrees/second, counter-clockwise}\\
+            \omega  & = \text{angular velocity, radians or degrees/second}              \\
             F       & = \text{force, Newtons, kilogram $\cdot$ meters/second}^{2}       \\
             \mu     & = \text{coefficient of friction}                                  \\
             N       & = \text{normal force, Newtons}                                    \\
