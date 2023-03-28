@@ -1,9 +1,0 @@
-*
-!*/
-!*.*
-*.out
-*.exe
-*.o
-main
-output.txt
-!Makefile
