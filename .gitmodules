@@ -16,6 +16,9 @@
 [submodule "CS/CS F202/Homework/hw01-kalebvonburris"]
 	path = CS/CS F202/Homework/hw01-kalebvonburris
 	url = https://github.com/2023-Spring-UAF-CS202/hw01-kalebvonburris
-[submodule "CS/CS F202/CS/CS F202/Homework/lab05-kalebvonburris"]
+[submodule "CS/CS F202/Homework/lab05-kalebvonburris"]
 	path = CS/CS F202/CS/CS F202/Homework/lab05-kalebvonburris
 	url = https://github.com/2023-Spring-UAF-CS202/lab05-kalebvonburris
+[submodule "CS/CS F202/Homework/hw02-kalebvonburris"]
+	path = CS/CS F202/Homework/hw02-kalebvonburris
+	url = https://github.com/2023-Spring-UAF-CS202/hw02-kalebvonburris
