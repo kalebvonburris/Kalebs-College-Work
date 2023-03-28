@@ -16,6 +16,7 @@
 \usepackage{tkz-euclide}
 \usepackage{siunitx}
 \usepackage{calculator}
+\usepackage{calculus}
 \pgfplotsset{compat=1.18}
 
 \geometry{margin=2.5cm}
@@ -49,9 +50,8 @@
 
     \section*{Formulas}
 
-    $\MULTIPLY{1}{2}{\sol}\sol$
-
     \begin{multicols*}{2}
+
         Dot Product:
         \begin{align}
             \vec{A}\cdot\vec{B} & = ||A|| ||B||\cos(\theta)
@@ -128,7 +128,7 @@
 
         Potential Energy:
         \begin{align}
-            %U_{tot} & = mg + k(y-L_{0}) 
+            U_{tot} & = mg + k\Delta y 
         \end{align}
 
         Work:
@@ -147,33 +147,41 @@
         \begin{align}
             \tau & = r \times F     \\
             \tau & = rF\sin(\theta) \\
-            \solver{10+2} = \answer
+            N    & = I\alpha        
+        \end{align}
+
+        Inertia:
+        \begin{align}
+            I   & = \sum_{i}m_{i}r_{i}^{2} = \int dmr^{2}
+        \end{align}
+
+        Kinetic Energy of Rotation:
+        \begin{align}
+            KE  & = \frac{1}{2}I\omega^{2}
         \end{align}
     \end{multicols*}
 
     \pagebreak
 
     \subsection*{Key}
-    \begin{multicols}{2}
-        \begin{align*}
-            v       & = \text{velocity, meters/second}                                  \\
-            y       & = \text{height, meters}                                           \\
-            x       & = \text{distance, meters}                                         \\
-            t       & = \text{time, seconds}                                            \\
-            m       & = \text{mass, kilograms}                                          \\
-            a       & = \text{acceleration, meters/second}^{2}                          \\
-            \theta  & = \text{angle, degrees}                                           \\
-            g       & = \text{gravity: 9.8 meters/second}^{2}                           \\
-            \omega  & = \text{angular velocity, radians or degrees/second}              \\
-            F       & = \text{force, Newtons, kilogram $\cdot$ meters/second}^{2}       \\
-            \mu     & = \text{coefficient of friction}                                  \\
-            N       & = \text{normal force, Newtons}                                    \\
-            A       & = \text{area, meters}^{2}                                         \\
-            \rho    & = \text{volumetric mass density, kilograms/meters}^{3}            \\
-            C_{D}   & = \text{drag coefficient (geometry dependant)}                    \\
-            K       & = \text{kinetic energy}                                           \\
-            U       & = \text{potential energy}
-        \end{align*}
-    \end{multicols}
-
+    \begin{align*}
+        v       & = \text{velocity, meters/second}                                  \\
+        y       & = \text{height, meters}                                           \\
+        x       & = \text{distance, meters}                                         \\
+        t       & = \text{time, seconds}                                            \\
+        m       & = \text{mass, kilograms}                                          \\
+        a       & = \text{acceleration, meters/second}^{2}                          \\
+        \theta  & = \text{angle, degrees}                                           \\
+        g       & = \text{gravity: 9.8 meters/second}^{2}                           \\
+        \omega  & = \text{angular velocity, radians or degrees/second}              \\
+        F       & = \text{force, Newtons, kilogram $\cdot$ meters/second}^{2}       \\
+        \mu     & = \text{coefficient of friction}                                  \\
+        N       & = \text{normal force, Newtons}                                    \\
+        A       & = \text{area, meters}^{2}                                         \\
+        \rho    & = \text{volumetric mass density, kilograms/meters}^{3}            \\
+        C_{D}   & = \text{drag coefficient (geometry dependant)}                    \\
+        K       & = \text{kinetic energy}                                           \\
+        U       & = \text{potential energy}                                         \\
+        \alpha  & = \text{angular acceleration, degrees|radians/second}^{2}
+    \end{align*}
 \end{document}
