@@ -1,7 +1,98 @@
+<<<<<<< HEAD
 % Files using this must be two subfolders
 % deep. Adjust the number of ../ for the
 % depth of the file.
 \input{preamble.tex}
+=======
+\providecommand\pointsize{10pt}
+
+\documentclass[\pointsize, letterpaper]{article}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{mathptmx}
+\usepackage{anyfontsize}
+\usepackage{t1enc}
+\usepackage{tabto}
+\usepackage{listings}
+\usepackage{filecontents}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage[]{mdframed}
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{xfrac}
+\usepackage{amssymb}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2.5cm}
+
+\newcommand{\name}{Kaleb Burris}
+\newcommand{\classname}{MATH F252, Dr. J. Gimbel, University of Alaska Fairbanks}
+\newcommand{\assignment}{FILL IN ASSIGNMENT NAME}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    \name 
+    \newline
+    \classname
+    \newline
+    \assignment
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+\setlength{\headheight}{42pt}
+\setlength{\headsep}{0.25in}
+\setlength{\columnsep}{0.35cm}
+\setlength{\columnseprule}{1pt}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\makeatletter
+\long\def\ifnodedefined#1#2#3{%
+    \@ifundefined{pgf@sh@ns@#1}{#3}{#2}%
+}
+
+\pgfplotsset{
+    discontinuous/.style={
+    scatter,
+    scatter/@pre marker code/.code={
+        \ifnodedefined{marker}{
+            \pgfpointdiff{\pgfpointanchor{marker}{center}}%
+             {\pgfpoint{0}{0}}%
+             \ifdim\pgf@y>0pt
+                \tikzset{options/.style={mark=*, fill=white}}
+                \draw [densely dashed,blue] (marker-|0,0) -- (0,0);
+                \draw plot [mark=*] coordinates {(marker-|0,0)};
+             \else
+                \tikzset{options/.style={mark=none}}
+             \fi
+        }{
+            \tikzset{options/.style={mark=none}}        
+        }
+        \coordinate (marker) at (0,0);
+        \begin{scope}[options]
+    },
+    scatter/@post marker code/.code={\end{scope}}
+    }
+}
+\makeatother
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+>>>>>>> 6f13a32dc5871f11859c2d625c5db8b60520ef89
 
 % Put class number, class name, and professor 
 % name.
@@ -40,6 +131,51 @@
     % Begin homework here.
     %%%%%%%%%%%%%%%%%%%%%%
 
-    Find the radius and 
+    Find the radius and interval of convergence for both of the following:
+
+    \begin{itemize}
+        \item [1] $\sum\frac{x^{2}}{k3^{k}}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \sqrt[k]{\left|\frac{x^{2}}{k3^{k}}\right|}
+                    = \frac{\sqrt[k]{x^{2}}}{\sqrt[k]{|k3^{k}|}}
+                    = \frac{\sqrt[k]{x^{2}}}{3}                     \\
+                    \lim_{k\to\infty}\frac{\sqrt[k]{x^{2}}}{3} < 3  \Rightarrow
+                    \lim_{k\to\infty}x^{\frac{2}{k}} < 9            \Rightarrow
+                    x^{0} < 9 \Rightarrow 1 < 9                     \\
+                    \text{Radius} = \infty \quad \text{Interval} = (-\infty,\infty)
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item[2.] $\sum\frac{(x-2)^{k}}{5k^{2}4^{4}}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \left|\frac {\frac{(x-2)^{k}}{5k^{2}4^{4}}}
+                                {\frac{(x-2)^{k+1}}{5(k+1)^{2}4^{4}}}\right|
+                    = \left|\frac{(x-2)^{k}}{5k^{2}4^{4}}\frac{5(k+1)^{2}4^{4}}{(x-2)^{k+1}}\right|
+                    = \left|\frac{1}{k^{2}}\frac{(k+1)^{2}}{x-2}\right|
+                    = \left|\frac{\sqrt{(k+1)^{2}}}{\sqrt{k^{2}(x-2)}}\right|
+                    = \frac{k+1}{k\sqrt{x-2}}   \\
+                    \frac{k+1}{k\sqrt{x-2}}     \to 
+                    \frac{1}{\sqrt{x-2}}        \Rightarrow
+                    \frac{1}{\sqrt{x-2}} < 1    \Rightarrow
+                    1 < \sqrt{x-2}              \Rightarrow
+                    1 < x-2                     \Rightarrow
+                    3 < x                       \\
+                    \text{Note: at $x$ = 3, } 
+                    \sum\frac{(3-2)^{k}}{5k^{2}4^{4}} =
+                    \frac{1}{5(4^{4})}\sum\frac{1}{k^{2}}
+                    \quad \text{ the series converges by P-Series}
+                    \\
+                    \text{Radius} = \infty \quad \text{Interval} = [3,\infty)
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+    \end{itemize}
 
 \end{document}

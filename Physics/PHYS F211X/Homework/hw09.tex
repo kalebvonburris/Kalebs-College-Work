@@ -1,0 +1,149 @@
+\providecommand\pointsize{10pt}
+
+\documentclass[\pointsize, letterpaper]{article}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{mathptmx}
+\usepackage{anyfontsize}
+\usepackage{t1enc}
+\usepackage{tabto}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[makeroom]{cancel}
+\pgfplotsset{compat=1.18}
+\usepackage{tkz-euclide}
+\usepackage{siunitx}
+\usepackage{resizegather}
+\usetikzlibrary{angles}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\geometry{margin=2.5cm}
+
+\newcommand{\name}{Kaleb Burris}
+\newcommand{\classname}{PHYS 211X}
+\newcommand{\assignment}{FILL IN THE ASSIGNMENT}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    \name 
+    \newline
+    \classname
+    \newline
+    \assignment
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+\setlength{\headheight}{42pt}
+\setlength{\headsep}{0.25in}
+\setlength{\columnsep}{0.35cm}
+\setlength{\columnseprule}{1pt}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{HW 9, Due Friday, 3/31/2023 23:59; \S11 P: \#52, 54, 71, 81 \S12 Q: \#7, 9 P: \#32, 58, 65, 75, 82}
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \section*{Chapter 11}
+
+    \subsection*{Problems}
+
+    \begin{itemize}
+        \item [52.]
+        \item [54.]
+        \item [71.]
+        \item [81.]
+    \end{itemize}
+
+    \section*{Chapter 12}
+
+    \subsection*{Questions}
+
+    \begin{itemize}
+        \item [7.] 
+        Roll both balls. Since the mass is distributed further from the center of mass on the hollow ball, it will roll slower than the solid ball.
+
+        \item [9.]
+
+        \begin{itemize}
+            \item [a.]
+            The torque is positive.
+            \item [b.]
+            (iii) hold steady. Since there is no friction or opposing force, the angular velocity won't decrease.
+        \end{itemize}
+
+    \end{itemize}
+    \subsection*{Problems}
+
+    \begin{itemize}
+        \item [32.]
+        
+        Equilibrium:
+        \begin{align*}
+            \tau    & = \tau                                                \\
+            r_{cat}F_{cat}  & = r_{tuna}F_{tuna}                            \\
+            r_{cat}(4.0kg)(9.8m/s^{2}) & = 4.0m(9.8m/s^{2})(2.0kg)          \\
+            r_{cat} & = \frac{4.0m(9.8m/s^{2})(2.0kg)}{(4.0kg)(9.8m/s^{2})} \\
+            r_{cat} & = \boxed{2.0m}
+        \end{align*}
+
+        \item [58.]
+        
+        \begin{align*}
+            F_{ft} + F_{fb} - F_{g} & = 0
+        \end{align*}
+
+        \item [65.]
+        \item [75.]
+        \item [82.]
+    \end{itemize}
+\end{document}
