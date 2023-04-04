@@ -1,0 +1,109 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework Set X, Due Wednesday, April 5, 2023}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    Find the interval and radius of convergence of:
+
+    \begin{itemize}
+        \item [1.] $\sum\frac{kx^{k}}{5^{k}}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \sqrt[k]{\left|\frac{kx^{k}}{5^{k}}\right|} =
+                \frac{\sqrt[k]{|kx^{k}|}}{\sqrt[k]{5^{k}}} =
+                \frac{|x|}{5}                                                   \\
+                \frac{|x|}{5} < 1 \Rightarrow |x| < 5 \Rightarrow -5 < x < 5    \\
+                \text{Note at } x = 5: \sum\frac{k5^{k}}{5^{k}} = \sum k \rightarrow \infty, \quad
+                \therefore \sum\frac{k5^{k}}{5^{k}} \text{ is Divergent by Divergence test}        
+                \\
+                \text{Note at } x = -5: \sum\frac{-k5^{k}}{5^{k}} = -\sum k \rightarrow -\infty, \quad
+                \therefore \sum\frac{-k5^{k}}{5^{k}} \text{ is Divergent by Divergence test}        
+                \\
+                \text{Radius} = 5 \quad \text{Interval} = (-5,5)
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [2.] $\sum\frac{(x-9)^{k}}{k6^{k}}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \sqrt[k]{\left|\frac{(x-9)^{k}}{k6^{k}}\right|} =
+                    \frac{\sqrt[k]{|(x-9)^{k}|}}{\sqrt[k]{k6^{k}}} =
+                    \frac{|x-9|}{6}                                         \\
+                    \frac{|x-9|}{6} < 1 \Rightarrow |x-9| < 6 \Rightarrow 
+                    -6 < x-9 < 6 \Rightarrow 3 < x < 15                     \\
+                    \text{Note at } x=3: \sum\frac{(3-9)^{k}}{k6^{k}} =
+                    \sum\frac{(-6)^{k}}{k6^{k}} = 
+                    \sum\frac{(-1)^{k}6^{k}}{k6^{k}} =
+                    \sum\frac{(-1)^{k}}{k} \rightarrow 
+                    \text{Diverges by oscillation}                          \\
+                    \text{Note at } x=15: \sum\frac{(15-9)^{k}}{k6^{k}} =
+                    \sum\frac{6^{k}}{k6^{k}} = 
+                    \sum\frac{1}{k} \rightarrow \infty
+                    \text{ Diverges by P-Series}                            \\
+                    \text{Radius} = 6 \quad \text{Interval} = (3,15)
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [3.] $\sum\frac{(x-1)^{k}}{k^{2}7^{k}}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \left|\frac{\frac{(x-1)^{k+1}}{(k+1)^{2}7^{k+1}}}
+                            {\frac{(x-1)^{k}}{k^{2}7^{k}}}\right| =
+                            \frac{|(x-1)^{k+1}|}{|(x-1)^{k}|}\cdot
+                            \frac{(k+1)^{2}}{k^{2}}\cdot
+                            \frac{7^{k+1}}{7^{k}} =
+                            |(x-1)|\cdot\frac{k^{2}+2k+1}{k^{2}}\cdot 7     \\
+                            \rightarrow (x-1) \cdot 1 \cdot 7 = 7|(x-1)|    \\
+                            7|(x-1)| < 1 \Rightarrow |x-1| < 7 \Rightarrow
+                            -7 < x - 1 < 7 \Rightarrow -6 < x < 8
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+    \end{itemize}
+
+\end{document}
