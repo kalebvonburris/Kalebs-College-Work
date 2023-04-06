@@ -1,0 +1,114 @@
+\providecommand\pointsize{10pt}
+
+\documentclass[\pointsize, letterpaper]{article}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{mathptmx}
+\usepackage{anyfontsize}
+\usepackage{t1enc}
+\usepackage{tabto}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[makeroom]{cancel}
+\pgfplotsset{compat=1.18}
+\usepackage{tkz-euclide}
+\usepackage{siunitx}
+\usepackage{resizegather}
+\usetikzlibrary{angles}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\geometry{margin=2.5cm}
+
+\newcommand{\name}{Kaleb Burris}
+\newcommand{\classname}{PHYS 211X}
+\newcommand{\assignment}{FILL IN THE ASSIGNMENT}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    \name 
+    \newline
+    \classname
+    \newline
+    \assignment
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+\setlength{\headheight}{42pt}
+\setlength{\headsep}{0.25in}
+\setlength{\columnsep}{0.35cm}
+\setlength{\columnseprule}{1pt}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{HW 10, Due Friday, 4/7/2023 23:59; \S13 Q: \#7,10 P: \#25, 29, 43, 51, 54}
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+\begin{document}
+
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+    \section*{Chapter 13}
+
+    \subsection*{Questions}
+
+    \begin{itemize}
+        \item [7.]
+        \item [10.]
+    \end{itemize}
+
+    \subsection*{Problems}
+
+    \begin{itemize}
+        \item [25.]
+        \item [29.]
+        \item [43.]
+        \item [51.]
+        \item [54.]
+    \end{itemize}
+
+\end{document}

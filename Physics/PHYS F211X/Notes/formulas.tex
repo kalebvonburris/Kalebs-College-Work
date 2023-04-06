@@ -19,7 +19,7 @@
 \usepackage{calculus}
 \pgfplotsset{compat=1.18}
 
-\geometry{margin=2.5cm}
+\geometry{margin=2cm}
 
 \pagestyle{fancy}
 
@@ -48,7 +48,7 @@
         \Large Kaleb Burris
     \end{titlepage}
 
-    \section*{Formulas}
+    \section*{Formulae}
 
     \begin{multicols*}{2}
 
@@ -170,12 +170,24 @@
             L = I\omega
         \end{align}
 
-        Newton's Law of Gravity:
-        \begin{align*}
+        Newton's Law(s) of Gravity:
+        \begin{align}
             F   & = \frac{Gm_{1}m_{2}}{r^{2}}           \\
+            U   & = -\frac{Gm_{1}m_{2}}{r^{2}}          \\
             G   & = 6.67 \times 10^{-11}Nm^{2}/kg^{2}   \\
-            a_{m_{1}}   & = \frac{Gm_{2}}{r^{2}}
-        \end{align*}
+            a_{m_{1}}   & = \frac{Gm_{2}}{r^{2}}        \\
+            v_{e}   & = \sqrt{\frac{GM}{r}}
+        \end{align}
+
+        Orbits:
+        \begin{align}
+            \Delta T^{2}   & = \frac{4\pi^{2}}{GM_{\odot}}r^{3} \\
+            \frac{4\pi^{2}}{GM_{\odot}} & = 1                   \\
+            \Delta T^{2} & \propto r^{3}                        \\
+            \vec{v} & = \frac{2\pi r}{\Delta t} 
+            \text{ Valid for circular}                          \\
+        \end{align}
+
     \end{multicols*}
 
     \pagebreak
