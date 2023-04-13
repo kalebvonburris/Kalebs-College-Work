@@ -8,7 +8,7 @@
 \usepackage{icomma}
 \usepackage{amsmath}
 \usepackage{multicol}
-\usepackage[parfill]{parskip}
+\usepackage[indent]{parskip}
 \usepackage{subfiles}
 \usepackage[makeroom]{cancel}
 \usepackage{mathtools}
@@ -22,6 +22,9 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{natbib}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{setspace}
 \pgfplotsset{compat=1.18}
 
 \geometry{margin=3cm}
@@ -31,7 +34,7 @@
 \fancyhead[L]{
     Kaleb Burris
     \newline
-    PHYS 211X
+    Potentials of Nuclear Fusion
 }
 
 \fancyhead[R] {}
@@ -57,14 +60,17 @@
 \title{
     \textbf{Potentials of Nuclear Fusion} 
     \\
+    \vspace{0.5cm}
     \large PHYS 211X - General Physics I
     \\
     \emph{University of Alaska Fairbanks}
 }
 \date{}
 \author{
-    {\em Kaleb Burris}
+    Kaleb Burris
 }
+
+\doublespacing
 
 \begin{document}
 
@@ -74,7 +80,7 @@
 
     \section{Abstract}
 
-    \lipsum[1-2]
+    The modern generation of electrical generation has been dominated by three primary sources: coal, oil, and natural gas, which combined, made up 80.9\% of the world's energy supply in 2019 \citep[Supply]{KWES}.
 
     \pagebreak
 
@@ -102,9 +108,10 @@
 
     \pagebreak
 
-    \citep[p. 54]{advmaterials} Want to
+    \pagestyle{empty}
 
     \bibliography{SocietalPaperRefs}
+
     
 
 \end{document}
