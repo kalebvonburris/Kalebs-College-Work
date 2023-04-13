@@ -1,4 +1,4 @@
-\documentclass[10pt, letterpaper]{article}
+\documentclass[12pt, letterpaper]{article}
 
 % Imports
 \usepackage{fancyhdr}
@@ -49,7 +49,7 @@
 \setlength{\columnseprule}{1pt}
 
 
-\graphicspath{ {./lab09images/} }
+\graphicspath{ {./lab10images/} }
 
 % Put class number, class name, and professor 
 % name.
@@ -157,23 +157,22 @@
                 & \propto \frac{f}{\#A}             \\
         \end{align*}
 
-        \item [4.] Our data closely matches the predicted result of following a linear relationship, although it started 
+        \pagebreak
+
+        \item [4.]\mbox{}
+        
+        {\centering\resizebox{0.8\hsize}{!}{\includegraphics{image10}}}
+
+        Our data closely matches the predicted result of following a linear relationship, although it started to deviate past 40 Hz.
         \item [5.]\mbox{}
         
-        \item [6.]
-        \item [7.]
-        \item [8.]
-        \item [9.]
-        
-        \begin{align*}
-            \lambda & = \frac{2L}{\#A} = \frac{v}{f}    \\
-            f   & = \frac{\#Av}{2L} 
-                = \frac{1(343m/s)}{2(1.265m)} 
-                = 135.57 hz                             \\
-                & \rightarrow \{13.5KHz, 27KHz, 40.5Khz\}
-        \end{align*}
+        {\centering\resizebox{0.8\hsize}{!}{\includegraphics{image11}}}
 
-        \item [10.]\mbox{}
+        Our data very closely matched a linear regression, which tracks with the $\frac{1}{\#A}$ formula.
+
+        \pagebreak
+        
+        \item [6.]\mbox{}
         
         \begin{center}
             \begin{tabular}{|c|c|c|c|}
@@ -188,6 +187,20 @@
                 \hline
             \end{tabular}
         \end{center}
+
+        \item [9.]
+        
+        \begin{align*}
+            \lambda & = \frac{2L}{\#A} = \frac{v}{f}    \\
+            f   & = \frac{\#Av}{2L} 
+                = \frac{1(343m/s)}{2(1.265m)} 
+                = 135.57 hz                             \\
+                & \rightarrow \{13.5KHz, 27KHz, 40.5Khz\}
+        \end{align*}
+
+        \item [10.]\mbox{}
+        
+        Our prediction was relatively close, at worst it was $1 - \frac{38}{40.5} = 6.2\%$ off of the expected value, and at best was $1 - \frac{13}{13.5} = 3.7\%$ off of the expected value. This error is pretty acceptable given the rough nature of the materials we used.
         
         \item[11.]\mbox{}
         
@@ -213,6 +226,26 @@
         \end{align*}
 
         Real: 1.49 Hz, which is half of the predicted. We must have missed the first harmonic and got the second when we recorded.
+
+        \item [13.] Our prediction was relatively good, but we missed the first harmonic. Scaling the prediction down, we would expect 1.56Hz, which is $1 - \frac{1.49}{1.56} = 4.5\%$ off of our prediction, which is pretty good and on track with the differences we've found experimentally thus far.
+        
+        \item [14.] The resonant frequency and natural frequencies we encountered seemed to be highly related in a 1:1 relationship with one another.
+        
+        \item [15.] \mbox{}
+        
+        \begin{center}
+            \resizebox{\textwidth}{!}{\begin{tabular}{|c | c | c | c|}
+                \hline
+                & Natural Frequency Depends on: & How we drive the system: & At resonance observed, an increase in: \\
+                \hline
+                Elastic band & tension & Variable frequency mechanical oscillator & antinodes \\
+                \hline
+                Air column & length & Variable frequency speaker & amplitude \\
+                \hline
+                Mass on a Spring & Spring constant and mass & Variable frequency mechanical oscillator & amplitude \\
+                \hline
+            \end{tabular}}
+        \end{center}
 
     \end{itemize}
     
