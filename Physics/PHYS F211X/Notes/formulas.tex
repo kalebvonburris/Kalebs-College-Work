@@ -17,6 +17,7 @@
 \usepackage{siunitx}
 \usepackage{calculator}
 \usepackage{calculus}
+\usepackage{mdframed}
 \pgfplotsset{compat=1.18}
 
 \geometry{margin=2cm}
@@ -36,6 +37,9 @@
 \setlength{\columnsep}{1.5cm}
 \setlength{\columnseprule}{1pt}
 
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{3pt}
+
 \begin{document}
 
     \begin{titlepage}
@@ -54,12 +58,12 @@
 
         Dot Product:
         \begin{align}
-            \vec{A}\cdot\vec{B} & = ||A|| ||B||\cos(\theta)
+            \vec{A}\cdot\vec{B} & = ||A|| \; ||B||\cos(\theta)
         \end{align}
 
         Cross Product:
         \begin{align}
-            \vec{A}\cdot\vec{B} & = AB\sin(\theta)
+            \vec{A}\times\vec{B} & = AB\sin(\theta)
         \end{align}
 
         Position:
@@ -69,14 +73,14 @@
                                  x  & = v_{0} t+\left(\frac{1}{2}\right)\vec{a} t^{2}       
         \end{align}
 
-        Velocity:
+        Velocity, $v$:
         \begin{align}
             \vec{v}         & = \vec{a}\Delta t = \frac{d}{dt}[p] = \int(\vec{a})dt     \\
             \vec{v}         & = v_{0} + \vec{a}t                                        \\
             \vec{v}^{2}_{f} & = v^{2}_{0} + 2\vec{a}\Delta x                            
         \end{align}
 
-        Acceleration
+        Acceleration, $a$:
         \begin{equation}
             \vec{a} = \frac{d}{dt}[\vec{v}]
         \end{equation}
@@ -87,7 +91,7 @@
             y_{f} = y_{0} + v_{0}(\Delta t) + \frac{1}{2}a(\Delta t^{2})
         \end{equation}
 
-        Force:
+        Force, $F$:
         \begin{equation}
             \vec{F} = m\vec{a}
         \end{equation}
@@ -126,30 +130,30 @@
             U_{p} & = \frac{1}{2}k(x-L_{0})
         \end{align}
 
-        Potential Energy:
+        Potential Energy, $U$:
         \begin{align}
             U_{tot} & = mg + k\Delta y 
         \end{align}
 
-        Work:
+        Work, $W$:
         \begin{align}
             W_{int} & = -\frac{F_{x}}{\Delta }   \\
             F_{x}   & = -\frac{dU}{dx}
         \end{align} 
 
-        Momentum:
+        Momentum, $p$:
         \begin{align}
             p    & = mv
         \end{align}
 
-        Torque:
+        Torque, $\tau$:
         \begin{align}
             \tau & = r \times F     \\
             \tau & = rF\sin(\theta) \\
             N    & = I\alpha        
         \end{align}
 
-        Inertia:
+        Inertia, $I$:
         \begin{align}
             I   & = \sum_{i}m_{i}r_{i}^{2} = \int r^{2}dm   \\
             I   & = r\omega^{2}
@@ -170,7 +174,7 @@
             L = I\omega
         \end{align}
 
-        Newton's Law(s) of Gravity:
+        Newton's Laws of Gravity:
         \begin{align}
             F   & = \frac{Gm_{1}m_{2}}{r^{2}}           \\
             U   & = -\frac{Gm_{1}m_{2}}{r^{2}}          \\
@@ -188,17 +192,28 @@
             \text{ Valid for circular}                    
         \end{align}
 
-        Fluids:
+        Density, $\rho$:
         \begin{align}
-            \rho    & = \frac{m}{v}                             
+            \rho    & = \frac{m}{V}                             
         \end{align}
 
-        Pressure:
+        Pressure, $\phi$:
         \begin{align}
             \phi    & = \frac{F}{A}                             \\
             \phi_{h}& = \phi_{0}e^{-\frac{mgh}{kT}}             \\
             \phi_{h}& = \rho_{l}hg + \phi_{a}
         \end{align}
+
+        Bernoulli's Law:
+        \begin{equation}
+            \phi_{1} + \frac{1}{2}\rho v_{1}^{2} + \rho gh_{1} = 
+            \phi_{2} + \frac{1}{2}\rho v_{2}^{2} + \rho gh_{2}
+        \end{equation}
+
+        Continuity:
+        \begin{equation}
+            A_{1}v_{1} = A_{2}v_{2}
+        \end{equation}
 
     \end{multicols*}
 
