@@ -20,6 +20,8 @@
 \usepackage{calculus}
 \usepackage{mdframed}
 \usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{natbib}
 \pgfplotsset{compat=1.18}
 
 \geometry{margin=3cm}
@@ -31,6 +33,8 @@
     \newline
     PHYS 211X
 }
+
+\fancyhead[R] {}
 
 \newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
 
@@ -45,25 +49,26 @@
 
 \titleformat{\section}[hang]{\Large\bfseries\filcenter}{\Roman{section}}{1.5em}{}
 
+\bibliographystyle{plainnat}
+\citestyle{conspar}
+
+% Title page information
+
+\title{
+    \textbf{Potentials of Nuclear Fusion} 
+    \\
+    \large PHYS 211X - General Physics I
+    \\
+    \emph{University of Alaska Fairbanks}
+}
+\date{}
+\author{
+    {\em Kaleb Burris}
+}
+
 \begin{document}
 
-    \begin{titlepage}
-        \begin{center}
-            {\Huge Potential Uses of Nuclear Fusion}
-
-            \vspace{1.5cm}
-
-            \large \textbf{Kaleb Burris}
-
-            \vfill
-
-            \Large PHYS 211X \\ General Physics I
-
-            \large University of Alaska Fairbanks
-            
-            \today
-        \end{center}
-    \end{titlepage}
+    \maketitle
 
     \thispagestyle{plain}
 
@@ -97,7 +102,8 @@
 
     \pagebreak
 
-    \bibliographystyle{ieeetr}
+    \citep[p. 54]{advmaterials} Want to
+
     \bibliography{SocietalPaperRefs}
     
 
