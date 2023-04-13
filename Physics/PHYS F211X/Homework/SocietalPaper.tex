@@ -8,7 +8,7 @@
 \usepackage{icomma}
 \usepackage{amsmath}
 \usepackage{multicol}
-%\usepackage[parfill]{parskip}
+\usepackage[parfill]{parskip}
 \usepackage{subfiles}
 \usepackage[makeroom]{cancel}
 \usepackage{mathtools}
@@ -19,6 +19,7 @@
 \usepackage{calculator}
 \usepackage{calculus}
 \usepackage{mdframed}
+\usepackage{titlesec}
 \pgfplotsset{compat=1.18}
 
 \geometry{margin=3cm}
@@ -28,7 +29,7 @@
 \fancyhead[L]{
     Kaleb Burris
     \newline
-    PHYS F211X
+    PHYS 211X
 }
 
 \newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
@@ -41,6 +42,8 @@
 
 %\setlength{\abovedisplayskip}{0pt}
 %\setlength{\belowdisplayskip}{3pt}
+
+\renewcommand\thesection{\centering}
 
 \begin{document}
 
@@ -64,57 +67,37 @@
 
     \thispagestyle{plain}
 
-    \begin{center}
-        \Large \textbf{Potential Uses of Nuclear Fusion}
-
-        \large \textbf{Kaleb Burris}
-
-        \vspace{0.75cm}
-
-        \textbf{Abstract}
-    \end{center}
+    \section{Abstract}
 
     \lipsum[1-2]
 
     \pagebreak
 
-    \begin{center}
-        \large \textbf{Introduction}
-    \end{center}
+    \section{Introduction}
 
     \lipsum[3-5]
 
     \pagebreak
 
-    \begin{center}
-        \large \textbf{Description}
-    \end{center}
+    \section{Description}
 
-    \lipsum[6-10]
+    \lipsum[6-9]
 
     \pagebreak
 
-    \begin{center}
-        \large \textbf{Pros and Cons}
-    \end{center}
+    \section{Pros and Cons}
 
-    \lipsum[11-15]
+    \lipsum[10-14]
 
     \pagebreak
 
-    \begin{center}
-        \large \textbf{Conclusion}
-    \end{center}
+    \section{Conclusion}
 
-    \lipsum[16-20]
+    \lipsum[15-19]
 
     \pagebreak
 
-    \begin{center}
-        \large \textbf{References}
-    \end{center}
-
-    \bibliographystyle{plain} % We choose the "plain" reference style
+    \bibliographystyle{ieeetr}
     \bibliography{SocietalPaperRefs}
     
 
