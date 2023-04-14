@@ -1,0 +1,167 @@
+\providecommand\pointsize{12pt}
+
+\documentclass[\pointsize, letterpaper]{article}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{mathptmx}
+\usepackage{anyfontsize}
+\usepackage{t1enc}
+\usepackage{tabto}
+\usepackage{listings}
+\usepackage{filecontents}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage[]{mdframed}
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{xfrac}
+\usepackage{amssymb}
+\usepackage{tkz-fct}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2.5cm}
+
+\newcommand{\name}{Kaleb Burris}
+\newcommand{\classname}{MATH F252, Dr. J. Gimbel, University of Alaska Fairbanks}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    \name 
+    \newline
+    \classname
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+\setlength{\headheight}{42pt}
+\setlength{\headsep}{0.25in}
+\setlength{\columnsep}{0.35cm}
+\setlength{\columnseprule}{1pt}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\makeatletter
+\long\def\ifnodedefined#1#2#3{%
+    \@ifundefined{pgf@sh@ns@#1}{#3}{#2}%
+}
+
+\pgfplotsset{
+    discontinuous/.style={
+    scatter,
+    scatter/@pre marker code/.code={
+        \ifnodedefined{marker}{
+            \pgfpointdiff{\pgfpointanchor{marker}{center}}%
+             {\pgfpoint{0}{0}}%
+             \ifdim\pgf@y>0pt
+                \tikzset{options/.style={mark=*, fill=white}}
+                \draw [densely dashed,blue] (marker-|0,0) -- (0,0);
+                \draw plot [mark=*] coordinates {(marker-|0,0)};
+             \else
+                \tikzset{options/.style={mark=none}}
+             \fi
+        }{
+            \tikzset{options/.style={mark=none}}        
+        }
+        \coordinate (marker) at (0,0);
+        \begin{scope}[options]
+    },
+    scatter/@post marker code/.code={\end{scope}}
+    }
+}
+\makeatother
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\begin{document}
+    \paragraph*{Examples:}
+    \begin{itemize}
+        \item $x = t^{2} + 1, \quad y = 2t^{2}, \quad x \geq 1$
+        
+        Here we can express x as a function of $t$:
+        \begin{align*}
+            x-1 & = t^{2}                   \\
+            t   & = \pm\sqrt{x-1}           \\
+            y   & = 2(\pm\sqrt{x-1})^{2}    \\
+                & = 2(x-1)                  \\
+                & = 2x-2                    \\
+            \text{Note that: } & x \geq 1, 
+            \text{ and if } t = 0, \, x = 1 \\
+            x   & = \cos t                  \\
+            y   & = \sin t                  \\
+            x^{2}   & = \cos^{2} t          \\
+            y^{2}   & = \sin^{2} t          \\
+            x^{2} + y^{2} & = 1             \\
+        \end{align*}
+
+        \item Suppose:
+        \begin{align*}
+            x   & = a + bt          \\
+            y   & = c + dt          \\
+            t   & = \frac{x-a}{b}   \\
+            \text{Then:} &          \\
+            y   & = c + 
+                    d\frac{x-a}{b}  \\
+                & = c + 
+                    \frac{d}{b}x - 
+                    \frac{da}{t}    \\
+                & = \frac{d}{b}x + 
+                    \left(
+                        c - \frac{da}{t}
+                    \right)         \\
+            x   & = a(t-\sin t)     \\
+            y   & = a(1 - \cos t)   \\
+        \end{align*}
+    \end{itemize}
+
+    \pagebreak
+
+    \subsection*{The Calculus of parameterized curves}
+
+    Remember that:
+
+    \begin{equation}
+        \frac{dy}{dx} = \frac{dy/dt}{dx/dt}
+    \end{equation}
+
+    Therefore, for the derivative of a circle:
+
+    \begin{equation}
+        \begin{gathered}
+            x = \cos t  \\
+            y = \sin t  \\
+            \frac{dy}{dx} = 
+            \frac{\cos t}{-\sin t} = 
+            -\cot t
+        \end{gathered}
+    \end{equation}
+
+    At different values of t:
+
+    \begin{alignat*}{3}
+        t = \pi/2:  & \dfrac{\cos(\pi/2)}{-\sin(\pi/2)} 
+                    && = \dfrac{0}{-1} 
+                    && = 0                   \\
+        t = 0:      & \dfrac{\cos(0)}{-\sin(0)} 
+                    && = \dfrac{1}{0} 
+                    && = \text{Undefined}    \\
+        t = \pi:    & \dfrac{\cos(\pi)}{-\sin(\pi)} 
+                    && = \dfrac{-1}{0} 
+                    && = \text{Undefined}    \\
+    \end{alignat*}
+
+    
+
+\end{document}
