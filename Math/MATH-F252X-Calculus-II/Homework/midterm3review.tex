@@ -1,0 +1,102 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+\usepackage{tkz-fct}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Midterm III Review}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{itemize}
+        \item [1.] Find if $\sum \frac{1+3^{n}}{1+4^{n}}$ converges using ratio or root test.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Using root test:}                         \\
+                    \lim_{n \to \infty}\sqrt[n]
+                    {\left|\frac{1+3^{n}}{1+4^{n}}\right|}          \\
+                    \lim_{n \to \infty}\sqrt[n]{3^{n}} \leq 
+                    \lim_{n \to \infty}\sqrt[n]{1 + 3^{n}} \leq 
+                    \lim_{n \to \infty}\sqrt[n]{2\cdot3^{n}}
+                    \Rightarrow 3 \leq \sqrt[n]{1 + 3^{n}} \leq 3   \\
+                    \therefore \lim_{n \to \infty} \sqrt[n]{1 + 3^{n}} = 3  \\
+                    \lim_{n \to \infty}\sqrt[n]{4^{n}} \leq 
+                    \lim_{n \to \infty}\sqrt[n]{1 + 4^{n}} \leq 
+                    \lim_{n \to \infty}\sqrt[n]{2\cdot4^{n}}
+                    \Rightarrow 4 \leq \sqrt[n]{1 + 4^{n}} \leq 4   \\
+                    \therefore \lim_{n \to \infty} \sqrt[n]{1 + 4^{n}} = 4  \\
+                    \therefore \lim_{n \to \infty}\sqrt[n]
+                    {\left|\frac{1+3^{n}}{1+4^{n}}\right|} 
+                    = \frac{3}{4} < 1; \quad \boxed{\text{Converges}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+            
+
+        \item [2.] Find a closed form expression for $\sum \frac{2^{k}x^{2k}}{k!}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that: } e^{x} = 
+                    \sum_{k=0}^{\infty} \frac{x^{k}}{k!}\\
+                    \frac{2^{k}x^{2k}}{k!} =
+                    \frac{(2x^{2})^{k}}{k!}             \\
+                    \therefore \sum \frac{2^{k}x^{2k}}{k!} = \boxed{(2e^{2})^{x}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [3.] 
+
+        \item [5.] Express $3x\sin(x^{3})$ as a Maclaurin series.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that: } \sin(x) = 
+                    \sum_{k=0}^{\infty}\frac{(-1)^{k}x^{2k+1}}{(2k+1)!}    \\
+                    \therefore \quad 3x\sin(x^{3}) = 
+                    3x\sum_{k=0}^{\infty}\frac{(-1)^{k}(x^{3})^{2k+1}}{(2k+1)!} =
+                    \boxed{\sum_{k=0}^{\infty}\frac{3(-1)^{k}x^{6k+4}}{(2k+1)!}}
+                \end{gathered}
+            \end{equation*}            
+        \end{mdframed}
+    \end{itemize}
+
+\end{document}
