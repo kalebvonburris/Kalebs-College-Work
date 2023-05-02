@@ -95,7 +95,21 @@
         What is the area of the region bounded by the graph and the positive x-axis and the positive y-axis?
         \\
         \begin{mdframed}
-            
+            \begin{center}
+                \resizebox{0.5\hsize}{!}{
+                    \begin{tikzpicture}
+                        \begin{axis} [
+                            xmin = 0, xmax = 2,
+                            ymin = 0, ymax = 2,
+                            trig format plots=rad,
+                            axis equal, axis lines = middle,
+                            xlabel=$x$, ylabel=$y$
+                        ]
+                            \addplot [domain=0:2*pi, samples=50, red, thick, fill=blue] ({sin(3+x)}, {cos(3+x)});
+                        \end{axis}
+                    \end{tikzpicture}
+                }
+            \end{center}
         \end{mdframed}
     \end{itemize}
 
