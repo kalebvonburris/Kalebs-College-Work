@@ -1,0 +1,70 @@
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+\usepackage{tkz-fct}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Final Review}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \section*{Part I}
+
+    \begin{itemize}
+        \item [1.] Evaluate $\int_{1}^{\infty} \frac{1}{1+x^{2}}dx$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \int_{1}^{\infty} \frac{1}{1+x^{2}}dx =
+                    \lim_{a \to \infty} \int_{1}^{a} \frac{1}{1+x^{2}}dx    \\
+                    \lim_{a \to \infty} \int_{1}^{a} \frac{1}{1+x^{2}}dx =
+                    \lim_{a \to \infty} \Big[\arctan(x)\Big]_{1}^{a} =
+                    \lim_{a \to \infty} \arctan(a) - \arctan(1)             \\
+                    = \frac{\pi}{2} - \frac{\pi}{4} = \boxed{\frac{\pi}{4}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [2.] 
+    \end{itemize}
+
+    \pagebreak
+
+    \section*{Part II}
+
+
+\end{document}
