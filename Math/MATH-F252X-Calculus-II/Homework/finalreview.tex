@@ -446,5 +446,42 @@
                     \end{equation*}
                 \end{mdframed}
             \end{itemize}
+
+        \item [7.] Find the interval and radius of $\sum\frac{(x-7)^{k}}{4+4^{k}}$.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Using root test:}                                     
+                    \lim_{k \to \infty}
+                    \sqrt[k]{\left|\frac{(x-7)^{k}}{4+4^{k}}\right|} =
+                    \lim_{k \to \infty}
+                    \frac{\sqrt[k]{|(x-7)^{k}|}}{\sqrt[k]{4+4^{k}}} =
+                    \lim_{k \to \infty}
+                    \frac{|(x-7)|}{\sqrt[k]{4+4^{k}}}                           \\
+                    \text{Note that: } 
+                    \underbrace{\lim_{k \to \infty}\sqrt[k]{4^{k}}}
+                    _{\mathclap{\sqrt[k]{4^{k}} = 4}} \leq
+                    \lim_{k \to \infty}\sqrt[k]{4+4^{k}} \leq
+                    \underbrace{\lim_{k \to \infty}\sqrt[k]{2\cdot4^{k}}}
+                    _{\mathclap{\sqrt[k]{2\cdot4^{k}} = 
+                    \sqrt[k]{2}\cdot\sqrt[k]{4}^{k} \to 4}}  \\
+                    4 \leq \lim_{k \to \infty}\sqrt[k]{4+4^{k}} \leq 4, \quad 
+                    \therefore \lim_{k \to \infty}\sqrt[k]{4+4^{k}} = 4         \\
+                    \frac{|x-7|}{4} \leq 1 \Rightarrow
+                    |x-7| \leq 4 \Rightarrow
+                    -4 \leq |x-7| \leq 4                                        \\
+                    \text{For } x=-4:
+                    \sum\frac{(-4-7)^{k}}{4+4^{k}} = 
+                    \sum\frac{(-11)^{k}}{4+4^{k}} \to \text{Diverges}          \\
+                    \text{For } x=4:
+                    \sum\frac{(4-7)^{k}}{4+4^{k}} = 
+                    \sum\frac{(-3)^{k}}{4+4^{k}} \to \text{Converges}           \\
+                    \boxed{\text{Radius: } 4, \; \text{Interval: } (-4,4]}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [8.] 
     \end{itemize}
 \end{document}
