@@ -349,5 +349,24 @@
                 \end{gathered}
             \end{equation*}
         \end{mdframed}
+
+        \item [3.] Evaluate $\int\limits_{0}^{\pi}\sin(x)\cos^{5}(x)dx$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \int_{0}^{\pi}\sin(x)\cos^{5}(x)dx = 
+                    \int_{0}^{\pi}\sin(x)(1-\sin^{2}(x))\cos^{3}(x)dx =
+                    \int_{0}^{\pi}\sin(x)-\sin^{3}(x)\cos^{3}(x)dx                  \\
+                    \int_{0}^{\pi}\sin(x)-\int_{0}^{\pi}\sin^{3}(x)\cos^{3}(x)dx    \\
+                    \int_{0}^{\pi}\sin(x) = 0                                       \\
+                    -\int_{0}^{\pi}\sin^{3}(x)\cos^{3}(x)dx: 
+                    \text{ Let } u = \cos(x) \quad du = -\sin(x)dx                  \\
+                    \int_{1}^{-1}u^{3}dx = -\int_{-1}^{1}u^{3}dx = 
+                    -\left[\frac{u^{4}}{4}\right]_{-1}^{1} =
+                    -\left[\frac{1}{4}-\frac{1}{4}\right] = \boxed{0}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
     \end{itemize}
 \end{document}
