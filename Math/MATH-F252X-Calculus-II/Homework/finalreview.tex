@@ -368,5 +368,19 @@
                 \end{gathered}
             \end{equation*}
         \end{mdframed}
+
+        \item [4.] Find the Maclaurin series expansion of $x\sin(3x^{2})$.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that: } \sin(x) = 
+                    \sum_{k=0}^{\infty} (-1)^{k}\frac{x^{2k+1}}{(2k+1)!}   \\
+                    \therefore \; x\sin(3x^{2}) = 
+                    x\sum_{k=0}^{\infty} (-1)^{k}\frac{(3x^{2})^{2k+1}}{(2k+1)!} =
+                    \boxed{\sum_{k=0}^{\infty} 9(-27)^{k}\frac{x^{4k+5}}{(2k+1)!}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
     \end{itemize}
 \end{document}
