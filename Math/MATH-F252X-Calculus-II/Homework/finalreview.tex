@@ -275,6 +275,48 @@
                 \end{gathered}
             \end{equation*}
         \end{mdframed}
+
+        \item [9.] A force of two pounds stretches a spring one inch. How much work is required to pull the spring an entire foot? Express your answer in foot-pounds.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that: } W = \int_{a}^{b}Fdx      \\
+                    \text{And that: } F = 2                     \\
+                    \int_{0}^{12}2dx = \Big[2x\Big]_{0}^{12} = \boxed{24 \text{ foot-pounds}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [10.] Consider the graph of $y=\ln(\cos(x))$ where $0 \leq x \leq \dfrac{\pi}{4}$. Compute the arc length.
+        \\
+        \begin{mdframed}
+            \begin{center}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        xmin=-0.5, xmax=1,
+                        ymin=-1,ymax=0.5,
+                        trig format plots=rad,
+                        axis lines=center
+                    ]
+                        \addplot [domain=0:pi/4,samples=50,red,->] {ln(cos(x))};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{center}
+
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that arc length is: } \int_{a}^{b}\sqrt{1+|f'(x)|^{2}}dx \\
+                    f'(x) = -\frac{\sin(x)}{\cos(x)} = -\tan(x)                         \\
+                    \int_{0}^{\frac{\pi}{4}}\sqrt{1+\tan^{2}(x)}dx = 
+                    \int_{0}^{\frac{\pi}{4}}\sqrt{\sec^{2}(x)}dx =
+                    \int_{0}^{\frac{\pi}{4}}\sec(x)dx                                   \\
+                    = \Big[\ln|\sec(x)+\tan(x)|\Big]_{0}^{\frac{\pi}{4}} =
+                    \Big[\ln|\sec(\pi/4)+\tan(\pi/4)| - \ln|\sec(0)+\tan(0)|\Big]       \\
+                    = \Big[\ln|\sqrt(2)+1| - \ln|1|\Big] = \ln\left(\sqrt{2}+1\right) \approx \boxed{0.881}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
     \end{itemize}
 
     \pagebreak
