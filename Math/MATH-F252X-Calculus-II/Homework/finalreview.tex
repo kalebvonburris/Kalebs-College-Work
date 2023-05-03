@@ -74,7 +74,7 @@
                 \begin{gathered}
                     \text{Arc length: } \int_{a}^{b}\sqrt{\left(\frac{dx}{dt}\right)^{2} + \left(\frac{dy}{dt}\right)^{2}}dt    \\
                     \frac{dx}{dt} = -\frac{1}{t}                \\
-                    \frac{dy}{dt} = \frac{7}{7t} = \frac{dt}{t} \\
+                    \frac{dy}{dt} = \frac{7}{7t} = \frac{1}{t} \\
                     \int_{1}^{e}\sqrt{\left(-\frac{1}{t}\right)^{2} + \left(\frac{1}{t}\right)^{2}}dt =
                     \int_{1}^{e}\sqrt{\frac{1}{t^{2}} + \frac{1}{t^{2}}}dt =
                     \int_{1}^{e}\sqrt{\frac{2}{t^{2}}}dt =
@@ -190,7 +190,91 @@
             \end{equation*}
         \end{mdframed}
 
-        \item [5.] 
+        \item [5.] Express the following as a closed-form expression: $\sum\limits_{k=0}^{\infty}(-36)^{k}\frac{x^{10k}}{(2k)!}$.
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that: } \cos(x) = \sum_{k=0}^{\infty}(-1)^{k}\frac{x^{2k}}{(2k)!}    \\
+                    \sum_{k=0}^{\infty}(-36)^{k}\frac{x^{10k}}{(2k)!} =
+                    \sum_{k=0}^{\infty}(-1)^{k}\frac{(6x^{5})^{2k}}{(2k)!}                   \\
+                    \therefore \sum_{k=0}^{\infty}(-36)^{k}\frac{x^{10k}}{(2k)!} =
+                    \boxed{\cos(6x^{5})}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [6.] Find the Maclaurin series of $e^{x-5}$
+        \\
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that: } e^{x} = 
+                    \sum_{k=0}^{\infty} \frac{x^{k}}{k!} \text{ and } 
+                    e^{x-5} = \frac{e^{x}}{e^{5}}                       \\
+                    \therefore \quad e^{x-5} = \boxed{\sum_{k=0}^{\infty}\frac{x^{k}}{e^{5}k!}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item [7.] Graph $r=16\cos(\theta)$.
+        \\
+        \begin{mdframed}
+                I get to cheat this one with technology, but note that:
+                \begin{itemize}
+                    \item For $r=\cos(\theta)$, its path circular.
+                    \item The max distance the graph goes from $y=0$ is 16 ($16\cdot\cos(n\cdot\pi)$).
+                    \item It has a radius of 8.
+                    \item Its center is on $x=8$.
+                \end{itemize}
+                \begin{center}
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            xmin=0,xmax=20,
+                            ymin=-10,ymax=10,
+                            axis lines = center,
+                            axis equal
+                        ]
+                            \addplot[domain=0:360,data cs=polar,samples=100,red](x,{16*cos(x)});
+                        \end{axis}
+                    \end{tikzpicture}
+                \end{center}
+        \end{mdframed}
+
+        \item [8.] A region is bounded by the x-axis and the line $y=x^{2}-16$. A solid object sits on this region. Cross sections perpendicular to the y-axis are squares. What is the volume of this object?
+        \\
+        \begin{mdframed}
+            The intersection looks like this:
+            \begin{center}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                        ymin=-16,ymax=0,
+                        axis equal,
+                        axis lines=center
+                    ]
+
+                        \plot[red,samples=100] {x*x-16};
+                        
+                    \end{axis}
+                \end{tikzpicture}
+            \end{center}
+
+            Note that the values here will be inverted: $y=x^{2}-16 \to y=16-x^{2}$ to get positive results.
+
+            The area to integrate is: $0 = 16-x^{2},\;x=\pm4,[-4,4]$.
+
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Note that for $V$ volume: } V = \int_{a}^{b}Adx   \\
+                    \text{Where } A = 16-x^{2}                              \\
+                    \int_{-4}^{4}16-x^{2}dx = 2\left[16x-\frac{x^{3}}{3}\right]_{0}^{4} =
+                    2\left[16(4)-\frac{(4)^{3}}{3}\right] = 
+                    2\left[64 - \frac{64}{3}\right] = 2\cdot\frac{128}{3} = \boxed{\frac{256}{3}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
     \end{itemize}
 
     \pagebreak
