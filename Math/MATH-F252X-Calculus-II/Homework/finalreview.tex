@@ -411,13 +411,40 @@
                 \begin{mdframed}
                     \begin{equation*}
                         \begin{gathered}
-                            \text{Using ratio test: }   \\
-                            \lim_{k \to \infty}\sqrt[n]{\left|\frac{k^{5}+1}{k^{6}+1}\right|}
+                            \text{Using limit comparison test: }                        \\
+                            \text{Note that: }\sum\frac{1}{k} \; \text{Diverges}        \\
+                            \lim_{k \to \infty}\frac{\frac{k^{5}+1}{k^{6}+1}}{\frac{1}{k}}=
+                            \lim_{k \to \infty}\frac{k^{6}+k}{k^{6}+1} \stackrel{(H)}{=}
+                            \lim_{k \to \infty}\frac{k^{5}+1}{k^{5}} \stackrel{(H)}{=}
+                            \lim_{k \to \infty}\frac{k^{4}}{k^{4}} = 
+                            \lim_{k \to \infty} 1 = 1                                   \\
+                            1 \neq 0, \quad \therefore \sum\frac{k^{5}+1}{k^{6}+1} \; \boxed{\text{Diverges}}
                         \end{gathered}
                     \end{equation*}
                 \end{mdframed}
 
-                \item [(b)]
+                \item [(b)] $\sum\frac{k!}{(2k)!}$
+                \\
+                \begin{mdframed}
+                    \begin{equation*}
+                        \begin{gathered}
+                            \text{Using ratio test:}    \\
+                            \lim_{k \to \infty}\left|
+                            \frac{\frac{(k+1)!}{(2k+1)!}}
+                                 {\frac{k!}{(2k)!}}
+                            \right| =
+                            \lim_{k \to \infty}
+                            \frac{(k+1)!}{(k)!}
+                            \frac{(2k)!}{(2k+1)!} =
+                            \lim_{k \to \infty}
+                            \frac{k+1}{2k+1} \stackrel{(H)}{=}
+                            \lim_{k \to \infty}
+                            \frac{1}{2} =                 
+                            \frac{1}{2}                 \\
+                            \frac{1}{2} < 1, \quad \therefore \sum\frac{k!}{(2k)!} \; \boxed{\text{Converges}}
+                        \end{gathered}
+                    \end{equation*}
+                \end{mdframed}
             \end{itemize}
     \end{itemize}
 \end{document}
