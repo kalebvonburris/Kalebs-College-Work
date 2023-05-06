@@ -1,0 +1,282 @@
+\documentclass[10pt, letterpaper]{book}
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{icomma}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage[parfill]{parskip}
+\usepackage{subfiles}
+\usepackage[makeroom]{cancel}
+\usepackage{mathtools}
+\usepackage{MnSymbol}
+\usepackage{amsmath}
+\usepackage{tkz-euclide}
+\usepackage{siunitx}
+\usepackage{calculator}
+\usepackage{calculus}
+\usepackage{mdframed}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2cm}
+
+\pagestyle{fancy}
+
+\fancyhead[L]{
+    Kaleb Burris
+    \newline
+    PHYS F211X
+    \newline
+    Cheatsheet
+}
+
+\newcommand{\horizontal}{\noindent\rule{\hsize}{0.4pt}}
+
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{0.25in}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{1pt}
+
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{2pt}
+
+\begin{document}
+    \begin{multicols*}{2}
+        Dot Product:
+        \begin{align}
+            \vec{A}\cdot\vec{B} & = ||A|| \; ||B||\cos(\theta)
+        \end{align}
+
+        Cross Product:
+        \begin{align}
+            \vec{A}\times\vec{B} & = AB\sin(\theta)
+        \end{align}
+
+        Position:
+        \begin{align}
+            x, y, s, \text{ or } p  & = \vec{v}\Delta t = \int\vec{v}dt                     \\
+                                 x  & = \left(\frac{v_{0}+v{f}}{2}\right)\Delta t           \\
+                                 x  & = v_{0} t+\left(\frac{1}{2}\right)\vec{a} t^{2}       
+        \end{align}
+
+        Velocity, $v$:
+        \begin{align}
+            \vec{v}         & = \vec{a}\Delta t = \frac{d}{dt}[p] = \int(\vec{a})dt     \\
+            \vec{v}         & = v_{0} + \vec{a}t                                        \\
+            \vec{v}^{2}_{f} & = v^{2}_{0} + 2\vec{a}\Delta x                            
+        \end{align}
+
+        Acceleration, $a$:
+        \begin{equation}
+            \vec{a} = \frac{d}{dt}[\vec{v}]
+        \end{equation}
+
+        Projectile Motion:
+        \begin{equation}
+            \label{eqn::yfinal}
+            y_{f} = y_{0} + v_{0}(\Delta t) + \frac{1}{2}a(\Delta t^{2})
+        \end{equation}
+
+        Force, $F$:
+        \begin{equation}
+            \vec{F} = m\vec{a}
+        \end{equation}
+
+        Friction:
+        \begin{equation}
+            f = \mu N
+        \end{equation}
+
+        Drag: 
+        \begin{equation}
+            \vec{F_D}\text{ or }D = \frac{1}{2}p C_{D}Av^{2}
+        \end{equation}
+
+        Circular Motion:
+        \begin{align}
+            \vec{v}         & = r                               \\
+            F_{c}           & =\frac{m\vec{v}^{2}}{r}           \\
+            f               & = \mu n                           \\
+            v_{c}           & = \sqrt{gr}                       \\
+            N               & = mr\omega^{2}                    \\
+            N               & = 3mg                             \\
+            \omega          & = \frac{\Delta \theta}{\Delta t}  
+        \end{align}
+
+        Total Energy:
+        \begin{align}
+            E   & = K + U   \\
+            KE_{i} + U_{i}  & = KE_{f} + U_{f}  \\
+            \frac{1}{2}mv^{2}_{i} + mgy_{i} & = \frac{1}{2}mv^{2}_{f} + mgy_{f}
+        \end{align}
+
+        PE of a spring:
+        \begin{align}
+            U     & = 1/2kx^{2}                 \\
+            U_{p} & = \frac{1}{2}k(x-L_{0})
+        \end{align}
+
+        Potential Energy, $U$:
+        \begin{align}
+            U_{tot} & = mg + k\Delta y 
+        \end{align}
+
+        Work, $W$:
+        \begin{align}
+            W_{int} & = -\frac{F_{x}}{\Delta }  \\
+            F_{x}   & = -\frac{dU}{dx}          \\
+            W_{net} & = \Delta K
+        \end{align} 
+
+        Momentum, $p$:
+        \begin{align}
+            p    & = mv
+        \end{align}
+
+        Torque, $\tau$:
+        \begin{align}
+            \tau & = r \times F     \\
+            \tau & = rF\sin(\theta) \\
+            N    & = I\alpha        
+        \end{align}
+
+        Inertia, $I$:
+        \begin{align}
+            I   & = \sum_{i}m_{i}r_{i}^{2} = \int r^{2}dm   \\
+            I   & = r\omega^{2}
+        \end{align}
+
+        Kinetic Energy of Rotation:
+        \begin{align}
+            KE_{rot}  & = \frac{1}{2}I\omega^{2}
+        \end{align}
+
+        Kinetic Energy of Rolling:
+        \begin{align}
+            KE_{roll} & = \frac{1}{2}I\omega^{2} + \frac{1}{2}mv_{c}^{2}    
+        \end{align}
+
+        Angular Momentum:
+        \begin{align}
+            L = I\omega
+        \end{align}
+
+        Newton's Laws of Gravity:
+        \begin{align}
+            F   & = \frac{Gm_{1}m_{2}}{r^{2}}           \\
+            U   & = -\frac{Gm_{1}m_{2}}{r^{2}}          \\
+            G   & = 6.67 \times 10^{-11}Nm^{2}/kg^{2}   \\
+            a_{m_{1}}   
+                & = \frac{Gm_{2}}{r^{2}}                \\
+            v_{\text{orbit}}   
+                & = \sqrt{\frac{GM}{r}}                 \\
+            v_{\text{escape}}
+                & = \sqrt{\frac{2GM}{R}}                \\
+            g_{\text{surface}} 
+                    & = \frac{GM}{R^{2}}
+        \end{align}
+
+        Orbits:
+        \begin{align}
+            v   & = \frac{2 \pi R}{T}                           \\
+            \Delta T^{2}   & = \frac{4\pi^{2}}{GM_{\odot}}r^{3} \\
+            \frac{4\pi^{2}}{GM_{\odot}} & = 1                   \\
+            \Delta T^{2} & \propto r^{3}                        \\
+            \vec{v} & = \frac{2\pi r}{\Delta t} 
+            \text{ Valid for circular}                          \\
+            KE  & = \frac{1}{2}mv^{2} = \frac{Gm_{1}m_{2}}{2r}  \\
+            KE  & = -\frac{1}{2}U_{G}         
+        \end{align}
+
+        Density, $\rho$:
+        \begin{align}
+            \rho    & = \frac{m}{V}                             
+        \end{align}
+
+        Pressure, $\phi$:
+        \begin{align}
+            \phi    & = \frac{F}{A}                             \\
+            \phi_{\text{atmosphere}}
+                    & = \rho g h                                \\
+            \phi_{h}& = \phi_{0}e^{-\frac{mgh}{kT}}             \\
+            \phi_{h}& = \rho_{l}hg + \phi_{a}                   \\
+            F_{\text{bouyancy}} 
+                    & = \rho V g
+        \end{align}
+
+        Bernoulli's Law:
+        \begin{equation}
+            \phi_{1} + \frac{1}{2}\rho v_{1}^{2} + \rho gh_{1} = 
+            \phi_{2} + \frac{1}{2}\rho v_{2}^{2} + \rho gh_{2}
+        \end{equation}
+
+        Continuity:
+        \begin{equation}
+            A_{1}v_{1} = A_{2}v_{2}
+        \end{equation}
+
+        Bernoulli's Equation:
+        \begin{equation}
+            \Delta KE + \Delta U = W_{\text{external}}
+        \end{equation}
+
+        Power:
+        \begin{align}
+            P   & = \frac{\Delta E}{\Delta t}
+                = \frac{\Delta E}{\Delta t} 
+                = \frac{1}{2}\omega^{2}A^{2}\mu v           \\
+            \Delta E & =\frac{1}{2}\omega^{2}\mu A^{2}dx    \\
+            \omega^{2} & = \frac{k}{m}                      
+        \end{align}
+
+        Intensity:
+        \begin{align}
+            I   & = \frac{\text{Power}}{\text{Area}}
+                  = \frac{\text{Energy}/\text{Time}}{\text{Area}}
+        \end{align}
+
+        Waves:
+        \begin{align}
+            f   & = \frac{1}{T}                         \\
+            T   & = \frac{1}{f}                         \\
+            \frac{\Delta r}{\lambda} 
+                & = \frac{\Delta \phi}{2\pi}            \\
+            \omega \; (\text{Rad/s})
+                & = \frac{2\pi}{T} = 2\pi f\;(\text{Hz})\\
+            x(t)& = A\cos\left(\frac{2 \pi t}{T}\right) \\
+            x(t)& = A\cos(2\pi t\cdot f)                \\
+            x(t)& = A\cos(\omega t)                     \\      
+            v_{x}(t)
+                & = -v_{\text{max}}
+                    \sin\left(\frac{2\pi t}{T}\right)   \\    
+            v_{\text{max}}
+                & = \frac{2\pi A}{T} = 2\pi A \cdot f
+                  = \omega A    
+        \end{align}
+
+        Simple Harmonic Motion:
+        \begin{align}
+            x       & = A\cos(\phi)                 \\
+            \omega  & = \frac{d\phi}{dt}            \\
+            \phi    & = \omega t                    \\
+            x(t)    & = A\cos(\omega t)             \\
+            x(t)    & = A\cos(\omega t + \phi_{0})  \\
+            v_{x}(t)& = \omega A\sin(\omega t + \phi_{0})
+                      = -v_{\text{max}}
+                        \sin(\omega t + \phi_{0})
+        \end{align}
+
+        Interference:
+        \begin{align}
+            y   & = 2A\cos\left(\frac{\phi}{2}\right)
+                    \sin\left(kx-\omega+\frac{\phi}{2}\right)       \\
+            \text{Max } \phi
+                & = 2n\pi                                           \\      
+            \text{Min } \phi
+                & = (2n+1)\pi                                       
+        \end{align}
+
+   \end{multicols*}
+\end{document}
