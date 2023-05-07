@@ -28,3 +28,6 @@
 [submodule "CS/CS F202/Homework/hw04-kalebvonburris"]
 	path = CS/CS F202/Homework/hw04-kalebvonburris
 	url = https://github.com/2023-Spring-UAF-CS202/hw04-kalebvonburris
+[submodule "CS/CS F202/Homework/final-kalebvonburris"]
+	path = CS/CS F202/Homework/final-kalebvonburris
+	url = https://github.com/2023-Spring-UAF-CS202/final-kalebvonburris
