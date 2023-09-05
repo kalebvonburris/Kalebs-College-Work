@@ -271,28 +271,238 @@
     \paragraph*{2.2: 61, 64, 66, 68, 72, 74, 76, 78, 84, 89, 92, 100, 103}
     
     \begin{itemize}
-        \item [61.]
-        \item [64.]
-        \item [66.]
-        \item [72.]
-        \item [74.]
-        \item [76.]
-        \item [78.]
-        \item [84.]
-        \item [89.]
-        \item [92.]
-        \item [100.]
-        \item [103.]
+        \item [61.] Consider a rectangular box with one of the vertices at the origin, as shown in the following figure. If point $A(2, 3, 5)$ is opposite of the origin, then find:
+        
+        \begin{mdframed}
+            \begin{itemize}
+                \item [a.] the coordinates of the other size vertices of the box
+                
+                $\boxed{
+                    (0, 3, 5),
+                    (0, 0, 5),
+                    (2, 0, 5),
+                    (2, 0, 0),
+                    (2, 3, 0),
+                    (0, 3, 0)
+                }$
+
+                \item [b.] and the length of the diagonal of the box determined by the vertices $O$ and $A$.
+                
+                \begin{equation*}
+                    \begin{gathered}
+                        ||\vec{OA} || = \sqrt{2^2 + 3^2 + 5^2} = \sqrt{4 + 9 + 5}
+                                      = \boxed{\sqrt{18}}
+                    \end{gathered}
+                \end{equation*}
+            \end{itemize}
+        \end{mdframed}
+
+        \item [64.] $(z-2)(z-5)=0$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                (z-2)(z-5)=0 \rightarrow z^2 - 7z + 10 = 0
+            \end{equation*}
+
+            This is a parabola with zeroes at $x=2$ and $x=5$, and points $(2, 0), (3, -2), (4, -2) (5, 0)$.
+        \end{mdframed}
+
+        \item [66.] $(x-2)^{2}+(z-1)^{2}=1$
+        
+        \begin{mdframed}
+            This is a circle resting flat on the $xz$ axis with a radius of 1, and points $(3, 0, 1), (2, 0, 2), (1, 0, 1), (2, 0, 0)$.
+        \end{mdframed}
+
+        \item [72.] Center $C(-4, 7, 2)$ and radius 6.
+        
+        \begin{mdframed}
+            \begin{equation*}
+                (x+4)^{2} + (y-7)^{2} + (z-2)^{2} = 36
+            \end{equation*}
+        \end{mdframed}
+
+        \item [74.] Diameter $PQ$, where $P(-16, -3, 9)$ and $Q(-2, 3, 5)$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Given: Diameter (opposite points) } P(-16, -3, 9), Q(-2, 3, 5)    \\
+                    C = \frac{(-16 + (-2), -3 + 3, 9 + 5)}{2} = \frac{-18, 0, 14}{2}        \\
+                      = (-9, 0, 7)                                                          \\
+                    \therefore (x - (-9))^{2} + (y - 0)^{2} + (z - 7)^{2} = ||\vec{PQ}||    \\
+                    ||\vec{PQ}|| = \sqrt{
+                        \left(\frac{-2 - (-16)}{2}\right)^{2} +
+                        \left(\frac{3 - (-3)}{2}\right)^{2} +
+                        \left(\frac{5 - 9}{2}\right)^{2}
+                    }   \\
+                    = \sqrt{7^2 + 3^2 + 2^2} = \sqrt{49 + 9 + 4} = \sqrt{62}                \\
+                    \boxed{(x + 9)^{2} + y^{2} + (z - 7)^{2} = \sqrt{62}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [76.] $x^2 + y^2 + z^2 - 6x + 8y - 10z + 25 = 0$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    x(x-6)+y(y+8)+z(z-10) = 25          \\
+                    (x-3)^{2}+(y+4)^{2}+(z-5)^{2} = 25  \\
+                    \therefore \boxed{C(3, -4, 5) \text{ radius: } 5}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \pagebreak
+
+        \item [78.] $P(0, 10, 5)$ and $Q(1, 1, -3)$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{PQ} = \expval{1 - 0, 1 - 10, -3 - 5} = \expval{1, -9, -8}
+                \end{gathered}
+            \end{equation*}
+            \begin{itemize}
+                \item [a.] \boxed{\expval{1, -9, -8}}
+                \item [b.] \boxed{\ihat, -9\jhat, -8\khat}
+            \end{itemize}
+        \end{mdframed}
+
+        \item [84.] $\mathbf{a} = \expval{-1, -2, 4}, \mathbf{b} = \expval{-5, 6, 7}$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{a} + \vec{b} = \expval{-1, -2, 4} + \expval{-5, 6, 7} = \boxed{\expval{-6, 4, 11}} \\
+                    4\vec{a} = 4\expval{-1, -2, 4} = \boxed{\expval{-4, -8, 16}}                            \\
+                    -5\vec{a} + 3\vec{b} = -5\expval{-1, -2, 4}+3\expval{-5, 6, 7} = \boxed{\expval{-10, 16, 1}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [87.] $\mathbf{u} = 2i + 3j + 4k, \mathbf{v} = -i + 5j + k$ Whoops, did it again.
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    ||\vec{u} - \vec{v}|| = ||3i - 2j + 3k|| = \sqrt{3^2 + (-2)^2 + 3^2} = \boxed{\sqrt{22}} \\
+                    ||-2\vec{u}|| = \sqrt{(-4)^2 + (-6)^2 + 8^2} = \boxed{\sqrt{116}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item[89.] $\mathbf{u} = \expval{2\cos t, -2\sin t, 3}, \mathbf{v} = \expval{0, 0, 3}$, where $t \in \mathbb{R}$.
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    ||\vec{u} - \vec{v}|| = ||\expval{2\cos t - 0, -2\sin t - 0, 3 - 3}|| 
+                        = \sqrt{4\cos^{2}t + 4\sin^{2} t + 0^2} = 2\sqrt{\sin^{2}t + \cos^{2}t} = \boxed{2} \\
+                    ||-2\vec{u}|| = ||\expval{-4\cos t, 4\sin t, -6}|| 
+                        = \sqrt{16\cos^{2}t + 16\sin^{2}t + 36} = \sqrt{16 + 36} = \sqrt{56} = \boxed{2\sqrt{13}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [92.] $\mathbf{a} = \expval{4, -3, 6}$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{UV of } \vec{a} = \frac{\vec{a}}{||\vec{a}||} \\
+                    \frac{\vec{a}}{||\vec{a}||} = \frac{\expval{4, -3, 6}}{\sqrt{16 + 9 + 36}}
+                    = \boxed{\expval{\frac{4}{\sqrt{61}}, -\frac{3}{\sqrt{61}}, \frac{6}{\sqrt{61}}}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [100.] $\mathbf{v} = \expval{2, 4, 1}, \; ||\mathbf{u}|| = 15$, $\mathbf{u}$ and $\mathbf{v}$ have the same direction.
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{u} = 15\frac{\vec{v}}{||\vec{v}||} \\
+                    \vec{u} = 15\frac{\expval{2, 4, 1}}{\sqrt{2^2, 4^2, 1^1}} 
+                        = 15\frac{\expval{2, 4, 1}}{\sqrt{21}} 
+                        = \boxed{\expval{\frac{30}{\sqrt{21}}, \frac{60}{\sqrt{21}}, \frac{15}{\sqrt{21}}}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [103.] Determine a vector of magnitude 5 in the direction of vector $\vec{AB}$, where $A(2, 1, 5)$ and $B(3, 4, -7)$.
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{AB} = \expval{3 - 2, 4 - 1, -7 - 5} = \expval{1, 3, -12}   \\
+                    5\frac{\vec{AB}}{||\vec{AB}||}
+                        = 5\frac{\expval{1, 3, -12}}{\sqrt{1^2 + 3^2 + (-12)^2}}
+                        = 5\frac{\expval{1, 3, -12}}{\sqrt{154}}
+                        = \boxed{\expval{\frac{5}{\sqrt{154}}, \frac{15}{\sqrt{154}}, -\frac{60}{\sqrt{154}}}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
     \end{itemize}
+
+    \pagebreak
 
     \paragraph*{2.3: 126, 130, 132, 136, 140, 142, 146, 148, 150, 152, 154, 168, 170, 172}
 
     \begin{itemize}
-        \item [126.]
-        \item [130.]
-        \item [132.]
-        \item [136.]
-        \item [140.]
+        \item [126.] $\mathbf{u} = \expval{4, 5, -6}, \mathbf{v} = \expval{0, -2, -3}$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{u} \cdot \vec{v} = (4 * 0) + (5 * -2) + (-6 * -3) = \boxed{8}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [130.] $a = i - j + k, b = j + 3k, c = -i + 2j - 4\khat$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    (a \cdot b)c = ((1 * 0) + (-1 * 1) + (1 * 3))(-\ihat + 2\jhat - 4\khat) 
+                    = 2(-\ihat + 2\jhat - 4\khat) = \boxed{\expval{-2, 4, -8}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [132.] $\mathbf{a} = \expval{2, 1}, \mathbf{b} = \expval{-1, 3}$
+        
+        \begin{mdframed}
+            \begin{itemize}
+                \item [a.]
+                \begin{equation*}
+                    \begin{gathered}
+                            \theta = \arccos\left(\frac{a \cdot b}{||a||*||b||}\right)  \\
+                                   = \arccos\left(\frac{2}{\sqrt{5} * \sqrt{10}}\right)
+                                   = \arccos\left(\frac{1}{5\sqrt{2}}\right) = \boxed{1.28 \text{ radians}}
+                    \end{gathered}
+                \end{equation*}
+                \item [b.] \boxed{1.28 * 2 < \pi; acute}
+            \end{itemize}
+        \end{mdframed}
+
+        \item [136.] $\mathbf{a} = \expval{0,-1,-3}, \mathbf{b} = \expval{2,3,-1}$
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \theta = \arccos\left(\frac{a \cdot b}{||a||*||b||}\right)  \\
+                    \arccos\left(\frac{(0 * 2) + (-1 * 3) + (-3 * -1)}
+                        {\sqrt{10}*\sqrt{14}}\right)
+                        = \arccos\left(\frac{0}
+                        {\sqrt{10}*\sqrt{14}}\right) = \arccos(0) = \boxed{\frac{\pi}{2}} 
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item [140.] 
         \item [142.]
         \item [146.]
         \item [148.]
