@@ -14,11 +14,7 @@
             "compilerPath": "C:/MinGW/bin/g++.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
-<<<<<<< HEAD
             "intelliSenseMode": "windows-msvc-x64",
-=======
-            "intelliSenseMode": "windows-gcc-x64",
->>>>>>> d7d19336b78d889136bd918b1227b831225ee5b6
             "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
