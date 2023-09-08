@@ -208,5 +208,29 @@
                 \includegraphics[width=\textwidth]{image1.png}
             \end{center}
         \end{mdframed}
+
+        \pagebreak
+
+        \item[12.] Sketch all 3 graphs in your notebook (position, velocity, KE v. time).
+        
+        \begin{mdframed}
+            \begin{center}
+                \begin{tikzpicture}
+                    \begin{axis} [
+                        axis lines=center,
+                        xlabel=Time($t$),
+                        xmin=0, xmax=10,
+                        ymin=0, ymax=100,
+                        xmajorgrids=true,
+                        xminorgrids=true,
+                        yticklabels={,,},
+                        legend style={anchor=north},
+                    ]
+                        \addplot[color=yellow] (0,0) -- controls(5,100) -- (10, 0) -- (10, 0) -- (5, 50);
+                        \addlegendentry{KE}
+                    \end{axis}
+                \end{tikzpicture}
+            \end{center}
+        \end{mdframed}
     \end{enumerate}
 \end{document}
