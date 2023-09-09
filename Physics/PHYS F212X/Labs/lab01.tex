@@ -218,19 +218,40 @@
                 \begin{tikzpicture}
                     \begin{axis} [
                         axis lines=center,
-                        xlabel=Time($t$),
-                        xmin=0, xmax=10,
-                        ymin=0, ymax=100,
+                        xlabel=Time (sec),
+                        xmin=0, xmax=1,
+                        ymin=-10, ymax=10,
                         xmajorgrids=true,
                         xminorgrids=true,
                         yticklabels={,,},
                         legend style={anchor=north},
                     ]
-                        \addplot[color=yellow] (0,0) -- controls(5,100) -- (10, 0) -- (10, 0) -- (5, 50);
+                        \addplot[color=orange] (0,0) .. controls(0.5,10) .. (1, 0);
                         \addlegendentry{KE}
+                        \addplot[color=blue]   (0,0) .. controls(0.5, 8) .. (1, 0);
+                        \addlegendentry{Position}
+                        \addplot[color=red]    (0,0) .. controls(0.25,  10) and (0.5, 10) .. (1, 0);
+                        \addlegendentry{Velocity}
                     \end{axis}
                 \end{tikzpicture}
             \end{center}
+        \end{mdframed}
+
+        \item[13.] The equation for the kinetic energy is $KE = \frac{1}{2}mv^{2}$. Using the mass of the basketball and the velocity from question 10, calculate the uncertainty in the kinetic energy $\delta KE$. Report your findings as $KE \pm \delta KE$.
+        
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \delta KE = \sqrt{\left(\frac{\partial KE}{\partial m}\delta m\right)^{2} + \left(\frac{\partial KE}{\partial v}\delta v\right)^{2}}    \\
+                    \frac{\partial KE}{\partial m} = v^{2} \quad \delta m = 0.5g        \\
+                    \frac{\partial KE}{\partial v} = 2mv   \quad \delta v = 0.1583m/s   \\
+                    \delta KE = \sqrt{\left(0.0005v^{2}\right)^{2} + \left(0.3166mv\right)^{2}}    \\
+                              = \sqrt{(0.0005(2.215)^{2})^{2} + ((0.3166)(0.5996)(2.215))^{2}}
+                              = 0.176    \\
+                    KE = mv^{2} = 0.5996(2.215)^{2} = 2.942 \\
+                    \boxed{2.942J \pm 0.176J}
+                \end{gathered}
+            \end{equation*}
         \end{mdframed}
     \end{enumerate}
 \end{document}
