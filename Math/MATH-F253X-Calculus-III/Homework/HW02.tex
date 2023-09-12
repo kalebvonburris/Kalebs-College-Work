@@ -1,0 +1,109 @@
+﻿\documentclass[10pt, letterpaper]{article}
+
+% Files using this must be two subfolders
+% deep. Adjust the number of ../ for the
+% depth of the file.
+\input{preamble.tex}
+\usepackage{tkz-fct}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Homework 2}
+
+\begin{document}
+    % Templates
+    \iffalse
+    % Use these for equations.
+    \begin{equation*}
+        \begin{gathered}
+            Equations go here.
+        \end{gathered}
+    \end{equation*}
+
+    % Use this if a line of math is too long.
+    \resizebox{\hsize}{!}{$Long equation goes here$}
+
+    % Use these for multiple columns.
+    \begin{multicol*}{# of columns}
+        % Remove the * if you want the columns to be balanced.
+    \end{multicol*}
+
+    % Use this to add a horizontal line.
+    \horizontal
+
+    \fi
+
+    % Begin homework here.
+    %%%%%%%%%%%%%%%%%%%%%%
+
+    \paragraph{2.4:   184, 188, 190, 195, 204, 205, 207, 210, 212, 214, 219, 228, 235}
+
+    \begin{enumerate}
+        \item[184.]\mbox{}
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{u} \cross \vec{v} =
+                    \begin{vmatrix}
+                        \ihat & \jhat & \khat   \\
+                        3 & 2 & -1              \\
+                        1 & 1 & 0               \\
+                    \end{vmatrix}
+                    = \ihat(0-(-1)) - \jhat(0-(-1)) + \khat(3-2) 
+                    = \ihat + \jhat - \khat
+                    = \boxed{\expval{1, -1, 1}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item[188.]\mbox{}
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \jhat(\khat \cross \jhat + 2\jhat \cross \ihat 
+                          - 3 \jhat \cross \jhat + 5\ihat \cross \khat)
+                          = \jhat(-\ihat - 2\khat - 5\jhat)
+                          = \khat - 2\ihat = \boxed{-2, 0, 1}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item[190.]\mbox{}
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \vec{u} \cross \vec{v} =
+                    \begin{vmatrix}
+                        \ihat & \jhat & \khat   \\
+                        2 & 6 & 1               \\
+                        3 & 0 & 1               \\
+                    \end{vmatrix}
+                    = \ihat(6) - \jhat(2 - 3) + \khat(0 - 18)
+                    = 5\ihat + \jhat -18\khat   \\
+                    \frac{6\ihat + \jhat -18\khat}
+                         {\sqrt{36 + 1 + 324}}
+                    = \boxed{\frac{6\ihat}{19} + \frac{\jhat}{19} - \frac{18\khat}{19}}
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+
+        \item[195.]\mbox{}
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \text{Given: } \vec{u} \neq \vec{0} \quad \vec{v} \neq \vec{0}  \\
+                    2
+                \end{gathered}
+            \end{equation*}
+        \end{mdframed}
+    \end{enumerate}
+
+
+\end{document}
