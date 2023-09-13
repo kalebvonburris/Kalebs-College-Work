@@ -53,6 +53,21 @@
         "functional": "cpp",
         "list": "cpp",
         "unordered_map": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "charconv": "cpp",
+        "csignal": "cpp",
+        "format": "cpp",
+        "locale": "cpp",
+        "map": "cpp",
+        "mutex": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "set": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "unordered_set": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp",
+        "xtree": "cpp"
     }
 }
