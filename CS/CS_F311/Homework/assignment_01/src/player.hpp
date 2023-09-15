@@ -24,9 +24,11 @@ public:
     {}
 
     // Constuctor given arguments
-    Player(std::string u, std::string r, unsigned int g) :
-    user_name(u), real_name(r), games_played(g)
-    {}
+    Player(std::string r, std::string u, int g) :
+    real_name(r), user_name(u), games_played(g)
+    {
+        assert(g >= 0);
+    }
 
     // Have the compiler generate the following functions:
     //    Copy constructor
@@ -44,14 +46,17 @@ public:
     // I believe the C++ naming convention 
     // is to snake_case function names, this
     // is giving me Java flashbacks.
-    std::string getUsername()          const { return user_name; }
-    std::string getRealName()     const { return real_name; }
-    unsigned int getGames() const { return games_played; }
+    std::string getUsername() const { return this->user_name; }
+    std::string getRealName() const { return this->real_name; }
+    int getGames()            const { return this->games_played; }
 
     // Setters //
     void setUsername(std::string u)     { this->user_name = u; }
     void setRealName(std::string r)     { this->real_name = r; }
-    void setGames(unsigned int g)       { this->games_played = g; }
+    void setGames(unsigned int g)       { 
+        assert(g >= 0);
+        this->games_played = g; 
+    }
 
     // Member functions //
     
@@ -74,7 +79,6 @@ public:
 
     //    Pre-increment operator (player++)
     Player operator++(int) {
-        assert(this->games_played > 0);
         Player temp(*this);
         ++(*this);
         return temp;
@@ -99,7 +103,7 @@ private:
 
     std::string user_name;
     std::string real_name;
-    unsigned int games_played;
+    int games_played;
 
 }; // End of Player class
 
