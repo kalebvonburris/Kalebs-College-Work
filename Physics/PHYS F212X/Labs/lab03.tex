@@ -1,0 +1,53 @@
+﻿\documentclass[12pt, letterpaper]{article}
+
+\input{preamble.tex}
+
+% Put class number, class name, and professor 
+% name.
+% Use only in case of emergency, this
+% should be covered by the preamble.
+% \renewcommand\classname{}
+
+% Put the assignment name with \S if 
+% necessary for the section and the question 
+% numbers.
+\renewcommand\assignment{Lab 3: Latent Fusion, 9/21/2023, Partner: Quency Snow}
+
+\graphicspath{ {./lab03images/} }
+
+\begin{document}
+    \section*{Part 1: Determine the latent heaf of fusion, $L_{F}$}
+
+
+
+    \begin{enumerate}
+        \item [1.] $m_{w+d} = 0.343kg \pm 0.00005kg$
+        \item [2.] $T_{h} = 80.2^{\circ}C \pm 3.5^{\circ}C$
+        \item [3.] $T_{f} = 27.0^{\circ}C \pm 0.1^{\circ}C$
+        \item [4.] $m_{w+d+ice} = 0.5947kg \pm 0.00005kg \quad m_{ice} = 0.836kg \pm 0.00005$
+        \item [5.] $L_{f} = \frac{c_{w}m_{w}C_{d}}{m_{ice}}(T_{h}-T_{f})+c_{w}(T_{ice}-T_{f}) = \frac{4186(0.1681)(83)}{0.0836}(80.2-27.0)+4168(0-27.0)$ 
+                   $= \boxed{37053854.42}$
+        \item [6.] \mbox{}
+        \begin{mdframed}
+            \begin{equation*}
+                \begin{gathered}
+                    \delta L_{f} = \sqrt{ \begin{lgathered}
+                        \left(-m_{ice}^{-2}(c_{w}m_{h}+C_{d})(T_{h}-T_{f})\delta m_{ice}\right)^{2} +
+                        \left(m_{ice}^{-1}(c_{w}T_{ice} - c_{w}T_{f})\delta m_{h}\right)^{2} \\ +
+                        \left(m_{ice}^{-1}(c_{d}T_{ice} - C_{d}T_{f})\delta C_{d}\right)^{2} +
+                        \left(c_{w}\delta T_{ice}\right)^{2} +
+                        \left(-c_{w}\delta T_{f}\right)^{2}
+                    \end{lgathered}} \\
+                    = \sqrt{ \begin{lgathered}
+                        \left(-(0.0836)^{-2}(4186m_{h}+C_{d})(T_{h}-(0.1))(0.0836)\right)^{2} +
+                        \left((0.0836)^{-1}(4186(0) - 4186(0.1))\delta m_{h}\right)^{2} \\ +
+                        \left((0.0836)^{-1}83(0) - 83(0.1)(5)\right)^{2} +
+                        \left(4186(1)\right)^{2} +
+                        \left(-4186(0.1)\right)^{2}
+                    \end{lgathered}} \\
+                \end{gathered}
+            \end{equation*}    
+        \end{mdframed}
+        
+    \end{enumerate}
+\end{document}
