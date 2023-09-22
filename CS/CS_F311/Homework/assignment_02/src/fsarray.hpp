@@ -1,6 +1,6 @@
 ﻿// Class FSArray
 // Kaleb Burris
-// 9-21-2023
+// 2023-9-21
 // A class that stores arbitrary T elements for CS311 Assignment 2.
 
 #pragma once
@@ -11,12 +11,13 @@
 // For size_t
 #include <cassert>
 // For assert()
+#include <utility>
+// For std::cmp_equal()
 
 
 // Invariants: None
 template <typename T>
 class FSArray {
-public:
 // ***** FSArray: Types *****
 public:
     using value_type = T;
@@ -70,47 +71,6 @@ public:
         return _array_ptr[index];
     }
 
-    // op== - const
-    // The given FSArray must have the same
-    //     `type_value` as the one it's being
-    //     compared against.
-    bool operator==(const FSArray<T> other) const {
-        if (this->size() != other.size()) return false;
-
-        for (size_type i = 0; i < size(); i++)
-            if (_array_ptr[i] != other.begin()[i]) return false;
-
-        return true;
-    }
-
-    // op!= - const
-    // The given FSArray must have the same
-    //     `type_value` as the one it's being
-    //     compared against.
-    bool operator!=(const FSArray<T> other) const {
-        return !(*this == other);
-    }
-
-    bool operator<(const FSArray<T>& other) const {
-        value_type* begin, end;
-        if (this->size() > other.size()) {
-            begin = this->begin();
-            end = this->end();
-        } else {
-            begin = this->begin();
-            end = this->begin() + other.size();
-        }
-
-        for (size_type i = 0; begin != end; i++, begin++) {
-            if ((*this)[i] < other[i]) return true;
-            if (other[i] < (*this)[i]) return false;
-        }
-
-        return this->size() == other.size();
-    }
-
-
-
 // ***** FSArray: General public member functions *****
     // size() - const
     // Returns the size of the array.
@@ -134,3 +94,79 @@ private:
     size_type _array_size;
 
 }; // End of class FSArray
+
+// op< - const
+// The given FSArray must have the same
+//     `type_value` as the one it's being
+//     compared against.
+template<typename T>
+bool operator<(const FSArray<T> & lhs, const FSArray<T>& rhs) {
+    const T* begin;
+    const T* end;
+
+    // Set the end to be the minimum of 
+    //     lhs.size() and rhs.size().
+    if (lhs.size() > rhs.size()) {
+        begin = lhs.begin();
+        end = lhs.end();
+    } else {
+        begin = lhs.begin();
+        end = begin + rhs.size();
+    }
+
+    for (auto i = 0; begin != end; i++) {
+        if (lhs[i] < rhs[i]) return true;
+        if (rhs[i] < lhs[i]) return false;
+    }
+
+    return lhs.size() == rhs.size();
+}
+
+// op<= - const
+// The given FSArray must have the same
+//     `type_value` as the one it's being
+//     compared against.
+template<typename T>
+bool operator<=(const FSArray<T> & lhs, const FSArray<T>& rhs)  {
+    // Using XOR operator here because I have brain damage.
+    return (lhs < rhs) || (lhs == rhs);
+}
+
+// op> - const
+// The given FSArray must have the same
+//     `type_value` as the one it's being
+//     compared against.
+template<typename T>
+bool operator>(const FSArray<T> & lhs, const FSArray<T>& rhs) {
+    // Using XOR operator here because I have brain damage.
+    return !(lhs < rhs) ^ !(lhs == rhs);
+}
+
+// op>= - const
+// The given FSArray must have the same
+//     `type_value` as the one it's being
+//     compared against.
+template<typename T>
+bool operator>=(const FSArray<T> & lhs, const FSArray<T>& rhs) {
+    // Using XOR operator here because I have brain damage.
+    return !(lhs < rhs) || (lhs == rhs);
+}
+
+// op== - const
+// The given FSArray must have the same
+//     `type_value` as the one it's being
+//     compared against.
+template<typename T>
+bool operator==(const FSArray<T> & lhs, const FSArray<T> & rhs) {
+    if (lhs.size() != rhs.size()) return false;
+    return (lhs < rhs) ^ (rhs < lhs);
+}
+
+// op!= - const
+// The given FSArray must have the same
+//     `type_value` as the one it's being
+//     compared against.
+template<typename T>
+bool operator!=(const FSArray<T> lhs, FSArray<T> rhs) {
+    return !(lhs == rhs);
+}
