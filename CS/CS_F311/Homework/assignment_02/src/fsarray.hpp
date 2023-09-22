@@ -91,6 +91,24 @@ public:
         return !(*this == other);
     }
 
+    bool operator<(const FSArray<T>& other) const {
+        value_type* begin, end;
+        if (this->size() > other.size()) {
+            begin = this->begin();
+            end = this->end();
+        } else {
+            begin = this->begin();
+            end = this->begin() + other.size();
+        }
+
+        for (size_type i = 0; begin != end; i++, begin++) {
+            if ((*this)[i] < other[i]) return true;
+            if (other[i] < (*this)[i]) return false;
+        }
+
+        return this->size() == other.size();
+    }
+
 
 
 // ***** FSArray: General public member functions *****
