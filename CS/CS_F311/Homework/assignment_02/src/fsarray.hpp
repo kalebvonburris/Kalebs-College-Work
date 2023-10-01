@@ -16,7 +16,7 @@
 
 
 // Invariants: None
-template <typename T>
+template <class T>
 class FSArray {
 // ***** FSArray: Types *****
 public:
@@ -99,7 +99,7 @@ private:
 // The given FSArray must have the same
 //     `type_value` as the one it's being
 //     compared against.
-template<typename T>
+template<class T>
 bool operator<(const FSArray<T> & lhs, const FSArray<T>& rhs) {
     const T* begin;
     const T* end;
@@ -114,7 +114,7 @@ bool operator<(const FSArray<T> & lhs, const FSArray<T>& rhs) {
         end = begin + rhs.size();
     }
 
-    for (auto i = 0; begin != end; i++) {
+    for (auto i = 0; i < end - begin; i++) {
         if (lhs[i] < rhs[i]) return true;
         if (rhs[i] < lhs[i]) return false;
     }
@@ -126,7 +126,7 @@ bool operator<(const FSArray<T> & lhs, const FSArray<T>& rhs) {
 // The given FSArray must have the same
 //     `type_value` as the one it's being
 //     compared against.
-template<typename T>
+template<class T>
 bool operator<=(const FSArray<T> & lhs, const FSArray<T>& rhs)  {
     // Using XOR operator here because I have brain damage.
     return (lhs < rhs) || (lhs == rhs);
@@ -136,7 +136,7 @@ bool operator<=(const FSArray<T> & lhs, const FSArray<T>& rhs)  {
 // The given FSArray must have the same
 //     `type_value` as the one it's being
 //     compared against.
-template<typename T>
+template<class T>
 bool operator>(const FSArray<T> & lhs, const FSArray<T>& rhs) {
     // Using XOR operator here because I have brain damage.
     return !(lhs < rhs) ^ !(lhs == rhs);
@@ -146,7 +146,7 @@ bool operator>(const FSArray<T> & lhs, const FSArray<T>& rhs) {
 // The given FSArray must have the same
 //     `type_value` as the one it's being
 //     compared against.
-template<typename T>
+template<class T>
 bool operator>=(const FSArray<T> & lhs, const FSArray<T>& rhs) {
     // Using XOR operator here because I have brain damage.
     return !(lhs < rhs) || (lhs == rhs);
@@ -156,7 +156,7 @@ bool operator>=(const FSArray<T> & lhs, const FSArray<T>& rhs) {
 // The given FSArray must have the same
 //     `type_value` as the one it's being
 //     compared against.
-template<typename T>
+template<class T>
 bool operator==(const FSArray<T> & lhs, const FSArray<T> & rhs) {
     if (lhs.size() != rhs.size()) return false;
     return (lhs < rhs) ^ (rhs < lhs);
@@ -166,7 +166,7 @@ bool operator==(const FSArray<T> & lhs, const FSArray<T> & rhs) {
 // The given FSArray must have the same
 //     `type_value` as the one it's being
 //     compared against.
-template<typename T>
+template<class T>
 bool operator!=(const FSArray<T> lhs, FSArray<T> rhs) {
     return !(lhs == rhs);
 }
