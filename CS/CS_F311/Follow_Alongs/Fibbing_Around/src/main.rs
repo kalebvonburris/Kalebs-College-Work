@@ -1,41 +1,14 @@
 #[macro_use]
 extern crate timeit;
+use bigdecimal::BigDecimal;
 
-
-fn fib(n: u64) -> u64 {
-    match n {
-        0 | 1 => n,
-        _ => fib(n-1) + fib(n-2)
-    }
-}
-
-fn fib_iterate(n: u64) -> u64 {
-    let mut previous = 1;
-    let mut current = 0;
-
-    for _ in 0..n {
-        let next = previous + current;
-        previous = current;
-        current = next;
-    }
-
-    current
-}
-
-fn fib_recursive(n: u64) -> (u64, u64) {
-    if n == 0 { return (1, 0); }
-    
-    let (prev, curr) = fib_recursive(n - 1);
-
-    (curr, prev+curr)
-}
-
-fn fib_better(n: u64) -> u64 {
-    let (_, curr) = fib_recursive(n);
-
-    curr
+fn fib_fast(n: u64) -> String {
+    let big_d: BigDecimal = BigDecimal::from(&n);
+    big_d.sqrt().unwrap().to_string()
 }
 
 fn main() {
-    println!("{}", fib_better(93));
+    let val: u64 = 5;
+    println!("sqrt({}) = {}", val, fib_fast(val));
+    timeit!({fib_fast(val);});
 }
