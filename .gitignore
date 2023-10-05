@@ -30,3 +30,5 @@
 *.blg
 *.bcf
 target/*
+debug/*
+*.lock
