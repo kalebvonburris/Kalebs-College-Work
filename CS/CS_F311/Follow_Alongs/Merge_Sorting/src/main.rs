@@ -1,9 +1,17 @@
 #![feature(test)]
 
-fn merge_sort(arr: & mut [i64]) {
-    arr.sort();
-}
+fn merge_sort(vec: &Vec<i64>) -> Vec<i64> {
+    if vec.len() < 2 {
+        vec.to_vec()
+    } else {
+        let size = vec.len() / 2;
+        let left = merge_sort(&vec[0..size].to_vec());
+        let right = merge_sort(&vec[size..].to_vec());
+        let merged = merge(&left, &right);
 
+        merged
+    }
+}
 fn main() {
     let mut arr: Vec<i64> = vec![9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
     merge_sort(&mut arr);
