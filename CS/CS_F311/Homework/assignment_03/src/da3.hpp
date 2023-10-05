@@ -11,14 +11,23 @@
 #include "llnode.hpp"  // For LLNode
 #include <cstddef>     // For std::size_t
 #include <functional>  // For std::function
+#include <stdexcept>   // For std::out_of_range
 
 
 template <typename ValueType>
 ValueType lookup(const LLNode<ValueType> * head,
                  std::size_t index)
 {
-    return ValueType();  // DUMMY
-    // TODO: WRITE THIS!!!
+    const LLNode<ValueType> * ptr = head;
+
+    // March through the list and bounce out if necessary
+    for (int i = 0; ptr != nullptr && i < index; i++, ptr = ptr->_next) {/* No code needed */}
+
+    // Throw an error if we went out of range
+    if (ptr == nullptr) throw std::out_of_range("Index given is out of range.");
+
+    // Return back the data at index
+    return ptr->_data;
 }
 
 
@@ -31,8 +40,15 @@ template <typename FDIter>
 bool checkSorted(FDIter first,
                  FDIter last)
 {
-    return false;  // DUMMY
-    // TODO: WRITE THIS!!!
+    // Loop through entire list
+    while (first != last) {
+        // Verify each element is sorted
+        if (*last < *first) return false;
+        // Move to next item
+        first = first++;
+    }
+    // Return true if elements are sorted
+    return true;
 }
 
 
