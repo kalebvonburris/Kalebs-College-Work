@@ -68,6 +68,8 @@
         "unordered_set": "cpp",
         "xlocbuf": "cpp",
         "xlocmes": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp"
     }
 }
