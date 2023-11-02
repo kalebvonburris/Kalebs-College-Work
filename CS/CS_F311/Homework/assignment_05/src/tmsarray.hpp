@@ -1,11 +1,11 @@
-// msarray.hpp  HAND-OFF
+// TMSArray.hpp  HAND-OFF
 // VERSION 6
 // Glenn G. Chappell
 // Started: 2023-10-17
 // Updated: 2023-10-25
 //
 // For CS 311 Fall 2023
-// Header for class MSArray
+// Header for class TMSArray
 // Marvelously smart array of int
 // Preliminary to Assignment 5
 
@@ -40,21 +40,23 @@
 //   - Add constant DEFAULT_CAP and use it in setting the capacity in
 //     default ctor/ctor from size.
 
-#ifndef FILE_MSARRAY_HPP_INCLUDED
-#define FILE_MSARRAY_HPP_INCLUDED
+#ifndef FILE_TMSArray_HPP_INCLUDED
+#define FILE_TMSArray_HPP_INCLUDED
 
 #include <cstddef>
 // For std::size_t
 #include <algorithm>
 // For std::max
+#include <cassert>
+// For assert
 
 
 // *********************************************************************
-// class MSArray - Class definition
+// class TMSArray - Class definition
 // *********************************************************************
 
 
-// class MSArray
+// class TMSArray
 // Marvelously Smart Array of int.
 // Resizable, copyable/movable, exception-safe.
 // Invariants:
@@ -62,13 +64,15 @@
 //     _data points to an array of value_type, allocated with new [],
 //      owned by *this, holding _capacity value_type values -- UNLESS
 //      _capacity == 0, in which case _data may be nullptr.
-class MSArray {
 
-// ***** MSArray: types *****
+template <typename T>
+class TMSArray {
+
+// ***** TMSArray: types *****
 public:
 
     // value_type: type of data items
-    using value_type = int;
+    using value_type = T;
 
     // size_type: type of sizes & indices
     using size_type = std::size_t;
@@ -77,18 +81,18 @@ public:
     using iterator = value_type *;
     using const_iterator = const value_type *;
 
-// ***** MSArray: internal-use constants *****
+// ***** TMSArray: internal-use constants *****
 private:
 
     // Capacity of default-constructed object
     enum { DEFAULT_CAP = 42 };
 
-// ***** MSArray: ctors, op=, dctor *****
+// ***** TMSArray: ctors, op=, dctor *****
 public:
 
     // Default ctor & ctor from size
     // Strong Guarantee
-    explicit MSArray(size_type thesize=0)
+    explicit TMSArray(size_type thesize=0)
         :_capacity(std::max(thesize, size_type(DEFAULT_CAP))),
             // _capacity must be declared before _data
          _size(thesize),
@@ -98,33 +102,73 @@ public:
 
     // Copy ctor
     // Strong Guarantee
-    MSArray(const MSArray & other);
+    TMSArray(const TMSArray & other)
+    : _capacity(other._capacity),
+      _size(other.size()),
+      _data(new value_type[other._capacity])
+    {
+        for (size_type i = 0; i < other.size(); i++) {
+            this->_data[i] = other[i];
+        }
+    }
 
     // Move ctor
     // No-Throw Guarantee
-    MSArray(MSArray && other) noexcept;
+    TMSArray(TMSArray && other) noexcept
+    : _capacity(other._capacity),
+      _size(other.size())
+    {
+        // Move the pointer to our new array
+        this->_data = other._data;
+        // Clear the data of the old array
+        other._size = 0;
+        other._capacity = 0;
+        other._data = nullptr;
+    }
 
     // Copy assignment operator
-    // ??? Guarantee
-    MSArray & operator=(const MSArray & other);
+    // Strong Guarantee
+    TMSArray & operator=(const TMSArray & other) {
+        // Copy size data and array capacity
+        this->_capacity = other._capacity;
+        this->_size = other._size;
+        this->_data = new value_type[other._capacity];
+        // Copy each element over
+        for (size_type i = 0; i < other.size(); i++) {
+            this->_data[i] = other[i];
+        }
+        // Return the newly copied array
+        return *this;
+    }
 
     // Move assignment operator
     // No-Throw Guarantee
-    MSArray & operator=(MSArray && other) noexcept;
+    TMSArray & operator=(TMSArray && other) noexcept {
+        // Move the data to our new array
+        this->_size = other._size;
+        this->_capacity = other._capacity;
+        this->_data = other._data;
+        // Clear the data of the old array
+        other._size = 0;
+        other._capacity = 0;
+        other._data = nullptr;
+        // Return the newly moved array
+        return *this;
+    }
 
     // Dctor
     // No-Throw Guarantee
-    ~MSArray()
+    ~TMSArray()
     {
         delete [] _data;
     }
 
-// ***** MSArray: general public operators *****
+// ***** TMSArray: general public operators *****
 public:
 
     // operator[] - non-const & const
     // Pre:
-    //     ???
+    //     index provided < this->size()
     // No-Throw Guarantee
     value_type & operator[](size_type index)
     {
@@ -135,7 +179,7 @@ public:
         return _data[index];
     }
 
-// ***** MSArray: general public functions *****
+// ***** TMSArray: general public functions *****
 public:
 
     // size
@@ -175,27 +219,75 @@ public:
     }
 
     // resize
-    // ??? Guarantee
-    void resize(size_type newsize);
+    // Pre:
+    //     newsize <= DEFAULT_CAP
+    // Strong Guarantee
+    void resize(size_type newsize) {
+        // Ensure preconditions are met
+        assert(newsize <= DEFAULT_CAP);
+        // Only create a new array if we need more space than is allocated
+        // In all cases, we still move the size value to the selected value
+        if (newsize > this->size()) {
+            // Initialize new capacity
+            value_type* new_data = new value_type[newsize];
+            // Copy relevant objects over
+            for (size_type i = 0; i < this->size(); i++) {
+                new_data[i] = this->_data[i];
+            }
+            // Delete the old array (including its elements)
+            delete this->_data;
+            // Move the new pointer to the new array
+            this->_data = new_data;
+            // Reassign our capacity to the update one
+            this->_capacity = newsize;
+        }
+        // Reassign size
+        this->_size = newsize;
+    }
 
     // insert
     // Pre:
-    //     ???
-    // ??? Guarantee
+    //     this->begin() < pos <= this->end()
+    // Strong Guarantee
     iterator insert(iterator pos,
-                    value_type item);
+                    // Using pass by reference
+                    value_type item) {
+        // Cover overflow case
+        if (this->size() == this->_capacity) { this->resize(this->size() + 1); }
+        // Initialize iterator at the end of the filled portion of the array
+        iterator index = (iterator) this->size() - 1;
+        // Move every item to the left of the insertion point one position to the right
+        for (index; index > pos - 1; index--) {
+            this->_data[(size_type) index] = std::move(this->_data[(size_type) index - 1]);
+        }
+        // Insert item
+        this->_data[(size_type) index] = item;
+        // Return the iterator position of the inserted element
+        return index;
+    }
         // Above, passing by value is appropriate, since our value type
         // is int. However, if the value type is changed, then a
         // different parameter-passing method may need to be used.
 
     // erase
     // Pre:
-    //     ???
-    // ??? Guarantee
-    iterator erase(iterator pos);
+    //     this->begin() <= pos <= this->end()
+    // Strong Guarantee
+    iterator erase(iterator pos) {
+        // Initialize iterator right before the position we're removing
+        iterator index = pos;
+        // Move every item to the left of the deletion point one position to the right
+        for (index; (size_type) index < this->size(); index++) {
+            this->_data[(size_type) index] = std::move(this->_data[(size_type) index + 1]);
+        }
+        // Decrease size
+        this->_size--;
+        // Return the iterator position of the inserted element
+        return pos;
+    }
 
     // push_back
-    // ??? Guarantee
+    // Strong Guarantee
     void push_back(value_type item)
         // Above, passing by value is appropriate, since our value type
         // is int. However, if the value type is changed, then a
@@ -205,19 +297,29 @@ public:
     }
 
     // pop_back
-    // Pre:
-    //     ???
-    // ??? Guarantee
-    void pop_back()
-    {
+    // Strong Guarantee
+    void pop_back() {
         erase(end()-1);
     }
 
     // swap
     // No-Throw Guarantee
-    void swap(MSArray & other) noexcept;
+    void swap(TMSArray & other) noexcept {
+        // Store temp values for swap
+        size_type temp_size = this->size();
+        size_type temp_capacity = this->_capacity;
+        value_type * temp_data = this->_data;
+        // Overwrite currently stored values with other's values
+        this->_size = other.size();
+        this->_capacity = other._capacity;
+        this->_data = other._data;
+        // Copy temp values into other's values
+        other._size = temp_size;
+        other._capacity = temp_capacity;
+        other._data = temp_data;
+    }
 
-// ***** MSArray: data members *****
+// ***** TMSArray: data members *****
 private:
 
     // Below, _capacity must be declared before _data
@@ -225,8 +327,7 @@ private:
     size_type    _size;      // Size of client's data
     value_type * _data;      // Pointer to our array
 
-};  // End class MSArray
+};  // End class TMSArray
 
 
-#endif  //#ifndef FILE_MSARRAY_HPP_INCLUDED
-
+#endif  //#ifndef FILE_TMSArray_HPP_INCLUDED

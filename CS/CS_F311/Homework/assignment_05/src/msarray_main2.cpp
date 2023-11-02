@@ -6,7 +6,7 @@
 // Simple program using class MSArray
 // Requires msarray.hpp, msarray.cpp
 
-#include "msarray.hpp"  // For class MSArray
+#include "tmsarray.hpp"  // For class MSArray
 #include <iostream>
 using std::cout;
 using std::endl;
