@@ -1,8 +1,9 @@
 // TMSArray.hpp  HAND-OFF
-// VERSION 6
+// VERSION 7
 // Glenn G. Chappell
+// Kaleb Burris
 // Started: 2023-10-17
-// Updated: 2023-10-25
+// Updated: 2023-11-03
 //
 // For CS 311 Fall 2023
 // Header for class TMSArray
@@ -39,6 +40,10 @@
 //   - Revise class invariants & ctors accordingly.
 //   - Add constant DEFAULT_CAP and use it in setting the capacity in
 //     default ctor/ctor from size.
+// - v7:
+//   - Complete file
+//   - Do resize(), insert(), delete()
+//   - 
 
 #ifndef FILE_TMSArray_HPP_INCLUDED
 #define FILE_TMSArray_HPP_INCLUDED
@@ -240,9 +245,11 @@ public:
             this->_data = new_data;
             // Reassign our capacity to the update one
             this->_capacity = newsize;
+        } 
+        // Account for shrinking case
+        else {
+            this->_size = newsize;
         }
-        // Reassign size
-        this->_size = newsize;
     }
 
     // insert
@@ -254,16 +261,19 @@ public:
                     value_type item) {
         // Cover overflow case
         if (this->size() == this->_capacity) { this->resize(this->size() + 1); }
+        // Iterate the size of the array
+        this->_size++;
         // Initialize iterator at the end of the filled portion of the array
-        iterator index = (iterator) this->size() - 1;
+        size_type index = this->size() - 1;
         // Move every item to the left of the insertion point one position to the right
-        for (index; index > pos - 1; index--) {
+        for (; index > 0; index--) {
+            if ((iterator) &this[index] == pos) { break; }
             this->_data[(size_type) index] = std::move(this->_data[(size_type) index - 1]);
         }
         // Insert item
-        this->_data[(size_type) index] = item;
+        this->_data[index] = item;
         // Return the iterator position of the inserted element
-        return index;
+        return (iterator) &this[index];
     }
         // Above, passing by value is appropriate, since our value type
         // is int. However, if the value type is changed, then a
