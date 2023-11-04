@@ -3,7 +3,7 @@
 // 10-7-2023
 // Implementation of the hssCount function.
 
-#include "hssCount.hpp"
+#include "hsscount.hpp"
 #include <vector>
 // For vector
 #include <iostream>
