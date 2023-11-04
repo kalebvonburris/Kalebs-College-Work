@@ -156,7 +156,11 @@ public:
         // Clear the data of the old array
         other._size = 0;
         other._capacity = 0;
-        other._data = nullptr;
+        // This is strange and I don't understand
+        // why the pointer to the old data must stay
+        // the same; doesn't this allow both objects
+        // asccess the same data?
+        // other._data = nullptr;
         // Return the newly moved array
         return *this;
     }
@@ -234,22 +238,18 @@ public:
         // In all cases, we still move the size value to the selected value
         if (newsize > this->size()) {
             // Initialize new capacity
-            value_type* new_data = new value_type[newsize];
+            value_type* new_data = new value_type[newsize * 2];
             // Copy relevant objects over
-            for (size_type i = 0; i < this->size(); i++) {
-                new_data[i] = this->_data[i];
-            }
+            std::copy(this->begin(), this->begin() + newsize, (iterator) new_data);
             // Delete the old array (including its elements)
             delete this->_data;
             // Move the new pointer to the new array
             this->_data = new_data;
             // Reassign our capacity to the update one
-            this->_capacity = newsize;
+            this->_capacity = newsize * 2;
         } 
         // Account for shrinking case
-        else {
-            this->_size = newsize;
-        }
+        this->_size = newsize;
     }
 
     // insert
@@ -261,8 +261,6 @@ public:
                     value_type item) {
         // Cover overflow case
         if (this->size() == this->_capacity) { this->resize(this->size() + 1); }
-        // Iterate the size of the array
-        this->_size++;
         // Initialize iterator at the end of the filled portion of the array
         size_type index = this->size() - 1;
         // Move every item to the left of the insertion point one position to the right
@@ -273,7 +271,7 @@ public:
         // Insert item
         this->_data[index] = item;
         // Return the iterator position of the inserted element
-        return (iterator) &this[index];
+        return this->begin() + index;
     }
         // Above, passing by value is appropriate, since our value type
         // is int. However, if the value type is changed, then a
