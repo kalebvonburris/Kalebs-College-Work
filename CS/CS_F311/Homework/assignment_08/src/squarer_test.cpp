@@ -24,10 +24,36 @@
 
 TEST_CASE("Squarer: 7")
 {
-    Squarer sq;
     int arg = 7;
-    int result = 499;  // WRONG!!!
+    Squarer sq;
+    int result = sq(arg);
     INFO(arg << " squared is " << result);
     REQUIRE(sq(arg) == result);
+}
+
+TEST_CASE("Squarer: Int Range")
+{
+    int arg = 7;
+    Squarer sq;
+    int result = sq(arg);
+    INFO(arg << " squared is " << result);
+    REQUIRE(sq(arg) == result);
+}
+
+TEST_CASE("Squarer: Float Range")
+{
+    int arg = 7;
+    Squarer sq;
+    int result = sq(arg);
+    INFO(arg << " squared is " << result);
+    REQUIRE(sq(arg) == result);
+}
+
+TEST_CASE("Squarer: -1")
+{
+    int arg = -1;
+    Squarer sq;
+    INFO(arg << " squared is -1");
+    REQUIRE(sq(arg) == 1);
 }
 
