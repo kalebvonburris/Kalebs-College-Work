@@ -21,7 +21,6 @@
 *.run.xml
 *.code-workspace
 **/test.*
-/**/template.*
 *.*.un
 *.exe
 *.out

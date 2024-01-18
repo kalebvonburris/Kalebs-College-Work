@@ -1,4 +1,5 @@
 ﻿#import "template.typ": *
+#set text(size: 16pt)
 
 = Day 1 - 1/17/2024
 
@@ -10,7 +11,7 @@ when translated onto each other are denoted to be equivalent with $equiv$.
 Vectors with initial point $P$ and terminal point $Q$ are standardized by moving $P$ to
 the origin and keeing $Q$ relative to $P$.
 
-For $P = (0,0)$ and $Q = (3,3)$, we define $arrow(A B) =  vec(3,3)$, therefore $arrow(A B) =  vec(x_B - x_A, y_B - y_A)$
+For $P = (0,0)$ and $Q = (3,3)$, we define $arrow(A B) = vec(3, 3)$, therefore $arrow(A B) = vec(x_B - x_A, y_B - y_A)$
 
 For any 2 vectors $arrow(A B)$ and $arrow(C D)$, we can find that $arrow(A B) + arrow(C D) = arrow(C D) + arrow(A B)$.
 
@@ -20,14 +21,15 @@ Any vector $arrow(A A)$ is defined to be directionless and without length.
 
 Scalars - A number.
 
-We define a scalar multiplication with the scalar $k$ to be $2 A B =  vec(k dot (x_B - x_A), k dot (y_B - y_A))$.
+We define a scalar multiplication with the scalar $k$ to be $2 A B = vec(k dot (x_B - x_A), k dot (y_B - y_A))$.
 
 Notibly, a scalar multiplication with the scalar $k$ will adjust the length of a
 vector $v$ to be $k dot v$.
 
 $k v$ has length $|k| ||v||$.
 
-Scalars can be negative, reversing a vector $arrow(A B)$ to be $arrow(B A)$, inverting its _direction_.
+Scalars can be negative, reversing a vector $arrow(A B)$ to be $arrow(B A)$,
+inverting its _direction_.
 
 === Vector Subtraction
 
@@ -46,11 +48,11 @@ $
   B(2,2)\
   arrow(v) = arrow(P Q), quad arrow(w) = arrow(A B)\
   arrow(u) = 2 arrow(v) - arrow(w)\
-  arrow(v) =  vec(2-1, 1-2) = vec(1, -1)\
-  arrow(w) =  vec(2-0, 2-2) =  vec(2, 0)\
-  arrow(u) &= 2 vec(1, -1) + -1 vec(2,0)\
-  arrow(u) &=  vec(2, -2) +  vec(-2, 0)\
-  arrow(u) &=  vec(0, -2)
+  arrow(v) = vec(2-1, 1-2) = vec(1, -1)\
+  arrow(w) = vec(2-0, 2-2) = vec(2, 0)\
+  arrow(u) &= 2 vec(1, -1) + -1 vec(2, 0)\
+  arrow(u) &= vec(2, -2) + vec(-2, 0)\
+  arrow(u) &= vec(0, -2)
 $
 
 == Vector Magnitude
@@ -63,4 +65,4 @@ Magnitude of $arrow(v)$: $||arrow(v)|| = sqrt(a^2 + b^2)$.
 
 == Unit Circle
 
-We define $arrow(i)$ to be $vec(1,0)$ and $arrow(j)$ to be $vec(0,1)$.
+We define $arrow(i)$ to be $vec(1, 0)$ and $arrow(j)$ to be $vec(0, 1)$.
