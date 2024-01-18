@@ -43,7 +43,9 @@
   $
 ]
 
-#prob(14)[
+#prob(
+  14,
+)[
   $
     arrow(v) = vec(x - 1, 0 - 1) = vec(x - 1, -1)\
     ||arrow(v)|| = sqrt(10) = sqrt((x-1)^2 + (-1)^2) = sqrt(x^2 - 2x + 2)
