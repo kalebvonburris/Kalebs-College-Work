@@ -5,7 +5,7 @@
 
 == Unit Vectors
 
-Vectors $arrow(i) = vec(1, 0)$ and $arrow(j) = vec(0, 1)$ both have the same
+Vectors $arrow(i) = vector(1, 0)$ and $arrow(j) = vector(0, 1)$ both have the same
 length of $||arrow(i)|| = ||arrow(j)|| = 1$
 
 === Finding the Unit Vector of $arrow(v)$
@@ -16,9 +16,9 @@ its magnitude.
 Example:
 
 $
-  arrow(v) = vec(3, 4), "Unit vector of" arrow(v) "is:" \
+  arrow(v) = vector(3, 4), "Unit vector of" arrow(v) "is:" \
   ||arrow(v)|| = sqrt(3^2+4^2) = 5 \
-  ||arrow(v)|| = arrow(v)/5 = vec(3, 4)/5 = underline(vec(3/5, 4/5))
+  ||arrow(v)|| = arrow(v)/5 = vector(3, 4)/5 = underline(vector(3/5, 4/5))
 $
 
 == Vector from Angle $alpha$
@@ -26,12 +26,12 @@ $
 Given an angle $alpha = pi/3$ and a length of the vector $arrow(v)$, $||arrow(v)|| = 3$,
 we can use trigonometric identities to determine $arrow(v)$.
 
-The unit vector of $arrow(v)$ will necessarily be defined as $vec(cos(alpha), sin(alpha))$,
-we can then define the vector from before to be $arrow(v) = vec(||arrow(v)||cos(alpha), ||arrow(v)||sin(a))$.
+The unit vector of $arrow(v)$ will necessarily be defined as $vector(cos(alpha), sin(alpha))$,
+we can then define the vector from before to be $arrow(v) = vector(||arrow(v)||cos(alpha), ||arrow(v)||sin(a))$.
 We can solve this to find $arrow(v)$:
 
 $
-  arrow(v) = vec(3cos(pi/3), 3sin(pi/3)) = underline(vec(3/2, (3sqrt(3))/2))
+  arrow(v) = vector(3cos(pi/3), 3sin(pi/3)) = underline(vector(3/2, (3sqrt(3))/2))
 $
 
 == Examples of Vector-Valued Quantities
@@ -43,7 +43,7 @@ $
 
 == 3-Dimensional Vectors
 
-3-Dimensional vectors contain an extra _z_ component, making them defined as $vec(x, y, z)$.
+3-Dimensional vectors contain an extra _z_ component, making them defined as $vector(x, y, z)$.
 
 === $x y$ Planes
 

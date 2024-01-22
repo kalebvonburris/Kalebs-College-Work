@@ -5,7 +5,7 @@
 
 == Dot Product
 
-Suppose we have the vectors $arrow(a) = vec(a_x, a_y, a_z)$ and $arrow(b) = vec(b_x, b_y, b_z)$.
+Suppose we have the vectors $arrow(a) = vector(a_x, a_y, a_z)$ and $arrow(b) = vector(b_x, b_y, b_z)$.
 
 Define $arrow(a) dot arrow(b) = a_x b_x + a_y b_y + a_z b_z$. Dot Products
 produce scalar values.
@@ -13,7 +13,7 @@ produce scalar values.
 Example:
 
 $
-  arrow(a) = vec(1, 2, 0) quad arrow(b) = vec(7, 5, 7)\
+  arrow(a) = vector(1, 2, 0) quad arrow(b) = vector(7, 5, 7)\
   arrow(a) dot arrow(b) = 1(7) + 2(5) + 0(7) = 7 + 10 + 0 = underline(17)
 $
 
@@ -26,8 +26,8 @@ Properties:
   $ (s arrow(a)) dot arrow(b) = s(arrow(a) dot arrow(b)) = arrow(a) (s arrow(b)) $
   $ (s arrow(a) + r arrow(b)) dot arrow(c) = s(arrow(a) dot arrow(c)) + r(arrow(b) dot arrow(c)) $
 - Length: $arrow(a) dot arrow(a) = ||arrow(a)||^2$
-  $ arrow(a) = vec(1, 4, 5); arrow(b) = vec(3, 0, 2), arrow(c) = vec(1, 7, 7) $
-  $ (arrow(a) dot arrow(b))arrow(c) = (3 + 0 + 10)arrow(c) = 13arrow(c) = vec(13, 91, 91) $
+  $ arrow(a) = vector(1, 4, 5); arrow(b) = vector(3, 0, 2), arrow(c) = vector(1, 7, 7) $
+  $ (arrow(a) dot arrow(b))arrow(c) = (3 + 0 + 10)arrow(c) = 13arrow(c) = vector(13, 91, 91) $
 
 == Angles between Vectors
 
