@@ -9,12 +9,12 @@
 #set enum(numbering: "a)")
 #show: assignment_class.with(title, author, course_id, instructor, semester, due_time)
 
-#set text(size: 16pt)
+#set text(size: 12pt)
 
 = 2.1
 
 #prob(4)[
-  + $arrow(R P) = vec(-1 - (-3), 3 - 7) = vec(2, -4)$
+  + $arrow(R P) = vec(-1 - (-3), 3 - 7) = underline(vec(2, -4))$
   + $arrow(P Q) = underline(2 arrow(i) - 4 arrow(j))$
 ]
 

@@ -1,8 +1,10 @@
 ﻿#let vec(..x) = $ lr(angle.l #x.pos().join(",") angle.r) $
 
 #let prob(question, body) = {
-  [== #question]
-  block(width: 100%, inset: 8pt, radius: 4pt, stroke: black, body)
+  block(stroke: none, [
+    == #question
+    #block(width: 100%, inset: 8pt, radius: 4pt, stroke: black, body)
+  ])
 }
 
 // Some math operators
