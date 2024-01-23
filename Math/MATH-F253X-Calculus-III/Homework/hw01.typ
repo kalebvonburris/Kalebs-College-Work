@@ -14,21 +14,19 @@
 = 2.1
 
 #prob(4)[
-  + $arrow(R P) = vector(-1 - (-3), 3 - 7) = underline(vector(2, -4))$
-  + $arrow(P Q) = underline(2 arrow(i) - 4 arrow(j))$
+  + $ arrow(R P) = vector(-1 - (-3), 3 - 7) = underline(vector(2, -4)) $
+  + $ arrow(P Q) = underline(2 arrow(i) - 4 arrow(j)) $
 ]
 
 #prob(
   7,
 )[
-  + $arrow(P Q) = vector(2, 2)$, $arrow(P R) = -arrow(R P) = vector(-2, 4)$.
-  Therefore: 
-  $
+  + $ arrow(P Q) = vector(2, 2)$, $arrow(P R) = -arrow(R P) = vector(-2, 4) $. Therefore: $
     2 arrow(P Q) - 2 arrow(P R) &= 2 dot vector(2, 2) - 2 dot (-2,4)\ 
                                 &= vector(4, 4) - (-4,8) \
                                 &= underline(vector(8, -4))
   $
-  b) $ underline(8 arrow(i) - 4 arrow(j)) $
+  + $ underline(8 arrow(i) - 4 arrow(j)) $
 ]
 
 #prob(9)[
@@ -78,13 +76,43 @@
 ]
 
 #prob(30)[
-   
+  $
+    arrow(u) = 6 vector(cos(60^degree), sin(60^degree)) =
+    underline(vector(3, 3sqrt(3)))
+  $
 ]
 
-#prob(32)[]
+#prob(32)[
+  $
+    arrow(u) = 8 vector(-1, 0) = underline(vector(-8, 0))
+  $
+]
 
-#prob(38)[]
+#prob(38)[
+  $
+    alpha = 0; beta = 0 \
+    alpha = 2 beta \
+    underline(alpha in RR\; beta = 2 alpha)
+  $
+]
 
-#prob(40)[]
+#prob(40)[
+  + $
+    f'(x) = 4x^3; f'(1) = 4 \
+    y = 4x + 1 => y = 4 + 1 = 5 \
+    underline(Q(2, 5))
+  $
 
-#prob(46)[]
+  + $
+    arrow(P Q) = vector(2 - 1, 5 - 1) = vector(1, 4); ||u|| = sqrt(1^2 + 4^2) = sqrt(17) \
+    arrow(u) = underline(vector(1/sqrt(17), 4/sqrt(17)))
+  $
+]
+
+#prob(46)[
+  $
+    theta = 30^degree \
+    arrow(v) = 100 vector(cos(30^degree), sin(30^degree)) = vector(50, 50 sqrt(3)) \
+    underline("Horizontal:" 50.00 "mph"\, "Vertical:" 86.60 "mph")
+  $
+]
