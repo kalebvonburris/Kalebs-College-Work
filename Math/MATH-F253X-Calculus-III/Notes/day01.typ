@@ -11,7 +11,8 @@ when translated onto each other are denoted to be equivalent with $equiv$.
 Vectors with initial point $P$ and terminal point $Q$ are standardized by moving $P$ to
 the origin and keeing $Q$ relative to $P$.
 
-For $P = (0,0)$ and $Q = (3,3)$, we define $arrow(A B) = vector(3, 3)$, therefore $arrow(A B) = vector(x_B - x_A, y_B - y_A)$
+For $P = (0,0)$ and $Q = (3,3)$, we define $arrow(A B) = vector(3, 3)$,
+therefore $arrow(A B) = vector(x_B - x_A, y_B - y_A)$
 
 For any 2 vectors $arrow(A B)$ and $arrow(C D)$, we can find that $arrow(A B) + arrow(C D) = arrow(C D) + arrow(A B)$.
 

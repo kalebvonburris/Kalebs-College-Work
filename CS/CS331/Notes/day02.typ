@@ -7,7 +7,8 @@
 
 === Formal Languages
 
-A formal language is a set of strings. An alphabet is the set of characters that may appear in the strings.
+A formal language is a set of strings. An alphabet is the set of characters that
+may appear in the strings.
 
 A language over ${0,1}$:
 
@@ -67,7 +68,7 @@ $
 ===== Exercises
 
 7. Write the grammar that generates the language: ${a b, a b b, a b b b, ...}$
-
+  
   $
     1. quad & S -> a b X \
     2. quad & X -> X b \
@@ -75,7 +76,7 @@ $
   $
 
 8. How can you rewrite the grammar from 7. to also generate the string "$a$"?
-
+  
   Remove the $b$ from the first production.
 
 == The Chomsky Hierarchy
@@ -94,7 +95,8 @@ $
 
 === Context-Free Language
 
-A context-free language is one that can be generated from a grammar where each left-hand production consists of a single nonterminal.
+A context-free language is one that can be generated from a grammar where each
+left-hand production consists of a single nonterminal.
 
 $
   n. quad & A -> ["anything"]
@@ -114,7 +116,8 @@ The recognizer is a *Turing machine*.
 
 Regular languages have two important applications:
 
-+ In most PLs, the set of all lexems of a particular kind forms a regular language.
++ In most PLs, the set of all lexems of a particular kind forms a regular
+  language.
 + He skipped the rest of the slide.
 
 ==== Grammar
@@ -146,16 +149,17 @@ More examples occurred.
 
 == Finite Automata
 
-A deterministic finite automata (DFA) is a kind of recognizer for regular languages.
+A deterministic finite automata (DFA) is a kind of recognizer for regular
+languages.
 
 A DFA consists of a bunch of states and a translation between those states.
 
-#align(center)[
-  #automaton(layout: layout.circular, (
-    A: (B: "a", A: "b", C: "a"),
-    B: (B: "a,b", C: "a"),
-    C: (C: "b")
-  ))
+#align(
+  center,
+)[
+  #automaton(
+    layout: layout.circular, (A: (B: "a", A: "b", C: "a"), B: (B: "a,b", C: "a"), C: (C: "b")),
+  )
 ]
 
 Incredible, I know.

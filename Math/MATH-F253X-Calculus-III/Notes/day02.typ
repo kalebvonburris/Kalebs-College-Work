@@ -5,8 +5,8 @@
 
 == Unit Vectors
 
-Vectors $arrow(i) = vector(1, 0)$ and $arrow(j) = vector(0, 1)$ both have the same
-length of $||arrow(i)|| = ||arrow(j)|| = 1$
+Vectors $arrow(i) = vector(1, 0)$ and $arrow(j) = vector(0, 1)$ both have the
+same length of $||arrow(i)|| = ||arrow(j)|| = 1$
 
 === Finding the Unit Vector of $arrow(v)$
 

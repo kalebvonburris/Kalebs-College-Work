@@ -18,7 +18,9 @@
   + $arrow(P Q) = underline(2 arrow(i) - 4 arrow(j))$
 ]
 
-#prob(7)[
+#prob(
+  7,
+)[
   + $arrow(P Q) = vector(2, 2)$, $arrow(P R) = -arrow(R P) = vector(-2, 4)$.
   Therefore: 
   $
@@ -58,16 +60,17 @@
 ]
 
 #prob(17)[
-  + $ arrow(a) = vector(-2,4) quad arrow(b) = vector(-2, 2) \ 
-  -3 vector(-2,4) + vector(-2, 2) - 4i + j =
-  vector(6,12) + vector(-2,2) + vector(-4,0) + vector(0, 1) \
-  = vector(0,15); quad ||vector(0,15)|| = underline(15)  
-$
+  + $ arrow(a) = vector(-2, 4) quad arrow(b) = vector(-2, 2) \ 
+    -3 vector(-2, 4) + vector(-2, 2) - 4i + j =
+    vector(6, 12) + vector(-2, 2) + vector(-4, 0) + vector(0, 1) \
+    = vector(0, 15); quad ||vector(0, 15)|| = underline(15) $
 ]
 
-#prob(26)[
-  $ ||v|| = 3, u = vector(-2,5) $
-
+#prob(
+  26,
+)[
+  $ ||v|| = 3, u = vector(-2, 5) $
+  
   $
     sqrt((-2)^2 + 5^2) = sqrt(29) \
     3 vector((-2)/sqrt(29), 5/sqrt(29)) = underline(vector((-6)/sqrt(29), 15/sqrt(29)))
@@ -75,7 +78,7 @@ $
 ]
 
 #prob(30)[
-  
+   
 ]
 
 #prob(32)[]

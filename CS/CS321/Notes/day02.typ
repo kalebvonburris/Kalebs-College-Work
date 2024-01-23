@@ -11,11 +11,14 @@ A *bootstrap program* is loaded at power-up or reboot.
 
 == Interrupts
 
-Interrupts are used to tell the OS to move on to another task and save the address of the interrupted instruction.
+Interrupts are used to tell the OS to move on to another task and save the
+address of the interrupted instruction.
 
-Interrupts give control to the interrupt service through an *interrupt vector* which contains the routines of the serivce.
+Interrupts give control to the interrupt service through an *interrupt vector*
+which contains the routines of the serivce.
 
-*Traps* and *exceptions* are software-generated interrupts by errors or user request.
+*Traps* and *exceptions* are software-generated interrupts by errors or user
+request.
 
 === Interrupt Handling
 
