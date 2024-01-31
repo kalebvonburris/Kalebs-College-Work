@@ -99,7 +99,7 @@
   #align(center)[#automaton((
       A: (B: "a"),
       B: (B: "a", C: "b"),
-      C: (D: ("aab")),
+      C: (D: ("a,b")),
       D: ()
     ),
     layout: layout.circular.with(spacing: 0.5),
