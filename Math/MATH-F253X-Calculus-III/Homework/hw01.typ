@@ -116,3 +116,26 @@
     underline("Horizontal:" 50.00 "mph"\, "Vertical:" 86.60 "mph")
   $
 ]
+
+= 2.2
+
+#prob(61)[
+  + $
+    underline((0,3,0)\, (2,0,0)\, (0,0,5)\, (2,0,5)\, (0,3,5)\, (2,3,0))
+  $
+
+  + $
+    sqrt(2^2 + 3^2 + 5^2) = sqrt(4 + 9 + 25) = underline(sqrt(38))
+  $
+]
+
+#prob(64)[
+  $
+    z = 2; z = 5\
+    "The set is 2 planes at" z = 2 "and" z = 5
+  $
+]
+
+#prob(66)[
+  
+]
