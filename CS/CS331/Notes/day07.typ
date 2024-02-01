@@ -89,7 +89,16 @@ abc = require "xyz" -- Calls file xyz.lua as a function
                     -- Sets "abc" to the returned value
 ```
 
-To export from a source file, don't make it `local`.
+Start modules by exporting a table with the name of the module and return the table out:
+
+```lua
+-- quark.lua
+quark = {}
+...
+return quark
+```
+
+To export from a source file, don't make it `local`, and append it to the table in the file:
 
 ```lua
 -- quark.lua
