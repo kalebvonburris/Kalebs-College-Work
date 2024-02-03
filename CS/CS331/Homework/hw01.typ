@@ -7,7 +7,7 @@
 #let course_id = "CS-331"
 #let instructor = "Glenn Chappell"
 #let semester = "Spring 2024"
-#let due_time = "1/26/2024"
+#let due_time = "2/1/2024"
 #set enum(numbering: "1.")
 #show: assignment_class.with(title, author, course_id, instructor, semester, due_time)
 
@@ -130,6 +130,17 @@
 
 #pagebreak()
 
-#prob("I")[
+#show math.equation: set align(left)
 
+#prob("I")[
+  I have no faith this works properly.
+  #set text(size: 15pt)
+  $
+    <"reg-exp"> &::=& <"kleene"> | <"or"> | <"char"> | \"(\" <"reg-exp"> \")\" \
+    && | <"reg-exp"> <"reg-exp"> \
+    <"kleene"> &::=& <"reg-exp"> \"*\" \
+    <"or"> &::=& <"reg-exp"> \"|\" <"reg-exp"> \
+
+    &&| \"(\" <"reg-exp"> \"|\" <"reg-exp"> \")\"
+  $
 ]
