@@ -1,13 +1,22 @@
-numbering("a)")
-
 = Lab 01 - The Ideal Gas Law
 
-1.
+1. a) If the temperature and moles are constant, the pressure is inversely proportional to the volume.
+   b) If the volume and moles are constant, the pressure is directly proportional to the temperature.
+   c) If the volume and temperature are constant, the pressure is directly proportional to the moles.
 
+2. The pressure of the gas will increase proportional to the amount of volume lost.
 
+3. There was no significant gas loss. We know this because our pressure was the same as we started when we brought the syringe back to its original volume.
 
-6.
-$ P = (1/V) n R T $
+#align(center)[#image("lab01-images/image4.png")]
+
+#align(center)[#image("lab01-images/image6.png")]
+
+4. The graph is not linear; this is due to the fact that pressure and gas are inversely proportional, thus reducing one has an exponential effect on increasing the other.
+
+5. #align(center)[#image("lab01-images/image1.png")]
+
+6. $ P = (1/V) n R T $
 
 Temperature and moles are constant. If there are no leaks or major changes in outside temperature, they are almost exactly constant.
 
@@ -17,6 +26,8 @@ Temperature and moles are constant. If there are no leaks or major changes in ou
 8. Pushing air into a vessel, like lungs or a balloon, increases the volume.
 
 9. #align(center)[#image("lab01-images/Unsaved Image 1.jpg")]
+
+#align(center)[#image("lab01-images/image5.png")]
 
 
 10. The constants are Volume and nR.
@@ -30,7 +41,9 @@ Temperature and moles are constant. If there are no leaks or major changes in ou
 
 14. As the temperature increases, the pressure increases - we use this for things like engines and electrical generation by venting steam under pressure.
 
-15. We don't talk about the data-taking procedure.
+15. We had a hiccup in communication and recorded one of points of data wrong. Other than this, there are some slight variations due to eye-balling how many ml were added.
+
+#align(center)[#image("lab01-images/image2.png")]
 
 16. The units for $C_3$ are $J / ("mol" "ml")$:
    $ C_3 = (R T) / (V) = (J / ("mol" K) K) / ("ml") = J / ("mol" "ml") $
@@ -48,7 +61,7 @@ Temperature and moles are constant. If there are no leaks or major changes in ou
    $P prop n$, "Volume, Temperature, and R", $(R T) / V; plus.minus 0.008246$
 )]
 
-21. 
+1.  
 - $T prop V$: Water changing volume with temperature.
 - $n prop V$: A water balloon incerasing in volume as you add more water.
 - $T prop 1 / n$: Using a propane tank cools the bottle. 
