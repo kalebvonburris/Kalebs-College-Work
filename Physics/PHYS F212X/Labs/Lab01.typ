@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+numbering("a")
+
+>>>>>>> fbdee19 (Lab 02)
 = Lab 01 - The Ideal Gas Law
 
 1. a) If the temperature and moles are constant, the pressure is inversely proportional to the volume.
