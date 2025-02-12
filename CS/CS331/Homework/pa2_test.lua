@@ -1,9 +1,10 @@
 #!/usr/bin/env lua
 -- pa2_test.lua
 -- Glenn G. Chappell
--- 2024-02-06
+-- Started: 2025-02-03
+-- Updated: 2025-02-05
 --
--- For CS 331 Spring 2024
+-- For CS 331 Spring 2025
 -- Test Program for Assignment 2 Functions
 -- Used in Assignment 2, Exercise B
 
@@ -123,7 +124,7 @@ function printValue(...)
     elseif type(x) == "number" then
         io.write(x)
     elseif type(x) == "string" then
-        io.write('"'..x..'"')
+        io.write(string.format('%q', x))
     elseif type(x) == "boolean" then
         if x then
             io.write("true")
@@ -324,7 +325,7 @@ function test_mapArray(t)
         end
     end
 
-    io.write("Test Suite: mapArray\n")
+    io.write("Tests: mapArray\n")
 
     local inv, expect
 
@@ -361,7 +362,7 @@ function test_mapArray(t)
     test(t, id, inv, expect, "singleton array, #1")
 
     inv = { 2 }
-    expect = { 4 }
+    expect = { 2*2 }
     test(t, sq, inv, expect, "singleton array, #2")
 
     inv = { "abcd" }
@@ -389,15 +390,17 @@ function test_mapArray(t)
     test(t, xs, inv, expect, "small array, #3")
 
     inv = { 20, -1, 37, [false]=4321 }
-    expect = { 400, 1, 1369 }
+    expect = { 20*20, -1*-1, 37*37 }
     test(t, sq, inv, expect, "small array + extra values, #1")
 
     inv = { 2, 4, [0]=7, [4]=1 }
     expect = { "xx", "xxxx" }
     test(t, xs, inv, expect, "small array + extra values, #2")
 
+    local longlen = 10000
+
     inv = {}
-    for i = 1, 10000 do
+    for i = 1, longlen do
         table.insert(inv, 37)
         table.insert(inv, "abcd")
     end
@@ -406,17 +409,17 @@ function test_mapArray(t)
 
     inv = {}
     expect = {}
-    for i = 1, 10000 do
+    for i = 1, longlen do
         table.insert(inv, 3)
-        table.insert(expect, 9)
+        table.insert(expect, 3*3)
         table.insert(inv, -100)
-        table.insert(expect, 10000)
+        table.insert(expect, -100*-100)
     end
     test(t, sq, inv, expect, "large array, #2")
 
     inv = {}
     expect = {}
-    for i = 1, 10000 do
+    for i = 1, longlen do
         table.insert(inv, "x")
         table.insert(expect, 1)
         table.insert(inv, "This is a sentence." )
@@ -426,7 +429,7 @@ function test_mapArray(t)
 
     inv = {}
     expect = {}
-    for i = 1, 10000 do
+    for i = 1, longlen do
         table.insert(inv, 2)
         table.insert(expect, "xx")
         table.insert(inv, 5)
@@ -436,7 +439,7 @@ function test_mapArray(t)
 
     inv = {}
     expect = {}
-    for i = 1, 10000 do
+    for i = 1, longlen do
         table.insert(inv, 5)
         table.insert(expect, true)
         table.insert(inv, "Howdy")
@@ -447,10 +450,10 @@ function test_mapArray(t)
 end
 
 
-function test_concatMax(t)
-    local function test(t, ins, lim, expect, msg)
-        local outs = pa2.concatMax(ins, lim)
-        local success = outs == expect
+function test_mostCommon(t)
+    local function test(t, inv, expect, msg)
+        local outs = pa2.mostCommon(inv)
+        local success = equal(outs, expect)
         t:test(success, msg)
         if not success then
             io.write("Expect: "..expect.."\n")
@@ -460,38 +463,107 @@ function test_concatMax(t)
         end
     end
 
-    io.write("Test Suite: concatMax\n")
+    io.write("Tests: mostCommon\n")
 
-    local ins, expect
+    local inv, expect
 
-    ins = "a"
-    expect = "aa"
-    test(t, ins, 2, expect, "string of length 1, #1")
-    expect = "aaaaaaaa"
-    test(t, ins, 8, expect, "string of length 1, #2")
-    expect = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    test(t, ins, 40, expect, "string of length 1, #3")
+    inv = "severance"
+    expect = "e"
+    test(t, inv, expect,
+      "example #1 from assignment description ("
+        ..string.format('%q',inv)..")")
 
-    ins="abcdefghijklmnop"
-    expect=""
-    test(t, ins, 0, expect, "string of length 16, #1")
-    test(t, ins, 7, expect, "string of length 16, #2")
-    test(t, ins, 15, expect, "string of length 16, #3")
-    expect = ins
-    test(t, ins, 16, expect, "string of length 16, #4")
-    expect=ins..ins..ins..ins
-    test(t, ins, 70, expect, "string of length 16, #5")
-    test(t, ins, 78, expect, "string of length 16, #6")
-    test(t, ins, 79, expect, "string of length 16, #7")
-    expect=ins..ins..ins..ins..ins
-    test(t, ins, 80, expect, "string of length 16, #8")
-    test(t, ins, 81, expect, "string of length 16, #9")
+    inv = "abbbaa"
+    expect = "a"
+    test(t, inv, expect,
+      "example #2 from assignment description ("
+        ..string.format('%q',inv)..")")
+
+    inv = "Mississippi"
+    expect = "i"
+    test(t, inv, expect,
+      "example #3 from assignment description ("
+        ..string.format('%q',inv)..")")
+
+    inv = "%"
+    expect = "%"
+    test(t, inv, expect,
+      "example #4 from assignment description ("
+        ..string.format('%q',inv)..")")
+
+    inv = ""
+    expect = ""
+    test(t, inv, expect,
+      "example #5 from assignment description ("
+        ..string.format('%q',inv)..")")
+
+    inv = "I like coconuts and pears!"
+    expect = " "
+    test(t, inv, expect,
+      "example #6 from assignment description ("
+        ..string.format('%q',inv)..")")
+end
+
+
+function test_prefixSuffix(t)
+    local function test(t, inv, expect, msg)
+       local outv = getCoroutineValues(pa2.prefixSuffix, inv)
+       local success = equal(outv, expect)
+       t:test(success, msg)
+       if not success then
+           io.write("Expect (yielded values): ")
+           printArray(expect, max_table_items)
+           io.write("\n")
+           io.write("Actual (yielded values): ")
+           printArray(outv, max_table_items)
+           io.write("\n")
+           io.write("\n")
+           failExit()
+       end
+    end
+
+    io.write("Tests: prefixSuffix\n")
+
+    local inv, expect
+
+    inv = "wxyz"
+    expect = { "", "w", "wx", "wxy", "wxyz", "xyz", "yz", "z" }
+    test(t, inv, expect,
+           "example #1 from assignment description ("
+             ..string.format('%q',inv)..")")
+
+    inv = "@"
+    expect = { "", "@" }
+    test(t, inv, expect,
+           "example #2 from assignment description ("
+             ..string.format('%q',inv)..")")
+
+    inv = ""
+    expect = { "" }
+    test(t, inv, expect,
+           "example #3 from assignment description ("
+             ..string.format('%q',inv)..")")
+
+    local longlen = 10000
+
+    inv = string.rep("#", longlen)
+    expect = {}
+    for i = 0,longlen do
+        table.insert(expect, string.rep("#", i))
+    end
+    for i = longlen-1,1,-1 do
+        table.insert(expect, string.rep("#", i))
+    end
+    test(t, inv, expect, "long string")
 end
 
 
 function test_collatz(t)
     local function test(t, inv, expect)
-        local outv = getCoroutineValues(pa2.collatz, inv)
+        local outv = {}
+        for val in pa2.collatz(inv) do
+            outv[1+#outv] = val
+        end
         local success = equal(outv, expect)
         t:test(success, "sequence starting at "..inv)
         if not success then
@@ -506,7 +578,7 @@ function test_collatz(t)
         end
     end
 
-    io.write("Test Suite: collatz\n")
+    io.write("Tests: collatz\n")
 
     local inv, expect
 
@@ -552,67 +624,12 @@ function test_collatz(t)
 end
 
 
-function test_substrs(t)
-    local function test(t, inv, expect)
-        outv = {}
-        for sb in pa2.substrs(inv) do
-            table.insert(outv, sb)
-        end
-        local success = equal(outv, expect)
-        t:test(success, 'substrings of "'..inv..'"')
-        if not success then
-            io.write("Expect (values from iterator): ")
-            printArray(expect)
-            io.write("\n")
-            io.write("Actual (values from iterator): ")
-            printArray(outv)
-            io.write("\n")
-            io.write("\n")
-            failExit()
-        end
-    end
-
-    io.write("Test Suite: substrs\n")
-
-    local inv, expect
-
-    inv = ""
-    expect = {""}
-    test(t, inv, expect)
-
-    inv = "x"
-    expect = {"","x"}
-    test(t, inv, expect)
-
-    inv = "xy"
-    expect = {"","x","y","xy"}
-    test(t, inv, expect)
-
-    inv = "zoo"
-    expect = {"","z","o","o","zo","oo","zoo"}
-    test(t, inv, expect)
-
-    inv = "1211"
-    expect = {"","1","2","1","1","12","21","11","121","211","1211"}
-    test(t, inv, expect)
-
-    inv = "abcd"
-    expect = {"","a","b","c","d","ab","bc","cd","abc","bcd","abcd"}
-    test(t, inv, expect)
-
-    inv = "zzzzz"
-    expect = {"","z","z","z","z","z","zz","zz","zz","zz","zzz","zzz",
-              "zzz","zzzz","zzzz","zzzzz"}
-    test(t, inv, expect)
-end
-
-
 function test_pa2(t)
-    io.write("TEST SUITES FOR CS 331 ASSIGNMENT 2\n")
+    io.write("TEST SUITE FOR CS 331 ASSIGNMENT 2\n")
     test_mapArray(t)
-    test_concatMax(t)
+    test_mostCommon(t)
+    test_prefixSuffix(t)
     test_collatz(t)
-    test_substrs(t)
 end
 
 

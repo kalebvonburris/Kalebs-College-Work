@@ -1,6 +1,6 @@
 -- pa2.lua
 -- Kaleb Burris
--- 2024-02-11
+-- 2025-02-12
 --
 -- For CS 331 Spring 2024
 -- Test Program for Assignment 2 Functions
@@ -15,48 +15,72 @@ function pa2.mapArray(f,t)
   return vals
 end
 
-function pa2.concatMax(s, i)
-  local str = ""
-  while str.len(str) + s.len(s) <= i do
-    str = str..s
+function pa2.mostCommon(s)
+  local occurances = {}
+  -- Count each char
+  for i = 1, #s do
+    local char = s:sub(i, i)
+    if occurances[char] == nil then
+      occurances[char] = 1
+    else
+      occurances[char] = occurances[char] + 1
+    end
   end
-  return str
+
+  -- Find the max value char
+  if occurances == {} then
+    return ""
+  else 
+    local max = 0
+    local maxChar = ""
+    for char, num in pairs(occurances) do
+      if num > max then
+        max = num
+        maxChar = char
+      elseif num == max then
+        -- Return the first of the two
+        for i = 1, #s do
+          if s:sub(i, i) == maxChar then
+            break
+          end
+          if s:sub(i, i) == char then
+            maxChar = char
+            break
+          end
+        end
+      end
+    end
+    return maxChar
+  end
 end
+
+function pa2.prefixSuffix(s)
+  assert(type(s) == "string")
+  -- Yield substrings from the start to the end
+  for i = 0, #s do
+    coroutine.yield(s:sub(1, i))
+  end
+
+  -- Yield substrings from the end to the start
+  for i = 2, #s do
+    coroutine.yield(s:sub(i, #s))
+  end
+end
+
 
 function pa2.collatz(k)
   local n = k
-  coroutine.yield(n)
-  while n ~= 0 do
-    if n == 1 then
-      break
-    end
-    if math.fmod(n, 2) == 0 then
-      n = math.floor(n / 2)
-    else
-      n = (3 * n) + 1
-    end    
-    coroutine.yield(n)
-  end
-end
-
-function pa2.substrs(s)
-  assert(type(s) == "string")
-  local start, stop = 0, 0
-  return function ()
-    while true do
-      if start == 0 and stop == 0 then
-        stop = 1
-        return ""
-      elseif stop > #s then 
-        return nil
+  return function()
+    if n ~= 0 then
+      local current = n
+      if n == 1 then
+        n = 0
+      elseif math.fmod(n, 2) == 0 then
+        n = math.floor(n / 2)
       else
-        while stop + start <= #s do
-          start = start + 1
-          return s:sub(start, start + stop - 1)
-        end
-        stop = stop + 1
-        start = 0
-      end
+        n = (3 * n) + 1
+      end    
+      return current
     end
   end
 end

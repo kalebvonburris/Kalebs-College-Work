@@ -1,0 +1,9 @@
+1. I had to fix the code as it was missing several semi-colons and quotation marks.
+
+2. waiting...
+   ^C received an interrupt signal through Ctrl-C.
+   Going to sleep.
+    Notice the process is not exiting immediatelyOut of here.
+   Now the process will terminate with the exit system call 
+
+3. A signal handler is set up for the SIGINT signal, and that's what's being invoked when I press CTRL+C. It prints some text, sleeps for 1 second, prints some more text, and then finally exits the program with exit code 0.

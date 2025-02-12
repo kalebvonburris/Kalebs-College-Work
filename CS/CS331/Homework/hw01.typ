@@ -6,8 +6,8 @@
 #let author = "Kaleb Burris"
 #let course_id = "CS-331"
 #let instructor = "Glenn Chappell"
-#let semester = "Spring 2024"
-#let due_time = "2/1/2024"
+#let semester = "Spring 2025"
+#let due_time = "1/30/2024"
 #set enum(numbering: "1.")
 #show: assignment_class.with(title, author, course_id, instructor, semester, due_time)
 
@@ -17,100 +17,97 @@
   #underline("BE SURE TO DRINK YOUR OVALTINE")
 ]
 
-#prob("B")[
-  + Type checking for C++ is primarily static.
-  + This means that type checking is done at compile time instead of runtime.
-]
-
 #prob("C")[
-  The grammar describes: [$a^n b^m c$] where $n >= 1, m >= 0$.
-
-  The strings generated are: 1, 4, 5.
+  + Type checking for C++ is mostly static.
+  + This means that type checking is done at compile time instead of runtime. Some cases, such as type casting, do exist, but are rare.
 ]
 
 #prob("D")[
-  The grammar describes all strings that:
-  - Contains 0 or more $x$'s on the front,
-  - Contains 0 or more pairs of $y$'s ($y y$),
-  - Contains 0 or more $z$'s at the end.
+  The strings generated are: 1, 4, 5.
 ]
 
 #prob("E")[
-  The regex is matched by: 3, 4, 5, 7.
+  The grammar describes all strings that:
+  - Start with one or more $a$'s,
+  - Followed by 0 or more pairs of $c$'s ($c c$),
+  - End with 1 or more b's.
 ]
 
 #prob("F")[
-  $
-   [x y z]*y+[x y z]*
-  $
+  The regex is matched by: 3, 4, 5, 7.
 ]
 
-#pagebreak()
-
 #prob("G")[
-  #show math.equation: set align(left)
-  + $
-    underline(S) \
-    underline(S) S \
-    x y underline(S) \
-    x y x y
   $
-  + $
-    underline(S) \
-    S underline(S) \
-    underline(S) x y \
-    x y x y
-
+   a a* (a|b|c)*
   $
-  #show math.equation: set align(center)
-
-  + #table(columns: 2, stroke: white, align: center, "Parse Tree 1", "Parse Tree 2", 
-    cetz.canvas({
-      import cetz.tree
-      import cetz.draw: *
-      set-style(content: (padding: .1))
-      tree.tree((
-        [S], 
-        ([S], ([S], [x], [y]), ([S], [x], [y])), 
-        ([S], [x], [y])
-      ))
-    })
-  ,
-    cetz.canvas({
-      import cetz.tree
-      import cetz.draw: *
-      set-style(content: (padding: .1))
-      tree.tree((
-        [S], 
-        ([S], [x], [y]), 
-        ([S], ([S], [x], [y]), ([S], [x], [y]))
-      ))})
-  )
-  + $
-    S -> S x y | epsilon
-  $ 
 ]
 
 #pagebreak()
 
 #prob("H")[
-  + $(a a)* b?$
-  + This one turned out pretty cool: 
-  #align(center)[#automaton((
-      A: (B: "a"),
-      B: (B: "a", C: "b"),
-      C: (D: ("a,b")),
-      D: ()
+  #show math.equation: set align(left)
+  + $
+    underline(S) \
+    underline(S) S \
+    a b underline(S) \
+    a b a b
+  $
+  + $
+    underline(S) \
+    S underline(S) \
+    underline(S) a b \
+    a b a b
+
+  $
+  #show math.equation: set align(center)
+
+  + $"String:" \"a b a b a b\"$ #table(columns: 2, stroke: white, align: center, "Parse Tree 1", "Parse Tree 2", 
+    cetz.canvas({
+      import cetz.tree
+      import cetz.draw: *
+      set-style(content: (padding: .1))
+      tree.tree((
+        [S],
+        ([S], ([X], [ab])),
+        ([S], ([S], ([X], [ab])), ([S], ([X], [ab])))
+      ))
+    }),
+  cetz.canvas({
+      import cetz.tree
+      import cetz.draw: *
+      set-style(content: (padding: .1))
+      tree.tree((
+        [S],
+        ([S], ([S], ([X], [ab])), ([S], ([X], [ab]))),
+        ([S], ([X], [ab])),
+      ))})
+  )
+  + $
+    S -> S a b | epsilon
+  $ 
+]
+
+#pagebreak()
+
+#prob("I")[
+  + $x x x* a$
+  + #align(center)[#automaton((
+      A: (B: "x"),
+      B: (C: "x"),
+      C: (C: "x", D: "a"),
+      D: (E: ("x, a")),
+      E: (E: ("x, a"))
     ),
-    layout: layout.circular.with(spacing: 0.5),
-    final: ("C"),
-    style: (A: (initial: bottom)),
-    labels: (A: [], B: [], C: [], D: [])
+    layout: layout.linear.with(spacing: 1.0),
+    final: ("D"),
+    style: (A: (initial: left)),
+    labels: (A: [], B: [], C: [], D: [], E: [])
   )]
   #show math.equation: set align(left)
   3. $
-    S -> a a B \
-    B -> b|a B
+    S -> x x B \
+    B -> a|x B
   $
   #show math.equation: set align(center)
   + My grammar here is not ambiguous as it only has a single, potentially infinite path:
@@ -122,7 +119,7 @@
       set-style(content: (padding: .1))
       tree.tree((
         [S], 
-        ([a], [a], ([B], [a], ([B], [a], ([$fence.dotted$], [b]))))
+        [xx], ([B], [x], ([B], [x], ([B], [x], ([$fence.dotted$], [a]))))
       ))
     })
   ]
@@ -132,15 +129,12 @@
 
 #show math.equation: set align(left)
 
-#prob("I")[
-  I have no faith this works properly.
-  #set text(size: 15pt)
+#prob("J")[
+  I had to wrap the reg-exp productions.
+  #set text(size: 10pt)
   $
-    <"reg-exp"> &::=& <"kleene"> | <"or"> | <"char"> | \"(\" <"reg-exp"> \")\" \
-    && | <"reg-exp"> <"reg-exp"> \
-    <"kleene"> &::=& <"reg-exp"> \"*\" \
-    <"or"> &::=& <"reg-exp"> \"|\" <"reg-exp"> \
-
-    &&| \"(\" <"reg-exp"> \"|\" <"reg-exp"> \")\"
+    <"reg-exp"> ::=& <"single-char"> <"reg-exp"> | \"(\" <"reg-exp"> \")\" | <"single-char"> <"kleene"> | \
+                   & <"reg-exp"> \"|\" <"reg-exp"> | <"epsilon"> \
+    <"kleene"> ::=& \"*\" \
   $
 ]

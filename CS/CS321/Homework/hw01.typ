@@ -13,7 +13,6 @@
 
 #set text(size: 12pt)
 #set par(first-line-indent: 1.5em, justify: true, leading: 1em, linebreaks: "simple")
-#show par: set block(spacing: 2em)
 
 = On the functionalities between Linux and Windows
 
