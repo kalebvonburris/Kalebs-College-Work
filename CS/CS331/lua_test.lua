@@ -1,3 +1,4 @@
+#!/usr/bin/env lua
 -- check_lua.lua
 -- Glenn G. Chappell
 -- 2026-01-21
