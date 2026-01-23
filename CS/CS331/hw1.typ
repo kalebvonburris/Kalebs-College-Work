@@ -10,6 +10,7 @@
     #line(length: 100%)
   ]),
   margin: (top: 1.5in, x: 0.5in),
+  numbering: "1",
 )
 
 
@@ -55,21 +56,21 @@ $
 
 2. Yes, this grammar is context-free as all of its production's left sides are non-terminals.
 
-3. #align(left, rect[
-    S \
-    S a S \
-    b a S \
-    b a b
-  ])
+3. #align(left, rect[$
+    & S \
+    & S a S \
+    & b a S \
+    & b a b
+  $])
 
-4. #align(left, rect[
-    S \
-    S a S \
-    S a b \
-    b a b
-  ])
+4. #align(left, rect[$
+    & S \
+    & S a S \
+    & S a b \
+    & b a b
+  $])
 
-5. The string $b a b a b$, has two different parse trees.
+5. The string $b a b a b$ has two different parse trees.
 
 #table(
   columns: (1fr, 1fr),
@@ -109,14 +110,14 @@ $
     ]],
 )
 
-6. $
+6. #rect[$
     S & -> b A \
     A & -> a S | epsilon
-  $
+  $]
 
 == Exercise E
 
-1. $x a a +$
+1. #rect[$x a a +$]
 
 #import "@preview/finite:0.5.0": automaton
 
@@ -135,13 +136,31 @@ $
   )
 ])
 
-3. $
+3. #rect[ $
     S & -> x a a A \
     A & -> a | epsilon
-  $
+  $]
 
 4. No, the grammar is not ambiguous as any derivation will always contain the first step, followed by $n$ many additional of the second steps for any number of $a$'s needed past two $a$'s. Since there are only two possible productions for $A$, and one of them is the empty string $epsilon$, there are no alternative ways to construct a string in the language from this grammar.
 
 == Exercise J
 
+The provided statements are given (NOT IN BNF FORM!!!):
 
+#show math.equation: set text(font: "FiraCode Nerd Font Mono")
+
+$
+  "<uc-letter>" & = "A-Z" \
+  "<lc-letter>" & = "a-z" \
+$
+
+My solution is:
+
+#align(center, rect[$
+         "<name>" & = "<real-name>" "<middle-name>" "<real-name>" \
+    "<real-name>" & = "<uc-letter>" "<lc-tail>" \
+      "<lc-tail>" & = "<lc-letter>" "<lc-tail>" | "\"\"" \
+  "<middle-name>" & = "\" \"" | "\" \"", "<uc-letter>", "\". \""
+$])
+
+Note: $"\" \""$ is a single space character and $"\"\""$ is the empty string.
