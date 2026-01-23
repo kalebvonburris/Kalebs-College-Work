@@ -158,9 +158,9 @@ My solution is:
 
 #align(center, rect[$
          "<name>" & = "<real-name>" "<middle-name>" "<real-name>" \
-    "<real-name>" & = "<uc-letter>" "<lc-tail>" \
+    "<real-name>" & = "<uc-letter>" "<lc-letter>" "<lc-tail>" \
       "<lc-tail>" & = "<lc-letter>" "<lc-tail>" | "\"\"" \
-  "<middle-name>" & = "\" \"" | "\" \"", "<uc-letter>", "\". \""
+  "<middle-name>" & = "\" \"" | "\" \"" "<uc-letter>" "\". \""
 $])
 
 Note: $"\" \""$ is a single space character and $"\"\""$ is the empty string.
