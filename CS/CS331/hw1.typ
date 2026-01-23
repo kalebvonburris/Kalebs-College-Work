@@ -13,6 +13,7 @@
   numbering: "1",
 )
 
+#show math.text: set text(font: "FiraCode Nerd Font Mono")
 
 == Exercise A
 
@@ -36,15 +37,15 @@ The grammar contains the strings $#rect[1, 3, and 5]$.
 
 == Exercise E
 
-This language contains all strings that start with $n$ many pairs of $a$'s ($a a$), where $n >= 0$, followed by zero or more $c$'s, and ended by $n$ many pairs of $b$'s ($b b$).
+This language contains all strings that start with $n$ many pairs of $a$'s ($a a$), where $n$ is greater than or equal to $0$, followed by zero or more $c$'s, and ended by $n$ many pairs of $b$'s ($b b$).
 
 == Exercise F
 
-The regular expression $x * (a b | c)*$ contains the strings labeled $#rect[1, 3, 4, 5, 7]$.
+The regular expression $x * (a b | c)*$ contains the strings labeled $#rect[1, 3, 4, 5, and 7]$.
 
 == Exercise G
 
-This regular expression matches all strings that have any number of $a$'s, $b$'s, and $c$'s and also have one $b$, by matching the arbitrary set of $[a b c]$ on either side of a $b$.
+This regular expression matches all strings that have any number of $a$'s, $b$'s, and $c$'s and also have one $b$, by matching the arbitrary set of $[a b c]$ on either side of a singular $b$.
 
 $
   #rect[$(a | b | c) * b (a | b | c) *$]
@@ -52,24 +53,32 @@ $
 
 == Exercise H
 
-1. No, this grammar contains the rule $S -> S a S$ which is not one of the accepted forms of productions for a regular grammar.
+1. No, this grammar contains the rule $S -> S a S$ which is not one of the accepted forms of productions for a regular grammar. We have to track how many $S$'s are generated on both sides of the $a$.
 
-2. Yes, this grammar is context-free as all of its production's left sides are non-terminals.
+2. Yes, this grammar is context-free as all of its productions' left sides are non-terminals.
 
-3. #align(left, rect[$
-    & S \
-    & S a S \
-    & b a S \
-    & b a b
-  $])
-
-4. #align(left, rect[$
-    & S \
-    & S a S \
-    & S a b \
-    & b a b
-  $])
-
+#table(
+  columns: (1fr, 1fr),
+  stroke: none,
+  [
+    3. Leftmost:
+      #align(center, rect[$
+        & S \
+        & S a S \
+        & b a S \
+        & b a b
+      $])
+  ],
+  [
+    4. Rightmost:
+      #align(center, rect[$
+        & S \
+        & S a S \
+        & S a b \
+        & b a b
+      $])
+  ],
+)
 5. The string $b a b a b$ has two different parse trees.
 
 #table(
@@ -146,8 +155,6 @@ $
 == Exercise J
 
 The provided statements are given (NOT IN BNF FORM!!!):
-
-#show math.equation: set text(font: "FiraCode Nerd Font Mono")
 
 $
   "<uc-letter>" & = "A-Z" \
