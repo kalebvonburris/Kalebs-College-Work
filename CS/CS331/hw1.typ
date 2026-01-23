@@ -35,7 +35,7 @@ The grammar contains the strings $#rect[1, 3, and 5]$.
 
 == Exercise E
 
-This language contains all strings that are zero or more $c$'s, that are optionally contained between a pair of two $a$'s ($a a$) and $b$'s ($b b$) where the $a$'s are in front, and the $b$'s are behind the zero or more $c$'s.
+This language contains all strings that start with $n$ many pairs of $a$'s ($a a$), where $n >= 0$, followed by zero or more $c$'s, and ended by $n$ many pairs of $b$'s ($b b$).
 
 == Exercise F
 
@@ -139,3 +139,9 @@ $
     S & -> x a a A \
     A & -> a | epsilon
   $
+
+4. No, the grammar is not ambiguous as any derivation will always contain the first step, followed by $n$ many additional of the second steps for any number of $a$'s needed past two $a$'s. Since there are only two possible productions for $A$, and one of them is the empty string $epsilon$, there are no alternative ways to construct a string in the language from this grammar.
+
+== Exercise J
+
+
