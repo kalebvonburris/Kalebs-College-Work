@@ -1,6 +1,0 @@
-grep: test/no_access.txt: Permission denied
-grep: test/no_access.txt: Permission denied
-grep: test/no_access.txt: Permission denied
-grep: test/no_access.txt: Permission denied
-grep: test/no_access.txt: Permission denied
-grep: test/no_access.txt: Permission denied

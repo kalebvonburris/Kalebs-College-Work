@@ -159,17 +159,17 @@ This is non-ambiguous as all derivations generate right-most derivations.
 The provided statements are given (NOT IN BNF FORM!!!):
 
 $
-  "<uc-letter>" & = "A-Z" \
-  "<lc-letter>" & = "a-z" \
+  "<uc-letter>" & ::= "A-Z" \
+  "<lc-letter>" & ::= "a-z" \
 $
 
 My solution is:
 
 #align(center, rect[$
-         "<name>" & = "<real-name>" "<middle-name>" "<real-name>" \
-    "<real-name>" & = "<uc-letter>" "<lc-letter>" "<lc-tail>" \
-      "<lc-tail>" & = "<lc-letter>" "<lc-tail>" | "\"\"" \
-  "<middle-name>" & = "\" \"" | "\" \"" "<uc-letter>" "\". \""
+         "<name>" & ::= "<real-name>" "<middle-name>" "<real-name>" \
+    "<real-name>" & ::= "<uc-letter>" "<lc-letter>" "<lc-tail>" \
+      "<lc-tail>" & ::= "<lc-letter>" "<lc-tail>" | "\"\"" \
+  "<middle-name>" & ::= "\" \"" | "\" \"" "<uc-letter>" "\". \""
 $])
 
 Note: $"\" \""$ is a single space character and $"\"\""$ is the empty string.
