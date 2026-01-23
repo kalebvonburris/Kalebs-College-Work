@@ -55,7 +55,7 @@ $
 
 1. No, this grammar contains the rule $S -> S a S$ which is not one of the accepted forms of productions for a regular grammar. We have to track how many $S$'s are generated on both sides of the $a$.
 
-2. Yes, this grammar is context-free as all of its productions' left sides are non-terminals.
+2. Yes, this grammar is context-free as all of its productions' left sides contain a single non-terminal.
 
 #table(
   columns: (1fr, 1fr),
