@@ -124,6 +124,8 @@ $
     A & -> a S | epsilon
   $]
 
+This is non-ambiguous as all derivations generate right-most derivations.
+
 == Exercise E
 
 1. #rect[$x a a +$]
