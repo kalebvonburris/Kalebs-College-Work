@@ -136,14 +136,26 @@ This is non-ambiguous as all derivations generate right-most derivations.
 #align(center, [
   #automaton(
     (
-      q0: (q1: "x"),
-      q1: (q2: "a"),
-      q2: (q3: "a"),
-      q3: (q3: "a"),
+      q0: (q1: "x", dead: "a"),
+      q1: (q2: "a", dead: "x"),
+      dead: (dead: "x, a"),
+      q2: (q3: "a", dead: "x"),
+      q3: (q3: "a", dead: "x"),
+    ),
+    layout: (
+      q0: (0, 0),
+      q1: (2, 0),
+      q2: (4, 0),
+      q3: (6, 0),
+      dead: (3, -3),
+    ),
+    style: (
+      q0-dead: (curve: -1),
+      q1-dead: (curve: -1),
     ),
     initial: "q0",
     final: "q3",
-    labels: (q0: "", q1: "", q2: "", q3: ""),
+    labels: (q0: "", q1: "", q2: "", q3: "", dead: ""),
   )
 ])
 
