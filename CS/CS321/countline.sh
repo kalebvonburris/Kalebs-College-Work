@@ -15,7 +15,7 @@ if [ $# -eq 0 ]; then
 fi
 for var in "$@"; do
   # Collect all files
-  files=$(find "$var" -type f)
+  files=$(find "$var" -type f 2>>errors.txt)
   for file in $files; do
     # Count the number of lines in each file
     # Using grep here because wc -l counts newlines,
