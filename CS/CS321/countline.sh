@@ -2,6 +2,9 @@
 
 total_lines=0
 
+# Reset error.txt
+true >errors.txt
+
 # Check all files in dir if no input provided
 if [ $# -eq 0 ]; then
   # Append all files in dir to $@
