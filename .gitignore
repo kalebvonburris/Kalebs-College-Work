@@ -28,6 +28,7 @@
 *.*~
 *.blg
 *.bcf
-target/*
-debug/*
+target/
+debug/
+release/
 *.lock

@@ -30,14 +30,6 @@ pa2 = {}
 -- + t_applied: An array that contains all given values that
 -- evaluated to true by `p` onto `t`
 function pa2.arrayFilter(p, t)
-  if type(p) ~= "function" then
-    io.write("Error: the function provided is not a function!")
-    return nil
-  elseif type(t) ~= "table" then
-    io.write("Error: the table provided is not a function!")
-    return nil
-  end
-
   local t_applied = {}
   local t_index = 1
 
