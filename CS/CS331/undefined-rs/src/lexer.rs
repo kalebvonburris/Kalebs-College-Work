@@ -1,10 +1,12 @@
 //! # Lexer
 
 pub struct Lexer {
-    Code: String,
-    CurrentLexem: String,
-    Index: usize,
-    State: State,
+    code: String,
+    current_lexem: String,
+    current_category: Lexeme,
+    index: usize,
+    state: State,
+    found_lexems: Vec<(Lexeme, String)>,
 }
 
 #[derive(Debug, PartialEq)]
@@ -17,42 +19,94 @@ pub enum State {
 impl Lexer {
     pub fn new(s: String) -> Self {
         Self {
-            Code: s,
-            CurrentLexem: String::new(),
-            Index: 0,
-            State: State,
+            code: s,
+            current_lexem: String::new(),
+            current_category: Lexeme::None,
+            index: 0,
+            state: State::Start,
+            found_lexems: Vec::new(),
         }
     }
 
-    pub fn lex_input(&mut self, input: String) -> Vec<(Lexem, String)> {
-        let lexemes = Vec::new();
-
-        while self.Index < self.Code.len() {
+    pub fn lex_input(&mut self) -> Vec<(Lexeme, String)> {
+        while self.index <= self.code.len() {
+            dbg!(&self.current_category, &self.current_lexem);
             // Handle None state - start
-            if self.State == State::Start {
-                if self.ch().is_alphabetic() || self.ch() == '_' {
-                    self.State = State::Start;
-                }
+            match self.state {
+                State::Start => self.handle_start(),
+                State::Letter => self.handle_letter(),
+                State::End => self.handle_end(),
             }
         }
 
-        lexemes
+        self.found_lexems.clone()
     }
 
+    pub fn handle_start(&mut self) {
+        match self.curr_char() {
+            'a'..='z' | 'A'..='Z' | '_' => {
+                self.add_one();
+                self.state = State::Letter;
+            }
+            ' ' => self.drop_one(),
+            _ => {
+                self.add_one();
+                self.state = State::End;
+                self.current_category = Lexeme::Punctuation;
+            }
+        };
+    }
+
+    pub fn handle_letter(&mut self) {
+        if self.curr_char().is_ascii_alphanumeric() || self.curr_char() == '_' {
+            self.add_one();
+        } else {
+            self.state = State::End;
+            if KEYWORDS.contains(&self.current_lexem.as_str()) {
+                self.current_category = Lexeme::Keyword;
+            } else {
+                self.current_category = Lexeme::Identifier;
+            }
+        }
+    }
+
+    pub fn handle_end(&mut self) {
+        self.found_lexems
+            .push((self.current_category.clone(), self.current_lexem.clone()));
+
+        self.current_lexem = String::new();
+        self.current_category = Lexeme::None;
+        self.state = State::Start;
+    }
+
+    /// Pushes the next `char` in `self.code` to `self.CurrentLexeme`
+    /// and iterates `self.index`.
     pub fn add_one(&mut self) {
-        let c = self.ch();
+        let c = self.curr_char();
 
-        self.CurrentLexem.push(c);
-        self.Index += 1;
+        self.current_lexem.push(c);
+        self.index += 1;
     }
 
-    pub fn ch(&mut self) -> char {
-        self.Code.chars().nth(self.Index).unwrap()
+    /// Iterates `self.index`, effectively dropping the next `char`
+    /// of `self.code`.
+    pub fn drop_one(&mut self) {
+        self.index += 1;
+    }
+
+    /// Gets the `char` at `self.code[self.index]`.
+    pub fn curr_char(&mut self) -> char {
+        self.code.chars().nth(self.index).unwrap_or('\n')
+    }
+
+    /// Gets the `char` at `self.code[self.index + 1]`
+    pub fn next_char(&mut self) -> char {
+        self.code.chars().nth(self.index + 1).unwrap_or('\n')
     }
 }
 
-#[derive(Debug, PartialEq)]
-pub enum Lexem {
+#[derive(Debug, PartialEq, Clone)]
+pub enum Lexeme {
     None,
     Keyword,
     Identifier,
@@ -62,11 +116,11 @@ pub enum Lexem {
     Malformed(LexingError),
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum LexingError {
     NonLegalChar(char),
     KeywordUsed(String),
-    NoLexemFound,
+    NoLexemeFound,
 }
 
 pub const LEGAL_CHARACTERS: core::ops::RangeInclusive<char> = ' '..='~';
@@ -77,4 +131,4 @@ pub const OPERATORS: &[&str] = &[
     "+", "-", "*", "/", "++", "--", ".", "=", "==", "+=", "-=", "*=", "/=",
 ];
 
-impl Lexem {}
+impl Lexeme {}
