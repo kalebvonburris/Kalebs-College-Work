@@ -2,7 +2,7 @@
 
 pub struct Lexer {
     code: String,
-    current_lexem: String,
+    current_lexeme: String,
     current_category: Lexeme,
     index: usize,
     state: State,
@@ -14,6 +14,8 @@ pub enum State {
     Start,
     Letter,
     Num,
+    Operator,
+    Comment,
     End,
 }
 
@@ -38,7 +40,7 @@ pub enum NumericLiteral {
 
 #[derive(Debug, PartialEq, Clone)]
 pub enum LexingError {
-    NonLegalChar(char),
+    NonLegalChar,
     KeywordUsed(String),
     NoLexemeFound,
     ImproperNumericLiteral,
@@ -56,7 +58,7 @@ impl Lexer {
     pub fn new(s: String) -> Self {
         Self {
             code: s,
-            current_lexem: String::new(),
+            current_lexeme: String::new(),
             current_category: Lexeme::None,
             index: 0,
             state: State::Start,
@@ -66,11 +68,17 @@ impl Lexer {
 
     pub fn lex_input(&mut self) -> Vec<(Lexeme, String)> {
         while self.index <= self.code.len() {
-            // Handle None state - start
+            dbg!(
+                &self.current_category,
+                &self.current_lexeme,
+                &self.found_lexems
+            );
             match self.state {
                 State::Start => self.handle_start(),
                 State::Letter => self.handle_letter(),
                 State::Num => self.handle_num(),
+                State::Operator => self.handle_operator(),
+                State::Comment => self.handle_comment(),
                 State::End => self.handle_end(),
             }
         }
@@ -78,7 +86,7 @@ impl Lexer {
         self.found_lexems.clone()
     }
 
-    pub fn handle_start(&mut self) {
+    fn handle_start(&mut self) {
         match self.curr_char() {
             'a'..='z' | 'A'..='Z' | '_' => {
                 self.add_one();
@@ -90,20 +98,50 @@ impl Lexer {
                 self.state = State::Num;
                 self.current_category = Lexeme::NumericLiteral(NumericLiteral::Integer)
             }
-            _ => {
+            '+' | '-' | '=' | '*' | '.' | '/' => {
+                // Comment - NOT an Operator
+                if self.curr_char() == '/' && self.next_char() == '*' {
+                    self.drop_one();
+                    self.drop_one();
+                    self.state = State::Comment;
+                    return;
+                }
+
                 self.add_one();
-                self.state = State::End;
-                self.current_category = Lexeme::Punctuation;
+                self.state = State::Operator;
+                self.current_category = Lexeme::Operator;
+            }
+            //'\n' => self.drop_one(),
+            _ => {
+                if LEGAL_CHARACTERS.contains(&self.curr_char()) {
+                    self.add_one();
+                    self.state = State::End;
+                    self.current_category = Lexeme::Punctuation;
+                } else {
+                    self.add_one();
+                    self.state = State::End;
+                    self.current_category = Lexeme::Malformed(LexingError::NonLegalChar);
+                }
             }
         };
     }
 
-    pub fn handle_letter(&mut self) {
+    fn handle_comment(&mut self) {
+        if self.curr_char() != '*' && self.next_char() != '/' {
+            self.drop_one();
+        } else {
+            self.drop_one();
+            self.drop_one();
+            self.state = State::Start;
+        }
+    }
+
+    fn handle_letter(&mut self) {
         if self.curr_char().is_ascii_alphanumeric() || self.curr_char() == '_' {
             self.add_one();
         } else {
             self.state = State::End;
-            if KEYWORDS.contains(&self.current_lexem.as_str()) {
+            if KEYWORDS.contains(&self.current_lexeme.as_str()) {
                 self.current_category = Lexeme::Keyword;
             } else {
                 self.current_category = Lexeme::Identifier;
@@ -111,7 +149,7 @@ impl Lexer {
         }
     }
 
-    pub fn handle_num(&mut self) {
+    fn handle_num(&mut self) {
         if let Lexeme::NumericLiteral(c) = self.current_category.clone() {
             match self.curr_char() {
                 '0'..='9' => self.add_one(),
@@ -141,7 +179,33 @@ impl Lexer {
         }
     }
 
-    pub fn handle_scientific(&mut self) {
+    fn handle_operator(&mut self) {
+        let mut op = self.current_lexeme.clone();
+
+        op.push(self.curr_char());
+
+        if OPERATORS.contains(&op.as_str()) {
+            self.add_one();
+        }
+
+        if self.current_lexeme == "+" || self.current_lexeme == "-" {
+            if self.curr_char().is_ascii_digit() {
+                self.add_one();
+                self.state = State::Num;
+                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Integer);
+            } else if self.curr_char() == '.' && self.next_char().is_ascii_digit() {
+                self.add_one();
+                self.state = State::Num;
+                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Float);
+            } else {
+                self.state = State::End;
+            }
+        } else {
+            self.state = State::End;
+        }
+    }
+
+    fn handle_scientific(&mut self) {
         // Fist thing after the 'e'/'E' isn't  a number
         if !self.curr_char().is_ascii_digit() && self.curr_char() != '-' {
             self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
@@ -159,41 +223,41 @@ impl Lexer {
         self.state = State::End;
     }
 
-    pub fn handle_end(&mut self) {
+    fn handle_end(&mut self) {
         if self.current_category == Lexeme::NumericLiteral(NumericLiteral::MalformedFloat) {
             self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
         }
 
         self.found_lexems
-            .push((self.current_category.clone(), self.current_lexem.clone()));
+            .push((self.current_category.clone(), self.current_lexeme.clone()));
 
-        self.current_lexem = String::new();
+        self.current_lexeme = String::new();
         self.current_category = Lexeme::None;
         self.state = State::Start;
     }
 
     /// Pushes the next `char` in `self.code` to `self.CurrentLexeme`
     /// and iterates `self.index`.
-    pub fn add_one(&mut self) {
+    fn add_one(&mut self) {
         let c = self.curr_char();
 
-        self.current_lexem.push(c);
+        self.current_lexeme.push(c);
         self.index += 1;
     }
 
     /// Iterates `self.index`, effectively dropping the next `char`
     /// of `self.code`.
-    pub fn drop_one(&mut self) {
+    fn drop_one(&mut self) {
         self.index += 1;
     }
 
     /// Gets the `char` at `self.code[self.index]`.
-    pub fn curr_char(&mut self) -> char {
-        self.code.chars().nth(self.index).unwrap_or('\n')
+    fn curr_char(&mut self) -> char {
+        self.code.chars().nth(self.index).unwrap_or(' ')
     }
 
     /// Gets the `char` at `self.code[self.index + 1]`
-    pub fn next_char(&mut self) -> char {
-        self.code.chars().nth(self.index + 1).unwrap_or('\n')
+    fn next_char(&mut self) -> char {
+        self.code.chars().nth(self.index + 1).unwrap_or(' ')
     }
 }
