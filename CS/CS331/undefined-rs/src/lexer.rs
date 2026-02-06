@@ -13,8 +13,44 @@ pub struct Lexer {
 pub enum State {
     Start,
     Letter,
+    Num,
     End,
 }
+
+#[derive(Debug, PartialEq, Clone)]
+pub enum Lexeme {
+    None,
+    Keyword,
+    Identifier,
+    NumericLiteral(NumericLiteral),
+    Operator,
+    Punctuation,
+    Malformed(LexingError),
+}
+
+#[derive(Debug, PartialEq, Clone)]
+pub enum NumericLiteral {
+    Integer,
+    Float,
+    MalformedFloat,
+    Scientific,
+}
+
+#[derive(Debug, PartialEq, Clone)]
+pub enum LexingError {
+    NonLegalChar(char),
+    KeywordUsed(String),
+    NoLexemeFound,
+    ImproperNumericLiteral,
+}
+
+pub const LEGAL_CHARACTERS: core::ops::RangeInclusive<char> = ' '..='~';
+
+pub const KEYWORDS: &[&str] = &["begin", "end", "print"];
+
+pub const OPERATORS: &[&str] = &[
+    "+", "-", "*", "/", "++", "--", ".", "=", "==", "+=", "-=", "*=", "/=",
+];
 
 impl Lexer {
     pub fn new(s: String) -> Self {
@@ -30,11 +66,11 @@ impl Lexer {
 
     pub fn lex_input(&mut self) -> Vec<(Lexeme, String)> {
         while self.index <= self.code.len() {
-            dbg!(&self.current_category, &self.current_lexem);
             // Handle None state - start
             match self.state {
                 State::Start => self.handle_start(),
                 State::Letter => self.handle_letter(),
+                State::Num => self.handle_num(),
                 State::End => self.handle_end(),
             }
         }
@@ -49,6 +85,11 @@ impl Lexer {
                 self.state = State::Letter;
             }
             ' ' => self.drop_one(),
+            '0'..='9' => {
+                self.add_one();
+                self.state = State::Num;
+                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Integer)
+            }
             _ => {
                 self.add_one();
                 self.state = State::End;
@@ -70,7 +111,59 @@ impl Lexer {
         }
     }
 
+    pub fn handle_num(&mut self) {
+        if let Lexeme::NumericLiteral(c) = self.current_category.clone() {
+            match self.curr_char() {
+                '0'..='9' => self.add_one(),
+                '.' => match c {
+                    NumericLiteral::Integer => {
+                        self.current_category = Lexeme::NumericLiteral(NumericLiteral::Float);
+                        self.add_one();
+                    }
+                    NumericLiteral::Float
+                    | NumericLiteral::MalformedFloat
+                    | NumericLiteral::Scientific => {
+                        self.current_category =
+                            Lexeme::NumericLiteral(NumericLiteral::MalformedFloat);
+                        self.add_one();
+                    }
+                },
+                'e' | 'E' => {
+                    self.current_category = Lexeme::NumericLiteral(NumericLiteral::Scientific);
+                    self.add_one();
+                    self.handle_scientific();
+                }
+                _ => self.state = State::End,
+            }
+        } else {
+            self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
+            self.state = State::End;
+        }
+    }
+
+    pub fn handle_scientific(&mut self) {
+        // Fist thing after the 'e'/'E' isn't  a number
+        if !self.curr_char().is_ascii_digit() && self.curr_char() != '-' {
+            self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
+            self.state = State::End;
+        }
+
+        if self.curr_char() == '-' {
+            self.add_one();
+        }
+
+        while self.curr_char().is_ascii_digit() {
+            self.add_one();
+        }
+
+        self.state = State::End;
+    }
+
     pub fn handle_end(&mut self) {
+        if self.current_category == Lexeme::NumericLiteral(NumericLiteral::MalformedFloat) {
+            self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
+        }
+
         self.found_lexems
             .push((self.current_category.clone(), self.current_lexem.clone()));
 
@@ -104,31 +197,3 @@ impl Lexer {
         self.code.chars().nth(self.index + 1).unwrap_or('\n')
     }
 }
-
-#[derive(Debug, PartialEq, Clone)]
-pub enum Lexeme {
-    None,
-    Keyword,
-    Identifier,
-    NumericLiteral,
-    Operator,
-    Punctuation,
-    Malformed(LexingError),
-}
-
-#[derive(Debug, PartialEq, Clone)]
-pub enum LexingError {
-    NonLegalChar(char),
-    KeywordUsed(String),
-    NoLexemeFound,
-}
-
-pub const LEGAL_CHARACTERS: core::ops::RangeInclusive<char> = ' '..='~';
-
-pub const KEYWORDS: &[&str] = &["begin", "end", "print"];
-
-pub const OPERATORS: &[&str] = &[
-    "+", "-", "*", "/", "++", "--", ".", "=", "==", "+=", "-=", "*=", "/=",
-];
-
-impl Lexeme {}
