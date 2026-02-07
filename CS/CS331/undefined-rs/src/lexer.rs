@@ -1,5 +1,7 @@
 //! # Lexer
 
+use std::ops::RangeInclusive;
+
 pub struct Lexer {
     code: String,
     current_lexeme: String,
@@ -41,12 +43,12 @@ pub enum NumericLiteral {
 #[derive(Debug, PartialEq, Clone)]
 pub enum LexingError {
     NonLegalChar,
-    KeywordUsed(String),
+    KeywordUsed,
     NoLexemeFound,
     ImproperNumericLiteral,
 }
 
-pub const LEGAL_CHARACTERS: core::ops::RangeInclusive<char> = ' '..='~';
+pub const LEGAL_CHARACTERS: RangeInclusive<char> = ' '..='~';
 
 pub const KEYWORDS: &[&str] = &["begin", "end", "print"];
 
@@ -68,11 +70,11 @@ impl Lexer {
 
     pub fn lex_input(&mut self) -> Vec<(Lexeme, String)> {
         while self.index <= self.code.len() {
-            dbg!(
+            /*dbg!(
                 &self.current_category,
                 &self.current_lexeme,
                 &self.found_lexems
-            );
+            );*/
             match self.state {
                 State::Start => self.handle_start(),
                 State::Letter => self.handle_letter(),
@@ -188,16 +190,22 @@ impl Lexer {
             self.add_one();
         }
 
+        // +/- state
         if self.current_lexeme == "+" || self.current_lexeme == "-" {
+            // +/-[0-9]
             if self.curr_char().is_ascii_digit() {
                 self.add_one();
                 self.state = State::Num;
                 self.current_category = Lexeme::NumericLiteral(NumericLiteral::Integer);
-            } else if self.curr_char() == '.' && self.next_char().is_ascii_digit() {
+            }
+            // +/-.[0-9]
+            else if self.curr_char() == '.' && self.next_char().is_ascii_digit() {
                 self.add_one();
                 self.state = State::Num;
                 self.current_category = Lexeme::NumericLiteral(NumericLiteral::Float);
-            } else {
+            }
+            // +/- only
+            else {
                 self.state = State::End;
             }
         } else {
@@ -206,7 +214,7 @@ impl Lexer {
     }
 
     fn handle_scientific(&mut self) {
-        // Fist thing after the 'e'/'E' isn't  a number
+        // First thing after the 'e'/'E' isn't  a number
         if !self.curr_char().is_ascii_digit() && self.curr_char() != '-' {
             self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
             self.state = State::End;
