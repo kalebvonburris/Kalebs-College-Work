@@ -124,7 +124,7 @@ impl Lexer {
         }
     }
 
-    /// Lexes the current `self.code` `String` into a `Vec<(Lexem, String)>`.
+    /// Lexes the current `self.code` `String` into a `Vec<(Lexeme, String)>`.
     ///
     /// ```
     /// use undefined_rs::lexer::{
@@ -161,6 +161,7 @@ impl Lexer {
         self.found_lexems.clone()
     }
 
+    /// Maps a given [`State`] to its related handler function.
     fn handle_state(&mut self) {
         match self.state {
             State::Start => self.handle_start(),
@@ -172,6 +173,9 @@ impl Lexer {
         }
     }
 
+    /// Handles the state: [`State::Start`]
+    ///
+    /// Maps the given `curr_char` to a state for relevant lexing.
     fn handle_start(&mut self) {
         match self.curr_char() {
             'a'..='z' | 'A'..='Z' | '_' => {
@@ -212,6 +216,10 @@ impl Lexer {
         };
     }
 
+    /// Handles the state: [`State::Comment`]
+    ///
+    /// All comments start with `"/*"` and continue until
+    /// "*/" is seen, or the `EOF`.
     fn handle_comment(&mut self) {
         if self.curr_char() == '*' && self.next_char() == '/' {
             self.drop_one();
@@ -222,6 +230,7 @@ impl Lexer {
         }
     }
 
+    /// Handles the state: [`State::Letter`]
     fn handle_letter(&mut self) {
         if self.curr_char().is_ascii_alphanumeric() || self.curr_char() == '_' {
             self.add_one();
