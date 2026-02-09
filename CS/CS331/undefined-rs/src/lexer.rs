@@ -3,7 +3,7 @@
 use std::ops::RangeInclusive;
 
 pub struct Lexer {
-    code: String,
+    code: Vec<char>,
     current_lexeme: String,
     current_category: Lexeme,
     index: usize,
@@ -59,7 +59,7 @@ pub const OPERATORS: &[&str] = &[
 impl Lexer {
     pub fn new(s: String) -> Self {
         Self {
-            code: s,
+            code: s.chars().collect(),
             current_lexeme: String::new(),
             current_category: Lexeme::None,
             index: 0,
@@ -69,7 +69,7 @@ impl Lexer {
     }
 
     pub fn lex_input(&mut self) -> Vec<(Lexeme, String)> {
-        while self.index <= self.code.len() {
+        while self.index < self.code.len() {
             /*dbg!(
                 &self.current_category,
                 &self.current_lexeme,
@@ -83,6 +83,11 @@ impl Lexer {
                 State::Comment => self.handle_comment(),
                 State::End => self.handle_end(),
             }
+        }
+
+        // Handle any hanging lexemes
+        if self.state != State::Start {
+            self.handle_end();
         }
 
         self.found_lexems.clone()
@@ -129,12 +134,12 @@ impl Lexer {
     }
 
     fn handle_comment(&mut self) {
-        if self.curr_char() != '*' && self.next_char() != '/' {
-            self.drop_one();
-        } else {
+        if self.curr_char() == '*' && self.next_char() == '/' {
             self.drop_one();
             self.drop_one();
             self.state = State::Start;
+        } else {
+            self.drop_one();
         }
     }
 
@@ -188,6 +193,8 @@ impl Lexer {
 
         if OPERATORS.contains(&op.as_str()) {
             self.add_one();
+            self.state = State::End;
+            return;
         }
 
         // +/- state
@@ -218,6 +225,7 @@ impl Lexer {
         if !self.curr_char().is_ascii_digit() && self.curr_char() != '-' {
             self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
             self.state = State::End;
+            return;
         }
 
         if self.curr_char() == '-' {
@@ -261,11 +269,11 @@ impl Lexer {
 
     /// Gets the `char` at `self.code[self.index]`.
     fn curr_char(&mut self) -> char {
-        self.code.chars().nth(self.index).unwrap_or(' ')
+        *self.code.get(self.index).unwrap_or(&' ')
     }
 
     /// Gets the `char` at `self.code[self.index + 1]`
     fn next_char(&mut self) -> char {
-        self.code.chars().nth(self.index + 1).unwrap_or(' ')
+        *self.code.get(self.index + 1).unwrap_or(&' ')
     }
 }
