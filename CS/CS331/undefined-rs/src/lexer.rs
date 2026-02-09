@@ -42,7 +42,7 @@ pub enum Lexeme {
     Identifier,
     /// A literal numerical value, such as `1`, `2.5`, or `123.4E10`.
     NumericLiteral(NumericLiteral),
-    /// An operator used by [`NumericLiterals`](NumericLiteral)s or
+    /// An operator used by [`NumericLiterals`](NumericLiteral) or
     /// variables.
     Operator,
     /// A possible piece of fluff, such as a semicolor (`';'`),
@@ -143,19 +143,8 @@ impl Lexer {
     /// assert_eq!(lexer.lex_input(), expected_output);
     /// ```
     pub fn lex_input(&mut self) -> Vec<(Lexeme, String)> {
-        while self.index < self.code.len() {
-            /*dbg!(
-                &self.current_category,
-                &self.current_lexeme,
-                &self.found_lexems
-            );*/
+        while self.index <= self.code.len() {
             self.handle_state();
-        }
-
-        // Handle any hanging lexemes
-        if self.state != State::Start {
-            self.handle_state();
-            self.handle_end();
         }
 
         self.found_lexems.clone()
@@ -182,7 +171,6 @@ impl Lexer {
                 self.add_one();
                 self.state = State::Letter;
             }
-            ' ' => self.drop_one(),
             '0'..='9' => {
                 self.add_one();
                 self.state = State::Num;
@@ -201,7 +189,7 @@ impl Lexer {
                 self.state = State::Operator;
                 self.current_category = Lexeme::Operator;
             }
-            //'\n' => self.drop_one(),
+            '\n' | ' ' => self.drop_one(),
             _ => {
                 if LEGAL_CHARACTERS.contains(&self.curr_char()) {
                     self.add_one();
@@ -308,6 +296,15 @@ impl Lexer {
             }
             // +/- only
             else {
+                self.state = State::End;
+            }
+        } else if self.current_lexeme == "." {
+            // .[0-9]
+            if self.curr_char().is_ascii_digit() {
+                self.add_one();
+                self.state = State::Num;
+                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Float);
+            } else {
                 self.state = State::End;
             }
         } else {
