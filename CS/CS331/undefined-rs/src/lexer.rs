@@ -2,17 +2,26 @@
 
 use std::ops::RangeInclusive;
 
+/// A state machine lexer that takes an input
+/// block of code and returns a `Vec` of ordered tuple pairs.
 pub struct Lexer {
+    /// The entirety of the given code block.
     code: Vec<char>,
+    /// The current string literal of the [`Lexeme`] being lexed.
     current_lexeme: String,
+    /// The category of the current [`Lexeme`] being lexed.
     current_category: Lexeme,
+    /// The index into the `code` `Vec`. Can never be `>= code.len()`.
     index: usize,
+    /// The current [`State`] of the lexer.
     state: State,
+    /// Storage for the [`Lexeme`]s found.
     found_lexems: Vec<(Lexeme, String)>,
 }
 
+/// The `State` of a [`Lexer`].
 #[derive(Debug, PartialEq)]
-pub enum State {
+pub(crate) enum State {
     Start,
     Letter,
     Num,
@@ -21,22 +30,42 @@ pub enum State {
     End,
 }
 
+/// A given `Lexeme` according to the lexical specification.
 #[derive(Debug, PartialEq, Clone)]
 pub enum Lexeme {
+    /// Invalid state: no [`Lexeme`].
     None,
+    /// See [`KEYWORDS`].
     Keyword,
+    /// A `String` that represents either a variable name
+    /// or function name.
     Identifier,
+    /// A literal numerical value, such as `1`, `2.5`, or `123.4E10`.
     NumericLiteral(NumericLiteral),
+    /// An operator used by [`NumericLiterals`](NumericLiteral)s or
+    /// variables.
     Operator,
+    /// A possible piece of fluff, such as a semicolor (`';'`),
+    /// open/close braces (`'{'`/`'}'`).
     Punctuation,
+    /// Some sort of broken state/[`Lexeme`] with an attached
+    /// [error](LexingError).
     Malformed(LexingError),
 }
 
+/// Different possible forms of a `NumericLiteral`.
 #[derive(Debug, PartialEq, Clone)]
 pub enum NumericLiteral {
+    /// Whole integer values: `/[0-9]+/`.
     Integer,
+    /// Basic `Float` values: `/([0-9]*.[0-9]+)|([0-9]+.[0-9]*)/`
     Float,
+    /// Error value for a malformed [Float](NumericLiteral::Float).
+    ///
+    /// Typically, this is due to a case such as: `0.2.2.2`.
     MalformedFloat,
+    /// A `Scientific` notation `NumericLiteral` value:
+    /// `/[0-9]*.?[0-9]+(e|E)(+|-)?[0-9]+/`.
     Scientific,
 }
 
@@ -48,15 +77,42 @@ pub enum LexingError {
     ImproperNumericLiteral,
 }
 
+/// All legal [`char`]s for the lexical specification.
+///
+/// These are ASCII `' '`` to ASCII `'~'`.
+///
+/// ```
+/// use undefined_rs::lexer;
+/// assert_eq!(' '..='~', lexer::LEGAL_CHARACTERS);
+/// ```
 pub const LEGAL_CHARACTERS: RangeInclusive<char> = ' '..='~';
 
+/// All legal [`Keywords`](Lexeme::Keyword).
+///
+/// ```
+/// use undefined_rs::lexer;
+/// assert_eq!(&["begin", "end", "print"], lexer::KEYWORDS);
+/// ```
 pub const KEYWORDS: &[&str] = &["begin", "end", "print"];
 
+/// All legal [`Operators`](Lexeme::Operator).
+/// ```
+/// use undefined_rs::lexer;
+///
+/// let operators = &[
+///   "+", "-", "*", "/", "++", "--", ".", "=", "==", "+=", "-=", "*=", "/=",
+/// ];
+///
+/// assert_eq!(operators, lexer::OPERATORS);
+/// ```
 pub const OPERATORS: &[&str] = &[
     "+", "-", "*", "/", "++", "--", ".", "=", "==", "+=", "-=", "*=", "/=",
 ];
 
 impl Lexer {
+    /// Creates a new [`Lexer`]
+    ///
+    /// Call [`Lexer::lex_input`] to get the desired output `Vec` of [`Lexeme`]s.
     pub fn new(s: String) -> Self {
         Self {
             code: s.chars().collect(),
@@ -68,6 +124,24 @@ impl Lexer {
         }
     }
 
+    /// Lexes the current `self.code` `String` into a `Vec<(Lexem, String)>`.
+    ///
+    /// ```
+    /// use undefined_rs::lexer::{
+    ///     Lexer,
+    ///     Lexeme,
+    ///     NumericLiteral,
+    /// };
+    ///
+    /// let mut lexer = Lexer::new("2".to_string());
+    ///
+    /// let expected_output = vec![
+    ///     (Lexeme::NumericLiteral(NumericLiteral::Integer),
+    ///     "2".to_string()),
+    /// ];
+    ///
+    /// assert_eq!(lexer.lex_input(), expected_output);
+    /// ```
     pub fn lex_input(&mut self) -> Vec<(Lexeme, String)> {
         while self.index < self.code.len() {
             /*dbg!(
@@ -75,22 +149,27 @@ impl Lexer {
                 &self.current_lexeme,
                 &self.found_lexems
             );*/
-            match self.state {
-                State::Start => self.handle_start(),
-                State::Letter => self.handle_letter(),
-                State::Num => self.handle_num(),
-                State::Operator => self.handle_operator(),
-                State::Comment => self.handle_comment(),
-                State::End => self.handle_end(),
-            }
+            self.handle_state();
         }
 
         // Handle any hanging lexemes
         if self.state != State::Start {
+            self.handle_state();
             self.handle_end();
         }
 
         self.found_lexems.clone()
+    }
+
+    fn handle_state(&mut self) {
+        match self.state {
+            State::Start => self.handle_start(),
+            State::Letter => self.handle_letter(),
+            State::Num => self.handle_num(),
+            State::Operator => self.handle_operator(),
+            State::Comment => self.handle_comment(),
+            State::End => self.handle_end(),
+        }
     }
 
     fn handle_start(&mut self) {
@@ -156,6 +235,10 @@ impl Lexer {
         }
     }
 
+    /// Handles the state: [`State::NumericLiteral`]
+    ///
+    /// This is triggered after seeing a number while not in the
+    /// [State::Letter](State::Letter) state. Usually lexes out a [`Lexeme::NumericLiteral`].
     fn handle_num(&mut self) {
         if let Lexeme::NumericLiteral(c) = self.current_category.clone() {
             match self.curr_char() {
@@ -186,6 +269,9 @@ impl Lexer {
         }
     }
 
+    /// Handles the state: [`State::Operator`]
+    ///
+    /// See [`OPERATORS`] for all valid operators.
     fn handle_operator(&mut self) {
         let mut op = self.current_lexeme.clone();
 
@@ -220,6 +306,9 @@ impl Lexer {
         }
     }
 
+    /// Handles the state: [`State::NumericLiteral(NumericLiteral::Scientific)`]
+    ///
+    /// All scientific literals must be in the form `/[0-9]*.?[0-9]+(e|E)-?[0-9]+/`.
     fn handle_scientific(&mut self) {
         // First thing after the 'e'/'E' isn't  a number
         if !self.curr_char().is_ascii_digit() && self.curr_char() != '-' {
@@ -239,6 +328,10 @@ impl Lexer {
         self.state = State::End;
     }
 
+    /// Handles the state: [`State::End`]
+    ///
+    /// Pushes the `self.current_lexeme` and `self.current_category` onto
+    /// the `self.found_lexems` [`Vec`].
     fn handle_end(&mut self) {
         if self.current_category == Lexeme::NumericLiteral(NumericLiteral::MalformedFloat) {
             self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
