@@ -109,6 +109,8 @@ mod tests {
 
     #[test]
     fn punctuation() {
+        // Every char here is punctuation, so we can just map them all
+        // to the Punctuation lexeme.
         let test = "}{{((()))}{{{})))((}}}}}}".to_string();
 
         let lexemes = Lexer::new(test.clone()).lex_input();
