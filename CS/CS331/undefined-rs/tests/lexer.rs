@@ -70,7 +70,7 @@ mod tests {
 
     #[test]
     fn identifiers() {
-        let identifiers = vec![
+        let identifiers = &[
             "variable",
             "myVar",
             "var123",
