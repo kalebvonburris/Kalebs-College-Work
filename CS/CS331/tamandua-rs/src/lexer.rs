@@ -25,6 +25,8 @@ pub(crate) enum State {
     Start,
     Letter,
     Num,
+    Str,
+    Scientific,
     Operator,
     Comment,
     End,
@@ -33,7 +35,6 @@ pub(crate) enum State {
 /// A given `Lexeme` according to the lexical specification.
 #[derive(Debug, PartialEq, Clone)]
 pub enum Lexeme {
-    /// Invalid state: no [`Lexeme`].
     None,
     /// See [`KEYWORDS`].
     Keyword,
@@ -41,7 +42,9 @@ pub enum Lexeme {
     /// or function name.
     Identifier,
     /// A literal numerical value, such as `1`, `2.5`, or `123.4E10`.
-    NumericLiteral(NumericLiteral),
+    NumericLiteral,
+    /// A literal [`String`] value, matched with `/("."|'.')/`.
+    StringLiteral,
     /// An operator used by [`NumericLiterals`](NumericLiteral) or
     /// variables.
     Operator,
@@ -53,28 +56,12 @@ pub enum Lexeme {
     Malformed(LexingError),
 }
 
-/// Different possible forms of a `NumericLiteral`.
-#[derive(Debug, PartialEq, Clone)]
-pub enum NumericLiteral {
-    /// Whole integer values: `/[0-9]+/`.
-    Integer,
-    /// Basic `Float` values: `/([0-9]*.[0-9]+)|([0-9]+.[0-9]*)/`
-    Float,
-    /// Error value for a malformed [Float](NumericLiteral::Float).
-    ///
-    /// Typically, this is due to a case such as: `0.2.2.2`.
-    MalformedFloat,
-    /// A `Scientific` notation `NumericLiteral` value:
-    /// `/[0-9]*.?[0-9]+(e|E)(+|-)?[0-9]+/`.
-    Scientific,
-}
-
 #[derive(Debug, PartialEq, Clone)]
 pub enum LexingError {
     NonLegalChar,
-    KeywordUsed,
     NoLexemeFound,
     ImproperNumericLiteral,
+    MalformedStringLiteral,
 }
 
 /// All legal [`char`]s for the lexical specification.
@@ -93,7 +80,9 @@ pub const LEGAL_CHARACTERS: RangeInclusive<char> = ' '..='~';
 /// use undefined_rs::lexer;
 /// assert_eq!(&["begin", "end", "print"], lexer::KEYWORDS);
 /// ```
-pub const KEYWORDS: &[&str] = &["begin", "end", "print"];
+pub const KEYWORDS: &[&str] = &[
+    "chr", "else", "elsif", "func", "if", "print", "println", "readint", "return", "rnd", "while",
+];
 
 /// All legal [`Operators`](Lexeme::Operator).
 /// ```
@@ -106,7 +95,8 @@ pub const KEYWORDS: &[&str] = &["begin", "end", "print"];
 /// assert_eq!(operators, lexer::OPERATORS);
 /// ```
 pub const OPERATORS: &[&str] = &[
-    "+", "-", "*", "/", "++", "--", ".", "=", "==", "+=", "-=", "*=", "/=",
+    "+", "-", "*", "/", "=", "==", "!=", "<", "<=", ">", ">=", "!", "&&", "||", "]", "[", "++",
+    "--", "%",
 ];
 
 impl Lexer {
@@ -156,6 +146,8 @@ impl Lexer {
             State::Start => self.handle_start(),
             State::Letter => self.handle_letter(),
             State::Num => self.handle_num(),
+            State::Str => self.handle_str(),
+            State::Scientific => self.handle_scientific(),
             State::Operator => self.handle_operator(),
             State::Comment => self.handle_comment(),
             State::End => self.handle_end(),
@@ -174,12 +166,11 @@ impl Lexer {
             '0'..='9' => {
                 self.add_one();
                 self.state = State::Num;
-                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Integer)
             }
-            '+' | '-' | '=' | '*' | '.' | '/' => {
+            '+' | '-' | '*' | '/' | '=' | '!' | '<' | '>' | '&' | '|' | ']' | '[' | '%' | '#'
+            | '.' => {
                 // Comment - NOT an Operator
-                if self.curr_char() == '/' && self.next_char() == '*' {
-                    self.drop_one();
+                if self.curr_char() == '#' {
                     self.drop_one();
                     self.state = State::Comment;
                     return;
@@ -187,18 +178,21 @@ impl Lexer {
 
                 self.add_one();
                 self.state = State::Operator;
-                self.current_category = Lexeme::Operator;
+            }
+            '"' | '\'' => {
+                self.add_one();
+                self.state = State::Str;
             }
             '\n' | ' ' => self.drop_one(),
             _ => {
                 if LEGAL_CHARACTERS.contains(&self.curr_char()) {
                     self.add_one();
-                    self.state = State::End;
                     self.current_category = Lexeme::Punctuation;
+                    self.state = State::End;
                 } else {
                     self.add_one();
-                    self.state = State::End;
                     self.current_category = Lexeme::Malformed(LexingError::NonLegalChar);
+                    self.state = State::End;
                 }
             }
         };
@@ -206,11 +200,9 @@ impl Lexer {
 
     /// Handles the state: [`State::Comment`]
     ///
-    /// All comments start with `"/*"` and continue until
-    /// "*/" is seen, or the `EOF`.
+    /// All comments start with `'#'` and continue until a newline or the end of the file.
     fn handle_comment(&mut self) {
-        if self.curr_char() == '*' && self.next_char() == '/' {
-            self.drop_one();
+        if self.curr_char() == '\n' || self.curr_char() == '\0' {
             self.drop_one();
             self.state = State::Start;
         } else {
@@ -223,12 +215,12 @@ impl Lexer {
         if self.curr_char().is_ascii_alphanumeric() || self.curr_char() == '_' {
             self.add_one();
         } else {
-            self.state = State::End;
             if KEYWORDS.contains(&self.current_lexeme.as_str()) {
                 self.current_category = Lexeme::Keyword;
             } else {
                 self.current_category = Lexeme::Identifier;
             }
+            self.state = State::End;
         }
     }
 
@@ -237,33 +229,53 @@ impl Lexer {
     /// This is triggered after seeing a number while not in the
     /// [State::Letter](State::Letter) state. Usually lexes out a [`Lexeme::NumericLiteral`].
     fn handle_num(&mut self) {
-        if let Lexeme::NumericLiteral(c) = self.current_category.clone() {
-            match self.curr_char() {
-                '0'..='9' => self.add_one(),
-                '.' => match c {
-                    NumericLiteral::Integer => {
-                        self.current_category = Lexeme::NumericLiteral(NumericLiteral::Float);
+        match self.curr_char() {
+            '0'..='9' | '.' => self.add_one(),
+            'e' | 'E' => {
+                // Potential Scientific notation
+                // Check for '+'
+                if self.next_char() == '+' {
+                    if self
+                        .code
+                        .get(self.index + 2)
+                        .unwrap_or(&'\0')
+                        .is_ascii_digit()
+                    {
                         self.add_one();
-                    }
-                    NumericLiteral::Float
-                    | NumericLiteral::MalformedFloat
-                    | NumericLiteral::Scientific => {
-                        self.current_category =
-                            Lexeme::NumericLiteral(NumericLiteral::MalformedFloat);
                         self.add_one();
+                        self.state = State::Scientific;
+                    } else {
+                        self.state = State::End;
                     }
-                },
-                'e' | 'E' => {
-                    self.current_category = Lexeme::NumericLiteral(NumericLiteral::Scientific);
+                } else if self.next_char().is_ascii_digit() {
                     self.add_one();
-                    self.handle_scientific();
+                    self.add_one();
+                    self.state = State::Scientific;
                 }
-                _ => self.state = State::End,
             }
-        } else {
-            self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
-            self.state = State::End;
+            _ => {
+                self.current_category = Lexeme::NumericLiteral;
+                self.state = State::End;
+            }
         }
+    }
+
+    /// Handles the state: [`State::Str`]
+    fn handle_str(&mut self) {
+        let quote_type = self.current_lexeme.chars().next().unwrap();
+
+        while self.curr_char() != quote_type && self.curr_char() != '\0' {
+            self.add_one();
+        }
+
+        if self.curr_char() == '\0' {
+            self.current_category = Lexeme::Malformed(LexingError::MalformedStringLiteral);
+        } else {
+            self.add_one();
+            self.current_category = Lexeme::StringLiteral;
+        }
+
+        self.state = State::End;
     }
 
     /// Handles the state: [`State::Operator`]
@@ -276,6 +288,7 @@ impl Lexer {
 
         if OPERATORS.contains(&op.as_str()) {
             self.add_one();
+            self.current_category = Lexeme::Operator;
             self.state = State::End;
             return;
         }
@@ -286,16 +299,15 @@ impl Lexer {
             if self.curr_char().is_ascii_digit() {
                 self.add_one();
                 self.state = State::Num;
-                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Integer);
             }
             // +/-.[0-9]
             else if self.curr_char() == '.' && self.next_char().is_ascii_digit() {
                 self.add_one();
                 self.state = State::Num;
-                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Float);
             }
             // +/- only
             else {
+                self.current_category = Lexeme::Operator;
                 self.state = State::End;
             }
         } else if self.current_lexeme == "." {
@@ -303,8 +315,8 @@ impl Lexer {
             if self.curr_char().is_ascii_digit() {
                 self.add_one();
                 self.state = State::Num;
-                self.current_category = Lexeme::NumericLiteral(NumericLiteral::Float);
             } else {
+                self.current_category = Lexeme::Operator;
                 self.state = State::End;
             }
         } else {
@@ -316,21 +328,11 @@ impl Lexer {
     ///
     /// All scientific literals must be in the form `/[0-9]*.?[0-9]+(e|E)-?[0-9]+/`.
     fn handle_scientific(&mut self) {
-        // First thing after the 'e'/'E' isn't  a number
-        if !self.curr_char().is_ascii_digit() && self.curr_char() != '-' {
-            self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
-            self.state = State::End;
-            return;
-        }
-
-        if self.curr_char() == '-' {
-            self.add_one();
-        }
-
         while self.curr_char().is_ascii_digit() {
             self.add_one();
         }
 
+        self.current_category = Lexeme::NumericLiteral;
         self.state = State::End;
     }
 
@@ -339,10 +341,6 @@ impl Lexer {
     /// Pushes the `self.current_lexeme` and `self.current_category` onto
     /// the `self.found_lexems` [`Vec`].
     fn handle_end(&mut self) {
-        if self.current_category == Lexeme::NumericLiteral(NumericLiteral::MalformedFloat) {
-            self.current_category = Lexeme::Malformed(LexingError::ImproperNumericLiteral);
-        }
-
         self.found_lexems
             .push((self.current_category.clone(), self.current_lexeme.clone()));
 
@@ -368,11 +366,11 @@ impl Lexer {
 
     /// Gets the `char` at `self.code[self.index]`.
     fn curr_char(&mut self) -> char {
-        *self.code.get(self.index).unwrap_or(&' ')
+        *self.code.get(self.index).unwrap_or(&'\0')
     }
 
     /// Gets the `char` at `self.code[self.index + 1]`
     fn next_char(&mut self) -> char {
-        *self.code.get(self.index + 1).unwrap_or(&' ')
+        *self.code.get(self.index + 1).unwrap_or(&'\0')
     }
 }
