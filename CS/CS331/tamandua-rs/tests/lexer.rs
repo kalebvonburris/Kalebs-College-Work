@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use undefined_rs::lexer::*;
+    use tamandua_rs::lexer::*;
 
     /// Helper function so I don't have to type `String::new`
     /// a billion times.
@@ -38,16 +38,13 @@ mod tests {
         assert_eq!(
             lexemes,
             parse_test_output(vec![
-                (Lexeme::NumericLiteral(NumericLiteral::Integer), "90"),
+                (Lexeme::NumericLiteral, "90"),
                 (
-                    Lexeme::NumericLiteral(NumericLiteral::Float),
+                    Lexeme::NumericLiteral,
                     "1.22455555555555555555555555555555555"
                 ),
-                (Lexeme::NumericLiteral(NumericLiteral::Float), ".2999"),
-                (
-                    Lexeme::NumericLiteral(NumericLiteral::Scientific),
-                    "10.0e10000"
-                ),
+                (Lexeme::NumericLiteral, ".2999"),
+                (Lexeme::NumericLiteral, "10.0e10000"),
             ])
         );
     }

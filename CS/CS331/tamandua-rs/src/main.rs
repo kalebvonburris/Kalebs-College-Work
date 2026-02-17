@@ -1,4 +1,4 @@
-use undefined_rs::lexer::Lexer;
+use tamandua_rs::lexer::Lexer;
 
 fn main() {
     let msg = "1 2 3 4 ; 5 asvcs err(2.234444) 89. .2222222 -.999 2.2.2.2  2e10 1.234E123
