@@ -1,4 +1,3 @@
-#!/usr/bin/env lua
 -- lexit_test.lua
 -- Glenn G. Chappell
 -- 2026-02-10
