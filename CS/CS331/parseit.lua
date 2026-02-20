@@ -39,7 +39,7 @@ local lexer = require "lexit"
 -- *********************************************************************
 
 
-local rdparser3 = {} -- Our module
+local parser = {} -- Our module
 
 
 -- *********************************************************************
@@ -67,9 +67,27 @@ local matched = "" -- String form of last matched lexeme
 -- *********************************************************************
 
 
-local BIN_OP     = 1
-local NUMLIT_VAL = 2
-local SIMPLE_VAR = 3
+local PROGRAM      = 1
+local EMPTY_STMT   = 2
+local PRINT_STMT   = 3
+local PRINTLN_STMT = 4
+local RETURN_STMT  = 5
+local INC_STMT     = 6
+local DEC_STMT     = 7
+local ASSN_STMT    = 8
+local FUNC_CALL    = 9
+local FUNC_DEF     = 10
+local IF_STMT      = 11
+local WHILE_LOOP   = 12
+local STRLIT_OUT   = 13
+local CHR_CALL     = 14
+local BIN_OP       = 15
+local UN_OP        = 16
+local NUMLIT_VAL   = 17
+local READ_CALL    = 18
+local RND_CALL     = 19
+local SIMPLE_VAR   = 20
+local ARRAY_VAR    = 21
 
 
 -- *********************************************************************
@@ -148,7 +166,11 @@ end
 -- *********************************************************************
 
 
+local parse_program
+local parse_stmt
+local parse_print_arg
 local parse_expr
+local parse_compare_expr
 local parse_term
 local parse_factor
 
@@ -164,7 +186,7 @@ local parse_factor
 -- successful parse or not. Second boolean indicates whether the parser
 -- reached the end of the input or not. AST is only valid if first
 -- boolean is true.
-function rdparser3.parse(prog)
+function parser.parse(prog)
   -- Initialization
   init(prog)
 
@@ -193,6 +215,18 @@ end
 -- NOTE. Declare parsing functions "local" above, but not below. This
 -- allows them to be called before their definitions.
 
+-- parse_program
+function parse_program()
+  local good, ast = parse_stmt()
+end
+
+-- parse_stmt
+function parse_stmt()
+end
+
+-- parse_print_arg
+function parse_print_arg()
+end
 
 -- parse_expr
 -- Parsing function for nonterminal "expr".
@@ -218,6 +252,10 @@ function parse_expr()
   end
 
   return true, ast
+end
+
+-- parse_compare_expr
+function parse_compare_expr()
 end
 
 -- parse_term
@@ -277,4 +315,4 @@ end
 -- *********************************************************************
 
 
-return rdparser3
+return parser

@@ -7,6 +7,8 @@
 -- Test Program for Module parseit
 -- Used in Assignment 4, Exercise A
 
+
+package.path = package.path .. ";./?.lua;"
 parseit = require "parseit" -- Import parseit module
 
 
