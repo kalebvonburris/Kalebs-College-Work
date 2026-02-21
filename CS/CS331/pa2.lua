@@ -13,7 +13,7 @@
 
 -- Exercise B --
 
-pa2 = {}
+local pa2 = {}
 
 -- arrayFilter
 -- Takes a given function `p` that acts as a filter -
