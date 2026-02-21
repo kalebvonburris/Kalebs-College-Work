@@ -288,8 +288,37 @@ function parse_statement()
 
     return true, { RETURN_STMT, ast1 }
   elseif matchString("++") or matchString("--") then
-    -- TODO: WRITE THIS!!!
-    return false, nil -- DUMMY
+    local op
+
+    if matched == "++" then
+      op = INC_STMT
+    else
+      op = DEC_STMT
+    end
+
+    if not matchCat(lexit.ID) then
+      return false, nil
+    end
+
+    local id_name = matched
+
+    if matchString("[") then
+      good, ast1 = parse_expr()
+
+      if not good or not matchString("]") then
+        return false, nil
+      end
+
+      ast1 = { ARRAY_VAR, id_name, ast1 }
+    else
+      ast1 = { SIMPLE_VAR, id_name }
+    end
+
+    if not matchString(";") then
+      return false, nil
+    end
+
+    return true, { op, ast1 }
   elseif matchCat(lexit.ID) then
     local id_name = matched
 
@@ -304,19 +333,17 @@ function parse_statement()
       -- ID [ EXPR ] case
       good, ast1 = parse_expr()
 
-      local num_val = matched
-
       if not good or not matchString("]") then
         return false, nil
       end
 
-      table.insert(ast, { ARRAY_VAR, id_name, { NUMLIT_VAL, num_val } })
+      table.insert(ast, { ARRAY_VAR, id_name, ast1 })
     else
       table.insert(ast, { SIMPLE_VAR, id_name })
     end
 
     if matchString("=") then
-      good, ast1 = parse_factor()
+      good, ast1 = parse_expr()
 
       if not good or not matchString(";") then
         return false, nil
@@ -444,9 +471,21 @@ function parse_print_arg()
 
   if matchCat(lexit.STRLIT) then
     return true, { STRLIT_OUT, matched }
+  elseif matchString("chr") and matchString("(") then
+    good, ast = parse_expr()
+    if not good or not matchString(")") then
+      return false, nil
+    end
+
+    return true, { CHR_CALL, ast }
   else
-    -- TODO: WRITE THIS!!!
-    return false, nil -- DUMMY
+    good, ast = parse_expr()
+
+    if not good then
+      return false, nil
+    end
+
+    return true, ast
   end
 end
 
@@ -507,7 +546,26 @@ end
 -- Parsing function for nonterminal "arith_expr".
 -- Function init must be called before this function is called.
 function parse_arith_expr()
+  local good, ast, saveop, newast
 
+  good, ast = parse_term()
+  if not good then
+    return false, nil
+  end
+
+  while matchString("+") or matchString("-") do
+    -- Invariant: ast is the AST for what has been parsed so far.
+    saveop = matched
+
+    good, newast = parse_term()
+    if not good then
+      return false, nil
+    end
+
+    ast = { { BIN_OP, saveop }, ast, newast }
+  end
+
+  return true, ast
 end
 
 -- parse_term
@@ -550,6 +608,17 @@ function parse_factor()
       else
         return true, { FUNC_CALL, id_name }
       end
+    elseif matchString("[") then
+      good, ast = parse_expr()
+      if not good then
+        return false, nil
+      end
+
+      if not matchString("]") then
+        return false, nil
+      end
+
+      return true, { ARRAY_VAR, id_name, ast }
     end
     return true, { SIMPLE_VAR, matched }
   elseif matchCat(lexit.NUMLIT) then
@@ -565,6 +634,24 @@ function parse_factor()
     end
 
     return true, ast
+  elseif matchString("+") or matchString("-") or matchString("!") then
+    local op = matched
+    good, ast = parse_factor()
+    if not good then
+      return false, nil
+    end
+
+    return true, { { UN_OP, op }, ast }
+  elseif matchString("readint") and matchString("(") and matchString(")") then
+    return true, { READ_CALL }
+  elseif matchString("rnd") and matchString("(") then
+    good, ast = parse_expr()
+
+    if not good or not matchString(")") then
+      return false, nil
+    end
+
+    return true, { RND_CALL, ast }
   else
     return false, nil
   end
