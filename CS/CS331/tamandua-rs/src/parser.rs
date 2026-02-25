@@ -2,19 +2,40 @@
 
 use crate::lexer::Lexeme;
 
-struct Parser {}
-
 struct AST {
-    tree: Vec<ASTNode>,
+    category: ASTCategory,
+    value: Option<String>,
+    tree: Option<Vec<AST>>,
 }
 
-struct ASTNode {
-    children: Vec<ASTNode>,
+enum ASTCategory {
+    Program,
 }
 
-enum ASTValue {
-    Leaf((ASTCategory, String)),
-    Ast(AST),
+pub struct Parser {
+    code: Vec<(Lexeme, String)>,
 }
 
-enum ASTCategory {}
+const STATEMENT_KETWORDS: &[&str] = &[
+    ";", "print", "println", "return", "++", "--", "func", "if", "while",
+];
+
+impl Parser {
+    pub fn new(code: Vec<(Lexeme, String)>) -> Self {
+        Self { code }
+    }
+
+    pub fn parse(&mut self) -> Option<AST> {
+        let mut ast = AST {
+            category: ASTCategory::Program,
+            value: None,
+            tree: None,
+        };
+
+        for (lexeme, string) in self.code.iter() {
+            if STATEMENT_KETWORDS.contains(&string.as_str()) || *lexeme == Lexeme::Identifier {}
+        }
+
+        None
+    }
+}
