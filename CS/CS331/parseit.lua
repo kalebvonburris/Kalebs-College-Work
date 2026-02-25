@@ -457,7 +457,7 @@ function parse_statement()
     else
       return false, nil
     end
-  else -- PROBABLY NEED MORE elseifs HERE
+  else
     -- Empty case!
     return false, nil
   end
