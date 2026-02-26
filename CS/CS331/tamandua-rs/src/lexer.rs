@@ -282,6 +282,7 @@ impl Lexer {
     ///
     /// See [`OPERATORS`] for all valid operators.
     fn handle_operator(&mut self) {
+        println!("In operator state with lexeme: {}", self.current_lexeme);
         let mut op = self.current_lexeme.clone();
 
         op.push(self.curr_char());
@@ -320,8 +321,14 @@ impl Lexer {
                 self.state = State::End;
             }
         } else {
+            self.current_category = Lexeme::Operator;
             self.state = State::End;
         }
+
+        println!(
+            "Exiting operator state with lexeme: {} in state {:?} and category {:?}",
+            self.current_lexeme, self.state, self.current_category
+        );
     }
 
     /// Handles the state: [`State::NumericLiteral(NumericLiteral::Scientific)`]
